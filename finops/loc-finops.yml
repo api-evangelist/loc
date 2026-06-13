@@ -1,0 +1,57 @@
+name: Library of Congress API FinOps
+description: Financial operations profile for Library of Congress APIs. All LOC APIs are free federal government services with no direct cost to consumers. FinOps considerations focus on operational costs within consuming organizations and infrastructure planning for bulk data use.
+costModel:
+  type: Free
+  directCost: $0 per request
+  notes: >
+    All Library of Congress APIs are funded by the US federal government and
+    provided at no cost to end users. There are no API usage fees, subscription
+    charges, or commercial licensing requirements. Organizations may use these
+    APIs without any contractual relationship with the Library of Congress.
+budgetConsiderations:
+  - category: No Direct API Costs
+    description: No budget allocation required for API access itself.
+    recommendation: No spend required for LOC API access; budget only for your own infrastructure.
+  - category: Egress and Storage
+    description: >
+      Applications downloading large volumes of digitized images, audio, or video
+      from LOC will incur internal infrastructure costs for storage and egress
+      depending on the consuming organization's cloud provider.
+    recommendation: >
+      Estimate storage needs based on collection size. Historic newspaper images
+      (TIFF/JP2) can be several MB per page. Plan cloud storage and egress budgets
+      accordingly for large-scale digitization projects.
+  - category: Compute for Bulk Processing
+    description: >
+      Processing large numbers of API responses (e.g., ingesting all Chronicling
+      America issues, or all Congress.gov bills) requires compute resources.
+    recommendation: >
+      Use bulk data download options (Congress.gov GitHub bulk data, LOC sitemaps)
+      rather than looping API calls for full-catalog operations to reduce both
+      rate-limit risk and compute costs.
+  - category: Reliability / No SLA
+    description: >
+      LOC APIs have no uptime SLA. The Congress.gov API experienced a significant
+      outage in early 2026. Organizations with hard dependencies should plan for
+      caching layers and fallback strategies.
+    recommendation: >
+      Cache API responses locally where feasible. Build retry logic and graceful
+      degradation into applications that depend on LOC APIs.
+  - category: API Key Management
+    description: >
+      The Congress.gov API requires a free API key registered through Data.gov.
+      No cost, but key lifecycle (rotation, revocation) must be managed.
+    recommendation: >
+      Store API keys in a secrets manager (e.g., AWS Secrets Manager, HashiCorp
+      Vault). Rotate keys periodically and monitor for unauthorized use.
+optimization:
+  - Use pagination efficiently: request up to 250 results per page (Congress.gov) to minimize request count
+  - Use the loc.gov sitemap for full-catalog crawls instead of paginating the search API
+  - Cache item-level responses; LOC collection data changes infrequently
+  - For historic newspaper research, download pre-built bulk OCR datasets from LOC Labs rather than fetching individual pages via API
+  - Schedule batch jobs during off-peak hours to reduce likelihood of hitting dynamic rate limit reductions
+compliance:
+  - All LOC APIs are public domain US federal government data; no copyright restrictions on underlying government-produced data
+  - Historic newspaper content in Chronicling America may include third-party copyrighted material; consult LOC rights statements per item
+  - No data residency requirements for LOC API consumers; data is publicly available globally
+  - No PII is transmitted in LOC API requests or responses

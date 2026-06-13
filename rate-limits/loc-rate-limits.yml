@@ -1,0 +1,49 @@
+name: Library of Congress API Rate Limits
+description: The Library of Congress enforces rate limits per service to ensure equitable access. Exceeding limits triggers a 1-hour block for loc.gov JSON API endpoints. The Congress.gov API returns HTTP 429 when the hourly limit is reached.
+rateLimits:
+  - api: loc.gov JSON API
+    endpoint: /search/, /collections/, /item/, /{format}/
+    limit: 20 requests per minute
+    window: 1 minute
+    enforcement: 1-hour block on exceeding the limit
+    notes: >
+      Rate limits may decrease during periods of heavy traffic. Users may also
+      encounter 429 status codes or CAPTCHA HTML pages. Implement exponential
+      backoff and pause when a 429 or non-JSON response is received.
+      The /storage-services/ media content endpoint has a separate limit.
+  - api: loc.gov Text Services
+    endpoint: /resource/ (text)
+    limit: 150 requests per minute
+    window: 1 minute
+    enforcement: 1-hour block on exceeding the limit
+  - api: loc.gov Image Services (IIIF)
+    endpoint: /iiif/
+    limit: 150 requests per minute
+    window: 1 minute
+    enforcement: 1-hour block on exceeding the limit
+    notes: IIIF-compliant image API for accessing and manipulating collection images.
+  - api: loc.gov Streaming Services
+    endpoint: /av/ (audio/video)
+    limit: 60 requests per minute
+    window: 1 minute
+    enforcement: 1-hour block on exceeding the limit
+  - api: loc.gov Storage Services
+    endpoint: /storage-services/
+    limit: 150 requests per minute
+    window: 1 minute
+    enforcement: 1-hour block on exceeding the limit
+  - api: Congress.gov API
+    endpoint: /v3/*
+    limit: 5000 requests per hour
+    window: 1 hour
+    enforcement: HTTP 429 Too Many Requests
+    notes: >
+      Default response page size is 20 results. Maximum page size is 250 results.
+      Use offset parameter for pagination. API key required for all requests.
+      Requests without a valid API key are rejected.
+bestPractices:
+  - Add handling in your code to pause and retry when a 429 or CAPTCHA response is received
+  - Use the fo=json parameter explicitly on all loc.gov requests to ensure JSON responses
+  - For large-scale harvesting of loc.gov, consider using the sitemap endpoints instead of the search API
+  - For Congress.gov bulk data needs, consider downloading bulk data files from github.com/LibraryOfCongress/api.congress.gov rather than making many API calls
+  - Implement exponential backoff with jitter when retrying after rate limit errors
