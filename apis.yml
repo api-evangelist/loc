@@ -33,7 +33,7 @@ apis:
       - type: Documentation
         url: https://www.loc.gov/apis/json-and-yaml/
       - type: OpenAPI
-        url: https://www.loc.gov/apis/json-and-yaml/
+        url: openapi/loc-loc-gov-json-api-openapi.yml
     contact:
       - FN: Library of Congress
         url: https://www.loc.gov/about/contact-us/
@@ -58,6 +58,8 @@ apis:
         url: https://github.com/LibraryOfCongress/api.congress.gov
       - type: Signup
         url: https://api.congress.gov/sign-up/
+      - type: OpenAPI
+        url: openapi/loc-congress-gov-openapi.yml
     contact:
       - FN: Library of Congress
         url: https://www.loc.gov/about/contact-us/

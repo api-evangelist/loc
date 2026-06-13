@@ -1,0 +1,121 @@
+id: loc-vocabulary
+name: Library of Congress Vocabulary
+description: Controlled vocabulary of terms used across Library of Congress APIs including
+  Congress.gov
+version: 1.0.0
+created: '2026-06-13'
+modified: '2026-06-13'
+source: https://api.congress.gov/
+terms:
+- term: congress
+  description: Property congress from Bill schema
+  type: integer
+  source: Congress.gov API
+- term: bill
+  description: Property bill from summariesArray schema
+  type: string
+  source: Congress.gov API
+- term: amendment
+  description: The amendment field in Congress.gov legislative data
+  type: string
+  source: Congress.gov API
+- term: member
+  description: The member field in Congress.gov legislative data
+  type: string
+  source: Congress.gov API
+- term: committee
+  description: Property committee from treatyAction schema
+  type: string
+  source: Congress.gov API
+- term: nomination
+  description: Property nomination from Nomination schema
+  type: object
+  source: Congress.gov API
+- term: treaty
+  description: Property treaty from TreatyDetail schema
+  type: object
+  source: Congress.gov API
+- term: bioguideId
+  description: Property bioguideId from Sponsor schema
+  type: string
+  source: Congress.gov API
+- term: originChamber
+  description: Property originChamber from Bill schema
+  type: string
+  source: Congress.gov API
+- term: latestAction
+  description: Property latestAction from Bill schema
+  type: object
+  source: Congress.gov API
+- term: updateDate
+  description: Property updateDate from Bill schema
+  type: string
+  source: Congress.gov API
+- term: introducedDate
+  description: Property introducedDate from LawNumber schema
+  type: string
+  source: Congress.gov API
+- term: policyArea
+  description: Property policyArea from LawNumber schema
+  type: object
+  source: Congress.gov API
+- term: legislativeSubjects
+  description: Property legislativeSubjects from Subjects schema
+  type: array
+  source: Congress.gov API
+- term: sponsor
+  description: The sponsor field in Congress.gov legislative data
+  type: string
+  source: Congress.gov API
+- term: cosponsor
+  description: The cosponsor field in Congress.gov legislative data
+  type: string
+  source: Congress.gov API
+- term: Bill
+  description: A proposed piece of legislation introduced in Congress
+  type: concept
+  source: Congress.gov API
+- term: Amendment
+  description: A proposed change to a bill or resolution in Congress
+  type: concept
+  source: Congress.gov API
+- term: Member
+  description: A member of the United States Congress (Senator or Representative)
+  type: concept
+  source: Congress.gov API
+- term: Committee
+  description: A congressional committee responsible for reviewing legislation
+  type: concept
+  source: Congress.gov API
+- term: Nomination
+  description: A presidential nomination requiring Senate confirmation
+  type: concept
+  source: Congress.gov API
+- term: Treaty
+  description: An international agreement requiring Senate ratification
+  type: concept
+  source: Congress.gov API
+- term: Hearing
+  description: A congressional committee hearing on legislation or oversight
+  type: concept
+  source: Congress.gov API
+- term: CongressionalRecord
+  description: The official record of proceedings and debates of the US Congress
+  type: concept
+  source: Congress.gov API
+- term: DigitalCollection
+  description: A collection of digitized materials from the Library of Congress
+  type: concept
+  source: loc.gov JSON API
+- term: ChroniclingAmerica
+  description: Historic American newspapers digitized by the Library of Congress
+  type: concept
+  source: Chronicling America API
+- term: Batch
+  description: A batch of digitized newspaper pages contributed by a partner institution
+  type: concept
+  source: Chronicling America API
+- term: NewspaperTitle
+  description: A historic newspaper title available in the Chronicling America collection
+  type: concept
+  source: Chronicling America API

@@ -1,0 +1,127 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "loc": "https://www.loc.gov/vocabulary/",
+    "congress": "https://api.congress.gov/v3/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Bill": "congress:bill",
+    "Amendment": "congress:amendment",
+    "Member": "congress:member",
+    "Committee": "congress:committee",
+    "Nomination": "congress:nomination",
+    "Treaty": "congress:treaty",
+    "Hearing": "congress:hearing",
+    "CongressionalRecord": "congress:congressional-record",
+    "DigitalCollection": "loc:collections",
+    "NewspaperTitle": "loc:newspaper-title",
+    "Batch": "loc:batch",
+
+    "bioguideId": {
+      "@id": "congress:bioguide-id",
+      "@type": "xsd:string"
+    },
+    "congress_number": {
+      "@id": "congress:congress",
+      "@type": "xsd:integer"
+    },
+    "originChamber": {
+      "@id": "congress:origin-chamber",
+      "@type": "xsd:string"
+    },
+    "latestAction": {
+      "@id": "congress:latest-action",
+      "@type": "@id"
+    },
+    "introducedDate": {
+      "@id": "congress:introduced-date",
+      "@type": "xsd:date"
+    },
+    "updateDate": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    },
+    "policyArea": {
+      "@id": "congress:policy-area",
+      "@type": "@id"
+    },
+    "legislativeSubjects": {
+      "@id": "congress:legislative-subjects",
+      "@type": "@id"
+    },
+    "sponsor": {
+      "@id": "congress:sponsor",
+      "@type": "@id"
+    },
+    "cosponsor": {
+      "@id": "congress:cosponsor",
+      "@type": "@id"
+    },
+    "title": {
+      "@id": "dcterms:title",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "dcterms:description",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "identifier": {
+      "@id": "dcterms:identifier",
+      "@type": "xsd:string"
+    },
+    "date": {
+      "@id": "dcterms:date",
+      "@type": "xsd:date"
+    },
+    "subject": {
+      "@id": "dcterms:subject",
+      "@type": "xsd:string"
+    },
+    "format": {
+      "@id": "dcterms:format",
+      "@type": "xsd:string"
+    },
+    "rights": {
+      "@id": "dcterms:rights",
+      "@type": "xsd:string"
+    },
+    "publisher": {
+      "@id": "dcterms:publisher",
+      "@type": "xsd:string"
+    },
+    "language": {
+      "@id": "dcterms:language",
+      "@type": "xsd:string"
+    },
+    "source": {
+      "@id": "dcterms:source",
+      "@type": "@id"
+    },
+    "coverage": {
+      "@id": "dcterms:coverage",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "party": {
+      "@id": "congress:party",
+      "@type": "xsd:string"
+    },
+    "chamber": {
+      "@id": "congress:chamber",
+      "@type": "xsd:string"
+    }
+  }
+}

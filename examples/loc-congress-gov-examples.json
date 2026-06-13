@@ -1,0 +1,111 @@
+{
+  "Bill": {
+    "congress": 119,
+    "latestAction": {
+      "actionDate": "2025-11-21",
+      "text": "Read twice and referred to the Committee on Agriculture, Nutrition, and Forestry."
+    },
+    "number": 3281,
+    "originChamber": "Senate",
+    "originChamberCode": "S",
+    "title": "A bill to repeal certain provisions relating to nutrition.",
+    "type": "S",
+    "updateDate": "2025-11-21",
+    "updateDateIncludingText": "2025-11-21",
+    "url": "http://api.congress.gov/v3/bill/119/s/3281?format=xml"
+  },
+  "BillDetail": {
+    "actions": {
+      "count": 1,
+      "url": "https://api.congress.gov/v3/bill/117/s/1234/actions?format=json"
+    },
+    "committees": {
+      "count": 1,
+      "url": "https://api.congress.gov/v3/bill/117/s/1234/committees?format=json"
+    },
+    "congress": 117,
+    "introducedDate": "2019-01-01",
+    "latestAction": {
+      "actionDate": "2019-01-01"
+    },
+    "legislationUrl": "https://www.congress.gov/bill/117th-congress/senate-bill/1234",
+    "number": 1234,
+    "originChamber": "Senate",
+    "originChamberCode": "S",
+    "policyArea": {
+      "name": "Health"
+    },
+    "relatedBills": "https://api.congress.gov/v3/bill/117/s/1234/relatedbills?format=json"
+  },
+  "Member": {
+    "bioguideId": "L000174",
+    "birthYear": "1940",
+    "cosponsoredLegislation": {
+      "count": 1,
+      "url": "https://api.congress.gov/v3/member/L000174/cosponsored-legislation\""
+    },
+    "depiction": {
+      "attribution": "<a href=\"\\&quot;https://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\\&quot;\">Courtesy U.S. Senate Historical Office</a>",
+      "imageUrl": "https://www.congress.gov/img/member/l000174_200.jpg"
+    },
+    "directOrderName": "Patrick J. Leahy",
+    "firstName": "Patrick",
+    "honorificName": "Mr.",
+    "invertedOrderName": "Leahy, Patrick J.",
+    "lastname": "Leahy",
+    "sponsoredLegislation": {
+      "count": 1768,
+      "url": "https://api.congress.gov/v3/member/L000174/sponsored-legislation"
+    },
+    "state": "Vermont",
+    "updateDate": "2022-11-07T13:42:19Z"
+  },
+  "Committee": {
+    "chamber": "House",
+    "name": "House Committee on the Judiciary",
+    "systemCode": "hsgo00",
+    "type": "Standing",
+    "url": "https://api.congress.gov/v3/committee/house/hsgo00?format=json"
+  },
+  "Amendment": {
+    "congress": 117,
+    "description": "Amendment changes the effective date of the bill to the date of enactment.",
+    "latestAction": {
+      "actionDate": "2021-08-08",
+      "actionTime": "12:00:00",
+      "text": "Amendment SA 2137 agreed to in Senate by Yea-Nay Vote. 69 - 28. Record Vote Number: 312."
+    },
+    "number": "2137",
+    "purpose": "In the nature of a substitute.",
+    "updateDate": "2021-08-08T12:00:00Z",
+    "url": "https://api.congress.gov/v3/amendment/117/samdt/2137?format=json"
+  },
+  "Nomination": {
+    "nomination": {
+      "actions": {
+        "count": 7,
+        "url": "https://api.congress.gov/v3/nomination/118/16/actions?format=json"
+      },
+      "authorityDate": "2025-10-21",
+      "citation": "PN16",
+      "committees": {
+        "count": 1,
+        "url": "https://api.congress.gov/v3/nomination/118/16/committees?format=json"
+      },
+      "congress": 118,
+      "description": "Daniel B. Maffei, of New York, to be a Federal Maritime Commissioner for a term expiring June 30, 2027.  (Reappointment)",
+      "hearings": {
+        "count": 1,
+        "url": "https://api.congress.gov/v3/nomination/118/16/hearings?format=json"
+      },
+      "latestAction": {
+        "actionDate": "2024-05-14",
+        "text": "Confirmed by the Senate by Voice Vote."
+      },
+      "number": 16,
+      "partNumber": "00",
+      "receivedDate": "2023-01-03",
+      "updateDate": "2025-10-22T15:58:44Z"
+    }
+  }
+}
