@@ -1,7 +1,7 @@
 aid: loc
 name: Library of Congress
 description: The Library of Congress is the largest library in the world and the research arm of the US Congress. It provides REST APIs for accessing digitized collections, Congress.gov legislative data, bibliographic records, historic newspapers via Chronicling America, maps, photographs, manuscripts, and historical government documents. The loc.gov JSON API requires no authentication, while the Congress.gov API requires a free API key.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/loc/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -20,7 +20,7 @@ tags:
 apis:
   - name: loc.gov JSON API
     description: The loc.gov JSON/YAML API provides structured, machine-readable data about Library of Congress digital collections — books, photographs, maps, manuscripts, archived websites, videos, and more. No authentication is required. Responses are available in JSON or YAML format via the fo= query parameter.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.loc.gov/apis/json-and-yaml/
     baseURL: https://www.loc.gov
     tags:
@@ -39,7 +39,7 @@ apis:
         url: https://www.loc.gov/about/contact-us/
   - name: Congress.gov API
     description: The Congress.gov API (v3) provides machine-readable access to legislative data from Congress.gov, including bills, amendments, summaries, members, committees, nominations, treaties, and the Congressional Record. Responses are available in JSON or XML. A free API key is required (sign up at api.congress.gov). Rate limit is 5,000 requests per hour.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://api.congress.gov/
     baseURL: https://api.congress.gov/v3
     tags:
@@ -65,7 +65,7 @@ apis:
         url: https://www.loc.gov/about/contact-us/
   - name: Chronicling America API
     description: The Chronicling America API provides access to the historic American newspapers collection digitized by the Library of Congress and its partners. Endpoints allow searching and retrieving pages, titles, batches, and OCR text. No authentication is required.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://chroniclingamerica.loc.gov/about/api/
     baseURL: https://chroniclingamerica.loc.gov
     tags:
