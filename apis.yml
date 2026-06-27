@@ -54,7 +54,7 @@ apis:
     properties:
       - type: Documentation
         url: https://api.congress.gov/
-      - type: GithubRepository
+      - type: GitHubRepository
         url: https://github.com/LibraryOfCongress/api.congress.gov
       - type: Signup
         url: https://api.congress.gov/sign-up/

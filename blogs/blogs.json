@@ -2,18 +2,20 @@
   "url": "https://blogs.loc.gov/thesignal/",
   "title": "The Signal - Library of Congress Digital Preservation Blog",
   "description": "The Signal is the Library of Congress blog on digital preservation, digital collections, and technology. It covers topics including APIs, digitization, web archiving, and access to digital cultural heritage.",
-  "last_fetched": "2026-06-13",
-  "posts": [],
   "repo": "loc",
   "feeds": [
     {
-      "source": "https://www.linkedin.com/company/library-of-congress",
-      "feed_url": "https://www.linkedin.com/company/library-of-congress",
+      "source": "https://blogs.loc.gov/thesignal/feed/",
+      "feed_url": "https://blogs.loc.gov/thesignal/feed/",
       "title": "",
-      "saved": 0,
-      "method": "none"
+      "saved": 2,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.linkedin.com/company/library-of-congress",
+      "error": "HTTPError"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 3,
+  "fetched": "2026-06-27T12:03:07Z"
 }
