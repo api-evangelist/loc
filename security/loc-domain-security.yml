@@ -1,0 +1,33 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.loc.gov
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 12 02:51:22 2026 GMT
+  hsts: true
+  hsts_max_age: 3600
+- host: api.congress.gov
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 28 11:20:55 2026 GMT
+  hsts: null
+- host: chroniclingamerica.loc.gov
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 13 04:56:11 2026 GMT
+  hsts: null
+domains:
+- domain: loc.gov
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: congress.gov
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

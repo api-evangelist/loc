@@ -81,6 +81,12 @@ apis:
       - FN: Library of Congress
         url: https://www.loc.gov/about/contact-us/
 common:
+  - type: VulnerabilityDisclosure
+    url: security/loc-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/loc-domain-security.yml
+  - type: Authentication
+    url: authentication/loc-authentication.yml
   - type: Website
     url: https://www.loc.gov
   - type: Documentation
