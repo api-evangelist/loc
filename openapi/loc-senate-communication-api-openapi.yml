@@ -1,0 +1,252 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments senate-communication API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: senate-communication
+  description: Returns Senate communication data from the API
+paths:
+  /senate-communication:
+    get:
+      tags:
+      - senate-communication
+      summary: Returns a list of Senate communications.
+      description: Returns a list of Senate communications.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SenateCommunications'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SenateCommunications'
+        '400':
+          description: Invalid status value
+  /senate-communication/{congress}:
+    get:
+      tags:
+      - senate-communication
+      summary: Returns a list of Senate communications filtered by the specified congress.
+      description: Returns a list of Senate communications filtered by the specified congress.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SenateCommunications'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SenateCommunications'
+        '400':
+          description: Invalid status value
+  /senate-communication/{congress}/{communicationType}:
+    get:
+      tags:
+      - senate-communication
+      summary: Returns a list of Senate communications filtered by the specified congress and communication type..
+      description: Returns a list of Senate communications filtered by the specified congress and communication type.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/senateCommunicationType'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SenateCommunications'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SenateCommunications'
+        '400':
+          description: Invalid status value
+  /senate-communication/{congress}/{communicationType}/{communicationNumber}:
+    get:
+      tags:
+      - senate-communication
+      summary: Returns a list of Senate communications filtered by the specified congress and communication type..
+      description: Returns a list of Senate communications filtered by the specified congress and communication type.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/senateCommunicationType'
+      - $ref: '#/components/parameters/communicationNumber'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SenateCommunicationTypeNumber'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SenateCommunicationTypeNumber'
+        '400':
+          description: Invalid status value
+components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    communicationNumber:
+      name: communicationNumber
+      in: path
+      description: The communication’s assigned number. For example, the value can be 3324.
+      required: true
+      schema:
+        type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    senateCommunicationType:
+      name: communicationType
+      in: path
+      description: The type of communication. Value can be ec, pm, or pom.
+      required: true
+      schema:
+        type: string
+        enum:
+        - ec
+        - pm
+        - pom
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+  schemas:
+    SenateCommunications:
+      type: object
+      properties:
+        senateCoummunications:
+          type: array
+          items:
+            $ref: '#/components/schemas/senateCommunication'
+    SenateCommunicationTypeNumber:
+      type: object
+      properties:
+        abstract:
+          type: string
+          example: A letter from the Director, Regulatory Management Division, Environmental Protection Agency, transmitting the Agency's request for applications - Technical Assistance to Brownfields Communities [EPA-I-OLEM-OBLR-22-12] received February 9, 2024, pursuant to 5 U.S.C. 801(a)(1)(A); Public Law 104–121, section 251; (110 Stat. 868); to the Committee on Energy and Commerce.
+        chamber:
+          type: string
+          example: House
+        committees:
+          type: array
+          items:
+            allOf:
+            - $ref: '#/components/schemas/subcommittees'
+            - referralDate:
+                type: string
+                format: date
+                example: '2024-03-07'
+        congress:
+          type: integer
+          example: 118
+        congressionalRecordDate:
+          type: string
+          format: date
+          example: '2024-03-07'
+        number:
+          type: integer
+          example: 3324
+        sessionNumber:
+          type: integer
+          example: 2
+        updateDate:
+          type: string
+          format: date
+          example: '2024-09-03'
+    communicationType:
+      type: object
+      properties:
+        code:
+          type: string
+          example: EC
+        name:
+          type: string
+          example: Executive Communication
+    subcommittees:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Investigations and Oversight Subcommittee
+        systemCode:
+          type: string
+          example: hspw01
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
+    senateCommunication:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: Senate
+        communicationType:
+          $ref: '#/components/schemas/communicationType'
+        congress:
+          type: integer
+          example: 117
+        number:
+          type: string
+          example: '1615'
+        updateDate:
+          type: string
+          format: date
+          example: '2021-09-01'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

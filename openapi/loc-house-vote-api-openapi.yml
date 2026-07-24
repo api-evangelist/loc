@@ -1,0 +1,354 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments house-vote API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: house-vote
+  description: '[BETA] Returns House of Representatives roll call vote data from the API'
+paths:
+  /house-vote:
+    get:
+      tags:
+      - house-vote
+      summary: Returns House of Representatives roll call vote data from the API. This endpoint is currently in beta.
+      description: Returns House of Representatives roll call vote data from the API. This endpoint is currently in beta.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HouseVote'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HouseVote'
+        '400':
+          description: Invalid status value
+  /house-vote/{congress}:
+    get:
+      tags:
+      - house-vote
+      summary: Returns House of Representatives roll call vote data from the API filtered by the specified Congress. This endpoint is currently in beta.
+      description: Returns House of Representatives roll call vote data from the API filtered by the specified Congress. This endpoint is currently in beta.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HouseVote'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HouseVote'
+        '400':
+          description: Invalid status value
+  /house-vote/{congress}/{session}:
+    get:
+      tags:
+      - house-vote
+      summary: Returns House of Representatives roll call vote data from the API filtered by the specified Congress and session. This endpoint is currently in beta.
+      description: Returns House of Representatives roll call vote data from the API filtered by the specified Congress and session. This endpoint is currently in beta.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/session'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HouseVote'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HouseVote'
+        '400':
+          description: Invalid status value
+  /house-vote/{congress}/{session}/{voteNumber}:
+    get:
+      tags:
+      - house-vote
+      summary: Returns detailed information for a specified House of Representatives roll call vote. This endpoint is currently in beta.
+      description: Returns detailed information for a specified House of Representatives roll call vote. This endpoint is currently in beta.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/session'
+      - $ref: '#/components/parameters/voteNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HouseVoteNumber'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HouseVoteNumber'
+        '400':
+          description: Invalid status value
+  /house-vote/{congress}/{session}/{voteNumber}/members:
+    get:
+      tags:
+      - house-vote
+      summary: Returns detailed information for how members voted on a specified House of Representatives roll call vote. This endpoint is currently in beta.
+      description: Returns detailed information for how members voted on a specified House of Representatives roll call vote. This endpoint is currently in beta.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/session'
+      - $ref: '#/components/parameters/voteNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HouseVoteMembers'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HouseVoteMembers'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    houseVoteResults:
+      type: object
+      properties:
+        bioguideID:
+          type: string
+          example: A000055
+        firstName:
+          type: string
+          example: Robert
+        lastName:
+          type: string
+          example: Aderholt
+        voteCast:
+          type: string
+          example: Yea
+        voteParty:
+          type: string
+          example: R
+        voteState:
+          type: string
+          example: AL
+    party:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Republican
+        type:
+          type: string
+          example: R
+    HouseVoteNumber:
+      allOf:
+      - $ref: '#/components/schemas/HouseVoteNumberBase'
+      - type: object
+        properties:
+          votePartyTotal:
+            type: array
+            items:
+              $ref: '#/components/schemas/voteParty'
+          voteQuestion:
+            type: string
+            example: On Passage
+    HouseVoteMembers:
+      allOf:
+      - $ref: '#/components/schemas/HouseVoteNumberBase'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/houseVoteResults'
+          voteQuestion:
+            type: string
+            example: On Passage
+    HouseVoteNumberBase:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 119
+        identifier:
+          type: integer
+          example: 1191202517
+        legislationNumber:
+          type: string
+          example: '30'
+        legislationType:
+          type: string
+          example: HR
+        legislationUrl:
+          type: string
+          format: url
+          example: https://congress.gov/bill/119/house-bill/30
+        result:
+          type: string
+          example: Passed
+        rollCallNumber:
+          type: integer
+          example: 17
+        sessionNumber:
+          type: integer
+          example: 1
+        sourceDataURL:
+          type: string
+          example: https://clerk.house.gov/evs/2025/roll017.xml
+        startDate:
+          type: string
+          format: date-time
+          example: '2025-01-16T11:00:00-05:00'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2025-04-18T08:44:47-04:00'
+        voteType:
+          type: string
+          example: Yea-and-Nay
+    HouseVote:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 119
+        identifier:
+          type: integer
+          example: 1191202517
+        legislationNumber:
+          type: string
+          example: '30'
+        legislationType:
+          type: string
+          example: HR
+        legislationUrl:
+          type: string
+          format: url
+          example: https://congress.gov/bill/119/house-bill/30
+        result:
+          type: string
+          example: Passed
+        rollCallNumber:
+          type: integer
+          example: 17
+        sessionNumber:
+          type: integer
+          example: 1
+        sourceDataURL:
+          type: string
+          example: https://clerk.house.gov/evs/2025/roll017.xml
+        startDate:
+          type: string
+          format: date-time
+          example: '2025-01-16T11:00:00-05:00'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2025-04-18T08:44:47-04:00'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/house-vote/119/1/17
+        voteType:
+          type: string
+          example: Yea-and-Nay
+    voteParty:
+      type: object
+      properties:
+        nayTotal:
+          type: integer
+          example: 0
+        notVotingTotal:
+          type: integer
+          example: 6
+        presentTotal:
+          type: integer
+          example: 0
+        voteParty:
+          type: string
+          example: R
+        yeaTotal:
+          type: integer
+          example: 213
+        party:
+          $ref: '#/components/schemas/party'
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    voteNumber:
+      name: voteNumber
+      in: path
+      description: The assigned roll call vote number. For example, 17.
+      required: true
+      schema:
+        type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    session:
+      name: session
+      in: path
+      description: The session number. The value can be 1 or 2.
+      required: true
+      schema:
+        type: integer
+        enum:
+        - 1
+        - 2
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

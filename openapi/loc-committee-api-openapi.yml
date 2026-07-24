@@ -1,0 +1,684 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments committee API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: committee
+  description: Returns committee data from the API
+paths:
+  /committee:
+    get:
+      tags:
+      - committee
+      summary: Returns a list of congressional committees.
+      description: Returns a list of congressional committees.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Committees'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Committees'
+        '400':
+          description: Invalid status value
+  /committee/{chamber}:
+    get:
+      tags:
+      - committee
+      summary: Returns a list of congressional committees filtered by the specified chamber.
+      description: Returns a list of congressional committees filtered by the specified chamber.
+      parameters:
+      - $ref: '#/components/parameters/chamber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Committees'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Committees'
+        '400':
+          description: Invalid status value
+  /committee/{congress}:
+    get:
+      tags:
+      - committee
+      summary: Returns a list of congressional committees filtered by the specified congress.
+      description: Returns a list of congressional committees filtered by the specified congress.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Committees'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Committees'
+        '400':
+          description: Invalid status value
+  /committee/{congress}/{chamber}:
+    get:
+      tags:
+      - committee
+      summary: Returns a list of congressional committees filtered by the specified congress and chamber.
+      description: Returns a list of congressional committees filtered by the specified congress and chamber.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/chamber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Committees'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Committees'
+        '400':
+          description: Invalid status value
+  /committee/{chamber}/{committeeCode}:
+    get:
+      tags:
+      - committee
+      summary: Returns detailed information for a specified congressional committee.
+      description: Returns detailed information for a specified congressional committee.
+      parameters:
+      - $ref: '#/components/parameters/chamber'
+      - $ref: '#/components/parameters/committeeCode'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeDetail'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeDetail'
+        '400':
+          description: Invalid status value
+  /committee/{congress}/{chamber}/{committeeCode}:
+    get:
+      tags:
+      - committee
+      summary: Returns detailed information for a specified congressional committee filtered by the specified Congress.
+      description: Returns detailed information for a specified congressional committee filtered by the specified Congress.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/chamber'
+      - $ref: '#/components/parameters/committeeCode'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeDetail'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeDetail'
+        '400':
+          description: Invalid status value
+  /committee/{chamber}/{committeeCode}/bills:
+    get:
+      tags:
+      - committee
+      summary: Returns the list of legislation associated with the specified congressional committee.
+      description: Returns the list of legislation associated with the specified congressional committee.
+      parameters:
+      - $ref: '#/components/parameters/chamber'
+      - $ref: '#/components/parameters/committeeCode'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeBills'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeBills'
+        '400':
+          description: Invalid status value
+  /committee/{chamber}/{committeeCode}/reports:
+    get:
+      tags:
+      - committee
+      summary: Returns the list of committee reports associated with a specified congressional committee.
+      description: Returns the list of committee reports associated with a specified congressional committee.
+      parameters:
+      - $ref: '#/components/parameters/chamber'
+      - $ref: '#/components/parameters/committeeCode'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeReports'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeReports'
+        '400':
+          description: Invalid status value
+  /committee/{chamber}/{committeeCode}/nominations:
+    get:
+      tags:
+      - committee
+      summary: Returns the list of nominations associated with a specified congressional committee.
+      description: Returns the list of nominations associated with a specified congressional committee.
+      parameters:
+      - $ref: '#/components/parameters/chamber'
+      - $ref: '#/components/parameters/committeeCode'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeNominations'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeNominations'
+        '400':
+          description: Invalid status value
+  /committee/{chamber}/{committeeCode}/house-communication:
+    get:
+      tags:
+      - committee
+      summary: Returns the list of House communications associated with a specified congressional committee.
+      description: Returns the list of House communications associated with a specified congressional committee.
+      parameters:
+      - $ref: '#/components/parameters/housechamber'
+      - $ref: '#/components/parameters/committeeCode'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeHouseCommunication'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeHouseCommunication'
+        '400':
+          description: Invalid status value
+  /committee/{chamber}/{committeeCode}/senate-communication:
+    get:
+      tags:
+      - committee
+      summary: Returns the list of Senate communications associated with a specified congressional committee.
+      description: Returns the list of Senate communications associated with a specified congressional committee.
+      parameters:
+      - $ref: '#/components/parameters/senatechamber'
+      - $ref: '#/components/parameters/committeeCode'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeSenateCommunication'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeSenateCommunication'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    nominationType:
+      type: object
+      properties:
+        isCivilian:
+          type: boolean
+          example: false
+        isMilitary:
+          type: boolean
+          example: true
+    CommitteeDetail:
+      type: object
+      properties:
+        bills:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 25384
+            url:
+              type: string
+              format: url
+              example: https://api.congress.gov/v3/committee/house/hspw00/bills?format=json
+        communications:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 25384
+            url:
+              type: string
+              format: url
+              example: https://api.congress.gov/v3/committee/house/hspw00/house-communication?format=json
+        history:
+          type: array
+          items:
+            $ref: '#/components/schemas/committeeHistory'
+        isCurrent:
+          type: boolean
+          example: true
+        reports:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 25384
+            url:
+              type: string
+              format: url
+              example: https://api.congress.gov/v3/committee/house/hspw00/reports?format=json
+        subcommittees:
+          type: array
+          items:
+            $ref: '#/components/schemas/subcommittees'
+        systemCode:
+          type: string
+          example: hspw00
+        type:
+          type: string
+          example: Standing
+        updateDate:
+          type: string
+          format: date-time
+          example: '2020-02-04T00:07:37Z'
+    latestAction:
+      type: object
+      properties:
+        actionDate:
+          type: string
+          format: date
+          example: '2022-06-16'
+        text:
+          type: string
+          example: Read twice and referred to the Committee on the Judiciary.
+    parentcommittee:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Judiciary Committee
+        systemCode:
+          type: string
+          example: hsju00
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hsju00?format=json
+    committeeBill:
+      type: object
+      properties:
+        actionDate:
+          type: string
+          format: date-time
+          example: '2022-02-18T16:38:41Z'
+        congress:
+          type: integer
+          example: 117
+        number:
+          type: string
+          example: '117'
+        relationshipType:
+          type: string
+          example: Referred to
+        type:
+          type: string
+          example: HCONRES
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-02-18T16:38:41Z'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/112/hconres/117?format=json
+    CommitteeHouseCommunication:
+      allOf:
+      - $ref: '#/components/schemas/CommitteeCommunication'
+      - type: object
+        properties:
+          chamber:
+            type: string
+            example: House
+          url:
+            type: string
+            format: url
+            example: https://api.congress.gov/v3/house-communication/114/ec/3262?format=json
+    CommitteeSenateCommunication:
+      allOf:
+      - $ref: '#/components/schemas/CommitteeCommunication'
+      - type: object
+        properties:
+          chamber:
+            type: string
+            example: Senate
+          url:
+            type: string
+            format: url
+            example: https://api.congress.gov/v3/senate-communication/114/ec/7402?format=json
+    committeeReports:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        citation:
+          type: string
+          example: H. Rept. 109-570
+        congress:
+          type: integer
+          example: 117
+        number:
+          type: integer
+          example: 570
+        part:
+          type: integer
+          example: 1
+        type:
+          type: string
+          example: HRPT
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-02-18T16:38:41Z'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/117hr570?format=json
+    committeeNominations:
+      type: object
+      properties:
+        citation:
+          type: string
+          example: PN2477
+        congress:
+          type: integer
+          example: 117
+        description:
+          type: string
+          example: Nomination of xyz for the 117th Congress
+        latestAction:
+          $ref: '#/components/schemas/latestAction'
+        nominationType:
+          $ref: '#/components/schemas/nominationType'
+        number:
+          type: integer
+          example: 2477
+        partNumber:
+          type: string
+          example: '00'
+        receivedDate:
+          type: string
+          format: date
+          example: '2022-08-03'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-09-30 04:40:14+00:00'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/nomination/117/2477?format=json
+    CommitteeReports:
+      type: array
+      items:
+        $ref: '#/components/schemas/committeeReports'
+    committeeHistory:
+      type: object
+      properties:
+        libraryOfCongressName:
+          type: string
+          example: Transportation and Infrastructure
+        officialName:
+          type: string
+          example: Committee on Transportation and Infrastructure
+        startDate:
+          type: string
+          format: date-time
+          example: '1995-01-04T05:00:00Z'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2020-02-04T00:07:37Z'
+        endDate:
+          type: string
+          format: date-time
+          example: '2020-03-04T05:00:00Z'
+    CommitteeBills:
+      type: object
+      properties:
+        bills:
+          type: array
+          items:
+            $ref: '#/components/schemas/committeeBill'
+        count:
+          type: integer
+          example: 27251
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw00/bills?format=json
+    CommitteeCommunication:
+      type: object
+      properties:
+        communicationType:
+          type: object
+          properties:
+            code:
+              type: string
+              example: EC
+            name:
+              type: string
+              example: Executive Communication
+        congress:
+          type: integer
+          example: 114
+        number:
+          type: integer
+          example: 3262
+        referralDate:
+          type: string
+          format: date
+          example: '2015-10-27'
+        updateDate:
+          type: string
+          format: date
+          example: '2018-02-02'
+    subcommittees:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Investigations and Oversight Subcommittee
+        systemCode:
+          type: string
+          example: hspw01
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
+    CommitteeNominations:
+      type: array
+      items:
+        $ref: '#/components/schemas/committeeNominations'
+    Committees:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        committeeTypeCode:
+          type: string
+          example: Standing
+        updateDate:
+          type: string
+          format: date-time
+          example: '2020-02-04T00:07:37Z'
+        name:
+          type: string
+          example: Transportation and Infrastructure Committee
+        parent:
+          $ref: '#/components/schemas/parentcommittee'
+        subcommittees:
+          type: array
+          items:
+            $ref: '#/components/schemas/subcommittees'
+        systemCode:
+          type: string
+          example: hspw00
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw00?format=json
+  parameters:
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    chamber:
+      name: chamber
+      in: path
+      description: The chamber name. Value can be house, senate, or joint.
+      required: true
+      schema:
+        type: string
+        enum:
+        - house
+        - senate
+        - joint
+    senatechamber:
+      name: chamber
+      in: path
+      description: The chamber name. Value can be senate.
+      required: true
+      schema:
+        type: string
+        default: senate
+    committeeCode:
+      name: committeeCode
+      in: path
+      description: The committee code. For example, the value can be hspw00.
+      required: true
+      schema:
+        type: string
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    housechamber:
+      name: chamber
+      in: path
+      description: The chamber name. Value can be house.
+      required: true
+      schema:
+        type: string
+        default: house
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

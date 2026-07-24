@@ -1,0 +1,193 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments bound-congressional-record API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: bound-congressional-record
+  description: Returns bound Congressional Record data from the API
+paths:
+  /bound-congressional-record:
+    get:
+      tags:
+      - bound-congressional-record
+      summary: Returns a list of bound congressional records issues sorted by most recent.
+      description: Returns a list of bound congressional record issues sorted by most recent.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoundCongressionalRecord'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/BoundCongressionalRecord'
+        '400':
+          description: Invalid status value
+  /bound-congressional-record/{year}:
+    get:
+      tags:
+      - bound-congressional-record
+      summary: Returns a list of bound congressional records issues sorted by most recent.
+      description: Returns a list of bound congressional record issues sorted by most recent.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/year'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoundCongressionalRecord'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/BoundCongressionalRecord'
+        '400':
+          description: Invalid status value
+  /bound-congressional-record/{year}/{month}:
+    get:
+      tags:
+      - bound-congressional-record
+      summary: Returns a list of bound congressional records issues sorted by most recent.
+      description: Returns a list of bound congressional record issues sorted by most recent.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/year'
+      - $ref: '#/components/parameters/month'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoundCongressionalRecord'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/BoundCongressionalRecord'
+        '400':
+          description: Invalid status value
+  /bound-congressional-record/{year}/{month}/{day}:
+    get:
+      tags:
+      - bound-congressional-record
+      summary: Returns a list of bound congressional records issues sorted by most recent.
+      description: Returns a list of bound congressional record issues sorted by most recent.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/year'
+      - $ref: '#/components/parameters/month'
+      - $ref: '#/components/parameters/day'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoundCongressionalRecord'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/BoundCongressionalRecord'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    BoundCongressionalRecord:
+      type: object
+      properties:
+        boundCongressionalRecord:
+          type: array
+          items:
+            $ref: '#/components/schemas/boundCongressionalRecord'
+    boundCongressionalRecord:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 101
+        date:
+          type: string
+          example: '1990-05-01'
+        sessionNumber:
+          type: integer
+          example: 2
+        updateDate:
+          type: string
+          format: date
+          example: '2020-10-20'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bound-congressional-record/1990/5/1?format=json
+        volumeNumber:
+          type: integer
+          example: 136
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    day:
+      name: day
+      in: path
+      description: The specified day of the bound Congressional record, for example 18.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    year:
+      name: year
+      in: path
+      description: The specified year of the bound Congressional record, for example 1990.
+      required: false
+      schema:
+        type: integer
+    month:
+      name: month
+      in: path
+      description: The specified month of the bound Congressional record, for example 4 for April.
+      required: false
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

@@ -1,0 +1,499 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments member API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: member
+  description: Returns member data from the API
+paths:
+  /member:
+    get:
+      tags:
+      - member
+      summary: Returns a list of congressional members.
+      description: Returns a list of congressional members.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      - $ref: '#/components/parameters/currentMember'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Members'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Members'
+        '400':
+          description: Invalid status value
+  /member/{bioguideId}:
+    get:
+      tags:
+      - member
+      summary: Returns detailed information for a specified congressional member.
+      description: Returns detailed information for a specified congressional member.
+      parameters:
+      - $ref: '#/components/parameters/bioguideId'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Member'
+        '400':
+          description: Invalid status value
+  /member/{bioguideId}/sponsored-legislation:
+    get:
+      tags:
+      - member
+      summary: Returns the list of legislation sponsored by a specified congressional member.
+      description: Returns the list of legislation sponsored by a specified congressional member.
+      parameters:
+      - $ref: '#/components/parameters/bioguideId'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberSponsoredLegislation'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MemberSponsoredLegislation'
+        '400':
+          description: Invalid status value
+  /member/{bioguideId}/cosponsored-legislation:
+    get:
+      tags:
+      - member
+      summary: Returns the list of legislation cosponsored by a specified congressional member.
+      description: Returns the list of legislation cosponsored by a specified congressional member.
+      parameters:
+      - $ref: '#/components/parameters/bioguideId'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberSponsoredLegislation'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/MemberSponsoredLegislation'
+        '400':
+          description: Invalid status value
+  /member/congress/{congress}:
+    get:
+      tags:
+      - member
+      summary: Returns the list of members specified by Congress.
+      description: Returns the list of members specified by Congress.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/currentMember'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Members'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Members'
+        '400':
+          description: Invalid status value
+  /member/{stateCode}:
+    get:
+      tags:
+      - member
+      summary: Returns a list of members filtered by state.
+      description: Returns a list of members filtered by state.
+      parameters:
+      - $ref: '#/components/parameters/stateCode'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/currentMember'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Members'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Members'
+        '400':
+          description: Invalid status value
+  /member/{stateCode}/{district}:
+    get:
+      tags:
+      - member
+      summary: Returns a list of members filtered by state and district.
+      description: Returns a list of members filtered by state and district.
+      parameters:
+      - $ref: '#/components/parameters/stateCode'
+      - $ref: '#/components/parameters/district'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/currentMember'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Members'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Members'
+        '400':
+          description: Invalid status value
+  /member/congress/{congress}/{stateCode}/{district}:
+    get:
+      tags:
+      - member
+      summary: Returns a list of members filtered by congress, state and district.
+      description: Returns a list of members filtered by congress, state and district.
+      parameters:
+      - $ref: '#/components/parameters/stateCode'
+      - $ref: '#/components/parameters/district'
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/currentMember'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Members'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Members'
+        '400':
+          description: Invalid status value
+components:
+  parameters:
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    stateCode:
+      name: stateCode
+      in: path
+      description: The two letter identifier for the state the member represents. For example, the value can be MI for Michigan.
+      required: true
+      schema:
+        type: string
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    bioguideId:
+      name: bioguideId
+      in: path
+      description: The bioguide identifier for the congressional member. For example, the value can be L000174.
+      required: true
+      schema:
+        type: string
+    currentMember:
+      name: currentMember
+      in: query
+      description: The status of the member. Use true or false
+      schema:
+        type: string
+        enum:
+        - true
+        - false
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    district:
+      name: district
+      in: path
+      description: The district number for the district the member represents. For example, the value can be 10.
+      required: true
+      schema:
+        type: integer
+  schemas:
+    latestAction:
+      type: object
+      properties:
+        actionDate:
+          type: string
+          format: date
+          example: '2022-06-16'
+        text:
+          type: string
+          example: Read twice and referred to the Committee on the Judiciary.
+    policyArea:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Government Operations and Politics
+    Members:
+      type: object
+      properties:
+        bioguideId:
+          type: string
+          example: N000147
+        depiction:
+          type: object
+          properties:
+            attribution:
+              type: string
+              example: Congressional Pictorial Directory
+            imageUrl:
+              type: string
+              format: url
+              example: https://www.congress.gov/img/member/116_dg_dc_norton_eleanor_200.jpg
+        name:
+          type: string
+          example: Norton, Eleanor Holmes
+        partyName:
+          type: string
+          example: Democratic
+        state:
+          type: string
+          example: District of Columbia
+        terms:
+          type: object
+          properties:
+            item:
+              type: array
+              items:
+                $ref: '#/components/schemas/memberTerms'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2025-11-12T08:45:43Z'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/member/N000147?format=json
+    leadership:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 113
+        type:
+          type: string
+          example: President Pro Tempore
+    partyHistory:
+      type: object
+      properties:
+        partyAbbreviation:
+          type: string
+          example: D
+        partyName:
+          type: string
+          example: Democrat
+        startYear:
+          type: integer
+          example: 1975
+    sponsoredLegislation:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 117
+        introducedDate:
+          type: string
+          format: date
+          example: '2022-06-16'
+        latestAction:
+          $ref: '#/components/schemas/latestAction'
+        number:
+          type: string
+          example: '4417'
+        policyArea:
+          $ref: '#/components/schemas/policyArea'
+        title:
+          type: string
+          example: Patent Trial and Appeal Board Reform Act of 2022
+        type:
+          type: string
+          example: S
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/117/s/4417?format=json
+    memberTerms:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House of Representatives
+        startYear:
+          type: integer
+          example: 1991
+    Member:
+      type: object
+      properties:
+        bioguideId:
+          type: string
+          example: L000174
+        birthYear:
+          type: string
+          example: '1940'
+        cosponsoredLegislation:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 1
+            url:
+              type: string
+              example: https://api.congress.gov/v3/member/L000174/cosponsored-legislation"
+        depiction:
+          type: object
+          properties:
+            attribution:
+              type: string
+              example: <a href="\&quot;https://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\&quot;">Courtesy U.S. Senate Historical Office</a>
+            imageUrl:
+              type: string
+              format: url
+              example: https://www.congress.gov/img/member/l000174_200.jpg
+        directOrderName:
+          type: string
+          example: Patrick J. Leahy
+        firstName:
+          type: string
+          example: Patrick
+        honorificName:
+          type: string
+          example: Mr.
+        invertedOrderName:
+          type: string
+          example: Leahy, Patrick J.
+        lastname:
+          type: string
+          example: Leahy
+        leadership:
+          type: array
+          items:
+            $ref: '#/components/schemas/leadership'
+        partyHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/partyHistory'
+        sponsoredLegislation:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 1768
+            url:
+              type: string
+              format: url
+              example: https://api.congress.gov/v3/member/L000174/sponsored-legislation
+        state:
+          type: string
+          example: Vermont
+        terms:
+          type: array
+          items:
+            $ref: '#/components/schemas/memberDetailTerms'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-11-07T13:42:19Z'
+    MemberSponsoredLegislation:
+      type: array
+      items:
+        $ref: '#/components/schemas/sponsoredLegislation'
+    memberDetailTerms:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: Senate
+        congress:
+          type: integer
+          example: 116
+        endYear:
+          type: integer
+          example: 2021
+        memberType:
+          type: string
+          example: Senator
+        startYear:
+          type: integer
+          example: 2019
+        stateCode:
+          type: string
+          example: VT
+        stateName:
+          type: string
+          example: Vermont
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

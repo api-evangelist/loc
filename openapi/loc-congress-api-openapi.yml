@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: .gov amendments congress API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: congress
+  description: Returns congress and congressional sessions data from the API
+paths:
+  /congress:
+    get:
+      tags:
+      - congress
+      summary: Returns a list of congresses and congressional sessions.
+      description: Returns a list of congresses and congressional sessions.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Congresses'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Congresses'
+        '400':
+          description: Invalid status value
+  /congress/{congress}:
+    get:
+      tags:
+      - congress
+      summary: Returns a list of congresses and congressional sessions.
+      description: Returns a list of congresses and congressional sessions.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Congresses'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Congresses'
+        '400':
+          description: Invalid status value
+  /congress/current:
+    get:
+      tags:
+      - congress
+      summary: Returns a list of congresses and congressional sessions.
+      description: Returns a list of congresses and congressional sessions.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Congresses'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Congresses'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    Congresses:
+      type: array
+      items:
+        $ref: '#/components/schemas/Congress'
+    Sessions:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House of Representatives
+        number:
+          type: integer
+          example: 1
+        startDate:
+          type: string
+          format: date
+          example: '2019-01-01'
+        endDate:
+          type: string
+          format: date
+          example: '2020-01-01'
+    Congress:
+      type: object
+      properties:
+        endYear:
+          type: string
+          example: '2022'
+        name:
+          type: string
+          example: 117th Congress
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sessions'
+        startYear:
+          type: string
+          example: '2021'
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

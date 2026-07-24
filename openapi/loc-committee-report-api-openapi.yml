@@ -1,0 +1,327 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments committee-report API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: committee-report
+  description: Returns committee report data from the API
+paths:
+  /committee-report:
+    get:
+      tags:
+      - committee-report
+      summary: Returns the list of committee reports.
+      description: Returns the list of committee reports.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/conference'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeReports'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeReports'
+        '400':
+          description: Invalid status value
+  /committee-report/{congress}:
+    get:
+      tags:
+      - committee-report
+      summary: Returns the list of committee reports filtered by specified congress.
+      description: Returns the list of committee reports filtered by specified congress.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/conference'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeReports'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeReports'
+        '400':
+          description: Invalid status value
+  /committee-report/{congress}/{reportType}:
+    get:
+      tags:
+      - committee-report
+      summary: Returns the list of committee reports filtered by specified congress and report type.
+      description: Returns the list of committee reports filtered by specified congress and report type.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/reportType'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/conference'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeReports'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeReports'
+        '400':
+          description: Invalid status value
+  /committee-report/{congress}/{reportType}/{reportNumber}:
+    get:
+      tags:
+      - committee-report
+      summary: Returns detailed information for a specified committee report.
+      description: Returns detailed information for a specified committee report.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/reportType'
+      - $ref: '#/components/parameters/reportNumber'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeReportsNumber'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeReportsNumber'
+        '400':
+          description: Invalid status value
+  /committee-report/{congress}/{reportType}/{reportNumber}/text:
+    get:
+      tags:
+      - committee-report
+      summary: Returns the list of texts for a specified committee report.
+      description: Returns the list of texts for a specified committee report.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/reportType'
+      - $ref: '#/components/parameters/reportNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeReportsText'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeReportsText'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    associatedBill:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 116
+        number:
+          type: string
+          example: '6395'
+        type:
+          type: string
+          example: HR
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/116/hr/6395?format=json
+    CommitteeReports:
+      type: array
+      items:
+        $ref: '#/components/schemas/committeeReports'
+    CommitteeReportsNumber:
+      type: array
+      items:
+        allOf:
+        - $ref: '#/components/schemas/committeeReports'
+        - type: object
+          properties:
+            associatedBill:
+              type: array
+              items:
+                $ref: '#/components/schemas/associatedBill'
+            isConferenceReport:
+              type: boolean
+              example: true
+            issueDate:
+              type: string
+              format: date-time
+              example: '2020-12-03T05:00:00Z'
+            reportType:
+              type: string
+              example: H.Rept.
+            sessionNumber:
+              type: integer
+              example: 2
+            text:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  example: 2
+                url:
+                  type: string
+                  format: url
+                  example: https://api.congress.gov/v3/committee-report/116/hrpt/617/text?format=json
+            title:
+              type: string
+              example: WILLIAM M. (MAC) THORNBERRY NATIONAL DEFENSE AUTHORIZATION ACT FOR FISCAL YEAR 2021
+    CommitteeReportsText:
+      type: array
+      items:
+        $ref: '#/components/schemas/committeereportsformats'
+    committeeReports:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        citation:
+          type: string
+          example: H. Rept. 109-570
+        congress:
+          type: integer
+          example: 117
+        number:
+          type: integer
+          example: 570
+        part:
+          type: integer
+          example: 1
+        type:
+          type: string
+          example: HRPT
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-02-18T16:38:41Z'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/117hr570?format=json
+    committeereportsformats:
+      type: object
+      properties:
+        isErrata:
+          type: string
+          example: N
+        type:
+          type: string
+          example: Formatted Text
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/116/crpt/hrpt617/generated/CRPT-116hrpt617.htm
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    reportNumber:
+      name: reportNumber
+      in: path
+      description: The committee report’s assigned number. For example, the value can be 617.
+      required: true
+      schema:
+        type: integer
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    reportType:
+      name: reportType
+      in: path
+      description: The type of committee report. Value can be hrpt, srpt, or erpt.
+      required: true
+      schema:
+        type: string
+        enum:
+        - hrpt
+        - srpt
+        - erpt
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    conference:
+      name: conference
+      in: query
+      description: Flag to indicate conference reports. Value can be true or false.
+      required: false
+      schema:
+        type: boolean
+        enum:
+        - true
+        - false
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

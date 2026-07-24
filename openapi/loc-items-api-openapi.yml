@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments items API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: items
+  description: Access individual item details
+paths:
+  /item/{itemId}/:
+    get:
+      tags:
+      - items
+      summary: Get item details
+      description: 'Returns bibliographic information and digital resources for a single item identified by its identifier. The item ID can be obtained from the id field in search results. Many items are composed of one or more resources; the item endpoint provides summary information about each resource and how to access it.
+
+        '
+      operationId: getItem
+      parameters:
+      - name: itemId
+        in: path
+        description: The item identifier (from the id field in search results, excluding the base URL)
+        required: true
+        schema:
+          type: string
+        example: 2003623100
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: at
+        in: query
+        description: Limit response to specific attribute(s)
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Item bibliographic data and digital resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemResponse'
+        '404':
+          description: Item not found
+components:
+  schemas:
+    ResourceFile:
+      type: object
+      description: A specific digital file for a resource
+      properties:
+        height:
+          type: integer
+          description: Height of the image in pixels
+        levels:
+          type: integer
+          description: Number of zoom levels available
+        mimetype:
+          type: string
+          description: MIME type of the file
+        size:
+          type: integer
+          description: File size in bytes
+        url:
+          type: string
+          description: URL to access the file
+        width:
+          type: integer
+          description: Width of the image in pixels
+    Resource:
+      type: object
+      description: A discrete digital representation or element of a collection item
+      properties:
+        caption:
+          type: string
+          description: Caption for the resource
+        files:
+          type: array
+          description: Digital files associated with the resource
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/ResourceFile'
+        image:
+          type: string
+          description: URL of the resource image
+        url:
+          type: string
+          description: URL of the resource
+    ItemResponse:
+      type: object
+      description: Detailed item response from the loc.gov item endpoint
+      properties:
+        cite_this:
+          type: object
+          description: 'Experimental feature providing citation text in Chicago Manual of Style, MLA, and APA formats. Should be used as a starting point only.
+
+            '
+          additionalProperties: true
+        item:
+          type: object
+          description: Bibliographic information for the requested item
+          additionalProperties: true
+        resources:
+          type: array
+          description: 'Digital resources associated with the item (digitized images, audio files, video files, web archive links, etc.)
+
+            '
+          items:
+            $ref: '#/components/schemas/Resource'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

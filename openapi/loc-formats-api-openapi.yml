@@ -1,0 +1,584 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments formats API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: formats
+  description: Browse items by format type
+paths:
+  /audio/:
+    get:
+      tags:
+      - formats
+      summary: Browse audio recordings
+      description: Returns items in the Audio Recordings format from loc.gov digital collections.
+      operationId: listAudio
+      parameters:
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: q
+        in: query
+        description: Search query to filter results
+        required: false
+        schema:
+          type: string
+      - name: at
+        in: query
+        description: Limit response to specific attribute(s)
+        required: false
+        schema:
+          type: string
+      - name: sp
+        in: query
+        description: Starting page number
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: c
+        in: query
+        description: Number of results per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 150
+      responses:
+        '200':
+          description: List of audio recording items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /books/:
+    get:
+      tags:
+      - formats
+      summary: Browse books and printed materials
+      description: Returns items in the Books/Printed Material format from loc.gov digital collections.
+      operationId: listBooks
+      parameters:
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: q
+        in: query
+        description: Search query to filter results
+        required: false
+        schema:
+          type: string
+      - name: at
+        in: query
+        description: Limit response to specific attribute(s)
+        required: false
+        schema:
+          type: string
+      - name: sp
+        in: query
+        description: Starting page number
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: c
+        in: query
+        description: Number of results per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 150
+      responses:
+        '200':
+          description: List of book and printed material items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /film-and-videos/:
+    get:
+      tags:
+      - formats
+      summary: Browse films and videos
+      description: Returns items in the Films/Videos format from loc.gov digital collections.
+      operationId: listFilmAndVideos
+      parameters:
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: q
+        in: query
+        description: Search query to filter results
+        required: false
+        schema:
+          type: string
+      - name: at
+        in: query
+        description: Limit response to specific attribute(s)
+        required: false
+        schema:
+          type: string
+      - name: sp
+        in: query
+        description: Starting page number
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: c
+        in: query
+        description: Number of results per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 150
+      responses:
+        '200':
+          description: List of film and video items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /manuscripts/:
+    get:
+      tags:
+      - formats
+      summary: Browse manuscripts and mixed materials
+      description: Returns items in the Manuscripts/Mixed Material format from loc.gov digital collections.
+      operationId: listManuscripts
+      parameters:
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: q
+        in: query
+        description: Search query to filter results
+        required: false
+        schema:
+          type: string
+      - name: sp
+        in: query
+        description: Starting page number
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: c
+        in: query
+        description: Number of results per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 150
+      responses:
+        '200':
+          description: List of manuscript items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /maps/:
+    get:
+      tags:
+      - formats
+      summary: Browse maps
+      description: Returns items in the Maps format from loc.gov digital collections.
+      operationId: listMaps
+      parameters:
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: q
+        in: query
+        description: Search query to filter results
+        required: false
+        schema:
+          type: string
+      - name: sp
+        in: query
+        description: Starting page number
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: c
+        in: query
+        description: Number of results per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 150
+      responses:
+        '200':
+          description: List of map items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /newspapers/:
+    get:
+      tags:
+      - formats
+      summary: Browse newspapers
+      description: Returns items in the Newspapers format from loc.gov digital collections.
+      operationId: listNewspapers
+      parameters:
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: q
+        in: query
+        description: Search query to filter results
+        required: false
+        schema:
+          type: string
+      - name: sp
+        in: query
+        description: Starting page number
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: c
+        in: query
+        description: Number of results per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 150
+      responses:
+        '200':
+          description: List of newspaper items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /photos/:
+    get:
+      tags:
+      - formats
+      summary: Browse photos, prints, and drawings
+      description: Returns items in the Photos/Prints/Drawings format from loc.gov digital collections.
+      operationId: listPhotos
+      parameters:
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: q
+        in: query
+        description: Search query to filter results
+        required: false
+        schema:
+          type: string
+      - name: sp
+        in: query
+        description: Starting page number
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: c
+        in: query
+        description: Number of results per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 150
+      responses:
+        '200':
+          description: List of photo, print, and drawing items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /notated-music/:
+    get:
+      tags:
+      - formats
+      summary: Browse printed music and sheet music
+      description: Returns items in the Notated Music (sheet music) format from loc.gov digital collections.
+      operationId: listNotatedMusic
+      parameters:
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: q
+        in: query
+        description: Search query to filter results
+        required: false
+        schema:
+          type: string
+      - name: sp
+        in: query
+        description: Starting page number
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: c
+        in: query
+        description: Number of results per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 150
+      responses:
+        '200':
+          description: List of notated music items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+  /web-archives/:
+    get:
+      tags:
+      - formats
+      summary: Browse web archives
+      description: Returns items in the Web Archives format from loc.gov digital collections.
+      operationId: listWebArchives
+      parameters:
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: q
+        in: query
+        description: Search query to filter results
+        required: false
+        schema:
+          type: string
+      - name: sp
+        in: query
+        description: Starting page number
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: c
+        in: query
+        description: Number of results per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 150
+      responses:
+        '200':
+          description: List of web archive items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+components:
+  schemas:
+    Pagination:
+      type: object
+      description: Pagination information for search results
+      properties:
+        count:
+          type: integer
+          description: Total number of items in the result set
+        current:
+          type: integer
+          description: Current page number
+        from:
+          type: integer
+          description: Index of the first item on the current page
+        last:
+          type: integer
+          description: Index of the last item on the current page
+        next:
+          type: string
+          nullable: true
+          description: URL for the next page of results
+        of:
+          type: integer
+          description: Total number of pages
+        perpage:
+          type: integer
+          description: Number of items per page
+        previous:
+          type: string
+          nullable: true
+          description: URL for the previous page of results
+        results:
+          type: string
+          description: Human-readable description of current result range
+        to:
+          type: integer
+          description: Index of the last item on the current page
+    SearchResponse:
+      type: object
+      description: Standard search result response from the loc.gov JSON API
+      properties:
+        facets:
+          type: object
+          description: Available facets for filtering results
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/FacetValue'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          description: List of collection items matching the query
+          items:
+            $ref: '#/components/schemas/ItemSummary'
+    ItemSummary:
+      type: object
+      description: Summary information for a single collection item in search results
+      properties:
+        date:
+          type: string
+          description: Date associated with the item
+        description:
+          type: array
+          items:
+            type: string
+          description: Descriptions of the item
+        id:
+          type: string
+          description: URL identifier for the item (use to query the item endpoint)
+        image_url:
+          type: array
+          items:
+            type: string
+          description: URLs for item thumbnail images
+        index:
+          type: integer
+          description: Index position in results
+        item:
+          type: object
+          description: Bibliographic metadata for the item
+          additionalProperties: true
+        language:
+          type: array
+          items:
+            type: string
+          description: Languages of the item
+        location:
+          type: array
+          items:
+            type: string
+          description: Geographic locations associated with the item
+        original_format:
+          type: array
+          items:
+            type: string
+          description: Original format types of the item
+        partof:
+          type: array
+          items:
+            type: string
+          description: Collections or groups this item belongs to
+        subject:
+          type: array
+          items:
+            type: string
+          description: Subject headings for the item
+        title:
+          type: string
+          description: Title of the item
+        type:
+          type: array
+          items:
+            type: string
+          description: Type classifications of the item
+        url:
+          type: string
+          description: URL for the item's HTML page on loc.gov
+    FacetValue:
+      type: object
+      description: A facet value used to filter search results
+      properties:
+        count:
+          type: integer
+          description: Number of results matching this facet
+        link:
+          type: string
+          description: URL to filter results by this facet value
+        value:
+          type: string
+          description: The facet value text
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

@@ -1,0 +1,218 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments search API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: search
+  description: Search across all loc.gov digital collections
+paths:
+  /search/:
+    get:
+      tags:
+      - search
+      summary: Search all loc.gov resources
+      description: 'The /search endpoint searches everything on the www.loc.gov website. This includes items in the collection, legislation, web pages, blog posts, events, and press releases. The q parameter is required.
+
+        '
+      operationId: searchAll
+      parameters:
+      - name: q
+        in: query
+        description: Search query term
+        required: true
+        schema:
+          type: string
+        example: baseball
+      - name: fo
+        in: query
+        description: Output format
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+        example: json
+      - name: at
+        in: query
+        description: 'Limit response to specific attribute(s). Use dot notation for nested attributes (e.g., results.0).
+
+          '
+        required: false
+        schema:
+          type: string
+        example: results
+      - name: fa
+        in: query
+        description: 'Facet filter. Used to narrow results by a specific facet value.
+
+          '
+        required: false
+        schema:
+          type: string
+      - name: sp
+        in: query
+        description: Starting page number for pagination
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+      - name: c
+        in: query
+        description: Number of results per page
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 150
+      responses:
+        '200':
+          description: Successful search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+components:
+  schemas:
+    Pagination:
+      type: object
+      description: Pagination information for search results
+      properties:
+        count:
+          type: integer
+          description: Total number of items in the result set
+        current:
+          type: integer
+          description: Current page number
+        from:
+          type: integer
+          description: Index of the first item on the current page
+        last:
+          type: integer
+          description: Index of the last item on the current page
+        next:
+          type: string
+          nullable: true
+          description: URL for the next page of results
+        of:
+          type: integer
+          description: Total number of pages
+        perpage:
+          type: integer
+          description: Number of items per page
+        previous:
+          type: string
+          nullable: true
+          description: URL for the previous page of results
+        results:
+          type: string
+          description: Human-readable description of current result range
+        to:
+          type: integer
+          description: Index of the last item on the current page
+    SearchResponse:
+      type: object
+      description: Standard search result response from the loc.gov JSON API
+      properties:
+        facets:
+          type: object
+          description: Available facets for filtering results
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/FacetValue'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          description: List of collection items matching the query
+          items:
+            $ref: '#/components/schemas/ItemSummary'
+    ItemSummary:
+      type: object
+      description: Summary information for a single collection item in search results
+      properties:
+        date:
+          type: string
+          description: Date associated with the item
+        description:
+          type: array
+          items:
+            type: string
+          description: Descriptions of the item
+        id:
+          type: string
+          description: URL identifier for the item (use to query the item endpoint)
+        image_url:
+          type: array
+          items:
+            type: string
+          description: URLs for item thumbnail images
+        index:
+          type: integer
+          description: Index position in results
+        item:
+          type: object
+          description: Bibliographic metadata for the item
+          additionalProperties: true
+        language:
+          type: array
+          items:
+            type: string
+          description: Languages of the item
+        location:
+          type: array
+          items:
+            type: string
+          description: Geographic locations associated with the item
+        original_format:
+          type: array
+          items:
+            type: string
+          description: Original format types of the item
+        partof:
+          type: array
+          items:
+            type: string
+          description: Collections or groups this item belongs to
+        subject:
+          type: array
+          items:
+            type: string
+          description: Subject headings for the item
+        title:
+          type: string
+          description: Title of the item
+        type:
+          type: array
+          items:
+            type: string
+          description: Type classifications of the item
+        url:
+          type: string
+          description: URL for the item's HTML page on loc.gov
+    FacetValue:
+      type: object
+      description: A facet value used to filter search results
+      properties:
+        count:
+          type: integer
+          description: Number of results matching this facet
+        link:
+          type: string
+          description: URL to filter results by this facet value
+        value:
+          type: string
+          description: The facet value text
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

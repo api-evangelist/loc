@@ -1,0 +1,526 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments nomination API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: nomination
+  description: Returns nomination data from the API
+paths:
+  /nomination:
+    get:
+      tags:
+      - nomination
+      summary: Returns a list of nominations sorted by date received from the President.
+      description: Returns a list of nominations sorted by date received from the President.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nominations'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Nominations'
+        '400':
+          description: Invalid status value
+  /nomination/{congress}:
+    get:
+      tags:
+      - nomination
+      summary: Returns a list of nominations filtered by the specified congress and sorted by date received from the President.
+      description: Returns a list of nominations filtered by the specified congress and sorted by date received from the President.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nominations'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Nominations'
+        '400':
+          description: Invalid status value
+  /nomination/{congress}/{nominationNumber}:
+    get:
+      tags:
+      - nomination
+      summary: Returns detailed information for a specified nomination.
+      description: Returns detailed information for a specified nomination.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/nominationNumber'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nomination'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Nomination'
+        '400':
+          description: Invalid status value
+  /nomination/{congress}/{nominationNumber}/{ordinal}:
+    get:
+      tags:
+      - nomination
+      summary: Returns the list nominees for a position within the nomination.
+      description: Returns the list nominees for a position within the nomination.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/nominationNumber'
+      - $ref: '#/components/parameters/ordinal'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NominationNominee'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/NominationNominee'
+        '400':
+          description: Invalid status value
+  /nomination/{congress}/{nominationNumber}/actions:
+    get:
+      tags:
+      - nomination
+      summary: Returns the list of actions on a specified nomination.
+      description: Returns the list of actions on a specified nomination.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/nominationNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NominationActions'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/NominationActions'
+        '400':
+          description: Invalid status value
+  /nomination/{congress}/{nominationNumber}/committees:
+    get:
+      tags:
+      - nomination
+      summary: Returns the list of committees associated with a specified nomination.
+      description: Returns the list of committees associated with a specified nomination.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/nominationNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NominationCommittees'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/NominationCommittees'
+        '400':
+          description: Invalid status value
+  /nomination/{congress}/{nominationNumber}/hearings:
+    get:
+      tags:
+      - nomination
+      summary: Returns the list of printed hearings associated with a specified nomination.
+      description: Returns the list of printed associated with a specified nomination.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/nominationNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NominationHearing'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/NominationHearing'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    nominationType:
+      type: object
+      properties:
+        isCivilian:
+          type: boolean
+          example: false
+        isMilitary:
+          type: boolean
+          example: true
+    latestNominationAction:
+      type: object
+      properties:
+        actionDate:
+          type: string
+          format: date
+          example: '2022-12-07'
+        text:
+          type: string
+          example: Received in the Senate and referred to the Committee on Armed Services.
+    nominationHearing:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: Senate
+        citation:
+          type: string
+          example: S.Hrg.118-694
+        date:
+          type: string
+          format: date
+          example: '2024-02-28'
+        jackeNumber:
+          type: integer
+          example: 61203
+        number:
+          type: integer
+          example: 694
+    nominee:
+      type: object
+      properties:
+        nomineeCount:
+          type: integer
+          example: 1
+        ordinal:
+          type: integer
+          example: 1
+        organization:
+          type: string
+          example: Federal Maritime Commission
+        positionTitle:
+          type: string
+          example: Federal Maritime Commissioner
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/nomination/118/16/1?format=json
+    NominationCommittees:
+      type: object
+      properties:
+        committees:
+          type: array
+          items:
+            $ref: '#/components/schemas/nominationCommittee'
+    Nomination:
+      type: object
+      properties:
+        nomination:
+          type: object
+          properties:
+            actions:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  example: 7
+                url:
+                  type: string
+                  format: url
+                  example: https://api.congress.gov/v3/nomination/118/16/actions?format=json
+            authorityDate:
+              type: string
+              format: date
+              example: '2025-10-21'
+            citation:
+              type: string
+              example: PN16
+            committees:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  example: 1
+                url:
+                  type: string
+                  format: url
+                  example: https://api.congress.gov/v3/nomination/118/16/committees?format=json
+            congress:
+              type: integer
+              example: 118
+            description:
+              type: string
+              example: Daniel B. Maffei, of New York, to be a Federal Maritime Commissioner for a term expiring June 30, 2027.  (Reappointment)
+            hearings:
+              type: object
+              properties:
+                count:
+                  type: integer
+                  example: 1
+                url:
+                  type: string
+                  format: url
+                  example: https://api.congress.gov/v3/nomination/118/16/hearings?format=json
+            latestAction:
+              type: object
+              properties:
+                actionDate:
+                  type: string
+                  format: date
+                  example: '2024-05-14'
+                text:
+                  type: string
+                  example: Confirmed by the Senate by Voice Vote.
+            nominationType:
+              $ref: '#/components/schemas/nominationType'
+            nominees:
+              type: array
+              items:
+                $ref: '#/components/schemas/nominee'
+            number:
+              type: integer
+              example: 16
+            partNumber:
+              type: string
+              example: '00'
+            receivedDate:
+              type: string
+              format: date
+              example: '2023-01-03'
+            updateDate:
+              type: string
+              format: date-time
+              example: '2025-10-22T15:58:44Z'
+    senatecommittee:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Armed Services Committee
+        systemCode:
+          type: string
+          example: ssas00
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/senate/ssas00?format=json
+    nomineeAction:
+      type: object
+      properties:
+        actionCode:
+          type: string
+          example: S05120
+        actionDate:
+          type: string
+          format: date
+          example: '2022-08-03'
+        committees:
+          type: array
+          items:
+            $ref: '#/components/schemas/senatecommittee'
+        text:
+          type: string
+          example: Received in the Senate and referred to the Committee on Armed Services
+        type:
+          type: string
+          example: IntroReferral
+    NominationActions:
+      type: object
+      properties:
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/nomineeAction'
+    nominationCommittee:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Activity'
+        chamber:
+          type: string
+          example: Senate
+        name:
+          type: string
+          example: Judiciary Committee
+        systemCode:
+          type: string
+          example: ssju00
+        type:
+          type: string
+          example: Standing
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/senate/ssju00?format=json
+    nomination:
+      type: object
+      properties:
+        citation:
+          type: string
+          example: PN2804
+        congress:
+          type: integer
+          example: 117
+        description:
+          type: string
+          example: Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years, vice Maria Rosario Jackson, resigned.
+        latestAction:
+          $ref: '#/components/schemas/latestNominationAction'
+        nominationType:
+          $ref: '#/components/schemas/nominationType'
+        number:
+          type: integer
+          example: 2804
+        organization:
+          type: string
+          example: Army
+        partNumber:
+          type: string
+          example: '00'
+        receivedDate:
+          type: string
+          format: date
+          example: '2022-12-07'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-12-08T05:25:17Z'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/nomination/117/2804?format=json
+    NominationNominee:
+      type: object
+      properties:
+        nominees:
+          type: array
+          items:
+            $ref: '#/components/schemas/nominee'
+    Activity:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          example: '2019-01-01'
+        name:
+          type: string
+          example: Reported By
+    NominationHearing:
+      type: object
+      properties:
+        hearings:
+          type: array
+          items:
+            $ref: '#/components/schemas/nominationHearing'
+    Nominations:
+      type: object
+      properties:
+        nominations:
+          type: array
+          items:
+            $ref: '#/components/schemas/nomination'
+  parameters:
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    nominationNumber:
+      name: nominationNumber
+      in: path
+      description: The nomination’s assigned number. For example, the value can be 389.
+      required: true
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    ordinal:
+      name: ordinal
+      in: path
+      description: The ordinal number. For example, the value can be 1
+      required: true
+      schema:
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

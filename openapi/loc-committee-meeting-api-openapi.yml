@@ -1,0 +1,368 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments committee-meeting API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: committee-meeting
+  description: Returns committee meeting data from the API
+paths:
+  /committee-meeting:
+    get:
+      tags:
+      - committee-meeting
+      summary: Returns a list of committee meetings.
+      description: Returns a list of committee meetings.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeMeeting'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeMeeting'
+        '400':
+          description: Invalid status value
+  /committee-meeting/{congress}:
+    get:
+      tags:
+      - committee-meeting
+      summary: Returns a list of committee meetings filtered by the specified congress.
+      description: Returns a list of committee meetings filtered by the specified congress.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeMeeting'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeMeeting'
+        '400':
+          description: Invalid status value
+  /committee-meeting/{congress}/{chamber}:
+    get:
+      tags:
+      - committee-meeting
+      summary: Returns a list of committee meetings filtered by the specified congress and chamber.
+      description: Returns a list of committee meetings filtered by the specified congress and chamber.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/chamber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeMeeting'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeMeeting'
+        '400':
+          description: Invalid status value
+  /committee-meeting/{congress}/{chamber}/{eventId}:
+    get:
+      tags:
+      - committee-meeting
+      summary: Returns detailed information for a specified committee meeting.
+      description: Returns detailed information for a specified committee meeting.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/chamber'
+      - $ref: '#/components/parameters/eventId'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeMeetingDetail'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommitteeMeetingDetail'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    associatedBill:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 116
+        number:
+          type: string
+          example: '6395'
+        type:
+          type: string
+          example: HR
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/116/hr/6395?format=json
+    meetingdocument:
+      type: object
+      properties:
+        description:
+          type: string
+          example: ''
+        documentType:
+          type: string
+          example: 'Support Document '
+        format:
+          type: string
+          example: PDF
+        name:
+          type: string
+          example: Hearing Notice
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/118/meeting/house/115538/documents/HHRG-118-II24-20230324-SD001.pdf
+    committeeMeetings:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        congress:
+          type: integer
+          example: 117
+        eventid:
+          type: string
+          example: '115522'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-08-01 21:19:33+00:00'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee-meeting/118/house/115522?format=json
+    witness:
+      type: object
+      properties:
+        name:
+          type: string
+          example: The Honorable John Williams
+        organization:
+          type: string
+          example: United Auburn Rancheria
+        position:
+          type: string
+          example: Vice Chairman
+    subcommittees:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Investigations and Oversight Subcommittee
+        systemCode:
+          type: string
+          example: hspw01
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
+    relatedItem:
+      type: object
+      properties:
+        bills:
+          type: array
+          items:
+            $ref: '#/components/schemas/associatedBill'
+        nominations:
+          type: array
+        treaties:
+          type: array
+    CommitteeMeetingDetail:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        committees:
+          type: array
+          items:
+            $ref: '#/components/schemas/subcommittees'
+        congress:
+          type: integer
+          example: 117
+        date:
+          type: string
+          format: date-time
+          example: '2022-08-01T04:44:57Z'
+        eventid:
+          type: string
+          example: '115538'
+        hearingTranscript:
+          type: array
+        location:
+          type: object
+          properties:
+            building:
+              type: string
+              example: Longworth House Office Building
+            room:
+              type: string
+              example: '1234'
+        meetingDocuments:
+          type: array
+          items:
+            $ref: '#/components/schemas/meetingdocument'
+        meetingStatus:
+          type: string
+          example: Scheduled
+        relatedItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/relatedItem'
+        title:
+          type: string
+          example: "Legislative hearing on: •\tH.R. 1246 (Rep. Hageman), To authorize leases of up to 99 years for land held in trust for federally recognized Indian tribes; and\r\n•\tH.R. 1532 (Rep. Hageman), To authorize any Indian Tribe to lease, sell, convey, warrant, or otherwise transfer real property to which that Indian Tribe holds fee title without the consent of the Federal Government, and for other purposes."
+        type:
+          type: string
+          example: Hearing
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-08-01T04:44:57Z'
+        videos:
+          type: array
+          items:
+            $ref: '#/components/schemas/video'
+        witnessDocuments:
+          type: array
+          items:
+            $ref: '#/components/schemas/witnessDocument'
+        witnesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/witness'
+    witnessDocument:
+      type: object
+      properties:
+        documentType:
+          type: string
+          example: Witness Statement
+        format:
+          type: string
+          example: PDF
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/118/meeting/house/115538/witnesses/HHRG-118-II24-Wstate-NewlandB-20230324.pdf
+    CommitteeMeeting:
+      type: array
+      items:
+        $ref: '#/components/schemas/committeeMeetings'
+    video:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Legislative Hearing on H.R. 1246 and H.R. 1532 | Indian and Insular Affairs Subcommittee
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/event/118th-Congress/house-event/115538
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    eventId:
+      name: eventId
+      in: path
+      required: true
+      description: The event identifier. For example, the value can be 115538.
+      schema:
+        type: string
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    chamber:
+      name: chamber
+      in: path
+      description: The chamber name. Value can be house, senate, or joint.
+      required: true
+      schema:
+        type: string
+        enum:
+        - house
+        - senate
+        - joint
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

@@ -1,0 +1,562 @@
+openapi: 3.0.3
+info:
+  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
+
+    '
+  title: Congress.gov amendments API
+  version: '3'
+servers:
+- url: /v3
+security:
+- ApiKeyAuth: []
+tags:
+- name: amendments
+  description: Returns amendment data from the API
+paths:
+  /amendment:
+    get:
+      tags:
+      - amendments
+      summary: Returns a list of amendments sorted by date of latest action.
+      description: Returns a list of amendments sorted by date of latest action.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Amendment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Amendment'
+        '400':
+          description: Invalid status value
+  /amendment/{congress}:
+    get:
+      tags:
+      - amendments
+      summary: Returns a list of amendments filtered by the specified congress, sorted by date of latest action.
+      description: Returns a list of amendments filtered by the specified congress, sorted by date of latest action.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Amendment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Amendment'
+        '400':
+          description: Invalid status value
+  /amendment/{congress}/{amendmentType}:
+    get:
+      tags:
+      - amendments
+      summary: Returns a list of amendments filtered by the specified congress and amendment type, sorted by date of latest action.
+      description: Returns a list of amendments filtered by the specified congress and amendment type, sorted by date of latest action.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/amendmentType'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Amendment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Amendment'
+        '400':
+          description: Invalid status value
+  /amendment/{congress}/{amendmentType}/{amendmentNumber}:
+    get:
+      tags:
+      - amendments
+      summary: Returns detailed information for a specified amendment.
+      description: Returns detailed information for a specified amendment.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/amendmentType'
+      - $ref: '#/components/parameters/amendmentNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fromDateTime'
+      - $ref: '#/components/parameters/toDateTime'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AmendmentNumber'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AmendmentNumber'
+        '400':
+          description: Invalid status value
+  /amendment/{congress}/{amendmentType}/{amendmentNumber}/actions:
+    get:
+      tags:
+      - amendments
+      summary: Returns the list of actions on a specified amendment.
+      description: Returns the list of actions on a specified amendment.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/amendmentType'
+      - $ref: '#/components/parameters/amendmentNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AmendmentActions'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AmendmentActions'
+        '400':
+          description: Invalid status value
+  /amendment/{congress}/{amendmentType}/{amendmentNumber}/cosponsors:
+    get:
+      tags:
+      - amendments
+      summary: Returns the list of cosponsors on a specified amendment.
+      description: Returns the list of cosponsors on a specified amendment.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/amendmentType'
+      - $ref: '#/components/parameters/amendmentNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AmendmentCosponsors'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AmendmentCosponsors'
+        '400':
+          description: Invalid status value
+  /amendment/{congress}/{amendmentType}/{amendmentNumber}/amendments:
+    get:
+      tags:
+      - amendments
+      summary: Returns the list of amendments to a specified amendment.
+      description: Returns the list of amendments to a specified amendment.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/amendmentType'
+      - $ref: '#/components/parameters/amendmentNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AmendmentAmendments'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AmendmentAmendments'
+        '400':
+          description: Invalid status value
+  /amendment/{congress}/{amendmentType}/{amendmentNumber}/text:
+    get:
+      tags:
+      - amendments
+      summary: Returns the list of text versions for a specified amendment from the 117th Congress onwards.
+      description: Returns the list of text versions for a specified amendment from the 117th Congress onwards.
+      parameters:
+      - $ref: '#/components/parameters/congress'
+      - $ref: '#/components/parameters/amendmentType'
+      - $ref: '#/components/parameters/amendmentNumber'
+      - $ref: '#/components/parameters/format'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AmendmentText'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AmendmentText'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    AmendmentText:
+      type: array
+      items:
+      - $ref: '#/components/schemas/textVersions'
+    CoSponsor:
+      type: object
+      properties:
+        bioguidId:
+          type: string
+          example: F000450
+        district:
+          type: integer
+          example: 5
+        firstName:
+          type: string
+          example: Virginia
+        fullName:
+          type: string
+          example: Rep. Foxx, Virginia [R-NC-5]
+        isOriginalCosponsor:
+          type: boolean
+          example: true
+        lastName:
+          type: string
+          example: Foxx
+        party:
+          type: string
+          example: R
+        sponsorshipDate:
+          type: string
+          format: date
+          example: '2021-05-11'
+        state:
+          type: string
+          example: NC
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/member/F000450?format=json
+    AmendmentActions:
+      type: array
+      items:
+      - $ref: '#/components/schemas/amendmentActions'
+    Amendment:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 117
+        description:
+          type: string
+          example: Amendment changes the effective date of the bill to the date of enactment.
+        latestAction:
+          type: object
+          properties:
+            actionDate:
+              type: string
+              format: date
+              example: '2021-08-08'
+            actionTime:
+              type: string
+              format: time
+              example: '12:00:00'
+            text:
+              type: string
+              example: 'Amendment SA 2137 agreed to in Senate by Yea-Nay Vote. 69 - 28. Record Vote Number: 312.'
+        number:
+          type: string
+          example: '2137'
+        purpose:
+          type: string
+          example: In the nature of a substitute.
+        type:
+          type: string
+          format: SAMDT
+        updateDate:
+          type: string
+          format: date-time
+          example: '2021-08-08T12:00:00Z'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/amendment/117/samdt/2137?format=json
+    formats:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Formatted Text
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
+    Sponsor:
+      type: object
+      properties:
+        bioguideId:
+          type: string
+          example: G000555
+        firstName:
+          type: string
+          example: Bill
+        lastName:
+          type: string
+          example: Washington
+        fullName:
+          type: string
+          example: Senator Bill Washington [I-NY]
+        isByRequest:
+          type: string
+          example: N
+        middleName:
+          type: string
+          example: J.
+        party:
+          type: string
+          example: I
+        state:
+          type: string
+          example: VA
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/member/G000555?format=json
+    textVersions:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          example: '2022-02-18T16:38:41Z'
+        formats:
+          type: array
+          items:
+            $ref: '#/components/schemas/formats'
+        type:
+          type: string
+          example: Enrolled Bill
+    amendmentActions:
+      type: object
+      properties:
+        actionDate:
+          type: string
+          format: date
+          example: '2021-08-08'
+        recordedVotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/recordedVote'
+        sourceSystem:
+          $ref: '#/components/schemas/sourceSystem'
+        text:
+          type: string
+          example: 'Amendment SA 2137 agreed to in Senate by Yea-Nay Vote. 69 - 28. Record Vote Number: 312.'
+        type:
+          type: string
+          example: Floor
+    AmendmentAmendments:
+      type: array
+      items:
+      - $ref: '#/components/schemas/Amendment'
+    AmendmentNumber:
+      type: object
+      properties:
+        actions:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 1
+            url:
+              type: string
+              format: url
+              example: https://api.congress.gov/v3/amendment/117/samdt/4/actions?format=json
+        amendedBill:
+          $ref: '#/components/schemas/amendedBill'
+        chamber:
+          type: string
+        congress:
+          type: integer
+          example: 117
+        number:
+          type: string
+          example: '2137'
+        sponsors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sponsor'
+        submittedDate:
+          type: string
+          format: date-time
+          example: '2021-02-02T05:00:00Z'
+        textVersions:
+          $ref: '#/components/schemas/textVersion'
+        type:
+          type: string
+          format: SAMDT
+        updateDate:
+          type: string
+          format: date-time
+          example: '2021-08-08T12:00:00Z'
+    AmendmentCosponsors:
+      type: array
+      items:
+      - $ref: '#/components/schemas/CoSponsor'
+    sourceSystem:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 0
+        name:
+          type: string
+          example: Senate
+    recordedVote:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: Senate
+        congress:
+          type: integer
+          example: 117
+        date:
+          type: string
+          format: date-time
+          example: '2021-08-08T12:00:00Z'
+        rollNumber:
+          type: integer
+          example: 312
+        sessionNumber:
+          type: integer
+          example: 1
+        url:
+          type: string
+          format: url
+          example: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1171/vote_117_1_00312.xml
+    amendedBill:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 117
+        number:
+          type: string
+          example: '5'
+        originChamber:
+          type: string
+          example: Senate
+        originChamberCode:
+          type: string
+          example: S
+        title:
+          type: string
+          example: A concurrent resolution setting forth the congressional budget for the United States Government for fiscal year 2021 and setting forth the appropriate budgetary levels for fiscal years 2022 through 2030.
+        type:
+          type: string
+          example: SCONRES
+        updateDateIncludingText:
+          type: string
+          format: date
+          example: '2025-04-07'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/117/sconres/5?format=json
+    textVersion:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 1
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/amendment/117/samdt/4/text?format=json
+  parameters:
+    amendmentNumber:
+      name: amendmentNumber
+      in: path
+      description: The amendment’s assigned number. For example, the value can be 2137.
+      required: true
+      schema:
+        type: string
+    amendmentType:
+      name: amendmentType
+      in: path
+      description: The type of amendment. Value can be hamdt, samdt, or suamdt.
+      required: true
+      schema:
+        type: string
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
