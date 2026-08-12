@@ -484,6 +484,8 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 common:
+  - type: IssueTracker
+    url: https://github.com/LibraryOfCongress/api.congress.gov/issues
   - type: AgenticAccess
     url: agentic-access/loc-agentic-access.yml
   - type: VulnerabilityDisclosure
