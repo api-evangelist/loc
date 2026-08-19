@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments house-requirement API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "house-requirement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of House requirements.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/house-requirement",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns a list of House requirements."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified House requirement.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/house-requirement/:requirementNumber",
+            "params": [
+              {
+                "name": "requirementNumber",
+                "value": "",
+                "type": "path",
+                "description": "The requirement’s assigned number. For example, the value can be 8070."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified House requirement."
+        },
+        {
+          "info": {
+            "name": "Returns a list of matching communications to a House requirement.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/house-requirement/:requirementNumber/matching-communications",
+            "params": [
+              {
+                "name": "requirementNumber",
+                "value": "",
+                "type": "path",
+                "description": "The requirement’s assigned number. For example, the value can be 8070."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns a list of matching communications to a House requirement."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

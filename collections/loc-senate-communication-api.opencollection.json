@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments senate-communication API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "senate-communication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of Senate communications.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/senate-communication",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns a list of Senate communications."
+        },
+        {
+          "info": {
+            "name": "Returns a list of Senate communications filtered by the specified congress.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/senate-communication/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns a list of Senate communications filtered by the specified congress."
+        },
+        {
+          "info": {
+            "name": "Returns a list of Senate communications filtered by the specified congress and communication type..",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/senate-communication/:congress/:communicationType",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "communicationType",
+                "value": "",
+                "type": "path",
+                "description": "The type of communication. Value can be ec, pm, or pom."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns a list of Senate communications filtered by the specified congress and communication type."
+        },
+        {
+          "info": {
+            "name": "Returns a list of Senate communications filtered by the specified congress and communication type..",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/senate-communication/:congress/:communicationType/:communicationNumber",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "communicationType",
+                "value": "",
+                "type": "path",
+                "description": "The type of communication. Value can be ec, pm, or pom."
+              },
+              {
+                "name": "communicationNumber",
+                "value": "",
+                "type": "path",
+                "description": "The communication’s assigned number. For example, the value can be 3324."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              }
+            ]
+          },
+          "docs": "Returns a list of Senate communications filtered by the specified congress and communication type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

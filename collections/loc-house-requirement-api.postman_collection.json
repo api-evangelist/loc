@@ -1,0 +1,534 @@
+{
+  "item": [
+    {
+      "id": "1e9da76b-1fdd-4a98-8251-bf4eec3e58f9",
+      "name": "house-requirement",
+      "description": {
+        "content": "Returns House requirement data from the API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "492b6e73-c4a7-4c5e-9d15-f4aebb465f5f",
+          "name": "Returns a list of House requirements.",
+          "request": {
+            "name": "Returns a list of House requirements.",
+            "description": {
+              "content": "Returns a list of House requirements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-requirement"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6184d143-9a6d-4f8d-8061-f07808c24adb",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-requirement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"houseRequirements\": [\n    {\n      \"number\": 8070,\n      \"updateDate\": \"2021-08-13\",\n      \"url\": \"https://api.congress.gov/v3/house-requirement/8070?format=json\"\n    },\n    {\n      \"number\": 8070,\n      \"updateDate\": \"2021-08-13\",\n      \"url\": \"https://api.congress.gov/v3/house-requirement/8070?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5ea6a9f-d7de-4aff-ab0a-151f66645aec",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-requirement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db01515f-c171-46e3-ba4d-ecea45d0b448",
+          "name": "Returns detailed information for a specified House requirement.",
+          "request": {
+            "name": "Returns detailed information for a specified House requirement.",
+            "description": {
+              "content": "Returns detailed information for a specified House requirement.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-requirement",
+                ":requirementNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "requirementNumber",
+                  "description": "(Required) The requirement’s assigned number. For example, the value can be 8070."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c14c2cf6-cb12-45a1-a465-09b8349a1ec7",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-requirement",
+                    ":requirementNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "requirementNumber",
+                      "description": "(Required) The requirement’s assigned number. For example, the value can be 8070."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"houseRequirement\": {\n    \"activeRecord\": true,\n    \"frequency\": \"[No deadline specified].\",\n    \"legalAuthority\": \"5 U.S.C. 801(a)(1)(A); Public Law 104–121, section 251; (110 Stat. 868)\",\n    \"matchingCommunications\": {\n      \"count\": 90774,\n      \"url\": \"https://api.congress.gov/v3/house-requirement/8070/matching-communications?format=json\"\n    },\n    \"nature\": \"Congressional review of agency rulemaking.\",\n    \"number\": 8070,\n    \"parentAgency\": \"Multiple Executive Agencies and Departments\",\n    \"submittingAgency\": \"Multiple Executive Agencies and Departments\",\n    \"updateDate\": \"2021-08-13\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fd8f50a-1cca-44d3-909b-17a865aa29a9",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-requirement",
+                    ":requirementNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "requirementNumber",
+                      "description": "(Required) The requirement’s assigned number. For example, the value can be 8070."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3677a487-d5e1-4e39-879b-74b260a4ee7e",
+          "name": "Returns a list of matching communications to a House requirement.",
+          "request": {
+            "name": "Returns a list of matching communications to a House requirement.",
+            "description": {
+              "content": "Returns a list of matching communications to a House requirement.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-requirement",
+                ":requirementNumber",
+                "matching-communications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "requirementNumber",
+                  "description": "(Required) The requirement’s assigned number. For example, the value can be 8070."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2002db91-8b7e-45b9-8121-6078dd3105b2",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-requirement",
+                    ":requirementNumber",
+                    "matching-communications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "requirementNumber",
+                      "description": "(Required) The requirement’s assigned number. For example, the value can be 8070."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matchCommunications\": [\n    {\n      \"chamber\": \"House\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congress\": 112,\n      \"number\": 2,\n      \"url\": \"https://api.congress.gov/v3/house-communication/112/EC/2?format=json\"\n    },\n    {\n      \"chamber\": \"House\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congress\": 112,\n      \"number\": 2,\n      \"url\": \"https://api.congress.gov/v3/house-communication/112/EC/2?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8a55b7c-3e6b-4c9f-a602-e9a8262f6cf6",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-requirement",
+                    ":requirementNumber",
+                    "matching-communications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "requirementNumber",
+                      "description": "(Required) The requirement’s assigned number. For example, the value can be 8070."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "94efd2de-63e0-4a62-a40d-9aa010bd5d08",
+    "name": "Congress.gov amendments house-requirement API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

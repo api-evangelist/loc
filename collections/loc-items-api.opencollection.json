@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments items API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get item details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/item/:itemId/",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "2003623100",
+                "type": "path",
+                "description": "The item identifier (from the id field in search results, excluding the base URL)"
+              },
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "at",
+                "value": "",
+                "type": "query",
+                "description": "Limit response to specific attribute(s)"
+              }
+            ]
+          },
+          "docs": "Returns bibliographic information and digital resources for a single item identified by its identifier. The item ID can be obtained from the id field in search results. Many items are composed of one or more resources; the item endpoint provides summary information about each resource and how to access it.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

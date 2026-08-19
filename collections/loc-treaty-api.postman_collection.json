@@ -1,0 +1,1452 @@
+{
+  "item": [
+    {
+      "id": "c7e5ee3c-3a1d-4349-a517-03b05503e720",
+      "name": "treaty",
+      "description": {
+        "content": "Returns treaty data from the API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d109505-c155-4615-a69f-e11259bb49d4",
+          "name": "Returns a list of treaties sorted by date of last update.",
+          "request": {
+            "name": "Returns a list of treaties sorted by date of last update.",
+            "description": {
+              "content": "Returns a list of treaties sorted by date of last update.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "treaty"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2639355e-e275-4c9a-84c2-5627d4b7018d",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"treaties\": [\n    {\n      \"congressReceived\": 89,\n      \"congressConsidered\": 89,\n      \"number\": 3,\n      \"parts\": {},\n      \"suffix\": \"\",\n      \"topic\": \"Dispute Settlement and Arbitration\",\n      \"transmittedDate\": \"1965-05-17T00:00:00Z\",\n      \"updateDate\": \"2024-12-11T00:18:16Z\",\n      \"url\": \"https://api.congress.gov/v3/treaty/89/3?format=json\"\n    },\n    {\n      \"congressReceived\": 89,\n      \"congressConsidered\": 89,\n      \"number\": 3,\n      \"parts\": {},\n      \"suffix\": \"\",\n      \"topic\": \"Dispute Settlement and Arbitration\",\n      \"transmittedDate\": \"1965-05-17T00:00:00Z\",\n      \"updateDate\": \"2024-12-11T00:18:16Z\",\n      \"url\": \"https://api.congress.gov/v3/treaty/89/3?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60a83dc5-58d8-4688-895d-4fa42351d4e9",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a92ce88-4199-4656-a517-21808a8d0401",
+          "name": "Returns a list of treaties for the specified congress, sorted by date of last update.",
+          "request": {
+            "name": "Returns a list of treaties for the specified congress, sorted by date of last update.",
+            "description": {
+              "content": "Returns a list of treaties for the specified congress, sorted by date of last update.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "treaty",
+                ":congress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b40130f-7d2b-4929-bd56-d4047e99aea4",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"treaties\": [\n    {\n      \"congressReceived\": 89,\n      \"congressConsidered\": 89,\n      \"number\": 3,\n      \"parts\": {},\n      \"suffix\": \"\",\n      \"topic\": \"Dispute Settlement and Arbitration\",\n      \"transmittedDate\": \"1965-05-17T00:00:00Z\",\n      \"updateDate\": \"2024-12-11T00:18:16Z\",\n      \"url\": \"https://api.congress.gov/v3/treaty/89/3?format=json\"\n    },\n    {\n      \"congressReceived\": 89,\n      \"congressConsidered\": 89,\n      \"number\": 3,\n      \"parts\": {},\n      \"suffix\": \"\",\n      \"topic\": \"Dispute Settlement and Arbitration\",\n      \"transmittedDate\": \"1965-05-17T00:00:00Z\",\n      \"updateDate\": \"2024-12-11T00:18:16Z\",\n      \"url\": \"https://api.congress.gov/v3/treaty/89/3?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "289e6e1c-6baf-4cb1-b5ca-62f0842eb5d6",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb29df8a-2d0b-4b34-8110-52bb25005587",
+          "name": "Returns detailed information for a specified treaty.",
+          "request": {
+            "name": "Returns detailed information for a specified treaty.",
+            "description": {
+              "content": "Returns detailed information for a specified treaty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "treaty",
+                ":congress",
+                ":treatyNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "treatyNumber",
+                  "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed057dcb-cfef-44ae-86d1-2979f1968447",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress",
+                    ":treatyNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "treatyNumber",
+                      "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"treaty\": {\n    \"actions\": {\n      \"count\": 3,\n      \"url\": \"https://api.congress.gov/v3/treaty/89/7/actions?format=json\"\n    },\n    \"congressConsidered\": 89,\n    \"congressReceived\": 89,\n    \"countriesParties\": [\n      {\n        \"name\": \"Belgium\"\n      },\n      {\n        \"name\": \"Belgium\"\n      }\n    ],\n    \"inForceDate\": \"\",\n    \"indexTerms\": [\n      {\n        \"name\": \"ENGLISH\"\n      },\n      {\n        \"name\": \"ENGLISH\"\n      }\n    ],\n    \"number\": 7,\n    \"oldNumber\": \"G. 89-1\",\n    \"oldNumberDisplayName\": \"Ex. G, 89th Congress, 1st Session\",\n    \"parts\": {},\n    \"resolutionText\": \"\",\n    \"suffix\": \"\",\n    \"titles\": [\n      {\n        \"title\": \"PROTOCOL MODIFYING CONVENTION WITH BELGIUM FOR THE AVOIDANCE OF DOUBLE TAXATION\",\n        \"titleType\": \"Treaty - Short Title\"\n      },\n      {\n        \"title\": \"PROTOCOL MODIFYING CONVENTION WITH BELGIUM FOR THE AVOIDANCE OF DOUBLE TAXATION\",\n        \"titleType\": \"Treaty - Short Title\"\n      }\n    ],\n    \"topic\": \"Taxation\",\n    \"transmitted\": \"1965-08-05T00:00:00Z\",\n    \"updateDate\": \"2022-02-26T16:25:25Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0be8b103-fb43-4a54-92c1-f121e5014dc9",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress",
+                    ":treatyNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "treatyNumber",
+                      "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca693e55-cbf8-4af7-b06e-5ffce2a47efd",
+          "name": "Returns detailed information for a specified partitioned treaty.",
+          "request": {
+            "name": "Returns detailed information for a specified partitioned treaty.",
+            "description": {
+              "content": "Returns detailed information for a specified partitioned treaty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "treaty",
+                ":congress",
+                ":treatyNumber",
+                ":treatySuffix"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "treatyNumber",
+                  "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "treatySuffix",
+                  "description": "(Required) The treaty’s partition letter value. For example, the value can be A."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fea7843-d4f2-4a73-9a84-91c33207598c",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress",
+                    ":treatyNumber",
+                    ":treatySuffix"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "treatyNumber",
+                      "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "treatySuffix",
+                      "description": "(Required) The treaty’s partition letter value. For example, the value can be A."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"treaty\": {\n    \"actions\": {\n      \"count\": 3,\n      \"url\": \"https://api.congress.gov/v3/treaty/89/7/actions?format=json\"\n    },\n    \"congressConsidered\": 89,\n    \"congressReceived\": 89,\n    \"countriesParties\": [\n      {\n        \"name\": \"Belgium\"\n      },\n      {\n        \"name\": \"Belgium\"\n      }\n    ],\n    \"inForceDate\": \"\",\n    \"indexTerms\": [\n      {\n        \"name\": \"ENGLISH\"\n      },\n      {\n        \"name\": \"ENGLISH\"\n      }\n    ],\n    \"number\": 7,\n    \"oldNumber\": \"G. 89-1\",\n    \"oldNumberDisplayName\": \"Ex. G, 89th Congress, 1st Session\",\n    \"parts\": {},\n    \"resolutionText\": \"\",\n    \"suffix\": \"\",\n    \"titles\": [\n      {\n        \"title\": \"PROTOCOL MODIFYING CONVENTION WITH BELGIUM FOR THE AVOIDANCE OF DOUBLE TAXATION\",\n        \"titleType\": \"Treaty - Short Title\"\n      },\n      {\n        \"title\": \"PROTOCOL MODIFYING CONVENTION WITH BELGIUM FOR THE AVOIDANCE OF DOUBLE TAXATION\",\n        \"titleType\": \"Treaty - Short Title\"\n      }\n    ],\n    \"topic\": \"Taxation\",\n    \"transmitted\": \"1965-08-05T00:00:00Z\",\n    \"updateDate\": \"2022-02-26T16:25:25Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a4fda12-2e61-49a5-b7c0-1ea3766898b6",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress",
+                    ":treatyNumber",
+                    ":treatySuffix"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "treatyNumber",
+                      "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "treatySuffix",
+                      "description": "(Required) The treaty’s partition letter value. For example, the value can be A."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a797105d-d239-44e8-9e6a-fc7ef014665a",
+          "name": "Returns the list of actions on a specified treaty.",
+          "request": {
+            "name": "Returns the list of actions on a specified treaty.",
+            "description": {
+              "content": "Returns the list of actions on a specified treaty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "treaty",
+                ":congress",
+                ":treatyNumber",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "treatyNumber",
+                  "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f094a024-b4ff-4b1e-a9f8-e7946a921093",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress",
+                    ":treatyNumber",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "treatyNumber",
+                      "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"actionCode\": \"S05291\",\n      \"actionDate\": \"2022-08-03\",\n      \"committee\": {\n        \"name\": \"Armed Services Committee\",\n        \"systemCode\": \"ssas00\",\n        \"url\": \"https://api.congress.gov/v3/committee/senate/ssas00?format=json\"\n      },\n      \"text\": \"Resolution of advice and consent to ratification agreed to as amended in Senate by Yea-Nay Vote. 95 - 1. Record Vote Number: 282.\",\n      \"type\": \"Floor\"\n    },\n    {\n      \"actionCode\": \"S05291\",\n      \"actionDate\": \"2022-08-03\",\n      \"committee\": {\n        \"name\": \"Armed Services Committee\",\n        \"systemCode\": \"ssas00\",\n        \"url\": \"https://api.congress.gov/v3/committee/senate/ssas00?format=json\"\n      },\n      \"text\": \"Resolution of advice and consent to ratification agreed to as amended in Senate by Yea-Nay Vote. 95 - 1. Record Vote Number: 282.\",\n      \"type\": \"Floor\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8806f6e0-d322-4d70-8fc4-f2deda21d2fe",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress",
+                    ":treatyNumber",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "treatyNumber",
+                      "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af62aac1-2219-4ee8-80d7-c69b3b723354",
+          "name": "Returns the list of actions on a specified partitioned treaty.",
+          "request": {
+            "name": "Returns the list of actions on a specified partitioned treaty.",
+            "description": {
+              "content": "Returns the list of actions on a specified partitioned treaty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "treaty",
+                ":congress",
+                ":treatyNumber",
+                ":treatySuffix",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "treatyNumber",
+                  "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "treatySuffix",
+                  "description": "(Required) The treaty’s partition letter value. For example, the value can be A."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5671e239-13f8-430a-b960-5289110c8800",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress",
+                    ":treatyNumber",
+                    ":treatySuffix",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "treatyNumber",
+                      "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "treatySuffix",
+                      "description": "(Required) The treaty’s partition letter value. For example, the value can be A."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"actionCode\": \"S05291\",\n      \"actionDate\": \"2022-08-03\",\n      \"committee\": {\n        \"name\": \"Armed Services Committee\",\n        \"systemCode\": \"ssas00\",\n        \"url\": \"https://api.congress.gov/v3/committee/senate/ssas00?format=json\"\n      },\n      \"text\": \"Resolution of advice and consent to ratification agreed to as amended in Senate by Yea-Nay Vote. 95 - 1. Record Vote Number: 282.\",\n      \"type\": \"Floor\"\n    },\n    {\n      \"actionCode\": \"S05291\",\n      \"actionDate\": \"2022-08-03\",\n      \"committee\": {\n        \"name\": \"Armed Services Committee\",\n        \"systemCode\": \"ssas00\",\n        \"url\": \"https://api.congress.gov/v3/committee/senate/ssas00?format=json\"\n      },\n      \"text\": \"Resolution of advice and consent to ratification agreed to as amended in Senate by Yea-Nay Vote. 95 - 1. Record Vote Number: 282.\",\n      \"type\": \"Floor\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acfbec47-aa36-41ab-979d-0431d19c9862",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress",
+                    ":treatyNumber",
+                    ":treatySuffix",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "treatyNumber",
+                      "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "treatySuffix",
+                      "description": "(Required) The treaty’s partition letter value. For example, the value can be A."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "295d61e3-c61a-4f50-b3d8-ab9a88a3a7f9",
+          "name": "Returns the list of committees associated with a specified treaty.",
+          "request": {
+            "name": "Returns the list of committees associated with a specified treaty.",
+            "description": {
+              "content": "Returns the list of committees associated with a specified treaty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "treaty",
+                ":congress",
+                ":treatyNumber",
+                "committees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "treatyNumber",
+                  "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9cd87cf1-656c-4e77-892d-dd2cc7f88bb0",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress",
+                    ":treatyNumber",
+                    "committees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "treatyNumber",
+                      "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"treatyCommittees\": [\n    {\n      \"activities\": [\n        {\n          \"date\": \"1949-01-18\",\n          \"name\": \"Reported By\"\n        },\n        {\n          \"date\": \"1998-01-27\",\n          \"name\": \"Reported By\"\n        }\n      ],\n      \"chamber\": \"Senate\",\n      \"name\": \"Foreign Relations Committee\",\n      \"systemCode\": \"ssfr00\",\n      \"type\": \"Standing\",\n      \"url\": \"https://api.congress.gov/v3/committee/senate/ssfr00?format=json\"\n    },\n    {\n      \"activities\": [\n        {\n          \"date\": \"2007-07-10\",\n          \"name\": \"Reported By\"\n        },\n        {\n          \"date\": \"1961-10-27\",\n          \"name\": \"Reported By\"\n        }\n      ],\n      \"chamber\": \"Senate\",\n      \"name\": \"Foreign Relations Committee\",\n      \"systemCode\": \"ssfr00\",\n      \"type\": \"Standing\",\n      \"url\": \"https://api.congress.gov/v3/committee/senate/ssfr00?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88e04e01-214c-4fdf-9271-c8e7383cc3d6",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "treaty",
+                    ":congress",
+                    ":treatyNumber",
+                    "committees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "treatyNumber",
+                      "description": "(Required) The treaty’s assigned number. For example, the value can be 13."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a6a9657f-e091-479a-bb4b-2336ee5e800c",
+    "name": "Congress.gov amendments treaty API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments committee-report API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "committee-report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns the list of committee reports.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee-report",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "conference",
+                "value": "",
+                "type": "query",
+                "description": "Flag to indicate conference reports. Value can be true or false."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns the list of committee reports."
+        },
+        {
+          "info": {
+            "name": "Returns the list of committee reports filtered by specified congress.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee-report/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "conference",
+                "value": "",
+                "type": "query",
+                "description": "Flag to indicate conference reports. Value can be true or false."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns the list of committee reports filtered by specified congress."
+        },
+        {
+          "info": {
+            "name": "Returns the list of committee reports filtered by specified congress and report type.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee-report/:congress/:reportType",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "reportType",
+                "value": "",
+                "type": "path",
+                "description": "The type of committee report. Value can be hrpt, srpt, or erpt."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "conference",
+                "value": "",
+                "type": "query",
+                "description": "Flag to indicate conference reports. Value can be true or false."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns the list of committee reports filtered by specified congress and report type."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified committee report.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee-report/:congress/:reportType/:reportNumber",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "reportType",
+                "value": "",
+                "type": "path",
+                "description": "The type of committee report. Value can be hrpt, srpt, or erpt."
+              },
+              {
+                "name": "reportNumber",
+                "value": "",
+                "type": "path",
+                "description": "The committee report’s assigned number. For example, the value can be 617."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified committee report."
+        },
+        {
+          "info": {
+            "name": "Returns the list of texts for a specified committee report.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee-report/:congress/:reportType/:reportNumber/text",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "reportType",
+                "value": "",
+                "type": "path",
+                "description": "The type of committee report. Value can be hrpt, srpt, or erpt."
+              },
+              {
+                "name": "reportNumber",
+                "value": "",
+                "type": "path",
+                "description": "The committee report’s assigned number. For example, the value can be 617."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of texts for a specified committee report."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

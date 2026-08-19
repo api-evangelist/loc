@@ -1,0 +1,191 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments summaries API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "summaries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of summaries sorted by date of last update.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/summaries",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort by update date in Congress.gov. Value can be updateDate+asc or updateDate+desc."
+              }
+            ]
+          },
+          "docs": "Returns a list of summaries sorted by date of last update."
+        },
+        {
+          "info": {
+            "name": "Returns a list of summaries filtered by congress, sorted by date of last update.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/summaries/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort by update date in Congress.gov. Value can be updateDate+asc or updateDate+desc."
+              }
+            ]
+          },
+          "docs": "Returns a list of summaries filtered by congress, sorted by date of last update."
+        },
+        {
+          "info": {
+            "name": "Returns a list of summaries filtered by congress and by bill type, sorted by date of last update.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/summaries/:congress/:billType",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort by update date in Congress.gov. Value can be updateDate+asc or updateDate+desc."
+              }
+            ]
+          },
+          "docs": "Returns a list of summaries filtered by congress and by bill type, sorted by date of last update."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

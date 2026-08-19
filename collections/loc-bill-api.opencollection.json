@@ -1,0 +1,870 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments bill API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "bill",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of bills sorted by date of latest action",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of bills sorted by date of latest action"
+        },
+        {
+          "info": {
+            "name": "Returns a list of bills filtered by the specified congress, sorted by date of latest action",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of bills filtered by the specified congress, sorted by date of latest action"
+        },
+        {
+          "info": {
+            "name": "Returns a list of bills filtered by the specified congress and bill type, sorted by date of latest action.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of bills filtered by the specified congress and bill type, sorted by date of latest action."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified bill.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType/:billNumber",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "billNumber",
+                "value": "",
+                "type": "path",
+                "description": "The bill's assigned number. For example, the value can be 3076."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified bill."
+        },
+        {
+          "info": {
+            "name": "Returns the list of actions on a specified bill.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType/:billNumber/actions",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "billNumber",
+                "value": "",
+                "type": "path",
+                "description": "The bill's assigned number. For example, the value can be 3076."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns the list of actions on a specified bill."
+        },
+        {
+          "info": {
+            "name": "Returns the list of amendments to a specified bill.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType/:billNumber/amendments",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "billNumber",
+                "value": "",
+                "type": "path",
+                "description": "The bill's assigned number. For example, the value can be 3076."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns the list of amendments to a specified bill."
+        },
+        {
+          "info": {
+            "name": "Returns the list of committees associated with a specified bill.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType/:billNumber/committees",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "billNumber",
+                "value": "",
+                "type": "path",
+                "description": "The bill's assigned number. For example, the value can be 3076."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of committees associated with a specified bill."
+        },
+        {
+          "info": {
+            "name": "Returns the list of cosponsors on a specified bill.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType/:billNumber/cosponsors",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "billNumber",
+                "value": "",
+                "type": "path",
+                "description": "The bill's assigned number. For example, the value can be 3076."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort by update date in Congress.gov. Value can be updateDate+asc or updateDate+desc."
+              }
+            ]
+          },
+          "docs": "Returns the list of cosponsors on a specified bill."
+        },
+        {
+          "info": {
+            "name": "Returns the list of related bills to a specified bill.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType/:billNumber/relatedbills",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "billNumber",
+                "value": "",
+                "type": "path",
+                "description": "The bill's assigned number. For example, the value can be 3076."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of related bills to a specified bill."
+        },
+        {
+          "info": {
+            "name": "Returns the list of legislative subjects on a specified bill.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType/:billNumber/subjects",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "billNumber",
+                "value": "",
+                "type": "path",
+                "description": "The bill's assigned number. For example, the value can be 3076."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns the list of legislative subjects on a specified bill."
+        },
+        {
+          "info": {
+            "name": "Returns the list of summaries for a specified bill.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType/:billNumber/summaries",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "billNumber",
+                "value": "",
+                "type": "path",
+                "description": "The bill's assigned number. For example, the value can be 3076."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of summaries for a specified bill."
+        },
+        {
+          "info": {
+            "name": "Returns the list of text versions for a specified bill.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType/:billNumber/text",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "billNumber",
+                "value": "",
+                "type": "path",
+                "description": "The bill's assigned number. For example, the value can be 3076."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of text versions for a specified bill."
+        },
+        {
+          "info": {
+            "name": "Returns the list of titles for a specified bill.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bill/:congress/:billType/:billNumber/titles",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "billType",
+                "value": "",
+                "type": "path",
+                "description": "The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+              },
+              {
+                "name": "billNumber",
+                "value": "",
+                "type": "path",
+                "description": "The bill's assigned number. For example, the value can be 3076."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns the list of titles for a specified bill."
+        },
+        {
+          "info": {
+            "name": "Returns a list of laws filtered by the specified congress.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/law/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns a list of laws filtered by the specified congress."
+        },
+        {
+          "info": {
+            "name": "Returns a list of laws filtered by specified congress and law type (public or private).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/law/:congress/:lawType",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "lawType",
+                "value": "",
+                "type": "path",
+                "description": "The law type. Values are either 'pub’ or ‘priv.’"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns a list of laws filtered by specified congress and law type (public or private)."
+        },
+        {
+          "info": {
+            "name": "Returns a law filtered by specified congress, law type (public or private), and law number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/law/:congress/:lawType/:lawNumber",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "lawType",
+                "value": "",
+                "type": "path",
+                "description": "The law type. Values are either 'pub’ or ‘priv.’"
+              },
+              {
+                "name": "lawNumber",
+                "value": "",
+                "type": "path",
+                "description": "The law number"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns a law filtered by specified congress, law type (public or private), and law number."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

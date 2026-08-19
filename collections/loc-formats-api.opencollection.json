@@ -1,0 +1,377 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments formats API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "formats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Browse audio recordings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/audio/",
+            "params": [
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter results"
+              },
+              {
+                "name": "at",
+                "value": "",
+                "type": "query",
+                "description": "Limit response to specific attribute(s)"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns items in the Audio Recordings format from loc.gov digital collections."
+        },
+        {
+          "info": {
+            "name": "Browse books and printed materials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/books/",
+            "params": [
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter results"
+              },
+              {
+                "name": "at",
+                "value": "",
+                "type": "query",
+                "description": "Limit response to specific attribute(s)"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns items in the Books/Printed Material format from loc.gov digital collections."
+        },
+        {
+          "info": {
+            "name": "Browse films and videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/film-and-videos/",
+            "params": [
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter results"
+              },
+              {
+                "name": "at",
+                "value": "",
+                "type": "query",
+                "description": "Limit response to specific attribute(s)"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns items in the Films/Videos format from loc.gov digital collections."
+        },
+        {
+          "info": {
+            "name": "Browse manuscripts and mixed materials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/manuscripts/",
+            "params": [
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter results"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns items in the Manuscripts/Mixed Material format from loc.gov digital collections."
+        },
+        {
+          "info": {
+            "name": "Browse maps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/maps/",
+            "params": [
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter results"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns items in the Maps format from loc.gov digital collections."
+        },
+        {
+          "info": {
+            "name": "Browse newspapers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/newspapers/",
+            "params": [
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter results"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns items in the Newspapers format from loc.gov digital collections."
+        },
+        {
+          "info": {
+            "name": "Browse photos, prints, and drawings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/photos/",
+            "params": [
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter results"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns items in the Photos/Prints/Drawings format from loc.gov digital collections."
+        },
+        {
+          "info": {
+            "name": "Browse printed music and sheet music",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/notated-music/",
+            "params": [
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter results"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns items in the Notated Music (sheet music) format from loc.gov digital collections."
+        },
+        {
+          "info": {
+            "name": "Browse web archives",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/web-archives/",
+            "params": [
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query to filter results"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns items in the Web Archives format from loc.gov digital collections."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

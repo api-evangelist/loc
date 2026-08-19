@@ -1,0 +1,430 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "amendments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of amendments sorted by date of latest action.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/amendment",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of amendments sorted by date of latest action."
+        },
+        {
+          "info": {
+            "name": "Returns a list of amendments filtered by the specified congress, sorted by date of latest action.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/amendment/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of amendments filtered by the specified congress, sorted by date of latest action."
+        },
+        {
+          "info": {
+            "name": "Returns a list of amendments filtered by the specified congress and amendment type, sorted by date of latest action.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/amendment/:congress/:amendmentType",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "amendmentType",
+                "value": "",
+                "type": "path",
+                "description": "The type of amendment. Value can be hamdt, samdt, or suamdt."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of amendments filtered by the specified congress and amendment type, sorted by date of latest action."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified amendment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/amendment/:congress/:amendmentType/:amendmentNumber",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "amendmentType",
+                "value": "",
+                "type": "path",
+                "description": "The type of amendment. Value can be hamdt, samdt, or suamdt."
+              },
+              {
+                "name": "amendmentNumber",
+                "value": "",
+                "type": "path",
+                "description": "The amendment’s assigned number. For example, the value can be 2137."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified amendment."
+        },
+        {
+          "info": {
+            "name": "Returns the list of actions on a specified amendment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/amendment/:congress/:amendmentType/:amendmentNumber/actions",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "amendmentType",
+                "value": "",
+                "type": "path",
+                "description": "The type of amendment. Value can be hamdt, samdt, or suamdt."
+              },
+              {
+                "name": "amendmentNumber",
+                "value": "",
+                "type": "path",
+                "description": "The amendment’s assigned number. For example, the value can be 2137."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of actions on a specified amendment."
+        },
+        {
+          "info": {
+            "name": "Returns the list of cosponsors on a specified amendment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/amendment/:congress/:amendmentType/:amendmentNumber/cosponsors",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "amendmentType",
+                "value": "",
+                "type": "path",
+                "description": "The type of amendment. Value can be hamdt, samdt, or suamdt."
+              },
+              {
+                "name": "amendmentNumber",
+                "value": "",
+                "type": "path",
+                "description": "The amendment’s assigned number. For example, the value can be 2137."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of cosponsors on a specified amendment."
+        },
+        {
+          "info": {
+            "name": "Returns the list of amendments to a specified amendment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/amendment/:congress/:amendmentType/:amendmentNumber/amendments",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "amendmentType",
+                "value": "",
+                "type": "path",
+                "description": "The type of amendment. Value can be hamdt, samdt, or suamdt."
+              },
+              {
+                "name": "amendmentNumber",
+                "value": "",
+                "type": "path",
+                "description": "The amendment’s assigned number. For example, the value can be 2137."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of amendments to a specified amendment."
+        },
+        {
+          "info": {
+            "name": "Returns the list of text versions for a specified amendment from the 117th Congress onwards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/amendment/:congress/:amendmentType/:amendmentNumber/text",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "amendmentType",
+                "value": "",
+                "type": "path",
+                "description": "The type of amendment. Value can be hamdt, samdt, or suamdt."
+              },
+              {
+                "name": "amendmentNumber",
+                "value": "",
+                "type": "path",
+                "description": "The amendment’s assigned number. For example, the value can be 2137."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of text versions for a specified amendment from the 117th Congress onwards."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

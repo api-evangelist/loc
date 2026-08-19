@@ -1,0 +1,217 @@
+{
+  "item": [
+    {
+      "id": "c0af085c-b6fa-4d28-8237-497d2bea6b2e",
+      "name": "items",
+      "description": {
+        "content": "Access individual item details",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "89a8cebe-c715-4ea4-a38d-5dd8cec60f13",
+          "name": "Get item details",
+          "request": {
+            "name": "Get item details",
+            "description": {
+              "content": "Returns bibliographic information and digital resources for a single item identified by its identifier. The item ID can be obtained from the id field in search results. Many items are composed of one or more resources; the item endpoint provides summary information about each resource and how to access it.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "item",
+                ":itemId",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "at",
+                  "value": "<string>",
+                  "description": "Limit response to specific attribute(s)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "itemId",
+                  "description": "(Required) The item identifier (from the id field in search results, excluding the base URL)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "600d5389-c40d-4825-976e-7f8d251ac0e1",
+              "name": "Item bibliographic data and digital resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "item",
+                    ":itemId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "at",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemId",
+                      "description": "(Required) The item identifier (from the id field in search results, excluding the base URL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cite_this\": {\n    \"key_0\": 7057,\n    \"key_1\": 6758,\n    \"key_2\": 569.8848054696215\n  },\n  \"item\": {\n    \"key_0\": false,\n    \"key_1\": 5344.953957361771\n  },\n  \"resources\": [\n    {\n      \"caption\": \"string\",\n      \"files\": [\n        [\n          {\n            \"height\": 4503,\n            \"levels\": 8057,\n            \"mimetype\": \"string\",\n            \"size\": 5110,\n            \"url\": \"string\",\n            \"width\": 7964\n          },\n          {\n            \"height\": 7038,\n            \"levels\": 4599,\n            \"mimetype\": \"string\",\n            \"size\": 4977,\n            \"url\": \"string\",\n            \"width\": 3355\n          }\n        ],\n        [\n          {\n            \"height\": 5643,\n            \"levels\": 9222,\n            \"mimetype\": \"string\",\n            \"size\": 8316,\n            \"url\": \"string\",\n            \"width\": 8118\n          },\n          {\n            \"height\": 8532,\n            \"levels\": 3989,\n            \"mimetype\": \"string\",\n            \"size\": 63,\n            \"url\": \"string\",\n            \"width\": 9749\n          }\n        ]\n      ],\n      \"image\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"caption\": \"string\",\n      \"files\": [\n        [\n          {\n            \"height\": 8581,\n            \"levels\": 3818,\n            \"mimetype\": \"string\",\n            \"size\": 6878,\n            \"url\": \"string\",\n            \"width\": 3291\n          },\n          {\n            \"height\": 434,\n            \"levels\": 9475,\n            \"mimetype\": \"string\",\n            \"size\": 594,\n            \"url\": \"string\",\n            \"width\": 8878\n          }\n        ],\n        [\n          {\n            \"height\": 26,\n            \"levels\": 5703,\n            \"mimetype\": \"string\",\n            \"size\": 4410,\n            \"url\": \"string\",\n            \"width\": 6161\n          },\n          {\n            \"height\": 8624,\n            \"levels\": 6208,\n            \"mimetype\": \"string\",\n            \"size\": 930,\n            \"url\": \"string\",\n            \"width\": 4213\n          }\n        ]\n      ],\n      \"image\": \"string\",\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71432edc-4da6-4c30-b6e9-fec0800ca131",
+              "name": "Item not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "item",
+                    ":itemId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "at",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "itemId",
+                      "description": "(Required) The item identifier (from the id field in search results, excluding the base URL)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bb7d9fa1-0446-4f6c-a5f4-97caed9e4e9a",
+    "name": "Congress.gov amendments items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

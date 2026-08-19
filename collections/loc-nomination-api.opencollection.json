@@ -1,0 +1,327 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments nomination API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "nomination",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of nominations sorted by date received from the President.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/nomination",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of nominations sorted by date received from the President."
+        },
+        {
+          "info": {
+            "name": "Returns a list of nominations filtered by the specified congress and sorted by date received from the President.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/nomination/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of nominations filtered by the specified congress and sorted by date received from the President."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified nomination.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/nomination/:congress/:nominationNumber",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "nominationNumber",
+                "value": "",
+                "type": "path",
+                "description": "The nomination’s assigned number. For example, the value can be 389."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified nomination."
+        },
+        {
+          "info": {
+            "name": "Returns the list nominees for a position within the nomination.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/nomination/:congress/:nominationNumber/:ordinal",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "nominationNumber",
+                "value": "",
+                "type": "path",
+                "description": "The nomination’s assigned number. For example, the value can be 389."
+              },
+              {
+                "name": "ordinal",
+                "value": "",
+                "type": "path",
+                "description": "The ordinal number. For example, the value can be 1"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list nominees for a position within the nomination."
+        },
+        {
+          "info": {
+            "name": "Returns the list of actions on a specified nomination.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/nomination/:congress/:nominationNumber/actions",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "nominationNumber",
+                "value": "",
+                "type": "path",
+                "description": "The nomination’s assigned number. For example, the value can be 389."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of actions on a specified nomination."
+        },
+        {
+          "info": {
+            "name": "Returns the list of committees associated with a specified nomination.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/nomination/:congress/:nominationNumber/committees",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "nominationNumber",
+                "value": "",
+                "type": "path",
+                "description": "The nomination’s assigned number. For example, the value can be 389."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of committees associated with a specified nomination."
+        },
+        {
+          "info": {
+            "name": "Returns the list of printed hearings associated with a specified nomination.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/nomination/:congress/:nominationNumber/hearings",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "nominationNumber",
+                "value": "",
+                "type": "path",
+                "description": "The nomination’s assigned number. For example, the value can be 389."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of printed associated with a specified nomination."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

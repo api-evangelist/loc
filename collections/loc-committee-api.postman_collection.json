@@ -1,0 +1,2334 @@
+{
+  "item": [
+    {
+      "id": "487c66bb-edae-406d-a8d3-7aaddc3ed715",
+      "name": "committee",
+      "description": {
+        "content": "Returns committee data from the API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "805dc197-008b-457f-9029-aecd58fca81f",
+          "name": "Returns a list of congressional committees.",
+          "request": {
+            "name": "Returns a list of congressional committees.",
+            "description": {
+              "content": "Returns a list of congressional committees.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c37a505-e6bf-435a-8da3-e804c34e491e",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chamber\": \"House\",\n  \"committeeTypeCode\": \"Standing\",\n  \"updateDate\": \"2020-02-04T00:07:37Z\",\n  \"name\": \"Transportation and Infrastructure Committee\",\n  \"parent\": {\n    \"name\": \"Judiciary Committee\",\n    \"systemCode\": \"hsju00\",\n    \"url\": \"https://api.congress.gov/v3/committee/house/hsju00?format=json\"\n  },\n  \"subcommittees\": [\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    },\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    }\n  ],\n  \"systemCode\": \"hspw00\",\n  \"url\": \"https://api.congress.gov/v3/committee/house/hspw00?format=json\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ee9aed9-d7f8-492e-802e-90815157ff07",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1684aec1-7b7f-452d-9d13-abb5d3f4bd31",
+          "name": "Returns a list of congressional committees filtered by the specified chamber.",
+          "request": {
+            "name": "Returns a list of congressional committees filtered by the specified chamber.",
+            "description": {
+              "content": "Returns a list of congressional committees filtered by the specified chamber.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee",
+                ":chamber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chamber",
+                  "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e4ef10d-b413-41ff-afc0-b4b3adc2565a",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chamber\": \"House\",\n  \"committeeTypeCode\": \"Standing\",\n  \"updateDate\": \"2020-02-04T00:07:37Z\",\n  \"name\": \"Transportation and Infrastructure Committee\",\n  \"parent\": {\n    \"name\": \"Judiciary Committee\",\n    \"systemCode\": \"hsju00\",\n    \"url\": \"https://api.congress.gov/v3/committee/house/hsju00?format=json\"\n  },\n  \"subcommittees\": [\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    },\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    }\n  ],\n  \"systemCode\": \"hspw00\",\n  \"url\": \"https://api.congress.gov/v3/committee/house/hspw00?format=json\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67118e2a-bed1-4a6e-aa84-50a3d1da5d3f",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db1b7c38-1858-403d-b05e-f54857e613eb",
+          "name": "Returns a list of congressional committees filtered by the specified congress.",
+          "request": {
+            "name": "Returns a list of congressional committees filtered by the specified congress.",
+            "description": {
+              "content": "Returns a list of congressional committees filtered by the specified congress.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee",
+                ":congress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e1ffb0c-167f-423c-a893-d96ea4df3000",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chamber\": \"House\",\n  \"committeeTypeCode\": \"Standing\",\n  \"updateDate\": \"2020-02-04T00:07:37Z\",\n  \"name\": \"Transportation and Infrastructure Committee\",\n  \"parent\": {\n    \"name\": \"Judiciary Committee\",\n    \"systemCode\": \"hsju00\",\n    \"url\": \"https://api.congress.gov/v3/committee/house/hsju00?format=json\"\n  },\n  \"subcommittees\": [\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    },\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    }\n  ],\n  \"systemCode\": \"hspw00\",\n  \"url\": \"https://api.congress.gov/v3/committee/house/hspw00?format=json\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "174d3f68-557d-4a9b-8a95-f4d5820acc20",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8a3dfe5-4744-4e1f-bf83-9bc28ed35abc",
+          "name": "Returns a list of congressional committees filtered by the specified congress and chamber.",
+          "request": {
+            "name": "Returns a list of congressional committees filtered by the specified congress and chamber.",
+            "description": {
+              "content": "Returns a list of congressional committees filtered by the specified congress and chamber.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee",
+                ":congress",
+                ":chamber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chamber",
+                  "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fce6fb08-beeb-4caa-9fa4-bd99e44c2d6a",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":congress",
+                    ":chamber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chamber\": \"House\",\n  \"committeeTypeCode\": \"Standing\",\n  \"updateDate\": \"2020-02-04T00:07:37Z\",\n  \"name\": \"Transportation and Infrastructure Committee\",\n  \"parent\": {\n    \"name\": \"Judiciary Committee\",\n    \"systemCode\": \"hsju00\",\n    \"url\": \"https://api.congress.gov/v3/committee/house/hsju00?format=json\"\n  },\n  \"subcommittees\": [\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    },\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    }\n  ],\n  \"systemCode\": \"hspw00\",\n  \"url\": \"https://api.congress.gov/v3/committee/house/hspw00?format=json\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ae3cb05-12b1-4c1a-be03-156a99e0702b",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":congress",
+                    ":chamber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e62209a0-9874-496d-ae52-6a486497498d",
+          "name": "Returns detailed information for a specified congressional committee.",
+          "request": {
+            "name": "Returns detailed information for a specified congressional committee.",
+            "description": {
+              "content": "Returns detailed information for a specified congressional committee.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee",
+                ":chamber",
+                ":committeeCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chamber",
+                  "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "committeeCode",
+                  "description": "(Required) The committee code. For example, the value can be hspw00."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c6526ef-0742-424d-b9c3-337426c4082d",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bills\": {\n    \"count\": 25384,\n    \"url\": \"https://api.congress.gov/v3/committee/house/hspw00/bills?format=json\"\n  },\n  \"communications\": {\n    \"count\": 25384,\n    \"url\": \"https://api.congress.gov/v3/committee/house/hspw00/house-communication?format=json\"\n  },\n  \"history\": [\n    {\n      \"libraryOfCongressName\": \"Transportation and Infrastructure\",\n      \"officialName\": \"Committee on Transportation and Infrastructure\",\n      \"startDate\": \"1995-01-04T05:00:00Z\",\n      \"updateDate\": \"2020-02-04T00:07:37Z\",\n      \"endDate\": \"2020-03-04T05:00:00Z\"\n    },\n    {\n      \"libraryOfCongressName\": \"Transportation and Infrastructure\",\n      \"officialName\": \"Committee on Transportation and Infrastructure\",\n      \"startDate\": \"1995-01-04T05:00:00Z\",\n      \"updateDate\": \"2020-02-04T00:07:37Z\",\n      \"endDate\": \"2020-03-04T05:00:00Z\"\n    }\n  ],\n  \"isCurrent\": true,\n  \"reports\": {\n    \"count\": 25384,\n    \"url\": \"https://api.congress.gov/v3/committee/house/hspw00/reports?format=json\"\n  },\n  \"subcommittees\": [\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    },\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    }\n  ],\n  \"systemCode\": \"hspw00\",\n  \"type\": \"Standing\",\n  \"updateDate\": \"2020-02-04T00:07:37Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6eb388d-24a3-4483-9a88-10635189170b",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47138b75-fcf5-4818-a096-ba79e78b9407",
+          "name": "Returns detailed information for a specified congressional committee filtered by the specified Congress.",
+          "request": {
+            "name": "Returns detailed information for a specified congressional committee filtered by the specified Congress.",
+            "description": {
+              "content": "Returns detailed information for a specified congressional committee filtered by the specified Congress.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee",
+                ":congress",
+                ":chamber",
+                ":committeeCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chamber",
+                  "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "committeeCode",
+                  "description": "(Required) The committee code. For example, the value can be hspw00."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61fa54e5-f3fc-48db-95cd-08ce021f7566",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":congress",
+                    ":chamber",
+                    ":committeeCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bills\": {\n    \"count\": 25384,\n    \"url\": \"https://api.congress.gov/v3/committee/house/hspw00/bills?format=json\"\n  },\n  \"communications\": {\n    \"count\": 25384,\n    \"url\": \"https://api.congress.gov/v3/committee/house/hspw00/house-communication?format=json\"\n  },\n  \"history\": [\n    {\n      \"libraryOfCongressName\": \"Transportation and Infrastructure\",\n      \"officialName\": \"Committee on Transportation and Infrastructure\",\n      \"startDate\": \"1995-01-04T05:00:00Z\",\n      \"updateDate\": \"2020-02-04T00:07:37Z\",\n      \"endDate\": \"2020-03-04T05:00:00Z\"\n    },\n    {\n      \"libraryOfCongressName\": \"Transportation and Infrastructure\",\n      \"officialName\": \"Committee on Transportation and Infrastructure\",\n      \"startDate\": \"1995-01-04T05:00:00Z\",\n      \"updateDate\": \"2020-02-04T00:07:37Z\",\n      \"endDate\": \"2020-03-04T05:00:00Z\"\n    }\n  ],\n  \"isCurrent\": true,\n  \"reports\": {\n    \"count\": 25384,\n    \"url\": \"https://api.congress.gov/v3/committee/house/hspw00/reports?format=json\"\n  },\n  \"subcommittees\": [\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    },\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    }\n  ],\n  \"systemCode\": \"hspw00\",\n  \"type\": \"Standing\",\n  \"updateDate\": \"2020-02-04T00:07:37Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85a84046-aac3-4471-a09a-2b2ef90b71b3",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":congress",
+                    ":chamber",
+                    ":committeeCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f580d4d4-30eb-4922-8074-309872585388",
+          "name": "Returns the list of legislation associated with the specified congressional committee.",
+          "request": {
+            "name": "Returns the list of legislation associated with the specified congressional committee.",
+            "description": {
+              "content": "Returns the list of legislation associated with the specified congressional committee.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee",
+                ":chamber",
+                ":committeeCode",
+                "bills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chamber",
+                  "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "committeeCode",
+                  "description": "(Required) The committee code. For example, the value can be hspw00."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f406fefc-6e62-4313-979e-c611ecdbe7a0",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode",
+                    "bills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bills\": [\n    {\n      \"actionDate\": \"2022-02-18T16:38:41Z\",\n      \"congress\": 117,\n      \"number\": \"117\",\n      \"relationshipType\": \"Referred to\",\n      \"type\": \"HCONRES\",\n      \"updateDate\": \"2022-02-18T16:38:41Z\",\n      \"url\": \"https://api.congress.gov/v3/bill/112/hconres/117?format=json\"\n    },\n    {\n      \"actionDate\": \"2022-02-18T16:38:41Z\",\n      \"congress\": 117,\n      \"number\": \"117\",\n      \"relationshipType\": \"Referred to\",\n      \"type\": \"HCONRES\",\n      \"updateDate\": \"2022-02-18T16:38:41Z\",\n      \"url\": \"https://api.congress.gov/v3/bill/112/hconres/117?format=json\"\n    }\n  ],\n  \"count\": 27251,\n  \"url\": \"https://api.congress.gov/v3/committee/house/hspw00/bills?format=json\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fec2d6aa-3cfd-40ef-b0e7-820fdb08a3cc",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode",
+                    "bills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b79c3e36-a6a4-4c62-828f-cb4a0424d828",
+          "name": "Returns the list of committee reports associated with a specified congressional committee.",
+          "request": {
+            "name": "Returns the list of committee reports associated with a specified congressional committee.",
+            "description": {
+              "content": "Returns the list of committee reports associated with a specified congressional committee.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee",
+                ":chamber",
+                ":committeeCode",
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chamber",
+                  "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "committeeCode",
+                  "description": "(Required) The committee code. For example, the value can be hspw00."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16bf83bc-ce8c-4968-aa3b-a79ae66565cb",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"chamber\": \"House\",\n    \"citation\": \"H. Rept. 109-570\",\n    \"congress\": 117,\n    \"number\": 570,\n    \"part\": 1,\n    \"type\": \"HRPT\",\n    \"updateDate\": \"2022-02-18T16:38:41Z\",\n    \"url\": \"https://api.congress.gov/v3/bill/117hr570?format=json\"\n  },\n  {\n    \"chamber\": \"House\",\n    \"citation\": \"H. Rept. 109-570\",\n    \"congress\": 117,\n    \"number\": 570,\n    \"part\": 1,\n    \"type\": \"HRPT\",\n    \"updateDate\": \"2022-02-18T16:38:41Z\",\n    \"url\": \"https://api.congress.gov/v3/bill/117hr570?format=json\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54fafcbe-cdd9-4f6a-95ab-2509a7501217",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0ede645-850d-430c-8ccf-9ab19cbbe07a",
+          "name": "Returns the list of nominations associated with a specified congressional committee.",
+          "request": {
+            "name": "Returns the list of nominations associated with a specified congressional committee.",
+            "description": {
+              "content": "Returns the list of nominations associated with a specified congressional committee.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee",
+                ":chamber",
+                ":committeeCode",
+                "nominations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chamber",
+                  "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "committeeCode",
+                  "description": "(Required) The committee code. For example, the value can be hspw00."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8cf26eb-443e-4959-8958-51f593c80763",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode",
+                    "nominations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"citation\": \"PN2477\",\n    \"congress\": 117,\n    \"description\": \"Nomination of xyz for the 117th Congress\",\n    \"latestAction\": {\n      \"actionDate\": \"2022-06-16\",\n      \"text\": \"Read twice and referred to the Committee on the Judiciary.\"\n    },\n    \"nominationType\": {\n      \"isCivilian\": false,\n      \"isMilitary\": true\n    },\n    \"number\": 2477,\n    \"partNumber\": \"00\",\n    \"receivedDate\": \"2022-08-03\",\n    \"updateDate\": \"2022-09-30 04:40:14+00:00\",\n    \"url\": \"https://api.congress.gov/v3/nomination/117/2477?format=json\"\n  },\n  {\n    \"citation\": \"PN2477\",\n    \"congress\": 117,\n    \"description\": \"Nomination of xyz for the 117th Congress\",\n    \"latestAction\": {\n      \"actionDate\": \"2022-06-16\",\n      \"text\": \"Read twice and referred to the Committee on the Judiciary.\"\n    },\n    \"nominationType\": {\n      \"isCivilian\": false,\n      \"isMilitary\": true\n    },\n    \"number\": 2477,\n    \"partNumber\": \"00\",\n    \"receivedDate\": \"2022-08-03\",\n    \"updateDate\": \"2022-09-30 04:40:14+00:00\",\n    \"url\": \"https://api.congress.gov/v3/nomination/117/2477?format=json\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "162c4d21-5b2d-4bbc-a78b-98d4c5eb99a3",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode",
+                    "nominations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house, senate, or joint."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41275d61-da56-4b97-8783-70497fdc5c19",
+          "name": "Returns the list of House communications associated with a specified congressional committee.",
+          "request": {
+            "name": "Returns the list of House communications associated with a specified congressional committee.",
+            "description": {
+              "content": "Returns the list of House communications associated with a specified congressional committee.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee",
+                ":chamber",
+                ":committeeCode",
+                "house-communication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "house",
+                  "key": "chamber",
+                  "description": "(Required) The chamber name. Value can be house."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "committeeCode",
+                  "description": "(Required) The committee code. For example, the value can be hspw00."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7150bacc-cb90-4c73-b45f-c5ec145cb012",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode",
+                    "house-communication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "house",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"communicationType\": {\n    \"code\": \"EC\",\n    \"name\": \"Executive Communication\"\n  },\n  \"congress\": 114,\n  \"number\": 3262,\n  \"referralDate\": \"2015-10-27\",\n  \"updateDate\": \"2018-02-02\",\n  \"chamber\": \"House\",\n  \"url\": \"https://api.congress.gov/v3/house-communication/114/ec/3262?format=json\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e380ce2f-e5d5-4a2f-bcfd-462296951230",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode",
+                    "house-communication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "house",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be house."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5776e4f-4670-4733-ad35-aec79cb4b060",
+          "name": "Returns the list of Senate communications associated with a specified congressional committee.",
+          "request": {
+            "name": "Returns the list of Senate communications associated with a specified congressional committee.",
+            "description": {
+              "content": "Returns the list of Senate communications associated with a specified congressional committee.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "committee",
+                ":chamber",
+                ":committeeCode",
+                "senate-communication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "senate",
+                  "key": "chamber",
+                  "description": "(Required) The chamber name. Value can be senate."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "committeeCode",
+                  "description": "(Required) The committee code. For example, the value can be hspw00."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97b37143-01e1-48ab-aceb-87d606a3ecb0",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode",
+                    "senate-communication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "senate",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be senate."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"communicationType\": {\n    \"code\": \"EC\",\n    \"name\": \"Executive Communication\"\n  },\n  \"congress\": 114,\n  \"number\": 3262,\n  \"referralDate\": \"2015-10-27\",\n  \"updateDate\": \"2018-02-02\",\n  \"chamber\": \"Senate\",\n  \"url\": \"https://api.congress.gov/v3/senate-communication/114/ec/7402?format=json\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "591b96be-b511-47ea-a2cd-717d82ff9747",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "committee",
+                    ":chamber",
+                    ":committeeCode",
+                    "senate-communication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "senate",
+                      "key": "chamber",
+                      "description": "(Required) The chamber name. Value can be senate."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "committeeCode",
+                      "description": "(Required) The committee code. For example, the value can be hspw00."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aba36c95-3b8d-41d8-a1a2-325f6317450a",
+    "name": "Congress.gov amendments committee API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

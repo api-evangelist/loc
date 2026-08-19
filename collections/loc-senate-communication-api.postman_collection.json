@@ -1,0 +1,782 @@
+{
+  "item": [
+    {
+      "id": "bdb1eb9f-6921-463a-a647-c80d5a99bb58",
+      "name": "senate-communication",
+      "description": {
+        "content": "Returns Senate communication data from the API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c3446a8-3aaf-402b-a6c7-01700e15b7aa",
+          "name": "Returns a list of Senate communications.",
+          "request": {
+            "name": "Returns a list of Senate communications.",
+            "description": {
+              "content": "Returns a list of Senate communications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "senate-communication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5378df4-10f9-4b8d-ad97-0cd6f012ed9b",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senate-communication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"senateCoummunications\": [\n    {\n      \"chamber\": \"Senate\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congress\": 117,\n      \"number\": \"1615\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json\"\n    },\n    {\n      \"chamber\": \"Senate\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congress\": 117,\n      \"number\": \"1615\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f76b09d4-4107-41ee-8c13-df9b6108b34f",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senate-communication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0adfb6e-8d60-4577-abb9-0a35eca3111b",
+          "name": "Returns a list of Senate communications filtered by the specified congress.",
+          "request": {
+            "name": "Returns a list of Senate communications filtered by the specified congress.",
+            "description": {
+              "content": "Returns a list of Senate communications filtered by the specified congress.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "senate-communication",
+                ":congress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73259329-799d-47fc-844a-0de54e2316a1",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senate-communication",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"senateCoummunications\": [\n    {\n      \"chamber\": \"Senate\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congress\": 117,\n      \"number\": \"1615\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json\"\n    },\n    {\n      \"chamber\": \"Senate\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congress\": 117,\n      \"number\": \"1615\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ce30fd5-7103-4baf-bd04-af73ceee8144",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senate-communication",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "298549ae-6a48-4e47-a27a-9ae917b0d2e7",
+          "name": "Returns a list of Senate communications filtered by the specified congress and communication type..",
+          "request": {
+            "name": "Returns a list of Senate communications filtered by the specified congress and communication type..",
+            "description": {
+              "content": "Returns a list of Senate communications filtered by the specified congress and communication type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "senate-communication",
+                ":congress",
+                ":communicationType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communicationType",
+                  "description": "(Required) The type of communication. Value can be ec, pm, or pom."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8fd5a75-2fb3-4d3d-acdf-c937a1fe75e2",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senate-communication",
+                    ":congress",
+                    ":communicationType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communicationType",
+                      "description": "(Required) The type of communication. Value can be ec, pm, or pom."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"senateCoummunications\": [\n    {\n      \"chamber\": \"Senate\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congress\": 117,\n      \"number\": \"1615\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json\"\n    },\n    {\n      \"chamber\": \"Senate\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congress\": 117,\n      \"number\": \"1615\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "496dbcfc-2cfd-46c5-b9d3-e273501ea625",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senate-communication",
+                    ":congress",
+                    ":communicationType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communicationType",
+                      "description": "(Required) The type of communication. Value can be ec, pm, or pom."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "720dafc7-7f6b-4ed3-a304-fa42d70851f4",
+          "name": "Returns a list of Senate communications filtered by the specified congress and communication type..",
+          "request": {
+            "name": "Returns a list of Senate communications filtered by the specified congress and communication type..",
+            "description": {
+              "content": "Returns a list of Senate communications filtered by the specified congress and communication type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "senate-communication",
+                ":congress",
+                ":communicationType",
+                ":communicationNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communicationType",
+                  "description": "(Required) The type of communication. Value can be ec, pm, or pom."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "communicationNumber",
+                  "description": "(Required) The communication’s assigned number. For example, the value can be 3324."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12dd4246-95d5-4bb0-b5c3-ea15a533ddd1",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senate-communication",
+                    ":congress",
+                    ":communicationType",
+                    ":communicationNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communicationType",
+                      "description": "(Required) The type of communication. Value can be ec, pm, or pom."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "communicationNumber",
+                      "description": "(Required) The communication’s assigned number. For example, the value can be 3324."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"abstract\": \"A letter from the Director, Regulatory Management Division, Environmental Protection Agency, transmitting the Agency's request for applications - Technical Assistance to Brownfields Communities [EPA-I-OLEM-OBLR-22-12] received February 9, 2024, pursuant to 5 U.S.C. 801(a)(1)(A); Public Law 104–121, section 251; (110 Stat. 868); to the Committee on Energy and Commerce.\",\n  \"chamber\": \"House\",\n  \"committees\": [\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    },\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\"\n    }\n  ],\n  \"congress\": 118,\n  \"congressionalRecordDate\": \"2024-03-07\",\n  \"number\": 3324,\n  \"sessionNumber\": 2,\n  \"updateDate\": \"2024-09-03\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98dd3695-b364-4532-9769-57ba7a765421",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "senate-communication",
+                    ":congress",
+                    ":communicationType",
+                    ":communicationNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communicationType",
+                      "description": "(Required) The type of communication. Value can be ec, pm, or pom."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "communicationNumber",
+                      "description": "(Required) The communication’s assigned number. For example, the value can be 3324."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7bd88efc-cb4b-4bec-902e-480bec683ac3",
+    "name": "Congress.gov amendments senate-communication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

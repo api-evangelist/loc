@@ -1,0 +1,186 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments bound-congressional-record API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "bound-congressional-record",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of bound congressional records issues sorted by most recent.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bound-congressional-record",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns a list of bound congressional record issues sorted by most recent."
+        },
+        {
+          "info": {
+            "name": "Returns a list of bound congressional records issues sorted by most recent.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bound-congressional-record/:year",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The specified year of the bound Congressional record, for example 1990."
+              }
+            ]
+          },
+          "docs": "Returns a list of bound congressional record issues sorted by most recent."
+        },
+        {
+          "info": {
+            "name": "Returns a list of bound congressional records issues sorted by most recent.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bound-congressional-record/:year/:month",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The specified year of the bound Congressional record, for example 1990."
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path",
+                "description": "The specified month of the bound Congressional record, for example 4 for April."
+              }
+            ]
+          },
+          "docs": "Returns a list of bound congressional record issues sorted by most recent."
+        },
+        {
+          "info": {
+            "name": "Returns a list of bound congressional records issues sorted by most recent.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/bound-congressional-record/:year/:month/:day",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The specified year of the bound Congressional record, for example 1990."
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path",
+                "description": "The specified month of the bound Congressional record, for example 4 for April."
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "path",
+                "description": "The specified day of the bound Congressional record, for example 18."
+              }
+            ]
+          },
+          "docs": "Returns a list of bound congressional record issues sorted by most recent."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,334 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments member API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "member",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of congressional members.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/member",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "currentMember",
+                "value": "",
+                "type": "query",
+                "description": "The status of the member. Use true or false"
+              }
+            ]
+          },
+          "docs": "Returns a list of congressional members."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified congressional member.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/member/:bioguideId",
+            "params": [
+              {
+                "name": "bioguideId",
+                "value": "",
+                "type": "path",
+                "description": "The bioguide identifier for the congressional member. For example, the value can be L000174."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified congressional member."
+        },
+        {
+          "info": {
+            "name": "Returns the list of legislation sponsored by a specified congressional member.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/member/:bioguideId/sponsored-legislation",
+            "params": [
+              {
+                "name": "bioguideId",
+                "value": "",
+                "type": "path",
+                "description": "The bioguide identifier for the congressional member. For example, the value can be L000174."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of legislation sponsored by a specified congressional member."
+        },
+        {
+          "info": {
+            "name": "Returns the list of legislation cosponsored by a specified congressional member.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/member/:bioguideId/cosponsored-legislation",
+            "params": [
+              {
+                "name": "bioguideId",
+                "value": "",
+                "type": "path",
+                "description": "The bioguide identifier for the congressional member. For example, the value can be L000174."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of legislation cosponsored by a specified congressional member."
+        },
+        {
+          "info": {
+            "name": "Returns the list of members specified by Congress.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/member/congress/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "currentMember",
+                "value": "",
+                "type": "query",
+                "description": "The status of the member. Use true or false"
+              }
+            ]
+          },
+          "docs": "Returns the list of members specified by Congress."
+        },
+        {
+          "info": {
+            "name": "Returns a list of members filtered by state.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/member/:stateCode",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "",
+                "type": "path",
+                "description": "The two letter identifier for the state the member represents. For example, the value can be MI for Michigan."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "currentMember",
+                "value": "",
+                "type": "query",
+                "description": "The status of the member. Use true or false"
+              }
+            ]
+          },
+          "docs": "Returns a list of members filtered by state."
+        },
+        {
+          "info": {
+            "name": "Returns a list of members filtered by state and district.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/member/:stateCode/:district",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "",
+                "type": "path",
+                "description": "The two letter identifier for the state the member represents. For example, the value can be MI for Michigan."
+              },
+              {
+                "name": "district",
+                "value": "",
+                "type": "path",
+                "description": "The district number for the district the member represents. For example, the value can be 10."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "currentMember",
+                "value": "",
+                "type": "query",
+                "description": "The status of the member. Use true or false"
+              }
+            ]
+          },
+          "docs": "Returns a list of members filtered by state and district."
+        },
+        {
+          "info": {
+            "name": "Returns a list of members filtered by congress, state and district.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/member/congress/:congress/:stateCode/:district",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "",
+                "type": "path",
+                "description": "The two letter identifier for the state the member represents. For example, the value can be MI for Michigan."
+              },
+              {
+                "name": "district",
+                "value": "",
+                "type": "path",
+                "description": "The district number for the district the member represents. For example, the value can be 10."
+              },
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "currentMember",
+                "value": "",
+                "type": "query",
+                "description": "The status of the member. Use true or false"
+              }
+            ]
+          },
+          "docs": "Returns a list of members filtered by congress, state and district."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

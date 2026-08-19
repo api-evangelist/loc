@@ -1,0 +1,180 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments daily-congressional-record API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "daily-congressional-record",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of daily congressional record issues sorted by most recent.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/daily-congressional-record",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns a list of daily congressional record issues sorted by most recent."
+        },
+        {
+          "info": {
+            "name": "Returns a list of daily Congressional Records filtered by the specified volume number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/daily-congressional-record/:volumeNumber",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "volumeNumber",
+                "value": "",
+                "type": "path",
+                "description": "The specified volume of the daily Congressional record, for example 166."
+              }
+            ]
+          },
+          "docs": "Returns a list of daily Congressional Records filtered by the specified volume number."
+        },
+        {
+          "info": {
+            "name": "Returns a list of daily Congressional Records filtered by the specified volume number and specified issue number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/daily-congressional-record/:volumeNumber/:issueNumber",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "volumeNumber",
+                "value": "",
+                "type": "path",
+                "description": "The specified volume of the daily Congressional record, for example 166."
+              },
+              {
+                "name": "issueNumber",
+                "value": "",
+                "type": "path",
+                "description": "The specified issue of the daily Congressional record, for example 153."
+              }
+            ]
+          },
+          "docs": "Returns a list of daily Congressional Records filtered by the specified volume number and specified issue number."
+        },
+        {
+          "info": {
+            "name": "Returns a list of daily Congressional Record articles filtered by the specified volume number and specified issue number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/daily-congressional-record/:volumeNumber/:issueNumber/articles",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "volumeNumber",
+                "value": "",
+                "type": "path",
+                "description": "The specified volume of the daily Congressional record, for example 166."
+              },
+              {
+                "name": "issueNumber",
+                "value": "",
+                "type": "path",
+                "description": "The specified issue of the daily Congressional record, for example 153."
+              }
+            ]
+          },
+          "docs": "Returns a list of daily Congressional Record articles filtered by the specified volume number and specified issue number."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

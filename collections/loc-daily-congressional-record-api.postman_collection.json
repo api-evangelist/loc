@@ -1,0 +1,789 @@
+{
+  "item": [
+    {
+      "id": "8fa6647d-e907-4b74-b3ae-6488d67917bd",
+      "name": "daily-congressional-record",
+      "description": {
+        "content": "Returns daily Congressional Record data from the API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6755140f-d792-41e1-ba1c-ebe0227d6a59",
+          "name": "Returns a list of daily congressional record issues sorted by most recent.",
+          "request": {
+            "name": "Returns a list of daily congressional record issues sorted by most recent.",
+            "description": {
+              "content": "Returns a list of daily congressional record issues sorted by most recent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "daily-congressional-record"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4852894-8db7-4bb5-8664-dc9f0fef8c05",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daily-congressional-record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"congress\": \"118\",\n    \"issueDate\": \"2023-07-11T04:00:00Z\",\n    \"issueNumber\": \"118\",\n    \"sessionNumber\": \"1\",\n    \"updateDate\": \"2023-07-12T11:30:30Z\",\n    \"url\": \"https://api.congress.gov/v3/daily-congressional-record/169/118?format=json\",\n    \"volumeNumber\": \"169\"\n  },\n  {\n    \"congress\": \"118\",\n    \"issueDate\": \"2023-07-11T04:00:00Z\",\n    \"issueNumber\": \"118\",\n    \"sessionNumber\": \"1\",\n    \"updateDate\": \"2023-07-12T11:30:30Z\",\n    \"url\": \"https://api.congress.gov/v3/daily-congressional-record/169/118?format=json\",\n    \"volumeNumber\": \"169\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aad6cde7-41ea-4e01-90d4-d1f16d50a3b1",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daily-congressional-record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf1d40dd-d72b-42a2-939b-379706f0df90",
+          "name": "Returns a list of daily Congressional Records filtered by the specified volume number.",
+          "request": {
+            "name": "Returns a list of daily Congressional Records filtered by the specified volume number.",
+            "description": {
+              "content": "Returns a list of daily Congressional Records filtered by the specified volume number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "daily-congressional-record",
+                ":volumeNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "volumeNumber",
+                  "description": "(Required) The specified volume of the daily Congressional record, for example 166."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8128623e-956f-4e8a-8759-ce661c91ba7b",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daily-congressional-record",
+                    ":volumeNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "volumeNumber",
+                      "description": "(Required) The specified volume of the daily Congressional record, for example 166."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"congress\": \"118\",\n    \"issueDate\": \"2023-07-11T04:00:00Z\",\n    \"issueNumber\": \"118\",\n    \"sessionNumber\": \"1\",\n    \"updateDate\": \"2023-07-12T11:30:30Z\",\n    \"url\": \"https://api.congress.gov/v3/daily-congressional-record/169/118?format=json\",\n    \"volumeNumber\": \"169\"\n  },\n  {\n    \"congress\": \"118\",\n    \"issueDate\": \"2023-07-11T04:00:00Z\",\n    \"issueNumber\": \"118\",\n    \"sessionNumber\": \"1\",\n    \"updateDate\": \"2023-07-12T11:30:30Z\",\n    \"url\": \"https://api.congress.gov/v3/daily-congressional-record/169/118?format=json\",\n    \"volumeNumber\": \"169\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "203c973d-2e2f-4f29-a248-bec6251b88b9",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daily-congressional-record",
+                    ":volumeNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "volumeNumber",
+                      "description": "(Required) The specified volume of the daily Congressional record, for example 166."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f443c9e9-9acb-4156-b621-413062b9f08f",
+          "name": "Returns a list of daily Congressional Records filtered by the specified volume number and specified issue number.",
+          "request": {
+            "name": "Returns a list of daily Congressional Records filtered by the specified volume number and specified issue number.",
+            "description": {
+              "content": "Returns a list of daily Congressional Records filtered by the specified volume number and specified issue number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "daily-congressional-record",
+                ":volumeNumber",
+                ":issueNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "volumeNumber",
+                  "description": "(Required) The specified volume of the daily Congressional record, for example 166."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issueNumber",
+                  "description": "(Required) The specified issue of the daily Congressional record, for example 153."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11750988-ab0d-4cad-b297-dcb1fe7780b0",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daily-congressional-record",
+                    ":volumeNumber",
+                    ":issueNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "volumeNumber",
+                      "description": "(Required) The specified volume of the daily Congressional record, for example 166."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issueNumber",
+                      "description": "(Required) The specified issue of the daily Congressional record, for example 153."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"issue\": {\n    \"congress\": 119,\n    \"fullIssue\": {\n      \"articles\": {\n        \"count\": 315,\n        \"url\": \"https://api.congress.gov/v3/daily-congressional-record/171/1/articles?format=json\"\n      },\n      \"entireIssue\": [\n        {\n          \"part\": \"1\",\n          \"type\": \"PDF\",\n          \"url\": \"https://www.congress.gov/119/crec/2025/01/03/171/1/CREC-2025-01-03-v171.pdf\"\n        },\n        {\n          \"part\": \"1\",\n          \"type\": \"PDF\",\n          \"url\": \"https://www.congress.gov/119/crec/2025/01/03/171/1/CREC-2025-01-03-v171.pdf\"\n        }\n      ],\n      \"sections\": [\n        {\n          \"endPage\": \"D12\",\n          \"name\": \"Daily Digest\",\n          \"startPage\": \"D1\",\n          \"text\": [\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/119/crec/2025/01/03/d03ja5-1.htm\"\n            },\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/119/crec/2025/01/03/d03ja5-1.htm\"\n            }\n          ]\n        },\n        {\n          \"endPage\": \"D12\",\n          \"name\": \"Daily Digest\",\n          \"startPage\": \"D1\",\n          \"text\": [\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/119/crec/2025/01/03/d03ja5-1.htm\"\n            },\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/119/crec/2025/01/03/d03ja5-1.htm\"\n            }\n          ]\n        }\n      ]\n    },\n    \"issueDate\": \"2025-01-03T05:00:00Z\",\n    \"issueNumber\": \"1\",\n    \"sessionNumber\": 1,\n    \"updateDate\": \"2025-01-04T16:59:21Z\",\n    \"url\": \"https://api.congress.gov/v3/daily-congressional-record/171/1?format=json\",\n    \"volumeNumber\": 171\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c8cd9b4-4980-4156-8464-0fc62f4a9876",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daily-congressional-record",
+                    ":volumeNumber",
+                    ":issueNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "volumeNumber",
+                      "description": "(Required) The specified volume of the daily Congressional record, for example 166."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issueNumber",
+                      "description": "(Required) The specified issue of the daily Congressional record, for example 153."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5417ee6-792a-4e70-b253-e9886ffb81a3",
+          "name": "Returns a list of daily Congressional Record articles filtered by the specified volume number and specified issue number.",
+          "request": {
+            "name": "Returns a list of daily Congressional Record articles filtered by the specified volume number and specified issue number.",
+            "description": {
+              "content": "Returns a list of daily Congressional Record articles filtered by the specified volume number and specified issue number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "daily-congressional-record",
+                ":volumeNumber",
+                ":issueNumber",
+                "articles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "volumeNumber",
+                  "description": "(Required) The specified volume of the daily Congressional record, for example 166."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issueNumber",
+                  "description": "(Required) The specified issue of the daily Congressional record, for example 153."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9459c62d-6826-4e00-8aa5-8db4960e6277",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daily-congressional-record",
+                    ":volumeNumber",
+                    ":issueNumber",
+                    "articles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "volumeNumber",
+                      "description": "(Required) The specified volume of the daily Congressional record, for example 166."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issueNumber",
+                      "description": "(Required) The specified issue of the daily Congressional record, for example 153."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"articles\": [\n    {\n      \"name\": \"Daily Digest\",\n      \"sectionArticles\": [\n        {\n          \"endPage\": \"D760\",\n          \"startPage\": \"D759\",\n          \"text\": [\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm\"\n            },\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm\"\n            }\n          ],\n          \"title\": \"Daily Digest/Next Meeting of the SENATE + Next Meeting of the HOUSE OF REPRESENTATIVES + Other End Matter; Congressional Record Vol. 166, No. 153\"\n        },\n        {\n          \"endPage\": \"D760\",\n          \"startPage\": \"D759\",\n          \"text\": [\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm\"\n            },\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm\"\n            }\n          ],\n          \"title\": \"Daily Digest/Next Meeting of the SENATE + Next Meeting of the HOUSE OF REPRESENTATIVES + Other End Matter; Congressional Record Vol. 166, No. 153\"\n        }\n      ]\n    },\n    {\n      \"name\": \"Daily Digest\",\n      \"sectionArticles\": [\n        {\n          \"endPage\": \"D760\",\n          \"startPage\": \"D759\",\n          \"text\": [\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm\"\n            },\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm\"\n            }\n          ],\n          \"title\": \"Daily Digest/Next Meeting of the SENATE + Next Meeting of the HOUSE OF REPRESENTATIVES + Other End Matter; Congressional Record Vol. 166, No. 153\"\n        },\n        {\n          \"endPage\": \"D760\",\n          \"startPage\": \"D759\",\n          \"text\": [\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm\"\n            },\n            {\n              \"type\": \"Formatted Text\",\n              \"url\": \"https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm\"\n            }\n          ],\n          \"title\": \"Daily Digest/Next Meeting of the SENATE + Next Meeting of the HOUSE OF REPRESENTATIVES + Other End Matter; Congressional Record Vol. 166, No. 153\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1758de95-1a12-4646-96a1-1e52cff687ac",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "daily-congressional-record",
+                    ":volumeNumber",
+                    ":issueNumber",
+                    "articles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "volumeNumber",
+                      "description": "(Required) The specified volume of the daily Congressional record, for example 166."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issueNumber",
+                      "description": "(Required) The specified issue of the daily Congressional record, for example 153."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ae01953c-c0d3-43f8-903c-fb9105ff658c",
+    "name": "Congress.gov amendments daily-congressional-record API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

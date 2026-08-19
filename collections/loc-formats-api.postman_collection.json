@@ -1,0 +1,1141 @@
+{
+  "item": [
+    {
+      "id": "31a14454-0e0e-4890-bf6c-e77024d02ca5",
+      "name": "formats",
+      "description": {
+        "content": "Browse items by format type",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64de59da-c3c0-4e43-aa48-734af2bd1d12",
+          "name": "Browse audio recordings",
+          "request": {
+            "name": "Browse audio recordings",
+            "description": {
+              "content": "Returns items in the Audio Recordings format from loc.gov digital collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audio",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "at",
+                  "value": "<string>",
+                  "description": "Limit response to specific attribute(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b826e133-844d-4b39-a19c-27eab1121663",
+              "name": "List of audio recording items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audio",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "at",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 9859,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 5415,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 2164,\n    \"current\": 5099,\n    \"from\": 2261,\n    \"last\": 9514,\n    \"next\": \"string\",\n    \"of\": 3158,\n    \"perpage\": 3342,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 3447\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 405,\n      \"item\": {\n        \"key_0\": 3394,\n        \"key_1\": \"string\"\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 9261,\n      \"item\": {\n        \"key_0\": 5868.974735462648,\n        \"key_1\": \"string\",\n        \"key_2\": false,\n        \"key_3\": false\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "668b32a2-7c92-4d46-846e-bcc9642d3a2b",
+          "name": "Browse books and printed materials",
+          "request": {
+            "name": "Browse books and printed materials",
+            "description": {
+              "content": "Returns items in the Books/Printed Material format from loc.gov digital collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "books",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "at",
+                  "value": "<string>",
+                  "description": "Limit response to specific attribute(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2cebd8d9-0783-44d0-8611-77d588c933e4",
+              "name": "List of book and printed material items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "at",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 4272,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 2726,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 3181,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 8829,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"count\": 9622,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 1207,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 7304,\n    \"current\": 4457,\n    \"from\": 6356,\n    \"last\": 7670,\n    \"next\": \"string\",\n    \"of\": 7951,\n    \"perpage\": 9277,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 7317\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 6647,\n      \"item\": {\n        \"key_0\": \"string\",\n        \"key_1\": 4866\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 500,\n      \"item\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 8156\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84582c2c-1b22-48df-a0c5-ec327be2ca55",
+          "name": "Browse films and videos",
+          "request": {
+            "name": "Browse films and videos",
+            "description": {
+              "content": "Returns items in the Films/Videos format from loc.gov digital collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "film-and-videos",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "at",
+                  "value": "<string>",
+                  "description": "Limit response to specific attribute(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4fb98288-375a-4696-b16a-51834003f817",
+              "name": "List of film and video items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "film-and-videos",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "at",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 4272,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 2726,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 3181,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 8829,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"count\": 9622,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 1207,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 7304,\n    \"current\": 4457,\n    \"from\": 6356,\n    \"last\": 7670,\n    \"next\": \"string\",\n    \"of\": 7951,\n    \"perpage\": 9277,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 7317\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 6647,\n      \"item\": {\n        \"key_0\": \"string\",\n        \"key_1\": 4866\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 500,\n      \"item\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 8156\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3dc88a8d-3155-469d-9a3b-b4932f654510",
+          "name": "Browse manuscripts and mixed materials",
+          "request": {
+            "name": "Browse manuscripts and mixed materials",
+            "description": {
+              "content": "Returns items in the Manuscripts/Mixed Material format from loc.gov digital collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "manuscripts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7255d7e5-efe7-4202-8a2a-e9fb8bcff5d8",
+              "name": "List of manuscript items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "manuscripts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 4272,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 2726,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 3181,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 8829,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"count\": 9622,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 1207,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 7304,\n    \"current\": 4457,\n    \"from\": 6356,\n    \"last\": 7670,\n    \"next\": \"string\",\n    \"of\": 7951,\n    \"perpage\": 9277,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 7317\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 6647,\n      \"item\": {\n        \"key_0\": \"string\",\n        \"key_1\": 4866\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 500,\n      \"item\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 8156\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e44fa6e1-c354-4ff4-b5e1-59b9d7ab01b3",
+          "name": "Browse maps",
+          "request": {
+            "name": "Browse maps",
+            "description": {
+              "content": "Returns items in the Maps format from loc.gov digital collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "maps",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d06824e4-8d29-4147-b5d6-127c87cba71b",
+              "name": "List of map items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "maps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 4272,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 2726,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 3181,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 8829,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"count\": 9622,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 1207,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 7304,\n    \"current\": 4457,\n    \"from\": 6356,\n    \"last\": 7670,\n    \"next\": \"string\",\n    \"of\": 7951,\n    \"perpage\": 9277,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 7317\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 6647,\n      \"item\": {\n        \"key_0\": \"string\",\n        \"key_1\": 4866\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 500,\n      \"item\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 8156\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffe0a888-46d5-440d-9171-7f692df5db3b",
+          "name": "Browse newspapers",
+          "request": {
+            "name": "Browse newspapers",
+            "description": {
+              "content": "Returns items in the Newspapers format from loc.gov digital collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "newspapers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbb03b49-4e00-4989-b156-0613e37ebcfe",
+              "name": "List of newspaper items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "newspapers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 4272,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 2726,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 3181,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 8829,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"count\": 9622,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 1207,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 7304,\n    \"current\": 4457,\n    \"from\": 6356,\n    \"last\": 7670,\n    \"next\": \"string\",\n    \"of\": 7951,\n    \"perpage\": 9277,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 7317\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 6647,\n      \"item\": {\n        \"key_0\": \"string\",\n        \"key_1\": 4866\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 500,\n      \"item\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 8156\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38148af0-3cf9-4958-9a32-5242a8c4e0a3",
+          "name": "Browse photos, prints, and drawings",
+          "request": {
+            "name": "Browse photos, prints, and drawings",
+            "description": {
+              "content": "Returns items in the Photos/Prints/Drawings format from loc.gov digital collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "photos",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b604aed-0cd0-4966-b5d5-5d1194c084d4",
+              "name": "List of photo, print, and drawing items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "photos",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 4272,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 2726,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 3181,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 8829,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"count\": 9622,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 1207,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 7304,\n    \"current\": 4457,\n    \"from\": 6356,\n    \"last\": 7670,\n    \"next\": \"string\",\n    \"of\": 7951,\n    \"perpage\": 9277,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 7317\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 6647,\n      \"item\": {\n        \"key_0\": \"string\",\n        \"key_1\": 4866\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 500,\n      \"item\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 8156\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c54c4812-e024-4f5a-beab-3e40a4c029a4",
+          "name": "Browse printed music and sheet music",
+          "request": {
+            "name": "Browse printed music and sheet music",
+            "description": {
+              "content": "Returns items in the Notated Music (sheet music) format from loc.gov digital collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notated-music",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8e265a6-9ec4-4d12-aa0a-7fd7f818f754",
+              "name": "List of notated music items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notated-music",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 4272,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 2726,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 3181,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 8829,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"count\": 9622,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 1207,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 7304,\n    \"current\": 4457,\n    \"from\": 6356,\n    \"last\": 7670,\n    \"next\": \"string\",\n    \"of\": 7951,\n    \"perpage\": 9277,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 7317\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 6647,\n      \"item\": {\n        \"key_0\": \"string\",\n        \"key_1\": 4866\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 500,\n      \"item\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 8156\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19ce6cfb-1ca7-4167-860f-fe21f03a5a0c",
+          "name": "Browse web archives",
+          "request": {
+            "name": "Browse web archives",
+            "description": {
+              "content": "Returns items in the Web Archives format from loc.gov digital collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web-archives",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1589dbd-4b83-4c76-9e5e-1fd76e9e9c72",
+              "name": "List of web archive items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web-archives",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 4272,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 2726,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 3181,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 8829,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"count\": 9622,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 1207,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 7304,\n    \"current\": 4457,\n    \"from\": 6356,\n    \"last\": 7670,\n    \"next\": \"string\",\n    \"of\": 7951,\n    \"perpage\": 9277,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 7317\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 6647,\n      \"item\": {\n        \"key_0\": \"string\",\n        \"key_1\": 4866\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 500,\n      \"item\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 8156\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fa58fe13-f55d-43e2-8b14-87d6d1abb3b1",
+    "name": "Congress.gov amendments formats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

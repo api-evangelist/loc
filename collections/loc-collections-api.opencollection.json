@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments collections API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all digital collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/collections/",
+            "params": [
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "at",
+                "value": "results",
+                "type": "query",
+                "description": "Limit response to specific attribute(s)"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number for pagination"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns a list of all the digital collections at the Library of Congress. Collections are listed under the results attribute.\n"
+        },
+        {
+          "info": {
+            "name": "Get a specific digital collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/collections/:collectionSlug/",
+            "params": [
+              {
+                "name": "collectionSlug",
+                "value": "civil-war-maps",
+                "type": "path",
+                "description": "URL slug for the collection (kebab-case, e.g., civil-war-maps, baseball-cards, abraham-lincoln-papers)\n"
+              },
+              {
+                "name": "fo",
+                "value": "json",
+                "type": "query",
+                "description": "Output format"
+              },
+              {
+                "name": "at",
+                "value": "",
+                "type": "query",
+                "description": "Limit response to specific attribute(s)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search term to filter collection items"
+              },
+              {
+                "name": "fa",
+                "value": "",
+                "type": "query",
+                "description": "Facet filter"
+              },
+              {
+                "name": "sp",
+                "value": "",
+                "type": "query",
+                "description": "Starting page number for pagination"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns the web presentation of a specified digital collection in JSON format. The collection name must be in kebab-case (e.g., abraham-lincoln-papers or baseball-cards).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,709 @@
+{
+  "item": [
+    {
+      "id": "d1ceb9bb-5fb0-4fa8-aaa6-a29d3d065900",
+      "name": "summaries",
+      "description": {
+        "content": "Returns summaries data from the API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de6838ba-0e98-4ee1-a6a8-7c6aa19045c3",
+          "name": "Returns a list of summaries sorted by date of last update.",
+          "request": {
+            "name": "Returns a list of summaries sorted by date of last update.",
+            "description": {
+              "content": "Returns a list of summaries sorted by date of last update.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "summaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort by update date in Congress.gov. Value can be updateDate+asc or updateDate+desc."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79b00dda-b9a7-48be-8473-5280db7ba218",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actionDate\": \"2007-07-17\",\n    \"actionDesc\": \"Passed Senate\",\n    \"bill\": {\n      \"congress\": 117,\n      \"number\": \"string\",\n      \"originChamber\": \"Senate\",\n      \"originChamberCode\": \"S\",\n      \"title\": \"Pay Our Capitol Police Act\",\n      \"type\": \"HR\",\n      \"updateDateIncludingText\": \"2021-08-08\",\n      \"url\": \"https://api.congress.gov/v3/bill/117/hr/1234?format=json\"\n    },\n    \"currentChamber\": \"Senate\",\n    \"currentChamberCode\": \"S\",\n    \"lastSummaryUpdateDate\": \"2022-02-18T16:38:41Z\",\n    \"text\": \"<p><strong>COVID-19 Medical Production Act</strong></p> <p>This bill provides additional funding for FY2021 to acquire medical supplies, vaccines, and other equipment to combat COVID-19 (i.e., coronavirus disease 2019) using authorities under the Defense Production Act of 1950. That act confers on the President a broad set of authorities to influence domestic industry to provide essential materials and goods for the national defense.</p> <p>This funding is available through FY2025. Beginning in FY2023, it may be used to meet public health needs to address any pathogen determined by the President to have the potential to create a public health emergency.</p>\",\n    \"updateDate\": \"2025-07-06\",\n    \"versionCode\": \"173\"\n  },\n  {\n    \"actionDate\": \"2017-03-30\",\n    \"actionDesc\": \"Passed Senate\",\n    \"bill\": {\n      \"congress\": 117,\n      \"number\": \"string\",\n      \"originChamber\": \"Senate\",\n      \"originChamberCode\": \"S\",\n      \"title\": \"Pay Our Capitol Police Act\",\n      \"type\": \"HR\",\n      \"updateDateIncludingText\": \"2021-08-08\",\n      \"url\": \"https://api.congress.gov/v3/bill/117/hr/1234?format=json\"\n    },\n    \"currentChamber\": \"Senate\",\n    \"currentChamberCode\": \"S\",\n    \"lastSummaryUpdateDate\": \"2022-02-18T16:38:41Z\",\n    \"text\": \"<p><strong>COVID-19 Medical Production Act</strong></p> <p>This bill provides additional funding for FY2021 to acquire medical supplies, vaccines, and other equipment to combat COVID-19 (i.e., coronavirus disease 2019) using authorities under the Defense Production Act of 1950. That act confers on the President a broad set of authorities to influence domestic industry to provide essential materials and goods for the national defense.</p> <p>This funding is available through FY2025. Beginning in FY2023, it may be used to meet public health needs to address any pathogen determined by the President to have the potential to create a public health emergency.</p>\",\n    \"updateDate\": \"2013-03-30\",\n    \"versionCode\": \"173\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c8dd074-9dc1-4eea-b715-251fb3ac9a5d",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffb33df4-7b90-410b-a9c3-bf19e32113e8",
+          "name": "Returns a list of summaries filtered by congress, sorted by date of last update.",
+          "request": {
+            "name": "Returns a list of summaries filtered by congress, sorted by date of last update.",
+            "description": {
+              "content": "Returns a list of summaries filtered by congress, sorted by date of last update.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "summaries",
+                ":congress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort by update date in Congress.gov. Value can be updateDate+asc or updateDate+desc."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecd637bd-3360-4c54-8cc3-dcb68b7d8281",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summaries",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actionDate\": \"1958-08-26\",\n    \"actionDesc\": \"Passed Senate\",\n    \"bill\": {\n      \"congress\": 117,\n      \"number\": \"string\",\n      \"originChamber\": \"Senate\",\n      \"originChamberCode\": \"S\",\n      \"title\": \"Pay Our Capitol Police Act\",\n      \"type\": \"HR\",\n      \"updateDateIncludingText\": \"2021-08-08\",\n      \"url\": \"https://api.congress.gov/v3/bill/117/hr/1234?format=json\"\n    },\n    \"currentChamber\": \"Senate\",\n    \"currentChamberCode\": \"S\",\n    \"lastSummaryUpdateDate\": \"2022-02-18T16:38:41Z\",\n    \"text\": \"<p><strong>COVID-19 Medical Production Act</strong></p> <p>This bill provides additional funding for FY2021 to acquire medical supplies, vaccines, and other equipment to combat COVID-19 (i.e., coronavirus disease 2019) using authorities under the Defense Production Act of 1950. That act confers on the President a broad set of authorities to influence domestic industry to provide essential materials and goods for the national defense.</p> <p>This funding is available through FY2025. Beginning in FY2023, it may be used to meet public health needs to address any pathogen determined by the President to have the potential to create a public health emergency.</p>\",\n    \"updateDate\": \"1960-01-16\",\n    \"versionCode\": \"173\"\n  },\n  {\n    \"actionDate\": \"2010-08-24\",\n    \"actionDesc\": \"Passed Senate\",\n    \"bill\": {\n      \"congress\": 117,\n      \"number\": \"string\",\n      \"originChamber\": \"Senate\",\n      \"originChamberCode\": \"S\",\n      \"title\": \"Pay Our Capitol Police Act\",\n      \"type\": \"HR\",\n      \"updateDateIncludingText\": \"2021-08-08\",\n      \"url\": \"https://api.congress.gov/v3/bill/117/hr/1234?format=json\"\n    },\n    \"currentChamber\": \"Senate\",\n    \"currentChamberCode\": \"S\",\n    \"lastSummaryUpdateDate\": \"2022-02-18T16:38:41Z\",\n    \"text\": \"<p><strong>COVID-19 Medical Production Act</strong></p> <p>This bill provides additional funding for FY2021 to acquire medical supplies, vaccines, and other equipment to combat COVID-19 (i.e., coronavirus disease 2019) using authorities under the Defense Production Act of 1950. That act confers on the President a broad set of authorities to influence domestic industry to provide essential materials and goods for the national defense.</p> <p>This funding is available through FY2025. Beginning in FY2023, it may be used to meet public health needs to address any pathogen determined by the President to have the potential to create a public health emergency.</p>\",\n    \"updateDate\": \"1971-04-19\",\n    \"versionCode\": \"173\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cae781f-a8a5-447e-b406-51d6d4820e6c",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summaries",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b9a883a-bc42-47c1-a07b-de0769770949",
+          "name": "Returns a list of summaries filtered by congress and by bill type, sorted by date of last update.",
+          "request": {
+            "name": "Returns a list of summaries filtered by congress and by bill type, sorted by date of last update.",
+            "description": {
+              "content": "Returns a list of summaries filtered by congress and by bill type, sorted by date of last update.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "summaries",
+                ":congress",
+                ":billType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort by update date in Congress.gov. Value can be updateDate+asc or updateDate+desc."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "billType",
+                  "description": "(Required) The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32e3733d-8a37-44f0-8e71-79ff45bf955a",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summaries",
+                    ":congress",
+                    ":billType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billType",
+                      "description": "(Required) The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"actionDate\": \"1958-08-26\",\n    \"actionDesc\": \"Passed Senate\",\n    \"bill\": {\n      \"congress\": 117,\n      \"number\": \"string\",\n      \"originChamber\": \"Senate\",\n      \"originChamberCode\": \"S\",\n      \"title\": \"Pay Our Capitol Police Act\",\n      \"type\": \"HR\",\n      \"updateDateIncludingText\": \"2021-08-08\",\n      \"url\": \"https://api.congress.gov/v3/bill/117/hr/1234?format=json\"\n    },\n    \"currentChamber\": \"Senate\",\n    \"currentChamberCode\": \"S\",\n    \"lastSummaryUpdateDate\": \"2022-02-18T16:38:41Z\",\n    \"text\": \"<p><strong>COVID-19 Medical Production Act</strong></p> <p>This bill provides additional funding for FY2021 to acquire medical supplies, vaccines, and other equipment to combat COVID-19 (i.e., coronavirus disease 2019) using authorities under the Defense Production Act of 1950. That act confers on the President a broad set of authorities to influence domestic industry to provide essential materials and goods for the national defense.</p> <p>This funding is available through FY2025. Beginning in FY2023, it may be used to meet public health needs to address any pathogen determined by the President to have the potential to create a public health emergency.</p>\",\n    \"updateDate\": \"1960-01-16\",\n    \"versionCode\": \"173\"\n  },\n  {\n    \"actionDate\": \"2010-08-24\",\n    \"actionDesc\": \"Passed Senate\",\n    \"bill\": {\n      \"congress\": 117,\n      \"number\": \"string\",\n      \"originChamber\": \"Senate\",\n      \"originChamberCode\": \"S\",\n      \"title\": \"Pay Our Capitol Police Act\",\n      \"type\": \"HR\",\n      \"updateDateIncludingText\": \"2021-08-08\",\n      \"url\": \"https://api.congress.gov/v3/bill/117/hr/1234?format=json\"\n    },\n    \"currentChamber\": \"Senate\",\n    \"currentChamberCode\": \"S\",\n    \"lastSummaryUpdateDate\": \"2022-02-18T16:38:41Z\",\n    \"text\": \"<p><strong>COVID-19 Medical Production Act</strong></p> <p>This bill provides additional funding for FY2021 to acquire medical supplies, vaccines, and other equipment to combat COVID-19 (i.e., coronavirus disease 2019) using authorities under the Defense Production Act of 1950. That act confers on the President a broad set of authorities to influence domestic industry to provide essential materials and goods for the national defense.</p> <p>This funding is available through FY2025. Beginning in FY2023, it may be used to meet public health needs to address any pathogen determined by the President to have the potential to create a public health emergency.</p>\",\n    \"updateDate\": \"1971-04-19\",\n    \"versionCode\": \"173\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db14f485-1ee1-455e-a10a-d05b7c87d33f",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summaries",
+                    ":congress",
+                    ":billType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "billType",
+                      "description": "(Required) The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7ffdf698-5133-4a01-a062-d77ff9c71f2d",
+    "name": "Congress.gov amendments summaries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

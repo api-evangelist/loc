@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments crsreport API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "crsreport",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns Congressional Research Service (CRS) report data from the API",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/crsreport",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns Congressional Research Service (CRS) report data from the API"
+        },
+        {
+          "info": {
+            "name": "Returns Congressional Research Service (CRS) report data from the API",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/crsreport/:reportNumber",
+            "params": [
+              {
+                "name": "reportNumber",
+                "value": "",
+                "type": "path",
+                "description": "The number or ID of the report. For example, R47175."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              }
+            ]
+          },
+          "docs": "Returns Congressional Research Service (CRS) report data from the API"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

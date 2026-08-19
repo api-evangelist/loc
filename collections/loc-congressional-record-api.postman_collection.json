@@ -1,0 +1,243 @@
+{
+  "item": [
+    {
+      "id": "fb57178d-efa7-47c9-af56-6a81775f8cd9",
+      "name": "congressional-record",
+      "description": {
+        "content": "Returns Congressional Record data from the API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30c7581b-b77f-4a9c-9f4d-8176de146060",
+          "name": "Returns a list of congressional record issues sorted by most recent.",
+          "request": {
+            "name": "Returns a list of congressional record issues sorted by most recent.",
+            "description": {
+              "content": "Returns a list of congressional record issues sorted by most recent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "congressional-record"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "y",
+                  "value": "<integer>",
+                  "description": "The year the issue was published. For example, the value can be 2022."
+                },
+                {
+                  "disabled": false,
+                  "key": "m",
+                  "value": "<integer>",
+                  "description": "The month the issue was published. For example, the value can be 6."
+                },
+                {
+                  "disabled": false,
+                  "key": "d",
+                  "value": "<integer>",
+                  "description": "The day the issue was published. For example, the value can be 28."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c160bca4-dee1-47a8-9e0e-e5278a32c47a",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "congressional-record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "y",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "m",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "d",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"IndexStart\": 1,\n  \"Issues\": [\n    {\n      \"Congress\": \"117\",\n      \"Id\": 26958,\n      \"Issue\": \"109\",\n      \"Links\": {\n        \"Digest\": {\n          \"Label\": \"Daily Digest\",\n          \"Ordinal\": 1,\n          \"PDF\": [\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-dailydigest.pdf\"\n            },\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-dailydigest.pdf\"\n            }\n          ]\n        },\n        \"FullRecord\": {\n          \"Label\": \"Entire Issue\",\n          \"Ordinal\": 5,\n          \"PDF\": [\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28.pdf\"\n            },\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28.pdf\"\n            }\n          ]\n        },\n        \"House\": {\n          \"Label\": \"House Section\",\n          \"Ordinal\": 3,\n          \"PDF\": [\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-house.pdf\"\n            },\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-house.pdf\"\n            }\n          ]\n        },\n        \"Remarks\": {\n          \"Label\": \"Extensions of Remarks Section\",\n          \"Ordinal\": 4,\n          \"PDF\": [\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-extensions.pdf\"\n            },\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-extensions.pdf\"\n            }\n          ]\n        },\n        \"Senate\": {\n          \"Label\": \"Senate Section\",\n          \"Ordinal\": 2,\n          \"PDF\": [\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-senate.pdf\"\n            },\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-senate.pdf\"\n            }\n          ]\n        }\n      },\n      \"PublishDate\": \"2022-02-18\",\n      \"Session\": \"2\",\n      \"Volume\": \"168\"\n    },\n    {\n      \"Congress\": \"117\",\n      \"Id\": 26958,\n      \"Issue\": \"109\",\n      \"Links\": {\n        \"Digest\": {\n          \"Label\": \"Daily Digest\",\n          \"Ordinal\": 1,\n          \"PDF\": [\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-dailydigest.pdf\"\n            },\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-dailydigest.pdf\"\n            }\n          ]\n        },\n        \"FullRecord\": {\n          \"Label\": \"Entire Issue\",\n          \"Ordinal\": 5,\n          \"PDF\": [\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28.pdf\"\n            },\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28.pdf\"\n            }\n          ]\n        },\n        \"House\": {\n          \"Label\": \"House Section\",\n          \"Ordinal\": 3,\n          \"PDF\": [\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-house.pdf\"\n            },\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-house.pdf\"\n            }\n          ]\n        },\n        \"Remarks\": {\n          \"Label\": \"Extensions of Remarks Section\",\n          \"Ordinal\": 4,\n          \"PDF\": [\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-extensions.pdf\"\n            },\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-extensions.pdf\"\n            }\n          ]\n        },\n        \"Senate\": {\n          \"Label\": \"Senate Section\",\n          \"Ordinal\": 2,\n          \"PDF\": [\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-senate.pdf\"\n            },\n            {\n              \"Part\": \"1\",\n              \"Url\": \"https://www.congress.gov/117/crec/2022/06/28/168/109/CREC-2022-06-28-senate.pdf\"\n            }\n          ]\n        }\n      },\n      \"PublishDate\": \"2022-02-18\",\n      \"Session\": \"2\",\n      \"Volume\": \"168\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9875d40f-3fdc-4cab-8a9b-b58b223bab5f",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "congressional-record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "y",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "m",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "d",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "623b3865-19ff-48b1-a2da-31b0592ebc29",
+    "name": "Congress.gov amendments congressional-record API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

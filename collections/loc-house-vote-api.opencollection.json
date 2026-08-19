@@ -1,0 +1,235 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments house-vote API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "house-vote",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns House of Representatives roll call vote data from the API. This endpoint is currently in beta.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/house-vote",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns House of Representatives roll call vote data from the API. This endpoint is currently in beta."
+        },
+        {
+          "info": {
+            "name": "Returns House of Representatives roll call vote data from the API filtered by the specified Congress. This endpoint is currently in beta.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/house-vote/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns House of Representatives roll call vote data from the API filtered by the specified Congress. This endpoint is currently in beta."
+        },
+        {
+          "info": {
+            "name": "Returns House of Representatives roll call vote data from the API filtered by the specified Congress and session. This endpoint is currently in beta.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/house-vote/:congress/:session",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path",
+                "description": "The session number. The value can be 1 or 2."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns House of Representatives roll call vote data from the API filtered by the specified Congress and session. This endpoint is currently in beta."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified House of Representatives roll call vote. This endpoint is currently in beta.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/house-vote/:congress/:session/:voteNumber",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path",
+                "description": "The session number. The value can be 1 or 2."
+              },
+              {
+                "name": "voteNumber",
+                "value": "",
+                "type": "path",
+                "description": "The assigned roll call vote number. For example, 17."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified House of Representatives roll call vote. This endpoint is currently in beta."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for how members voted on a specified House of Representatives roll call vote. This endpoint is currently in beta.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/house-vote/:congress/:session/:voteNumber/members",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path",
+                "description": "The session number. The value can be 1 or 2."
+              },
+              {
+                "name": "voteNumber",
+                "value": "",
+                "type": "path",
+                "description": "The assigned roll call vote number. For example, 17."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for how members voted on a specified House of Representatives roll call vote. This endpoint is currently in beta."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

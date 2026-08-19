@@ -1,0 +1,1040 @@
+{
+  "item": [
+    {
+      "id": "1aeae63c-7834-439d-a0f3-03bb3aec533d",
+      "name": "house-vote",
+      "description": {
+        "content": "[BETA] Returns House of Representatives roll call vote data from the API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b29a4cc-d9b3-4e07-b7af-9eb0486a923c",
+          "name": "Returns House of Representatives roll call vote data from the API. This endpoint is currently in beta.",
+          "request": {
+            "name": "Returns House of Representatives roll call vote data from the API. This endpoint is currently in beta.",
+            "description": {
+              "content": "Returns House of Representatives roll call vote data from the API. This endpoint is currently in beta.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-vote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ee552aa-dd53-406e-9887-6b55a121a1f7",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-vote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"congress\": 119,\n  \"identifier\": 1191202517,\n  \"legislationNumber\": \"30\",\n  \"legislationType\": \"HR\",\n  \"legislationUrl\": \"https://congress.gov/bill/119/house-bill/30\",\n  \"result\": \"Passed\",\n  \"rollCallNumber\": 17,\n  \"sessionNumber\": 1,\n  \"sourceDataURL\": \"https://clerk.house.gov/evs/2025/roll017.xml\",\n  \"startDate\": \"2025-01-16T11:00:00-05:00\",\n  \"updateDate\": \"2025-04-18T08:44:47-04:00\",\n  \"url\": \"https://api.congress.gov/v3/house-vote/119/1/17\",\n  \"voteType\": \"Yea-and-Nay\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0c1f7c5-53c4-4d51-a72e-950d374da8a0",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-vote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4169c2b-d413-4f40-a728-298e0650a429",
+          "name": "Returns House of Representatives roll call vote data from the API filtered by the specified Congress. This endpoint is currently in beta.",
+          "request": {
+            "name": "Returns House of Representatives roll call vote data from the API filtered by the specified Congress. This endpoint is currently in beta.",
+            "description": {
+              "content": "Returns House of Representatives roll call vote data from the API filtered by the specified Congress. This endpoint is currently in beta.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-vote",
+                ":congress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c23f2ac5-d05b-489a-b579-b3d261e5ccee",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-vote",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"congress\": 119,\n  \"identifier\": 1191202517,\n  \"legislationNumber\": \"30\",\n  \"legislationType\": \"HR\",\n  \"legislationUrl\": \"https://congress.gov/bill/119/house-bill/30\",\n  \"result\": \"Passed\",\n  \"rollCallNumber\": 17,\n  \"sessionNumber\": 1,\n  \"sourceDataURL\": \"https://clerk.house.gov/evs/2025/roll017.xml\",\n  \"startDate\": \"2025-01-16T11:00:00-05:00\",\n  \"updateDate\": \"2025-04-18T08:44:47-04:00\",\n  \"url\": \"https://api.congress.gov/v3/house-vote/119/1/17\",\n  \"voteType\": \"Yea-and-Nay\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07762906-7570-4745-b554-eb29b93da8f7",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-vote",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f6ce7e3-ff23-4094-86a6-1aa9a1f8d120",
+          "name": "Returns House of Representatives roll call vote data from the API filtered by the specified Congress and session. This endpoint is currently in beta.",
+          "request": {
+            "name": "Returns House of Representatives roll call vote data from the API filtered by the specified Congress and session. This endpoint is currently in beta.",
+            "description": {
+              "content": "Returns House of Representatives roll call vote data from the API filtered by the specified Congress and session. This endpoint is currently in beta.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-vote",
+                ":congress",
+                ":session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "session",
+                  "description": "(Required) The session number. The value can be 1 or 2."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7bc2e2e2-4475-4ab4-9430-b1001c1f937c",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-vote",
+                    ":congress",
+                    ":session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "session",
+                      "description": "(Required) The session number. The value can be 1 or 2."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"congress\": 119,\n  \"identifier\": 1191202517,\n  \"legislationNumber\": \"30\",\n  \"legislationType\": \"HR\",\n  \"legislationUrl\": \"https://congress.gov/bill/119/house-bill/30\",\n  \"result\": \"Passed\",\n  \"rollCallNumber\": 17,\n  \"sessionNumber\": 1,\n  \"sourceDataURL\": \"https://clerk.house.gov/evs/2025/roll017.xml\",\n  \"startDate\": \"2025-01-16T11:00:00-05:00\",\n  \"updateDate\": \"2025-04-18T08:44:47-04:00\",\n  \"url\": \"https://api.congress.gov/v3/house-vote/119/1/17\",\n  \"voteType\": \"Yea-and-Nay\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6292662-8ed5-44f2-b9c6-069ebff5b357",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-vote",
+                    ":congress",
+                    ":session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "session",
+                      "description": "(Required) The session number. The value can be 1 or 2."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d1b1d40-43cd-47a1-9814-7a5d8b98868d",
+          "name": "Returns detailed information for a specified House of Representatives roll call vote. This endpoint is currently in beta.",
+          "request": {
+            "name": "Returns detailed information for a specified House of Representatives roll call vote. This endpoint is currently in beta.",
+            "description": {
+              "content": "Returns detailed information for a specified House of Representatives roll call vote. This endpoint is currently in beta.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-vote",
+                ":congress",
+                ":session",
+                ":voteNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "session",
+                  "description": "(Required) The session number. The value can be 1 or 2."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "voteNumber",
+                  "description": "(Required) The assigned roll call vote number. For example, 17."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "703e29a1-1acc-4b9d-b600-44ab7e81f5bf",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-vote",
+                    ":congress",
+                    ":session",
+                    ":voteNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "session",
+                      "description": "(Required) The session number. The value can be 1 or 2."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "voteNumber",
+                      "description": "(Required) The assigned roll call vote number. For example, 17."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"congress\": 119,\n  \"identifier\": 1191202517,\n  \"legislationNumber\": \"30\",\n  \"legislationType\": \"HR\",\n  \"legislationUrl\": \"https://congress.gov/bill/119/house-bill/30\",\n  \"result\": \"Passed\",\n  \"rollCallNumber\": 17,\n  \"sessionNumber\": 1,\n  \"sourceDataURL\": \"https://clerk.house.gov/evs/2025/roll017.xml\",\n  \"startDate\": \"2025-01-16T11:00:00-05:00\",\n  \"updateDate\": \"2025-04-18T08:44:47-04:00\",\n  \"voteType\": \"Yea-and-Nay\",\n  \"votePartyTotal\": [\n    {\n      \"nayTotal\": 0,\n      \"notVotingTotal\": 6,\n      \"presentTotal\": 0,\n      \"voteParty\": \"R\",\n      \"yeaTotal\": 213,\n      \"party\": {\n        \"name\": \"Republican\",\n        \"type\": \"R\"\n      }\n    },\n    {\n      \"nayTotal\": 0,\n      \"notVotingTotal\": 6,\n      \"presentTotal\": 0,\n      \"voteParty\": \"R\",\n      \"yeaTotal\": 213,\n      \"party\": {\n        \"name\": \"Republican\",\n        \"type\": \"R\"\n      }\n    }\n  ],\n  \"voteQuestion\": \"On Passage\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d69df8f-8032-414b-b69a-fe7348e301fe",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-vote",
+                    ":congress",
+                    ":session",
+                    ":voteNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "session",
+                      "description": "(Required) The session number. The value can be 1 or 2."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "voteNumber",
+                      "description": "(Required) The assigned roll call vote number. For example, 17."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3955d386-e5ce-4c38-8ed6-69a4ddbbb2fb",
+          "name": "Returns detailed information for how members voted on a specified House of Representatives roll call vote. This endpoint is currently in beta.",
+          "request": {
+            "name": "Returns detailed information for how members voted on a specified House of Representatives roll call vote. This endpoint is currently in beta.",
+            "description": {
+              "content": "Returns detailed information for how members voted on a specified House of Representatives roll call vote. This endpoint is currently in beta.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-vote",
+                ":congress",
+                ":session",
+                ":voteNumber",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "session",
+                  "description": "(Required) The session number. The value can be 1 or 2."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "voteNumber",
+                  "description": "(Required) The assigned roll call vote number. For example, 17."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e66ca9f-8a20-42ad-b850-1861b42a2beb",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-vote",
+                    ":congress",
+                    ":session",
+                    ":voteNumber",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "session",
+                      "description": "(Required) The session number. The value can be 1 or 2."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "voteNumber",
+                      "description": "(Required) The assigned roll call vote number. For example, 17."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"congress\": 119,\n  \"identifier\": 1191202517,\n  \"legislationNumber\": \"30\",\n  \"legislationType\": \"HR\",\n  \"legislationUrl\": \"https://congress.gov/bill/119/house-bill/30\",\n  \"result\": \"Passed\",\n  \"rollCallNumber\": 17,\n  \"sessionNumber\": 1,\n  \"sourceDataURL\": \"https://clerk.house.gov/evs/2025/roll017.xml\",\n  \"startDate\": \"2025-01-16T11:00:00-05:00\",\n  \"updateDate\": \"2025-04-18T08:44:47-04:00\",\n  \"voteType\": \"Yea-and-Nay\",\n  \"results\": [\n    {\n      \"bioguideID\": \"A000055\",\n      \"firstName\": \"Robert\",\n      \"lastName\": \"Aderholt\",\n      \"voteCast\": \"Yea\",\n      \"voteParty\": \"R\",\n      \"voteState\": \"AL\"\n    },\n    {\n      \"bioguideID\": \"A000055\",\n      \"firstName\": \"Robert\",\n      \"lastName\": \"Aderholt\",\n      \"voteCast\": \"Yea\",\n      \"voteParty\": \"R\",\n      \"voteState\": \"AL\"\n    }\n  ],\n  \"voteQuestion\": \"On Passage\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44f4a4dc-455e-41bc-8da2-9e382fafb3b0",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-vote",
+                    ":congress",
+                    ":session",
+                    ":voteNumber",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "session",
+                      "description": "(Required) The session number. The value can be 1 or 2."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "voteNumber",
+                      "description": "(Required) The assigned roll call vote number. For example, 17."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "374b8d4d-1caf-4d79-bbd2-bbfaf11aa07e",
+    "name": "Congress.gov amendments house-vote API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

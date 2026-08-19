@@ -1,0 +1,321 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments treaty API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "treaty",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of treaties sorted by date of last update.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/treaty",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of treaties sorted by date of last update."
+        },
+        {
+          "info": {
+            "name": "Returns a list of treaties for the specified congress, sorted by date of last update.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/treaty/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of treaties for the specified congress, sorted by date of last update."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified treaty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/treaty/:congress/:treatyNumber",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "treatyNumber",
+                "value": "",
+                "type": "path",
+                "description": "The treaty’s assigned number. For example, the value can be 13."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified treaty."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified partitioned treaty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/treaty/:congress/:treatyNumber/:treatySuffix",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "treatyNumber",
+                "value": "",
+                "type": "path",
+                "description": "The treaty’s assigned number. For example, the value can be 13."
+              },
+              {
+                "name": "treatySuffix",
+                "value": "",
+                "type": "path",
+                "description": "The treaty’s partition letter value. For example, the value can be A."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified partitioned treaty."
+        },
+        {
+          "info": {
+            "name": "Returns the list of actions on a specified treaty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/treaty/:congress/:treatyNumber/actions",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "treatyNumber",
+                "value": "",
+                "type": "path",
+                "description": "The treaty’s assigned number. For example, the value can be 13."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of actions on a specified treaty."
+        },
+        {
+          "info": {
+            "name": "Returns the list of actions on a specified partitioned treaty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/treaty/:congress/:treatyNumber/:treatySuffix/actions",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "treatyNumber",
+                "value": "",
+                "type": "path",
+                "description": "The treaty’s assigned number. For example, the value can be 13."
+              },
+              {
+                "name": "treatySuffix",
+                "value": "",
+                "type": "path",
+                "description": "The treaty’s partition letter value. For example, the value can be A."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of actions on a specified partitioned treaty."
+        },
+        {
+          "info": {
+            "name": "Returns the list of committees associated with a specified treaty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/treaty/:congress/:treatyNumber/committees",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "treatyNumber",
+                "value": "",
+                "type": "path",
+                "description": "The treaty’s assigned number. For example, the value can be 13."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of committees associated with a specified treaty."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

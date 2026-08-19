@@ -1,0 +1,782 @@
+{
+  "item": [
+    {
+      "id": "93be5540-431b-4a8d-9215-f4fa6a30db1d",
+      "name": "house-communication",
+      "description": {
+        "content": "Returns House communication data from the API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0b3b993c-62d3-4b8d-b731-13ac6003016c",
+          "name": "Returns a list of House communications.",
+          "request": {
+            "name": "Returns a list of House communications.",
+            "description": {
+              "content": "Returns a list of House communications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-communication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccfc5a54-18ee-4323-a485-55c1a9a5a91b",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-communication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"houseCoummunications\": [\n    {\n      \"chamber\": \"House\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congressNumber\": 117,\n      \"number\": \"2057\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/house-communication/117/ec/2057?format=json\"\n    },\n    {\n      \"chamber\": \"House\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congressNumber\": 117,\n      \"number\": \"2057\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/house-communication/117/ec/2057?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c97a92d-7944-46e3-9640-fd11536ef679",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-communication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c090b5e2-117f-43cd-9af0-2c07fb5baf45",
+          "name": "Returns a list of House communications filtered by the specified congress.",
+          "request": {
+            "name": "Returns a list of House communications filtered by the specified congress.",
+            "description": {
+              "content": "Returns a list of House communications filtered by the specified congress.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-communication",
+                ":congress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2fe10d6d-d18e-4260-9c31-79eb8bc48005",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-communication",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"houseCoummunications\": [\n    {\n      \"chamber\": \"House\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congressNumber\": 117,\n      \"number\": \"2057\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/house-communication/117/ec/2057?format=json\"\n    },\n    {\n      \"chamber\": \"House\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congressNumber\": 117,\n      \"number\": \"2057\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/house-communication/117/ec/2057?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1064e784-ca93-40b4-ad3e-3e01e7715e01",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-communication",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c17c8d71-9d4c-4b16-bf60-7b7721cb910e",
+          "name": "Returns a list of House communications filtered by the specified congress and communication type..",
+          "request": {
+            "name": "Returns a list of House communications filtered by the specified congress and communication type..",
+            "description": {
+              "content": "Returns a list of House communications filtered by the specified congress and communication type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-communication",
+                ":congress",
+                ":communicationType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communicationType",
+                  "description": "(Required) The type of communication. Value can be ec, ml, pm, or pt."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4778e731-85cf-407e-8e97-3dc78e83a7ce",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-communication",
+                    ":congress",
+                    ":communicationType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communicationType",
+                      "description": "(Required) The type of communication. Value can be ec, ml, pm, or pt."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"houseCoummunications\": [\n    {\n      \"chamber\": \"House\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congressNumber\": 117,\n      \"number\": \"2057\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/house-communication/117/ec/2057?format=json\"\n    },\n    {\n      \"chamber\": \"House\",\n      \"communicationType\": {\n        \"code\": \"EC\",\n        \"name\": \"Executive Communication\"\n      },\n      \"congressNumber\": 117,\n      \"number\": \"2057\",\n      \"updateDate\": \"2021-09-01\",\n      \"url\": \"https://api.congress.gov/v3/house-communication/117/ec/2057?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2cb1e9ef-dfac-4efc-87ed-dde4a34fa205",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-communication",
+                    ":congress",
+                    ":communicationType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communicationType",
+                      "description": "(Required) The type of communication. Value can be ec, ml, pm, or pt."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "465d1991-13ed-4eb2-a5ce-d3e47458006b",
+          "name": "Returns a list of House communications filtered by the specified congress and communication type..",
+          "request": {
+            "name": "Returns a list of House communications filtered by the specified congress and communication type..",
+            "description": {
+              "content": "Returns a list of House communications filtered by the specified congress and communication type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "house-communication",
+                ":congress",
+                ":communicationType",
+                ":communicationNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communicationType",
+                  "description": "(Required) The type of communication. Value can be ec, ml, pm, or pt."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "communicationNumber",
+                  "description": "(Required) The communication’s assigned number. For example, the value can be 3324."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c464629-6c45-4081-a3c7-873e7d0e663e",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-communication",
+                    ":congress",
+                    ":communicationType",
+                    ":communicationNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communicationType",
+                      "description": "(Required) The type of communication. Value can be ec, ml, pm, or pt."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "communicationNumber",
+                      "description": "(Required) The communication’s assigned number. For example, the value can be 3324."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"abstract\": \"A letter from the Director, Regulatory Management Division, Environmental Protection Agency, transmitting the Agency's request for applications - Technical Assistance to Brownfields Communities [EPA-I-OLEM-OBLR-22-12] received February 9, 2024, pursuant to 5 U.S.C. 801(a)(1)(A); Public Law 104–121, section 251; (110 Stat. 868); to the Committee on Energy and Commerce.\",\n  \"chamber\": \"House\",\n  \"committees\": [\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\",\n      \"referralDate\": \"2024-03-07\"\n    },\n    {\n      \"name\": \"Investigations and Oversight Subcommittee\",\n      \"systemCode\": \"hspw01\",\n      \"url\": \"https://api.congress.gov/v3/committee/house/hspw01?format=json\",\n      \"referralDate\": \"2024-03-07\"\n    }\n  ],\n  \"communicationType\": {\n    \"code\": \"EC\",\n    \"name\": \"Executive Communication\"\n  },\n  \"congress\": 118,\n  \"congressionalRecordDate\": \"2024-03-07\",\n  \"isRulemaking\": \"True\",\n  \"legalAuthority\": \"5 U.S.C. 801(a)(1)(A); Public Law 104–121, section 251; (110 Stat. 868)\",\n  \"matchingRequirements\": [\n    {\n      \"number\": 8070,\n      \"url\": \"https://api.congress.gov/v3/house-requirement/8070\"\n    },\n    {\n      \"number\": 8070,\n      \"url\": \"https://api.congress.gov/v3/house-requirement/8070\"\n    }\n  ],\n  \"number\": 3324,\n  \"reportNature\": \"The Agency's request for applications - Technical Assistance to Brownfields Communities [EPA-I-OLEM-OBLR-22-12] received February 9, 2024.\",\n  \"sessionNumber\": 2,\n  \"submittingAgency\": \"Environmental Protection Agency\",\n  \"submittingOfficial\": \"Director, Regulatory Management Division\",\n  \"updateDate\": \"2024-09-03\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ead48856-b59f-419b-b556-b1f540e8fc12",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "house-communication",
+                    ":congress",
+                    ":communicationType",
+                    ":communicationNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communicationType",
+                      "description": "(Required) The type of communication. Value can be ec, ml, pm, or pt."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "communicationNumber",
+                      "description": "(Required) The communication’s assigned number. For example, the value can be 3324."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8404e29f-e5b1-40ac-af9b-2ba7c9217ae5",
+    "name": "Congress.gov amendments house-communication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

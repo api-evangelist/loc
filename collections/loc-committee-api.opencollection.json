@@ -1,0 +1,529 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Congress.gov amendments committee API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "committee",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of congressional committees.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of congressional committees."
+        },
+        {
+          "info": {
+            "name": "Returns a list of congressional committees filtered by the specified chamber.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee/:chamber",
+            "params": [
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "path",
+                "description": "The chamber name. Value can be house, senate, or joint."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of congressional committees filtered by the specified chamber."
+        },
+        {
+          "info": {
+            "name": "Returns a list of congressional committees filtered by the specified congress.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee/:congress",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of congressional committees filtered by the specified congress."
+        },
+        {
+          "info": {
+            "name": "Returns a list of congressional committees filtered by the specified congress and chamber.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee/:congress/:chamber",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "path",
+                "description": "The chamber name. Value can be house, senate, or joint."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns a list of congressional committees filtered by the specified congress and chamber."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified congressional committee.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee/:chamber/:committeeCode",
+            "params": [
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "path",
+                "description": "The chamber name. Value can be house, senate, or joint."
+              },
+              {
+                "name": "committeeCode",
+                "value": "",
+                "type": "path",
+                "description": "The committee code. For example, the value can be hspw00."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified congressional committee."
+        },
+        {
+          "info": {
+            "name": "Returns detailed information for a specified congressional committee filtered by the specified Congress.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee/:congress/:chamber/:committeeCode",
+            "params": [
+              {
+                "name": "congress",
+                "value": "",
+                "type": "path",
+                "description": "The congress number. For example, can be 117."
+              },
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "path",
+                "description": "The chamber name. Value can be house, senate, or joint."
+              },
+              {
+                "name": "committeeCode",
+                "value": "",
+                "type": "path",
+                "description": "The committee code. For example, the value can be hspw00."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specified congressional committee filtered by the specified Congress."
+        },
+        {
+          "info": {
+            "name": "Returns the list of legislation associated with the specified congressional committee.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee/:chamber/:committeeCode/bills",
+            "params": [
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "path",
+                "description": "The chamber name. Value can be house, senate, or joint."
+              },
+              {
+                "name": "committeeCode",
+                "value": "",
+                "type": "path",
+                "description": "The committee code. For example, the value can be hspw00."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns the list of legislation associated with the specified congressional committee."
+        },
+        {
+          "info": {
+            "name": "Returns the list of committee reports associated with a specified congressional committee.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee/:chamber/:committeeCode/reports",
+            "params": [
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "path",
+                "description": "The chamber name. Value can be house, senate, or joint."
+              },
+              {
+                "name": "committeeCode",
+                "value": "",
+                "type": "path",
+                "description": "The committee code. For example, the value can be hspw00."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              },
+              {
+                "name": "fromDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              },
+              {
+                "name": "toDateTime",
+                "value": "",
+                "type": "query",
+                "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+              }
+            ]
+          },
+          "docs": "Returns the list of committee reports associated with a specified congressional committee."
+        },
+        {
+          "info": {
+            "name": "Returns the list of nominations associated with a specified congressional committee.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee/:chamber/:committeeCode/nominations",
+            "params": [
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "path",
+                "description": "The chamber name. Value can be house, senate, or joint."
+              },
+              {
+                "name": "committeeCode",
+                "value": "",
+                "type": "path",
+                "description": "The committee code. For example, the value can be hspw00."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of nominations associated with a specified congressional committee."
+        },
+        {
+          "info": {
+            "name": "Returns the list of House communications associated with a specified congressional committee.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee/:chamber/:committeeCode/house-communication",
+            "params": [
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "path",
+                "description": "The chamber name. Value can be house."
+              },
+              {
+                "name": "committeeCode",
+                "value": "",
+                "type": "path",
+                "description": "The committee code. For example, the value can be hspw00."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of House communications associated with a specified congressional committee."
+        },
+        {
+          "info": {
+            "name": "Returns the list of Senate communications associated with a specified congressional committee.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v3/committee/:chamber/:committeeCode/senate-communication",
+            "params": [
+              {
+                "name": "chamber",
+                "value": "",
+                "type": "path",
+                "description": "The chamber name. Value can be senate."
+              },
+              {
+                "name": "committeeCode",
+                "value": "",
+                "type": "path",
+                "description": "The committee code. For example, the value can be hspw00."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The data format. Value can be xml or json."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The starting record returned. 0 is the first record."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned. The maximum limit is 250."
+              }
+            ]
+          },
+          "docs": "Returns the list of Senate communications associated with a specified congressional committee."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

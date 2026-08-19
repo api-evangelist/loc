@@ -1,0 +1,1456 @@
+{
+  "item": [
+    {
+      "id": "f16a9fb2-17cf-4280-b55e-3ce7ca1ec03b",
+      "name": "nomination",
+      "description": {
+        "content": "Returns nomination data from the API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c038f9e2-9458-433e-ab12-7a36580ac177",
+          "name": "Returns a list of nominations sorted by date received from the President.",
+          "request": {
+            "name": "Returns a list of nominations sorted by date received from the President.",
+            "description": {
+              "content": "Returns a list of nominations sorted by date received from the President.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nomination"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9cfb44a-966b-4fdd-82e4-aab58e670509",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nominations\": [\n    {\n      \"citation\": \"PN2804\",\n      \"congress\": 117,\n      \"description\": \"Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years, vice Maria Rosario Jackson, resigned.\",\n      \"latestAction\": {\n        \"actionDate\": \"2022-12-07\",\n        \"text\": \"Received in the Senate and referred to the Committee on Armed Services.\"\n      },\n      \"nominationType\": {\n        \"isCivilian\": false,\n        \"isMilitary\": true\n      },\n      \"number\": 2804,\n      \"organization\": \"Army\",\n      \"partNumber\": \"00\",\n      \"receivedDate\": \"2022-12-07\",\n      \"updateDate\": \"2022-12-08T05:25:17Z\",\n      \"url\": \"https://api.congress.gov/v3/nomination/117/2804?format=json\"\n    },\n    {\n      \"citation\": \"PN2804\",\n      \"congress\": 117,\n      \"description\": \"Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years, vice Maria Rosario Jackson, resigned.\",\n      \"latestAction\": {\n        \"actionDate\": \"2022-12-07\",\n        \"text\": \"Received in the Senate and referred to the Committee on Armed Services.\"\n      },\n      \"nominationType\": {\n        \"isCivilian\": false,\n        \"isMilitary\": true\n      },\n      \"number\": 2804,\n      \"organization\": \"Army\",\n      \"partNumber\": \"00\",\n      \"receivedDate\": \"2022-12-07\",\n      \"updateDate\": \"2022-12-08T05:25:17Z\",\n      \"url\": \"https://api.congress.gov/v3/nomination/117/2804?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26d9d589-46c9-4c7e-93a0-72b92bfa9134",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2f4061e-2242-4b0d-b066-8a309e2df797",
+          "name": "Returns a list of nominations filtered by the specified congress and sorted by date received from the President.",
+          "request": {
+            "name": "Returns a list of nominations filtered by the specified congress and sorted by date received from the President.",
+            "description": {
+              "content": "Returns a list of nominations filtered by the specified congress and sorted by date received from the President.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nomination",
+                ":congress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDateTime",
+                  "value": "<string>",
+                  "description": "The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                },
+                {
+                  "disabled": false,
+                  "key": "toDateTime",
+                  "value": "<string>",
+                  "description": "The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e930767c-4182-446a-9102-c4093d8f356c",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nominations\": [\n    {\n      \"citation\": \"PN2804\",\n      \"congress\": 117,\n      \"description\": \"Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years, vice Maria Rosario Jackson, resigned.\",\n      \"latestAction\": {\n        \"actionDate\": \"2022-12-07\",\n        \"text\": \"Received in the Senate and referred to the Committee on Armed Services.\"\n      },\n      \"nominationType\": {\n        \"isCivilian\": false,\n        \"isMilitary\": true\n      },\n      \"number\": 2804,\n      \"organization\": \"Army\",\n      \"partNumber\": \"00\",\n      \"receivedDate\": \"2022-12-07\",\n      \"updateDate\": \"2022-12-08T05:25:17Z\",\n      \"url\": \"https://api.congress.gov/v3/nomination/117/2804?format=json\"\n    },\n    {\n      \"citation\": \"PN2804\",\n      \"congress\": 117,\n      \"description\": \"Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years, vice Maria Rosario Jackson, resigned.\",\n      \"latestAction\": {\n        \"actionDate\": \"2022-12-07\",\n        \"text\": \"Received in the Senate and referred to the Committee on Armed Services.\"\n      },\n      \"nominationType\": {\n        \"isCivilian\": false,\n        \"isMilitary\": true\n      },\n      \"number\": 2804,\n      \"organization\": \"Army\",\n      \"partNumber\": \"00\",\n      \"receivedDate\": \"2022-12-07\",\n      \"updateDate\": \"2022-12-08T05:25:17Z\",\n      \"url\": \"https://api.congress.gov/v3/nomination/117/2804?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf19ff12-687f-439b-8d24-d3bcdb84ea01",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fromDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "toDateTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "093ba687-01ff-4fba-8ba4-976c75155471",
+          "name": "Returns detailed information for a specified nomination.",
+          "request": {
+            "name": "Returns detailed information for a specified nomination.",
+            "description": {
+              "content": "Returns detailed information for a specified nomination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nomination",
+                ":congress",
+                ":nominationNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "nominationNumber",
+                  "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61aea4c9-7693-48b1-b09a-b12b8206f7f8",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress",
+                    ":nominationNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nominationNumber",
+                      "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nomination\": {\n    \"actions\": {\n      \"count\": 7,\n      \"url\": \"https://api.congress.gov/v3/nomination/118/16/actions?format=json\"\n    },\n    \"authorityDate\": \"2025-10-21\",\n    \"citation\": \"PN16\",\n    \"committees\": {\n      \"count\": 1,\n      \"url\": \"https://api.congress.gov/v3/nomination/118/16/committees?format=json\"\n    },\n    \"congress\": 118,\n    \"description\": \"Daniel B. Maffei, of New York, to be a Federal Maritime Commissioner for a term expiring June 30, 2027.  (Reappointment)\",\n    \"hearings\": {\n      \"count\": 1,\n      \"url\": \"https://api.congress.gov/v3/nomination/118/16/hearings?format=json\"\n    },\n    \"latestAction\": {\n      \"actionDate\": \"2024-05-14\",\n      \"text\": \"Confirmed by the Senate by Voice Vote.\"\n    },\n    \"nominationType\": {\n      \"isCivilian\": false,\n      \"isMilitary\": true\n    },\n    \"nominees\": [\n      {\n        \"nomineeCount\": 1,\n        \"ordinal\": 1,\n        \"organization\": \"Federal Maritime Commission\",\n        \"positionTitle\": \"Federal Maritime Commissioner\",\n        \"url\": \"https://api.congress.gov/v3/nomination/118/16/1?format=json\"\n      },\n      {\n        \"nomineeCount\": 1,\n        \"ordinal\": 1,\n        \"organization\": \"Federal Maritime Commission\",\n        \"positionTitle\": \"Federal Maritime Commissioner\",\n        \"url\": \"https://api.congress.gov/v3/nomination/118/16/1?format=json\"\n      }\n    ],\n    \"number\": 16,\n    \"partNumber\": \"00\",\n    \"receivedDate\": \"2023-01-03\",\n    \"updateDate\": \"2025-10-22T15:58:44Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dfa691f7-732b-4f21-baba-d05f5ddf2623",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress",
+                    ":nominationNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nominationNumber",
+                      "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf96c643-4125-4ad1-8576-8d954e307f9a",
+          "name": "Returns the list nominees for a position within the nomination.",
+          "request": {
+            "name": "Returns the list nominees for a position within the nomination.",
+            "description": {
+              "content": "Returns the list nominees for a position within the nomination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nomination",
+                ":congress",
+                ":nominationNumber",
+                ":ordinal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "nominationNumber",
+                  "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ordinal",
+                  "description": "(Required) The ordinal number. For example, the value can be 1"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e691600-6b7e-46d4-ad19-d280b727954b",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress",
+                    ":nominationNumber",
+                    ":ordinal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nominationNumber",
+                      "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ordinal",
+                      "description": "(Required) The ordinal number. For example, the value can be 1"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nominees\": [\n    {\n      \"nomineeCount\": 1,\n      \"ordinal\": 1,\n      \"organization\": \"Federal Maritime Commission\",\n      \"positionTitle\": \"Federal Maritime Commissioner\",\n      \"url\": \"https://api.congress.gov/v3/nomination/118/16/1?format=json\"\n    },\n    {\n      \"nomineeCount\": 1,\n      \"ordinal\": 1,\n      \"organization\": \"Federal Maritime Commission\",\n      \"positionTitle\": \"Federal Maritime Commissioner\",\n      \"url\": \"https://api.congress.gov/v3/nomination/118/16/1?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddc34372-edb3-4549-8e20-63512404b876",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress",
+                    ":nominationNumber",
+                    ":ordinal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nominationNumber",
+                      "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ordinal",
+                      "description": "(Required) The ordinal number. For example, the value can be 1"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d66ee4d0-6b19-41c5-8fff-a4fb540d916e",
+          "name": "Returns the list of actions on a specified nomination.",
+          "request": {
+            "name": "Returns the list of actions on a specified nomination.",
+            "description": {
+              "content": "Returns the list of actions on a specified nomination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nomination",
+                ":congress",
+                ":nominationNumber",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "nominationNumber",
+                  "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0c5cbd8-03f5-4ab8-aba3-6e8b4f389487",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress",
+                    ":nominationNumber",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nominationNumber",
+                      "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"actionCode\": \"S05120\",\n      \"actionDate\": \"2022-08-03\",\n      \"committees\": [\n        {\n          \"name\": \"Armed Services Committee\",\n          \"systemCode\": \"ssas00\",\n          \"url\": \"https://api.congress.gov/v3/committee/senate/ssas00?format=json\"\n        },\n        {\n          \"name\": \"Armed Services Committee\",\n          \"systemCode\": \"ssas00\",\n          \"url\": \"https://api.congress.gov/v3/committee/senate/ssas00?format=json\"\n        }\n      ],\n      \"text\": \"Received in the Senate and referred to the Committee on Armed Services\",\n      \"type\": \"IntroReferral\"\n    },\n    {\n      \"actionCode\": \"S05120\",\n      \"actionDate\": \"2022-08-03\",\n      \"committees\": [\n        {\n          \"name\": \"Armed Services Committee\",\n          \"systemCode\": \"ssas00\",\n          \"url\": \"https://api.congress.gov/v3/committee/senate/ssas00?format=json\"\n        },\n        {\n          \"name\": \"Armed Services Committee\",\n          \"systemCode\": \"ssas00\",\n          \"url\": \"https://api.congress.gov/v3/committee/senate/ssas00?format=json\"\n        }\n      ],\n      \"text\": \"Received in the Senate and referred to the Committee on Armed Services\",\n      \"type\": \"IntroReferral\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a063047-ebec-437c-803c-8ee1aa3e868e",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress",
+                    ":nominationNumber",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nominationNumber",
+                      "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89267753-294b-4595-80a0-69396d0f0665",
+          "name": "Returns the list of committees associated with a specified nomination.",
+          "request": {
+            "name": "Returns the list of committees associated with a specified nomination.",
+            "description": {
+              "content": "Returns the list of committees associated with a specified nomination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nomination",
+                ":congress",
+                ":nominationNumber",
+                "committees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "nominationNumber",
+                  "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0d401d6-2fa0-4b73-bf3d-9b68c5a7d92b",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress",
+                    ":nominationNumber",
+                    "committees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nominationNumber",
+                      "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"committees\": [\n    {\n      \"activities\": [\n        {\n          \"date\": \"2019-01-01\",\n          \"name\": \"Reported By\"\n        },\n        {\n          \"date\": \"2019-01-01\",\n          \"name\": \"Reported By\"\n        }\n      ],\n      \"chamber\": \"Senate\",\n      \"name\": \"Judiciary Committee\",\n      \"systemCode\": \"ssju00\",\n      \"type\": \"Standing\",\n      \"url\": \"https://api.congress.gov/v3/committee/senate/ssju00?format=json\"\n    },\n    {\n      \"activities\": [\n        {\n          \"date\": \"2019-01-01\",\n          \"name\": \"Reported By\"\n        },\n        {\n          \"date\": \"2019-01-01\",\n          \"name\": \"Reported By\"\n        }\n      ],\n      \"chamber\": \"Senate\",\n      \"name\": \"Judiciary Committee\",\n      \"systemCode\": \"ssju00\",\n      \"type\": \"Standing\",\n      \"url\": \"https://api.congress.gov/v3/committee/senate/ssju00?format=json\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58c435fb-c207-434a-8b6f-790a17546f3b",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress",
+                    ":nominationNumber",
+                    "committees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nominationNumber",
+                      "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "decdbe99-38c6-4db2-9383-6e65ae41ab67",
+          "name": "Returns the list of printed hearings associated with a specified nomination.",
+          "request": {
+            "name": "Returns the list of printed hearings associated with a specified nomination.",
+            "description": {
+              "content": "Returns the list of printed associated with a specified nomination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nomination",
+                ":congress",
+                ":nominationNumber",
+                "hearings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml",
+                  "description": "The data format. Value can be xml or json."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The starting record returned. 0 is the first record."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The number of records returned. The maximum limit is 250."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "congress",
+                  "description": "(Required) The congress number. For example, can be 117."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "nominationNumber",
+                  "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f4a54ee-de6f-419f-8a18-61f259432202",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress",
+                    ":nominationNumber",
+                    "hearings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nominationNumber",
+                      "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hearings\": [\n    {\n      \"chamber\": \"Senate\",\n      \"citation\": \"S.Hrg.118-694\",\n      \"date\": \"2024-02-28\",\n      \"jackeNumber\": 61203,\n      \"number\": 694\n    },\n    {\n      \"chamber\": \"Senate\",\n      \"citation\": \"S.Hrg.118-694\",\n      \"date\": \"2024-02-28\",\n      \"jackeNumber\": 61203,\n      \"number\": 694\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b18d4e4a-d7af-40ea-8e80-19275fda4f35",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nomination",
+                    ":congress",
+                    ":nominationNumber",
+                    "hearings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "congress",
+                      "description": "(Required) The congress number. For example, can be 117."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nominationNumber",
+                      "description": "(Required) The nomination’s assigned number. For example, the value can be 389."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "05395066-886c-4526-a6cf-d00122406024",
+    "name": "Congress.gov amendments nomination API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}

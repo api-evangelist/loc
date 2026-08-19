@@ -1,0 +1,323 @@
+{
+  "item": [
+    {
+      "id": "25ee4e69-f2cb-48b1-a1ee-dd45d7cad502",
+      "name": "collections",
+      "description": {
+        "content": "Browse and access digital collections",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3b54603f-f610-460d-9250-eb9116dcf50e",
+          "name": "List all digital collections",
+          "request": {
+            "name": "List all digital collections",
+            "description": {
+              "content": "Returns a list of all the digital collections at the Library of Congress. Collections are listed under the results attribute.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "at",
+                  "value": "<string>",
+                  "description": "Limit response to specific attribute(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9950d1cf-8d96-4f6a-a6cf-5b68993f3193",
+              "name": "List of digital collections",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "at",
+                      "value": "results"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 5573,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 1031,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 9325,\n    \"current\": 2175,\n    \"from\": 8565,\n    \"last\": 2570,\n    \"next\": \"string\",\n    \"of\": 9956,\n    \"perpage\": 8914,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 254\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 9150,\n      \"item\": {\n        \"key_0\": \"string\"\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 8868,\n      \"item\": {\n        \"key_0\": 7329\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "170539b7-d547-4f8b-b405-087b39488285",
+          "name": "Get a specific digital collection",
+          "request": {
+            "name": "Get a specific digital collection",
+            "description": {
+              "content": "Returns the web presentation of a specified digital collection in JSON format. The collection name must be in kebab-case (e.g., abraham-lincoln-papers or baseball-cards).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                ":collectionSlug",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fo",
+                  "value": "<string>",
+                  "description": "Output format"
+                },
+                {
+                  "disabled": false,
+                  "key": "at",
+                  "value": "<string>",
+                  "description": "Limit response to specific attribute(s)"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search term to filter collection items"
+                },
+                {
+                  "disabled": false,
+                  "key": "fa",
+                  "value": "<string>",
+                  "description": "Facet filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<integer>",
+                  "description": "Starting page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<integer>",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collectionSlug",
+                  "description": "(Required) URL slug for the collection (kebab-case, e.g., civil-war-maps, baseball-cards, abraham-lincoln-papers)\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8977d628-0aa1-47b1-84c7-c30e5ed2acdd",
+              "name": "Collection data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionSlug",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fo",
+                      "value": "json"
+                    },
+                    {
+                      "key": "at",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fa",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionSlug",
+                      "description": "(Required) URL slug for the collection (kebab-case, e.g., civil-war-maps, baseball-cards, abraham-lincoln-papers)\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 6886,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 9025,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 7940,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 6219,\n        \"link\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"pagination\": {\n    \"count\": 4105,\n    \"current\": 4765,\n    \"from\": 912,\n    \"last\": 1140,\n    \"next\": \"string\",\n    \"of\": 8152,\n    \"perpage\": 3348,\n    \"previous\": \"string\",\n    \"results\": \"string\",\n    \"to\": 6758\n  },\n  \"results\": [\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 1251,\n      \"item\": {\n        \"key_0\": 430.9409143213105,\n        \"key_1\": 2839\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"image_url\": [\n        \"string\",\n        \"string\"\n      ],\n      \"index\": 3711,\n      \"item\": {\n        \"key_0\": 6657\n      },\n      \"language\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": [\n        \"string\",\n        \"string\"\n      ],\n      \"original_format\": [\n        \"string\",\n        \"string\"\n      ],\n      \"partof\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subject\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"type\": [\n        \"string\",\n        \"string\"\n      ],\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f35b1a3c-fb05-4b9d-a0ba-26e82c953c3c",
+    "name": "Congress.gov amendments collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
+      "type": "text/plain"
+    }
+  }
+}
