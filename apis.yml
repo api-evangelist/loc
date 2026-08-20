@@ -57,6 +57,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Amendments
+  tags_raw:
   - amendments
   properties:
   - type: OpenAPI
@@ -75,6 +77,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Bill
+  tags_raw:
   - bill
   properties:
   - type: OpenAPI
@@ -111,6 +115,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Collection
+  tags_raw:
   - collections
   properties:
   - type: OpenAPI
@@ -201,6 +207,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Congress
+  tags_raw:
   - congress
   properties:
   - type: OpenAPI
@@ -219,6 +227,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Congressional Record
+  tags_raw:
   - congressional-record
   properties:
   - type: OpenAPI
@@ -273,6 +283,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Formats
+  tags_raw:
   - formats
   properties:
   - type: OpenAPI
@@ -291,6 +303,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Hearing
+  tags_raw:
   - hearing
   properties:
   - type: OpenAPI
@@ -363,6 +377,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Item
+  tags_raw:
   - items
   properties:
   - type: OpenAPI
@@ -381,6 +397,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Member
+  tags_raw:
   - member
   properties:
   - type: OpenAPI
@@ -417,6 +435,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Search
+  tags_raw:
   - search
   properties:
   - type: OpenAPI
@@ -453,6 +473,8 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
+  - Summary
+  tags_raw:
   - summaries
   properties:
   - type: OpenAPI
