@@ -8,7 +8,7 @@
       "source": "https://blogs.loc.gov/thesignal/feed/",
       "feed_url": "https://blogs.loc.gov/thesignal/feed/",
       "title": "",
-      "saved": 1,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -16,10 +16,9 @@
       "feed_url": "https://www.linkedin.com/company/library-of-congress",
       "title": "",
       "saved": 0,
-      "method": "none",
-      "error": "parse_failed"
+      "method": "none"
     }
   ],
-  "post_count": 17,
-  "fetched": "2026-08-15T12:11:08Z"
+  "post_count": 18,
+  "fetched": "2026-08-22T20:20:02Z"
 }
