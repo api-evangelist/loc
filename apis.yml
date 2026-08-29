@@ -519,6 +519,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 common:
+  - type: CapabilityMap
+    url: capabilities/loc-capability-edges.yml
+    name: Library of Congress Business Capability Map
   - type: IssueTracker
     url: https://github.com/LibraryOfCongress/api.congress.gov/issues
   - type: AgenticAccess

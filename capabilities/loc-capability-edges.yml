@@ -1,0 +1,58 @@
+slug: loc
+provider: Library of Congress
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Public Sector & Government
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: house-vote
+  spec_file: loc-house-vote-api-openapi.yml
+  capability_id: BC-3210.50
+  capability_id_l1: BC-3210
+  capability_name: Legislative Process Coordination
+  confidence: 0.72
+  evidence: GET /house-vote/{congress}/{session}/{voteNumber}/members "Returns detailed information for
+    how members voted on a specified House of Representatives roll call vote"
+  reason: Roll call votes on measures in the chamber are part of legislative passage coordination, not
+    electoral administration (no voter rolls or ballots here).
+- tag: bill
+  spec_file: loc-bill-api-openapi.yml
+  capability_id: BC-3210.50
+  capability_id_l1: BC-3210
+  capability_name: Legislative Process Coordination
+  confidence: 0.7
+  evidence: GET /bill/{congress}/{billType}/{billNumber}/actions Returns the list of actions on a specified
+    bill; .../amendments; .../committees; schemas Bill, Law, committeeReport, Actions
+  reason: Bills with their actions, amendments, committee referrals, cosponsors, summaries, text versions
+    and resulting laws — the legislative passage record. Maps to legislative process coordination under
+    Legislative & Regulatory Drafting Management; moderate confidence as it is a read-only publication
+    of that process.
+- tag: committee-report
+  spec_file: loc-committee-report-api-openapi.yml
+  capability_id: BC-3210.50
+  capability_id_l1: BC-3210
+  capability_name: Legislative Process Coordination
+  confidence: 0.7
+  evidence: GET /committee-report/{congress}/{reportType} "Returns the list of committee reports filtered
+    by specified congress and report type"; schema "associatedBill"
+  reason: Congressional committee reports accompanying bills are artefacts of the legislative passage
+    process (committee evidence, reports on bills), matching Legislative Process Coordination. Some ambiguity
+    with legal publication, hence 0.7.
+- tag: hearing
+  spec_file: loc-hearing-api-openapi.yml
+  capability_id: BC-3210.50
+  capability_id_l1: BC-3210
+  capability_name: Legislative Process Coordination
+  confidence: 0.7
+  evidence: GET /hearing/{congress}/{chamber} "Returns a list of hearings filtered by specified congress
+    and chamber"; schemas associatedMeeting, subcommittees
+  reason: Congressional committee hearings are part of the legislative passage process (committee evidence),
+    matching Legislative Process Coordination.
