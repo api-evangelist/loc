@@ -1,6 +1,19 @@
 aid: loc
 name: Library of Congress
 description: The Library of Congress is the largest library in the world and the research arm of the US Congress. It provides REST APIs for accessing digitized collections, Congress.gov legislative data, bibliographic records, historic newspapers via Chronicling America, maps, photographs, manuscripts, and historical government documents. The loc.gov JSON API requires no authentication, while the Congress.gov API requires a free API key.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: open
