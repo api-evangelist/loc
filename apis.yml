@@ -70,7 +70,7 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
-  - Amendments
+  - amendments
   tags_raw:
   - amendments
   properties:
@@ -90,7 +90,7 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
-  - Bill
+  - bill
   tags_raw:
   - bill
   properties:
@@ -220,7 +220,7 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
-  - Congress
+  - congress
   tags_raw:
   - congress
   properties:
@@ -240,7 +240,7 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
-  - Congressional Record
+  - congressional-record
   tags_raw:
   - congressional-record
   properties:
@@ -296,7 +296,7 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
-  - Formats
+  - formats
   tags_raw:
   - formats
   properties:
@@ -316,7 +316,7 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
-  - Hearing
+  - hearing
   tags_raw:
   - hearing
   properties:
@@ -410,7 +410,7 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
-  - Member
+  - member
   tags_raw:
   - member
   properties:
@@ -486,7 +486,7 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
-  - Summary
+  - summaries
   tags_raw:
   - summaries
   properties:
