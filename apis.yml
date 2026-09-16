@@ -1,6 +1,10 @@
 aid: loc
 name: Library of Congress
-description: The Library of Congress is the largest library in the world and the research arm of the US Congress. It provides REST APIs for accessing digitized collections, Congress.gov legislative data, bibliographic records, historic newspapers via Chronicling America, maps, photographs, manuscripts, and historical government documents. The loc.gov JSON API requires no authentication, while the Congress.gov API requires a free API key.
+description: The Library of Congress is the largest library in the world and the research arm of the US
+  Congress. It provides REST APIs for accessing digitized collections, Congress.gov legislative data,
+  bibliographic records, historic newspapers via Chronicling America, maps, photographs, manuscripts,
+  and historical government documents. The loc.gov JSON API requires no authentication, while the Congress.gov
+  API requires a free API key.
 deliveryModel:
   model: unknown
   open_source: unknown
@@ -30,7 +34,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/loc.png
 url: https://raw.githubusercontent.com/api-evangelist/loc/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 type: Index
 tags:
@@ -45,7 +49,9 @@ tags:
 - Historical Documents
 apis:
 - name: Chronicling America API
-  description: The Chronicling America API provides access to the historic American newspapers collection digitized by the Library of Congress and its partners. Endpoints allow searching and retrieving pages, titles, batches, and OCR text. No authentication is required.
+  description: The Chronicling America API provides access to the historic American newspapers collection
+    digitized by the Library of Congress and its partners. Endpoints allow searching and retrieving pages,
+    titles, batches, and OCR text. No authentication is required.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://chroniclingamerica.loc.gov/about/api/
   baseURL: https://chroniclingamerica.loc.gov
@@ -212,7 +218,7 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-congress-api
-  name: Library of Congress congress API
+  name: Library of Congress API
   description: Returns congress and congressional sessions data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
@@ -557,7 +563,8 @@ apis:
     url: https://api.congress.gov/sign-up/
 - aid: loc:library-of-congress-congressional-record-api
   name: Library of Congress Congressional Record API
-  description: The Congressional Record API from Library of Congress — 1 operation(s) for congressional record.
+  description: The Congressional Record API from Library of Congress — 1 operation(s) for congressional
+    record.
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
