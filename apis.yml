@@ -94,7 +94,7 @@ apis:
   humanURL: https://www.loc.gov/apis/json-and-yaml/
   baseURL: https://www.loc.gov
   tags:
-  - Bill
+  - Bills
   tags_raw:
   - bill
   properties:
