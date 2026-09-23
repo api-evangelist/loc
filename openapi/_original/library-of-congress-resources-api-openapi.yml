@@ -1,0 +1,61 @@
+# x-archived-from: library-of-congress-resources-api-openapi.yml
+# x-archived-on: 2026-09-16
+openapi: 3.2.0
+info:
+  title: Library of Congress loc.gov JSON Resources API
+  description: The loc.gov JSON API returns structured JSON or YAML representations of Library of Congress online collections, items, and search results. Append fo=json (or fo=yaml) to most loc.gov URLs to receive a structured response describing the page or resource.
+  version: 1.0.0
+  contact:
+    name: Library of Congress
+    url: https://www.loc.gov/apis/
+servers:
+- url: https://www.loc.gov
+  description: Production
+tags:
+- name: Resources
+paths:
+  /resource/{resourceId}/:
+    get:
+      operationId: getResource
+      summary: Get Resource
+      description: Retrieve a digitized resource record.
+      tags:
+      - Resources
+      parameters:
+      - name: resourceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fo
+        in: query
+        schema:
+          type: string
+          default: json
+      responses:
+        '200':
+          description: Resource record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  schemas:
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+                format: uri
+              mimetype:
+                type: string

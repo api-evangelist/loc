@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments house-requirement API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: Congress.gov House Requirement API
   version: '3'
 servers:
 - url: /v3
@@ -17,7 +15,7 @@ paths:
     get:
       tags:
       - house-requirement
-      summary: Returns a list of House requirements.
+      summary: Returns a list of House requirements
       description: Returns a list of House requirements.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -35,11 +33,13 @@ paths:
                 $ref: '#/components/schemas/HouseRequirements'
         '400':
           description: Invalid status value
+      operationId: getHouseRequirement
+      x-operation-id-source: derived
   /house-requirement/{requirementNumber}:
     get:
       tags:
       - house-requirement
-      summary: Returns detailed information for a specified House requirement.
+      summary: Returns detailed information for a specified House requirement
       description: Returns detailed information for a specified House requirement.
       parameters:
       - $ref: '#/components/parameters/requirementNumber'
@@ -56,11 +56,13 @@ paths:
                 $ref: '#/components/schemas/HouseRequirement'
         '400':
           description: Invalid status value
+      operationId: getHouseRequirementByRequirementNumber
+      x-operation-id-source: derived
   /house-requirement/{requirementNumber}/matching-communications:
     get:
       tags:
       - house-requirement
-      summary: Returns a list of matching communications to a House requirement.
+      summary: Returns a list of matching communications to a House requirement
       description: Returns a list of matching communications to a House requirement.
       parameters:
       - $ref: '#/components/parameters/requirementNumber'
@@ -79,6 +81,8 @@ paths:
                 $ref: '#/components/schemas/MatchCommunications'
         '400':
           description: Invalid status value
+      operationId: getHouseRequirementByRequirementNumberMatchingCommunications
+      x-operation-id-source: derived
 components:
   parameters:
     offset:
@@ -86,6 +90,13 @@ components:
       in: query
       description: The starting record returned. 0 is the first record.
       required: false
+      schema:
+        type: integer
+    requirementNumber:
+      name: requirementNumber
+      in: path
+      description: The requirement’s assigned number. For example, the value can be 8070.
+      required: true
       schema:
         type: integer
     format:
@@ -99,13 +110,6 @@ components:
         enum:
         - xml
         - json
-    requirementNumber:
-      name: requirementNumber
-      in: path
-      description: The requirement’s assigned number. For example, the value can be 8070.
-      required: true
-      schema:
-        type: integer
     limit:
       name: limit
       in: query
@@ -114,6 +118,50 @@ components:
       schema:
         type: integer
   schemas:
+    MatchCommunications:
+      type: object
+      properties:
+        matchCommunications:
+          type: array
+          items:
+            $ref: '#/components/schemas/matchCommunications'
+    matchCommunications:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        communicationType:
+          $ref: '#/components/schemas/communicationType'
+        congress:
+          type: integer
+          example: 112
+        number:
+          type: integer
+          example: 2
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/house-communication/112/EC/2?format=json
+    matchCommunication:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 90774
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/house-requirement/8070/matching-communications?format=json
+    communicationType:
+      type: object
+      properties:
+        code:
+          type: string
+          example: EC
+        name:
+          type: string
+          example: Executive Communication
     HouseRequirements:
       type: object
       properties:
@@ -121,6 +169,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/houseRequirement'
+    houseRequirement:
+      type: object
+      properties:
+        number:
+          type: integer
+          example: 8070
+        updateDate:
+          type: string
+          format: date
+          example: '2021-08-13'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/house-requirement/8070?format=json
     HouseRequirement:
       type: object
       properties:
@@ -154,64 +216,6 @@ components:
               type: string
               format: date
               example: '2021-08-13'
-    communicationType:
-      type: object
-      properties:
-        code:
-          type: string
-          example: EC
-        name:
-          type: string
-          example: Executive Communication
-    MatchCommunications:
-      type: object
-      properties:
-        matchCommunications:
-          type: array
-          items:
-            $ref: '#/components/schemas/matchCommunications'
-    matchCommunications:
-      type: object
-      properties:
-        chamber:
-          type: string
-          example: House
-        communicationType:
-          $ref: '#/components/schemas/communicationType'
-        congress:
-          type: integer
-          example: 112
-        number:
-          type: integer
-          example: 2
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/house-communication/112/EC/2?format=json
-    houseRequirement:
-      type: object
-      properties:
-        number:
-          type: integer
-          example: 8070
-        updateDate:
-          type: string
-          format: date
-          example: '2021-08-13'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/house-requirement/8070?format=json
-    matchCommunication:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 90774
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/house-requirement/8070/matching-communications?format=json
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

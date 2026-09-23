@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments house-communication API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: Congress.gov House Communication API
   version: '3'
 servers:
 - url: /v3
@@ -17,7 +15,7 @@ paths:
     get:
       tags:
       - house-communication
-      summary: Returns a list of House communications.
+      summary: Returns a list of House communications
       description: Returns a list of House communications.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -35,11 +33,13 @@ paths:
                 $ref: '#/components/schemas/HouseCommunications'
         '400':
           description: Invalid status value
+      operationId: getHouseCommunication
+      x-operation-id-source: derived
   /house-communication/{congress}:
     get:
       tags:
       - house-communication
-      summary: Returns a list of House communications filtered by the specified congress.
+      summary: Returns a list of House communications filtered by the specified congress
       description: Returns a list of House communications filtered by the specified congress.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -58,11 +58,13 @@ paths:
                 $ref: '#/components/schemas/HouseCommunications'
         '400':
           description: Invalid status value
+      operationId: getHouseCommunicationByCongress
+      x-operation-id-source: derived
   /house-communication/{congress}/{communicationType}:
     get:
       tags:
       - house-communication
-      summary: Returns a list of House communications filtered by the specified congress and communication type..
+      summary: Returns a list of House communications filtered by the specified congress and…
       description: Returns a list of House communications filtered by the specified congress and communication type.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -82,11 +84,13 @@ paths:
                 $ref: '#/components/schemas/HouseCommunications'
         '400':
           description: Invalid status value
+      operationId: getHouseCommunicationByCongressByCommunicationType
+      x-operation-id-source: derived
   /house-communication/{congress}/{communicationType}/{communicationNumber}:
     get:
       tags:
       - house-communication
-      summary: Returns a list of House communications filtered by the specified congress and communication type..
+      summary: Returns a list of House communications filtered by the specified congress and…
       description: Returns a list of House communications filtered by the specified congress and communication type.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -105,61 +109,39 @@ paths:
                 $ref: '#/components/schemas/HouseCommunicationTypeNumber'
         '400':
           description: Invalid status value
+      operationId: getHouseCommunicationByCongressByCommunicationTypeByCommunicationNumber
+      x-operation-id-source: derived
 components:
-  parameters:
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    communicationNumber:
-      name: communicationNumber
-      in: path
-      description: The communication’s assigned number. For example, the value can be 3324.
-      required: true
-      schema:
-        type: integer
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    communicationType:
-      name: communicationType
-      in: path
-      description: The type of communication. Value can be ec, ml, pm, or pt.
-      required: true
-      schema:
-        type: string
-        enum:
-        - ec
-        - ml
-        - pm
-        - pt
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
   schemas:
+    houseCommunication:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        communicationType:
+          $ref: '#/components/schemas/communicationType'
+        congressNumber:
+          type: integer
+          example: 117
+        number:
+          type: string
+          example: '2057'
+        updateDate:
+          type: string
+          format: date
+          example: '2021-09-01'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/house-communication/117/ec/2057?format=json
+    HouseCommunications:
+      type: object
+      properties:
+        houseCoummunications:
+          type: array
+          items:
+            $ref: '#/components/schemas/houseCommunication'
     HouseCommunicationTypeNumber:
       type: object
       properties:
@@ -227,13 +209,6 @@ components:
           type: string
           format: date
           example: '2024-09-03'
-    HouseCommunications:
-      type: object
-      properties:
-        houseCoummunications:
-          type: array
-          items:
-            $ref: '#/components/schemas/houseCommunication'
     communicationType:
       type: object
       properties:
@@ -256,28 +231,59 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee/house/hspw01?format=json
-    houseCommunication:
-      type: object
-      properties:
-        chamber:
-          type: string
-          example: House
-        communicationType:
-          $ref: '#/components/schemas/communicationType'
-        congressNumber:
-          type: integer
-          example: 117
-        number:
-          type: string
-          example: '2057'
-        updateDate:
-          type: string
-          format: date
-          example: '2021-09-01'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/house-communication/117/ec/2057?format=json
+  parameters:
+    communicationType:
+      name: communicationType
+      in: path
+      description: The type of communication. Value can be ec, ml, pm, or pt.
+      required: true
+      schema:
+        type: string
+        enum:
+        - ec
+        - ml
+        - pm
+        - pt
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    communicationNumber:
+      name: communicationNumber
+      in: path
+      description: The communication’s assigned number. For example, the value can be 3324.
+      required: true
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments hearing API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: Congress.gov Hearing API
   version: '3'
 servers:
 - url: /v3
@@ -17,7 +15,7 @@ paths:
     get:
       tags:
       - hearing
-      summary: Returns a list of hearings.
+      summary: Returns a list of hearings
       description: Returns a list of hearings.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -35,11 +33,13 @@ paths:
                 $ref: '#/components/schemas/Hearings'
         '400':
           description: Invalid status value
+      operationId: getHearing
+      x-operation-id-source: derived
   /hearing/{congress}:
     get:
       tags:
       - hearing
-      summary: Returns a list of hearings filtered by specified congress.
+      summary: Returns a list of hearings filtered by specified congress
       description: Returns a list of hearings filtered by specified congress.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -58,11 +58,13 @@ paths:
                 $ref: '#/components/schemas/Hearings'
         '400':
           description: Invalid status value
+      operationId: getHearingByCongress
+      x-operation-id-source: derived
   /hearing/{congress}/{chamber}:
     get:
       tags:
       - hearing
-      summary: Returns a list of hearings filtered by specified congress and chamber.
+      summary: Returns a list of hearings filtered by specified congress and chamber
       description: Returns a list of hearings filtered by specified congress and chamber.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -82,11 +84,13 @@ paths:
                 $ref: '#/components/schemas/Hearings'
         '400':
           description: Invalid status value
+      operationId: getHearingByCongressByChamber
+      x-operation-id-source: derived
   /hearing/{congress}/{chamber}/{jacketNumber}:
     get:
       tags:
       - hearing
-      summary: Returns detailed information for a specified hearing.
+      summary: Returns detailed information for a specified hearing
       description: Returns detailed information for a specified hearing.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -107,6 +111,8 @@ paths:
                 $ref: '#/components/schemas/HearingDetail'
         '400':
           description: Invalid status value
+      operationId: getHearingByCongressByChamberByJacketNumber
+      x-operation-id-source: derived
 components:
   parameters:
     offset:
@@ -116,6 +122,14 @@ components:
       required: false
       schema:
         type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
     format:
       name: format
       in: query
@@ -127,13 +141,6 @@ components:
         enum:
         - xml
         - json
-    jacketNumber:
-      name: jacketNumber
-      in: path
-      description: The jacket number for the print. For example, the value can be 48144.
-      required: true
-      schema:
-        type: integer
     chamber:
       name: chamber
       in: path
@@ -145,14 +152,13 @@ components:
         - house
         - senate
         - joint
-    congress:
-      name: congress
+    jacketNumber:
+      name: jacketNumber
       in: path
-      description: The congress number. For example, can be 117.
+      description: The jacket number for the print. For example, the value can be 48144.
       required: true
       schema:
         type: integer
-        format: int32
     limit:
       name: limit
       in: query
@@ -161,53 +167,6 @@ components:
       schema:
         type: integer
   schemas:
-    formats:
-      type: object
-      properties:
-        type:
-          type: string
-          example: Formatted Text
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
-    Hearings:
-      type: array
-      items:
-        $ref: '#/components/schemas/hearing'
-    hearing:
-      type: object
-      properties:
-        chamber:
-          type: string
-          example: House
-        congress:
-          type: integer
-          example: 117
-        jacketNumber:
-          type: integer
-          example: 48144
-        updateDate:
-          type: string
-          format: date-time
-          example: '2022-08-01 21:19:33+00:00'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/hearing/117/house/41365?format=json
-    subcommittees:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Investigations and Oversight Subcommittee
-        systemCode:
-          type: string
-          example: hspw01
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
     HearingDetail:
       type: object
       properties:
@@ -259,6 +218,53 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee-meeting/117/house/115266?format=json
+    subcommittees:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Investigations and Oversight Subcommittee
+        systemCode:
+          type: string
+          example: hspw01
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
+    formats:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Formatted Text
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
+    hearing:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        congress:
+          type: integer
+          example: 117
+        jacketNumber:
+          type: integer
+          example: 48144
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-08-01 21:19:33+00:00'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/hearing/117/house/41365?format=json
+    Hearings:
+      type: array
+      items:
+        $ref: '#/components/schemas/hearing'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

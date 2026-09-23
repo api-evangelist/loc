@@ -1,0 +1,118 @@
+# x-archived-from: library-of-congress-titles-api-openapi.yml
+# x-archived-on: 2026-09-16
+openapi: 3.2.0
+info:
+  title: Library of Congress Chronicling America Titles API
+  description: The Chronicling America API exposes historic American newspapers digitized through the National Digital Newspaper Program, providing search and metadata access to newspaper pages, issues, and titles.
+  version: 1.0.0
+  contact:
+    name: Library of Congress
+    url: https://chroniclingamerica.loc.gov/about/api/
+servers:
+- url: https://chroniclingamerica.loc.gov
+  description: Production
+tags:
+- name: Titles
+paths:
+  /search/titles/results/:
+    get:
+      operationId: searchTitles
+      summary: Search Titles
+      description: Search newspaper titles by name, place, or other facets.
+      tags:
+      - Titles
+      parameters:
+      - name: terms
+        in: query
+        schema:
+          type: string
+      - name: state
+        in: query
+        schema:
+          type: string
+      - name: format
+        in: query
+        schema:
+          type: string
+          default: json
+      - name: rows
+        in: query
+        schema:
+          type: integer
+          default: 20
+      responses:
+        '200':
+          description: Title search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TitleResults'
+  /lccn/{lccn}.json:
+    get:
+      operationId: getTitle
+      summary: Get Title
+      description: Retrieve metadata for a newspaper title by LCCN.
+      tags:
+      - Titles
+      parameters:
+      - name: lccn
+        in: path
+        required: true
+        description: Library of Congress Control Number.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Title metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Title'
+  /newspapers.json:
+    get:
+      operationId: listNewspapers
+      summary: List Newspapers
+      description: List all newspaper titles with digitized content.
+      tags:
+      - Titles
+      responses:
+        '200':
+          description: Newspaper list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewspaperList'
+components:
+  schemas:
+    Title:
+      type: object
+      properties:
+        lccn:
+          type: string
+        name:
+          type: string
+        place_of_publication:
+          type: string
+        start_year:
+          type: string
+        end_year:
+          type: string
+        url:
+          type: string
+          format: uri
+    NewspaperList:
+      type: object
+      properties:
+        newspapers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Title'
+    TitleResults:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Title'
+        totalItems:
+          type: integer

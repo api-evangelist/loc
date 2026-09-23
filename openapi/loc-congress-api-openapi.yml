@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: .gov amendments congress API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: .gov Congress API
   version: '3'
 servers:
 - url: /v3
@@ -17,7 +15,7 @@ paths:
     get:
       tags:
       - congress
-      summary: Returns a list of congresses and congressional sessions.
+      summary: Returns a list of congresses and congressional sessions
       description: Returns a list of congresses and congressional sessions.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -35,11 +33,13 @@ paths:
                 $ref: '#/components/schemas/Congresses'
         '400':
           description: Invalid status value
+      operationId: getCongress
+      x-operation-id-source: derived
   /congress/{congress}:
     get:
       tags:
       - congress
-      summary: Returns a list of congresses and congressional sessions.
+      summary: Returns a list of congresses and congressional sessions
       description: Returns a list of congresses and congressional sessions.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -58,11 +58,13 @@ paths:
                 $ref: '#/components/schemas/Congresses'
         '400':
           description: Invalid status value
+      operationId: getCongressByCongress
+      x-operation-id-source: derived
   /congress/current:
     get:
       tags:
       - congress
-      summary: Returns a list of congresses and congressional sessions.
+      summary: Returns a list of congresses and congressional sessions
       description: Returns a list of congresses and congressional sessions.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -80,12 +82,10 @@ paths:
                 $ref: '#/components/schemas/Congresses'
         '400':
           description: Invalid status value
+      operationId: getCongressCurrent
+      x-operation-id-source: derived
 components:
   schemas:
-    Congresses:
-      type: array
-      items:
-        $ref: '#/components/schemas/Congress'
     Sessions:
       type: object
       properties:
@@ -103,6 +103,10 @@ components:
           type: string
           format: date
           example: '2020-01-01'
+    Congresses:
+      type: array
+      items:
+        $ref: '#/components/schemas/Congress'
     Congress:
       type: object
       properties:
@@ -127,6 +131,14 @@ components:
       required: false
       schema:
         type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
     format:
       name: format
       in: query
@@ -138,14 +150,6 @@ components:
         enum:
         - xml
         - json
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
     limit:
       name: limit
       in: query

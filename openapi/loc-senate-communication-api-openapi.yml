@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments senate-communication API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: Congress.gov Senate Communication API
   version: '3'
 servers:
 - url: /v3
@@ -17,7 +15,7 @@ paths:
     get:
       tags:
       - senate-communication
-      summary: Returns a list of Senate communications.
+      summary: Returns a list of Senate communications
       description: Returns a list of Senate communications.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -35,11 +33,13 @@ paths:
                 $ref: '#/components/schemas/SenateCommunications'
         '400':
           description: Invalid status value
+      operationId: getSenateCommunication
+      x-operation-id-source: derived
   /senate-communication/{congress}:
     get:
       tags:
       - senate-communication
-      summary: Returns a list of Senate communications filtered by the specified congress.
+      summary: Returns a list of Senate communications filtered by the specified congress
       description: Returns a list of Senate communications filtered by the specified congress.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -58,11 +58,13 @@ paths:
                 $ref: '#/components/schemas/SenateCommunications'
         '400':
           description: Invalid status value
+      operationId: getSenateCommunicationByCongress
+      x-operation-id-source: derived
   /senate-communication/{congress}/{communicationType}:
     get:
       tags:
       - senate-communication
-      summary: Returns a list of Senate communications filtered by the specified congress and communication type..
+      summary: Returns a list of Senate communications filtered by the specified congress and…
       description: Returns a list of Senate communications filtered by the specified congress and communication type.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -82,11 +84,13 @@ paths:
                 $ref: '#/components/schemas/SenateCommunications'
         '400':
           description: Invalid status value
+      operationId: getSenateCommunicationByCongressByCommunicationType
+      x-operation-id-source: derived
   /senate-communication/{congress}/{communicationType}/{communicationNumber}:
     get:
       tags:
       - senate-communication
-      summary: Returns a list of Senate communications filtered by the specified congress and communication type..
+      summary: Returns a list of Senate communications filtered by the specified congress and…
       description: Returns a list of Senate communications filtered by the specified congress and communication type.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -105,8 +109,21 @@ paths:
                 $ref: '#/components/schemas/SenateCommunicationTypeNumber'
         '400':
           description: Invalid status value
+      operationId: getSenateCommunicationByCongressByCommunicationTypeByCommunicationNumber
+      x-operation-id-source: derived
 components:
   parameters:
+    senateCommunicationType:
+      name: communicationType
+      in: path
+      description: The type of communication. Value can be ec, pm, or pom.
+      required: true
+      schema:
+        type: string
+        enum:
+        - ec
+        - pm
+        - pom
     offset:
       name: offset
       in: query
@@ -114,6 +131,14 @@ components:
       required: false
       schema:
         type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
     format:
       name: format
       in: query
@@ -132,25 +157,6 @@ components:
       required: true
       schema:
         type: integer
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    senateCommunicationType:
-      name: communicationType
-      in: path
-      description: The type of communication. Value can be ec, pm, or pom.
-      required: true
-      schema:
-        type: string
-        enum:
-        - ec
-        - pm
-        - pom
     limit:
       name: limit
       in: query
@@ -159,6 +165,19 @@ components:
       schema:
         type: integer
   schemas:
+    subcommittees:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Investigations and Oversight Subcommittee
+        systemCode:
+          type: string
+          example: hspw01
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
     SenateCommunications:
       type: object
       properties:
@@ -166,6 +185,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/senateCommunication'
+    communicationType:
+      type: object
+      properties:
+        code:
+          type: string
+          example: EC
+        name:
+          type: string
+          example: Executive Communication
+    senateCommunication:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: Senate
+        communicationType:
+          $ref: '#/components/schemas/communicationType'
+        congress:
+          type: integer
+          example: 117
+        number:
+          type: string
+          example: '1615'
+        updateDate:
+          type: string
+          format: date
+          example: '2021-09-01'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json
     SenateCommunicationTypeNumber:
       type: object
       properties:
@@ -201,50 +251,6 @@ components:
           type: string
           format: date
           example: '2024-09-03'
-    communicationType:
-      type: object
-      properties:
-        code:
-          type: string
-          example: EC
-        name:
-          type: string
-          example: Executive Communication
-    subcommittees:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Investigations and Oversight Subcommittee
-        systemCode:
-          type: string
-          example: hspw01
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
-    senateCommunication:
-      type: object
-      properties:
-        chamber:
-          type: string
-          example: Senate
-        communicationType:
-          $ref: '#/components/schemas/communicationType'
-        congress:
-          type: integer
-          example: 117
-        number:
-          type: string
-          example: '1615'
-        updateDate:
-          type: string
-          format: date
-          example: '2021-09-01'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

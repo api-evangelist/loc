@@ -1,0 +1,106 @@
+# x-archived-from: library-of-congress-pages-api-openapi.yml
+# x-archived-on: 2026-09-16
+openapi: 3.2.0
+info:
+  title: Library of Congress Chronicling America Pages API
+  description: The Chronicling America API exposes historic American newspapers digitized through the National Digital Newspaper Program, providing search and metadata access to newspaper pages, issues, and titles.
+  version: 1.0.0
+  contact:
+    name: Library of Congress
+    url: https://chroniclingamerica.loc.gov/about/api/
+servers:
+- url: https://chroniclingamerica.loc.gov
+  description: Production
+tags:
+- name: Pages
+paths:
+  /search/pages/results/:
+    get:
+      operationId: searchPages
+      summary: Search Pages
+      description: Search digitized newspaper pages by keyword and facets.
+      tags:
+      - Pages
+      parameters:
+      - name: andtext
+        in: query
+        description: Phrase to search within page text.
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: U.S. state filter.
+        schema:
+          type: string
+      - name: dateFilterType
+        in: query
+        schema:
+          type: string
+          enum:
+          - yearRange
+          - range
+      - name: date1
+        in: query
+        schema:
+          type: string
+      - name: date2
+        in: query
+        schema:
+          type: string
+      - name: format
+        in: query
+        schema:
+          type: string
+          enum:
+          - json
+          - atom
+          - html
+          default: json
+      - name: rows
+        in: query
+        schema:
+          type: integer
+          default: 20
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: Page search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageResults'
+components:
+  schemas:
+    Page:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        date:
+          type: string
+        sequence:
+          type: integer
+        ocr_eng:
+          type: string
+    PageResults:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Page'
+        totalItems:
+          type: integer
+        startIndex:
+          type: integer
+        endIndex:
+          type: integer

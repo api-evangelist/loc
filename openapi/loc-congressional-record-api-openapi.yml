@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments congressional-record API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: Congress.gov Congressional Record API
   version: '3'
 servers:
 - url: /v3
@@ -17,7 +15,7 @@ paths:
     get:
       tags:
       - congressional-record
-      summary: Returns a list of congressional record issues sorted by most recent.
+      summary: Returns a list of congressional record issues sorted by most recent
       description: Returns a list of congressional record issues sorted by most recent.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -38,8 +36,17 @@ paths:
                 $ref: '#/components/schemas/CongressionalRecord'
         '400':
           description: Invalid status value
+      operationId: getCongressionalRecord
+      x-operation-id-source: derived
 components:
   parameters:
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
     d:
       name: d
       in: query
@@ -47,10 +54,10 @@ components:
       required: false
       schema:
         type: integer
-    offset:
-      name: offset
+    y:
+      name: y
       in: query
-      description: The starting record returned. 0 is the first record.
+      description: The year the issue was published. For example, the value can be 2022.
       required: false
       schema:
         type: integer
@@ -72,13 +79,6 @@ components:
       required: false
       schema:
         type: integer
-    y:
-      name: y
-      in: query
-      description: The year the issue was published. For example, the value can be 2022.
-      required: false
-      schema:
-        type: integer
     limit:
       name: limit
       in: query
@@ -87,6 +87,16 @@ components:
       schema:
         type: integer
   schemas:
+    CongressionalRecord:
+      type: object
+      properties:
+        IndexStart:
+          type: integer
+          example: 1
+        Issues:
+          type: array
+          items:
+            $ref: '#/components/schemas/issues'
     issues:
       type: object
       properties:
@@ -217,16 +227,6 @@ components:
         Volume:
           type: string
           example: '168'
-    CongressionalRecord:
-      type: object
-      properties:
-        IndexStart:
-          type: integer
-          example: 1
-        Issues:
-          type: array
-          items:
-            $ref: '#/components/schemas/issues'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

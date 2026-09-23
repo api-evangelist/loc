@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments daily-congressional-record API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: Congress.gov Daily Congressional Record API
   version: '3'
 servers:
 - url: /v3
@@ -17,7 +15,7 @@ paths:
     get:
       tags:
       - daily-congressional-record
-      summary: Returns a list of daily congressional record issues sorted by most recent.
+      summary: Returns a list of daily congressional record issues sorted by most recent
       description: Returns a list of daily congressional record issues sorted by most recent.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -35,11 +33,13 @@ paths:
                 $ref: '#/components/schemas/DailyCongressionalRecord'
         '400':
           description: Invalid status value
+      operationId: getDailyCongressionalRecord
+      x-operation-id-source: derived
   /daily-congressional-record/{volumeNumber}:
     get:
       tags:
       - daily-congressional-record
-      summary: Returns a list of daily Congressional Records filtered by the specified volume number.
+      summary: Returns a list of daily Congressional Records filtered by the specified volume…
       description: Returns a list of daily Congressional Records filtered by the specified volume number.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -58,11 +58,13 @@ paths:
                 $ref: '#/components/schemas/DailyCongressionalRecord'
         '400':
           description: Invalid status value
+      operationId: getDailyCongressionalRecordByVolumeNumber
+      x-operation-id-source: derived
   /daily-congressional-record/{volumeNumber}/{issueNumber}:
     get:
       tags:
       - daily-congressional-record
-      summary: Returns a list of daily Congressional Records filtered by the specified volume number and specified issue number.
+      summary: Returns a list of daily Congressional Records filtered by the specified volume…
       description: Returns a list of daily Congressional Records filtered by the specified volume number and specified issue number.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -82,11 +84,13 @@ paths:
                 $ref: '#/components/schemas/DailyCongressionalRecordIssue'
         '400':
           description: Invalid status value
+      operationId: getDailyCongressionalRecordByVolumeNumberByIssueNumber
+      x-operation-id-source: derived
   /daily-congressional-record/{volumeNumber}/{issueNumber}/articles:
     get:
       tags:
       - daily-congressional-record
-      summary: Returns a list of daily Congressional Record articles filtered by the specified volume number and specified issue number.
+      summary: Returns a list of daily Congressional Record articles filtered by the specified…
       description: Returns a list of daily Congressional Record articles filtered by the specified volume number and specified issue number.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -106,8 +110,88 @@ paths:
                 $ref: '#/components/schemas/DailyCongressionalRecordArticles'
         '400':
           description: Invalid status value
+      operationId: getDailyCongressionalRecordByVolumeNumberByIssueNumberArticles
+      x-operation-id-source: derived
 components:
   schemas:
+    article:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Daily Digest
+        sectionArticles:
+          type: array
+          items:
+            $ref: '#/components/schemas/sectionArticle'
+    sectionArticle:
+      type: object
+      properties:
+        endPage:
+          type: string
+          example: D760
+        startPage:
+          type: string
+          example: D759
+        text:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                example: Formatted Text
+              url:
+                type: string
+                format: url
+                example: https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm
+        title:
+          type: string
+          format: url
+          example: Daily Digest/Next Meeting of the SENATE + Next Meeting of the HOUSE OF REPRESENTATIVES + Other End Matter; Congressional Record Vol. 166, No. 153
+    DailyCongressionalRecordIssue:
+      type: object
+      properties:
+        issue:
+          type: object
+          properties:
+            congress:
+              type: integer
+              example: 119
+            fullIssue:
+              $ref: '#/components/schemas/fullIssue'
+            issueDate:
+              type: string
+              format: date-time
+              example: '2025-01-03T05:00:00Z'
+            issueNumber:
+              type: string
+              example: '1'
+            sessionNumber:
+              type: integer
+              example: 1
+            updateDate:
+              type: string
+              format: date-time
+              example: '2025-01-04T16:59:21Z'
+            url:
+              type: string
+              format: url
+              example: https://api.congress.gov/v3/daily-congressional-record/171/1?format=json
+            volumeNumber:
+              type: integer
+              example: 171
+    DailyCongressionalRecord:
+      type: array
+      items:
+        $ref: '#/components/schemas/dailyCongressionalRecord'
+    DailyCongressionalRecordArticles:
+      type: object
+      properties:
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/article'
     fullIssue:
       type: object
       properties:
@@ -162,80 +246,6 @@ components:
                       type: string
                       format: url
                       example: https://www.congress.gov/119/crec/2025/01/03/d03ja5-1.htm
-    sectionArticle:
-      type: object
-      properties:
-        endPage:
-          type: string
-          example: D760
-        startPage:
-          type: string
-          example: D759
-        text:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                example: Formatted Text
-              url:
-                type: string
-                format: url
-                example: https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm
-        title:
-          type: string
-          format: url
-          example: Daily Digest/Next Meeting of the SENATE + Next Meeting of the HOUSE OF REPRESENTATIVES + Other End Matter; Congressional Record Vol. 166, No. 153
-    article:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Daily Digest
-        sectionArticles:
-          type: array
-          items:
-            $ref: '#/components/schemas/sectionArticle'
-    DailyCongressionalRecordIssue:
-      type: object
-      properties:
-        issue:
-          type: object
-          properties:
-            congress:
-              type: integer
-              example: 119
-            fullIssue:
-              $ref: '#/components/schemas/fullIssue'
-            issueDate:
-              type: string
-              format: date-time
-              example: '2025-01-03T05:00:00Z'
-            issueNumber:
-              type: string
-              example: '1'
-            sessionNumber:
-              type: integer
-              example: 1
-            updateDate:
-              type: string
-              format: date-time
-              example: '2025-01-04T16:59:21Z'
-            url:
-              type: string
-              format: url
-              example: https://api.congress.gov/v3/daily-congressional-record/171/1?format=json
-            volumeNumber:
-              type: integer
-              example: 171
-    DailyCongressionalRecordArticles:
-      type: object
-      properties:
-        articles:
-          type: array
-          items:
-            $ref: '#/components/schemas/article'
     dailyCongressionalRecord:
       type: object
       properties:
@@ -263,10 +273,6 @@ components:
         volumeNumber:
           type: string
           example: '169'
-    DailyCongressionalRecord:
-      type: array
-      items:
-        $ref: '#/components/schemas/dailyCongressionalRecord'
   parameters:
     offset:
       name: offset
@@ -275,17 +281,17 @@ components:
       required: false
       schema:
         type: integer
-    volumeNumber:
-      name: volumeNumber
-      in: path
-      description: The specified volume of the daily Congressional record, for example 166.
-      required: true
-      schema:
-        type: integer
     issueNumber:
       name: issueNumber
       in: path
       description: The specified issue of the daily Congressional record, for example 153.
+      required: true
+      schema:
+        type: integer
+    volumeNumber:
+      name: volumeNumber
+      in: path
+      description: The specified volume of the daily Congressional record, for example 166.
       required: true
       schema:
         type: integer

@@ -1,0 +1,78 @@
+# x-archived-from: library-of-congress-issues-api-openapi.yml
+# x-archived-on: 2026-09-16
+openapi: 3.2.0
+info:
+  title: Library of Congress Chronicling America Issues API
+  description: The Chronicling America API exposes historic American newspapers digitized through the National Digital Newspaper Program, providing search and metadata access to newspaper pages, issues, and titles.
+  version: 1.0.0
+  contact:
+    name: Library of Congress
+    url: https://chroniclingamerica.loc.gov/about/api/
+servers:
+- url: https://chroniclingamerica.loc.gov
+  description: Production
+tags:
+- name: Issues
+paths:
+  /lccn/{lccn}/{date}/ed-{edition}.json:
+    get:
+      operationId: getIssue
+      summary: Get Issue
+      description: Retrieve metadata for a single issue of a newspaper.
+      tags:
+      - Issues
+      parameters:
+      - name: lccn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: date
+        in: path
+        required: true
+        description: Issue date in YYYY-MM-DD format.
+        schema:
+          type: string
+      - name: edition
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Issue metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Issue'
+components:
+  schemas:
+    Page:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        date:
+          type: string
+        sequence:
+          type: integer
+        ocr_eng:
+          type: string
+    Issue:
+      type: object
+      properties:
+        date_issued:
+          type: string
+        edition:
+          type: integer
+        title:
+          type: object
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Page'

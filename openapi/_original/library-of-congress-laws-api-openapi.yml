@@ -1,0 +1,113 @@
+# x-archived-from: library-of-congress-laws-api-openapi.yml
+# x-archived-on: 2026-09-16
+openapi: 3.2.0
+info:
+  title: Library of Congress Congress.gov Laws API
+  description: The Congress.gov API provides programmatic access to legislative information from the U.S. Congress, including bills, laws, members, committees, amendments, and Congressional Record content. An API key is required for access.
+  version: 1.0.0
+  contact:
+    name: Library of Congress
+    url: https://api.congress.gov/
+servers:
+- url: https://api.congress.gov/v3
+  description: Production
+security:
+- ApiKeyAuth: []
+tags:
+- name: Laws
+paths:
+  /law/{congress}:
+    get:
+      operationId: listLaws
+      summary: List Laws
+      tags:
+      - Laws
+      parameters:
+      - name: congress
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Format'
+      - $ref: '#/components/parameters/Offset'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Laws list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LawList'
+components:
+  parameters:
+    Offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 20
+        maximum: 250
+    Format:
+      name: format
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - xml
+        default: json
+  schemas:
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+        prev:
+          type: string
+    LawList:
+      type: object
+      properties:
+        bills:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bill'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Bill:
+      type: object
+      properties:
+        congress:
+          type: integer
+        number:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        originChamber:
+          type: string
+        introducedDate:
+          type: string
+        latestAction:
+          type: object
+          properties:
+            actionDate:
+              type: string
+            text:
+              type: string
+        url:
+          type: string
+          format: uri
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key

@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments bound-congressional-record API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: Congress.gov Bound Congressional Record API
   version: '3'
 servers:
 - url: /v3
@@ -17,7 +15,7 @@ paths:
     get:
       tags:
       - bound-congressional-record
-      summary: Returns a list of bound congressional records issues sorted by most recent.
+      summary: Returns a list of bound congressional records issues sorted by most recent
       description: Returns a list of bound congressional record issues sorted by most recent.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -35,11 +33,13 @@ paths:
                 $ref: '#/components/schemas/BoundCongressionalRecord'
         '400':
           description: Invalid status value
+      operationId: getBoundCongressionalRecord
+      x-operation-id-source: derived
   /bound-congressional-record/{year}:
     get:
       tags:
       - bound-congressional-record
-      summary: Returns a list of bound congressional records issues sorted by most recent.
+      summary: Returns a list of bound congressional records issues sorted by most recent
       description: Returns a list of bound congressional record issues sorted by most recent.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -58,11 +58,13 @@ paths:
                 $ref: '#/components/schemas/BoundCongressionalRecord'
         '400':
           description: Invalid status value
+      operationId: getBoundCongressionalRecordByYear
+      x-operation-id-source: derived
   /bound-congressional-record/{year}/{month}:
     get:
       tags:
       - bound-congressional-record
-      summary: Returns a list of bound congressional records issues sorted by most recent.
+      summary: Returns a list of bound congressional records issues sorted by most recent
       description: Returns a list of bound congressional record issues sorted by most recent.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -82,11 +84,13 @@ paths:
                 $ref: '#/components/schemas/BoundCongressionalRecord'
         '400':
           description: Invalid status value
+      operationId: getBoundCongressionalRecordByYearByMonth
+      x-operation-id-source: derived
   /bound-congressional-record/{year}/{month}/{day}:
     get:
       tags:
       - bound-congressional-record
-      summary: Returns a list of bound congressional records issues sorted by most recent.
+      summary: Returns a list of bound congressional records issues sorted by most recent
       description: Returns a list of bound congressional record issues sorted by most recent.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -107,39 +111,17 @@ paths:
                 $ref: '#/components/schemas/BoundCongressionalRecord'
         '400':
           description: Invalid status value
+      operationId: getBoundCongressionalRecordByYearByMonthByDay
+      x-operation-id-source: derived
 components:
-  schemas:
-    BoundCongressionalRecord:
-      type: object
-      properties:
-        boundCongressionalRecord:
-          type: array
-          items:
-            $ref: '#/components/schemas/boundCongressionalRecord'
-    boundCongressionalRecord:
-      type: object
-      properties:
-        congress:
-          type: integer
-          example: 101
-        date:
-          type: string
-          example: '1990-05-01'
-        sessionNumber:
-          type: integer
-          example: 2
-        updateDate:
-          type: string
-          format: date
-          example: '2020-10-20'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/bound-congressional-record/1990/5/1?format=json
-        volumeNumber:
-          type: integer
-          example: 136
   parameters:
+    month:
+      name: month
+      in: path
+      description: The specified month of the bound Congressional record, for example 4 for April.
+      required: false
+      schema:
+        type: integer
     offset:
       name: offset
       in: query
@@ -172,13 +154,6 @@ components:
       required: false
       schema:
         type: integer
-    month:
-      name: month
-      in: path
-      description: The specified month of the bound Congressional record, for example 4 for April.
-      required: false
-      schema:
-        type: integer
     limit:
       name: limit
       in: query
@@ -186,6 +161,37 @@ components:
       required: false
       schema:
         type: integer
+  schemas:
+    BoundCongressionalRecord:
+      type: object
+      properties:
+        boundCongressionalRecord:
+          type: array
+          items:
+            $ref: '#/components/schemas/boundCongressionalRecord'
+    boundCongressionalRecord:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 101
+        date:
+          type: string
+          example: '1990-05-01'
+        sessionNumber:
+          type: integer
+          example: 2
+        updateDate:
+          type: string
+          format: date
+          example: '2020-10-20'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bound-congressional-record/1990/5/1?format=json
+        volumeNumber:
+          type: integer
+          example: 136
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

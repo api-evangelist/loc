@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments house-vote API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: Congress.gov House Vote API
   version: '3'
 servers:
 - url: /v3
@@ -17,7 +15,7 @@ paths:
     get:
       tags:
       - house-vote
-      summary: Returns House of Representatives roll call vote data from the API. This endpoint is currently in beta.
+      summary: Returns House of Representatives roll call vote data from the API.
       description: Returns House of Representatives roll call vote data from the API. This endpoint is currently in beta.
       parameters:
       - $ref: '#/components/parameters/format'
@@ -35,11 +33,13 @@ paths:
                 $ref: '#/components/schemas/HouseVote'
         '400':
           description: Invalid status value
+      operationId: getHouseVote
+      x-operation-id-source: derived
   /house-vote/{congress}:
     get:
       tags:
       - house-vote
-      summary: Returns House of Representatives roll call vote data from the API filtered by the specified Congress. This endpoint is currently in beta.
+      summary: Returns House of Representatives roll call vote data from the API filtered by…
       description: Returns House of Representatives roll call vote data from the API filtered by the specified Congress. This endpoint is currently in beta.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -58,11 +58,13 @@ paths:
                 $ref: '#/components/schemas/HouseVote'
         '400':
           description: Invalid status value
+      operationId: getHouseVoteByCongress
+      x-operation-id-source: derived
   /house-vote/{congress}/{session}:
     get:
       tags:
       - house-vote
-      summary: Returns House of Representatives roll call vote data from the API filtered by the specified Congress and session. This endpoint is currently in beta.
+      summary: Returns House of Representatives roll call vote data from the API filtered by…
       description: Returns House of Representatives roll call vote data from the API filtered by the specified Congress and session. This endpoint is currently in beta.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -82,11 +84,13 @@ paths:
                 $ref: '#/components/schemas/HouseVote'
         '400':
           description: Invalid status value
+      operationId: getHouseVoteByCongressBySession
+      x-operation-id-source: derived
   /house-vote/{congress}/{session}/{voteNumber}:
     get:
       tags:
       - house-vote
-      summary: Returns detailed information for a specified House of Representatives roll call vote. This endpoint is currently in beta.
+      summary: Returns detailed information for a specified House of Representatives roll call…
       description: Returns detailed information for a specified House of Representatives roll call vote. This endpoint is currently in beta.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -107,11 +111,13 @@ paths:
                 $ref: '#/components/schemas/HouseVoteNumber'
         '400':
           description: Invalid status value
+      operationId: getHouseVoteByCongressBySessionByVoteNumber
+      x-operation-id-source: derived
   /house-vote/{congress}/{session}/{voteNumber}/members:
     get:
       tags:
       - house-vote
-      summary: Returns detailed information for how members voted on a specified House of Representatives roll call vote. This endpoint is currently in beta.
+      summary: Returns detailed information for how members voted on a specified House of…
       description: Returns detailed information for how members voted on a specified House of Representatives roll call vote. This endpoint is currently in beta.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -132,62 +138,61 @@ paths:
                 $ref: '#/components/schemas/HouseVoteMembers'
         '400':
           description: Invalid status value
+      operationId: getHouseVoteByCongressBySessionByVoteNumberMembers
+      x-operation-id-source: derived
 components:
+  parameters:
+    voteNumber:
+      name: voteNumber
+      in: path
+      description: The assigned roll call vote number. For example, 17.
+      required: true
+      schema:
+        type: integer
+    session:
+      name: session
+      in: path
+      description: The session number. The value can be 1 or 2.
+      required: true
+      schema:
+        type: integer
+        enum:
+        - 1
+        - 2
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
   schemas:
-    houseVoteResults:
-      type: object
-      properties:
-        bioguideID:
-          type: string
-          example: A000055
-        firstName:
-          type: string
-          example: Robert
-        lastName:
-          type: string
-          example: Aderholt
-        voteCast:
-          type: string
-          example: Yea
-        voteParty:
-          type: string
-          example: R
-        voteState:
-          type: string
-          example: AL
-    party:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Republican
-        type:
-          type: string
-          example: R
-    HouseVoteNumber:
-      allOf:
-      - $ref: '#/components/schemas/HouseVoteNumberBase'
-      - type: object
-        properties:
-          votePartyTotal:
-            type: array
-            items:
-              $ref: '#/components/schemas/voteParty'
-          voteQuestion:
-            type: string
-            example: On Passage
-    HouseVoteMembers:
-      allOf:
-      - $ref: '#/components/schemas/HouseVoteNumberBase'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/houseVoteResults'
-          voteQuestion:
-            type: string
-            example: On Passage
     HouseVoteNumberBase:
       type: object
       properties:
@@ -276,6 +281,18 @@ components:
         voteType:
           type: string
           example: Yea-and-Nay
+    HouseVoteMembers:
+      allOf:
+      - $ref: '#/components/schemas/HouseVoteNumberBase'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/houseVoteResults'
+          voteQuestion:
+            type: string
+            example: On Passage
     voteParty:
       type: object
       properties:
@@ -296,57 +313,48 @@ components:
           example: 213
         party:
           $ref: '#/components/schemas/party'
-  parameters:
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    voteNumber:
-      name: voteNumber
-      in: path
-      description: The assigned roll call vote number. For example, 17.
-      required: true
-      schema:
-        type: integer
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    session:
-      name: session
-      in: path
-      description: The session number. The value can be 1 or 2.
-      required: true
-      schema:
-        type: integer
-        enum:
-        - 1
-        - 2
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
+    houseVoteResults:
+      type: object
+      properties:
+        bioguideID:
+          type: string
+          example: A000055
+        firstName:
+          type: string
+          example: Robert
+        lastName:
+          type: string
+          example: Aderholt
+        voteCast:
+          type: string
+          example: Yea
+        voteParty:
+          type: string
+          example: R
+        voteState:
+          type: string
+          example: AL
+    HouseVoteNumber:
+      allOf:
+      - $ref: '#/components/schemas/HouseVoteNumberBase'
+      - type: object
+        properties:
+          votePartyTotal:
+            type: array
+            items:
+              $ref: '#/components/schemas/voteParty'
+          voteQuestion:
+            type: string
+            example: On Passage
+    party:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Republican
+        type:
+          type: string
+          example: R
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

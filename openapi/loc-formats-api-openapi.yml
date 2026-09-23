@@ -1,22 +1,25 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments formats API
-  version: '3'
+  title: loc.gov JSON/YAML Formats API
+  description: The loc.gov JSON/YAML API provides structured, machine-readable data about Library of Congress digital collections — books, photographs, maps, manuscripts, archived websites, videos, and more. No authentication is required. Responses are available in JSON or YAML format via the fo= query parameter.
+  version: '1.0'
+  contact:
+    name: Library of Congress
+    url: https://www.loc.gov/about/contact-us/
+  license:
+    name: U.S. Government Work
+    url: http://www.loc.gov/text-us-government-work
 servers:
-- url: /v3
-security:
-- ApiKeyAuth: []
+- url: https://www.loc.gov
+  description: Production server
 tags:
-- name: formats
+- name: Formats
   description: Browse items by format type
 paths:
   /audio/:
     get:
       tags:
-      - formats
+      - Formats
       summary: Browse audio recordings
       description: Returns items in the Audio Recordings format from loc.gov digital collections.
       operationId: listAudio
@@ -68,7 +71,7 @@ paths:
   /books/:
     get:
       tags:
-      - formats
+      - Formats
       summary: Browse books and printed materials
       description: Returns items in the Books/Printed Material format from loc.gov digital collections.
       operationId: listBooks
@@ -120,7 +123,7 @@ paths:
   /film-and-videos/:
     get:
       tags:
-      - formats
+      - Formats
       summary: Browse films and videos
       description: Returns items in the Films/Videos format from loc.gov digital collections.
       operationId: listFilmAndVideos
@@ -172,7 +175,7 @@ paths:
   /manuscripts/:
     get:
       tags:
-      - formats
+      - Formats
       summary: Browse manuscripts and mixed materials
       description: Returns items in the Manuscripts/Mixed Material format from loc.gov digital collections.
       operationId: listManuscripts
@@ -218,7 +221,7 @@ paths:
   /maps/:
     get:
       tags:
-      - formats
+      - Formats
       summary: Browse maps
       description: Returns items in the Maps format from loc.gov digital collections.
       operationId: listMaps
@@ -264,7 +267,7 @@ paths:
   /newspapers/:
     get:
       tags:
-      - formats
+      - Formats
       summary: Browse newspapers
       description: Returns items in the Newspapers format from loc.gov digital collections.
       operationId: listNewspapers
@@ -310,7 +313,7 @@ paths:
   /photos/:
     get:
       tags:
-      - formats
+      - Formats
       summary: Browse photos, prints, and drawings
       description: Returns items in the Photos/Prints/Drawings format from loc.gov digital collections.
       operationId: listPhotos
@@ -356,7 +359,7 @@ paths:
   /notated-music/:
     get:
       tags:
-      - formats
+      - Formats
       summary: Browse printed music and sheet music
       description: Returns items in the Notated Music (sheet music) format from loc.gov digital collections.
       operationId: listNotatedMusic
@@ -402,7 +405,7 @@ paths:
   /web-archives/:
     get:
       tags:
-      - formats
+      - Formats
       summary: Browse web archives
       description: Returns items in the Web Archives format from loc.gov digital collections.
       operationId: listWebArchives
@@ -447,60 +450,6 @@ paths:
                 $ref: '#/components/schemas/SearchResponse'
 components:
   schemas:
-    Pagination:
-      type: object
-      description: Pagination information for search results
-      properties:
-        count:
-          type: integer
-          description: Total number of items in the result set
-        current:
-          type: integer
-          description: Current page number
-        from:
-          type: integer
-          description: Index of the first item on the current page
-        last:
-          type: integer
-          description: Index of the last item on the current page
-        next:
-          type: string
-          nullable: true
-          description: URL for the next page of results
-        of:
-          type: integer
-          description: Total number of pages
-        perpage:
-          type: integer
-          description: Number of items per page
-        previous:
-          type: string
-          nullable: true
-          description: URL for the previous page of results
-        results:
-          type: string
-          description: Human-readable description of current result range
-        to:
-          type: integer
-          description: Index of the last item on the current page
-    SearchResponse:
-      type: object
-      description: Standard search result response from the loc.gov JSON API
-      properties:
-        facets:
-          type: object
-          description: Available facets for filtering results
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/FacetValue'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        results:
-          type: array
-          description: List of collection items matching the query
-          items:
-            $ref: '#/components/schemas/ItemSummary'
     ItemSummary:
       type: object
       description: Summary information for a single collection item in search results
@@ -564,6 +513,44 @@ components:
         url:
           type: string
           description: URL for the item's HTML page on loc.gov
+    Pagination:
+      type: object
+      description: Pagination information for search results
+      properties:
+        count:
+          type: integer
+          description: Total number of items in the result set
+        current:
+          type: integer
+          description: Current page number
+        from:
+          type: integer
+          description: Index of the first item on the current page
+        last:
+          type: integer
+          description: Index of the last item on the current page
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL for the next page of results
+        of:
+          type: integer
+          description: Total number of pages
+        perpage:
+          type: integer
+          description: Number of items per page
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL for the previous page of results
+        results:
+          type: string
+          description: Human-readable description of current result range
+        to:
+          type: integer
+          description: Index of the last item on the current page
     FacetValue:
       type: object
       description: A facet value used to filter search results
@@ -577,8 +564,24 @@ components:
         value:
           type: string
           description: The facet value text
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: query
-      name: api_key
+    SearchResponse:
+      type: object
+      description: Standard search result response from the loc.gov JSON API
+      properties:
+        facets:
+          type: object
+          description: Available facets for filtering results
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/FacetValue'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          description: List of collection items matching the query
+          items:
+            $ref: '#/components/schemas/ItemSummary'
+externalDocs:
+  description: API Documentation
+  url: https://www.loc.gov/apis/json-and-yaml/

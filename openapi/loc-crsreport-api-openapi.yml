@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments crsreport API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: Congress.gov Crsreport API
   version: '3'
 servers:
 - url: /v3
@@ -18,7 +16,6 @@ paths:
       tags:
       - crsreport
       summary: Returns Congressional Research Service (CRS) report data from the API
-      description: Returns Congressional Research Service (CRS) report data from the API
       parameters:
       - $ref: '#/components/parameters/format'
       - $ref: '#/components/parameters/offset'
@@ -37,12 +34,13 @@ paths:
                 $ref: '#/components/schemas/CrsReport'
         '400':
           description: Invalid status value
+      operationId: getCrsreport
+      x-operation-id-source: derived
   /crsreport/{reportNumber}:
     get:
       tags:
       - crsreport
       summary: Returns Congressional Research Service (CRS) report data from the API
-      description: Returns Congressional Research Service (CRS) report data from the API
       parameters:
       - $ref: '#/components/parameters/crsReportNumber'
       - $ref: '#/components/parameters/format'
@@ -58,8 +56,17 @@ paths:
                 $ref: '#/components/schemas/CrsReportDetail'
         '400':
           description: Invalid status value
+      operationId: getCrsreportByReportNumber
+      x-operation-id-source: derived
 components:
   parameters:
+    crsReportNumber:
+      name: reportNumber
+      in: path
+      description: The number or ID of the report. For example, R47175.
+      required: true
+      schema:
+        type: string
     offset:
       name: offset
       in: query
@@ -78,24 +85,17 @@ components:
         enum:
         - xml
         - json
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    crsReportNumber:
-      name: reportNumber
-      in: path
-      description: The number or ID of the report. For example, R47175.
-      required: true
-      schema:
-        type: string
     toDateTime:
       name: toDateTime
       in: query
       description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
       required: false
       schema:
         type: string
@@ -107,36 +107,30 @@ components:
       schema:
         type: integer
   schemas:
-    crsreport:
+    relatedMaterial:
       type: object
       properties:
-        contentType:
+        URL:
           type: string
-          example: Reports
-        id:
+          example: https://api.congress.gov/v3/law/93/pub/344
+        congress:
+          type: integer
+          example: 93
+        number:
           type: string
-          example: R43083
-        publishDate:
-          type: string
-          format: date-time
-          example: '2025-02-05T11:34:25Z'
-        status:
-          type: string
-          example: Active
+          example: 93-344
         title:
           type: string
-          example: 'SBA Assistance to Small Business Startups: Client Experiences and Program Impact'
-        updateDate:
+          example: Providing for budget allocations, and for other purposes.
+        type:
           type: string
-          format: date-time
-          example: '2025-02-07T01:36:49Z'
-        url:
+          example: PUB
+    topic:
+      type: object
+      properties:
+        topic:
           type: string
-          format: url
-          example: https://api.congress.gov/v3/crsreport/R43083
-        version:
-          type: integer
-          example: 145
+          example: Budget & Appropriations Procedure
     format:
       type: object
       properties:
@@ -147,12 +141,6 @@ components:
         type: string
         format: url
         example: https://www.congress.gov/crs_external_products/R/PDF/R47175/R47175.1.pdf
-    topic:
-      type: object
-      properties:
-        topic:
-          type: string
-          example: Budget & Appropriations Procedure
     CrsReportDetail:
       type: object
       properties:
@@ -202,30 +190,6 @@ components:
         version:
           type: integer
           example: 1
-    relatedMaterial:
-      type: object
-      properties:
-        URL:
-          type: string
-          example: https://api.congress.gov/v3/law/93/pub/344
-        congress:
-          type: integer
-          example: 93
-        number:
-          type: string
-          example: 93-344
-        title:
-          type: string
-          example: Providing for budget allocations, and for other purposes.
-        type:
-          type: string
-          example: PUB
-    author:
-      type: object
-      properties:
-        author:
-          type: string
-          example: Megan S. Lynch
     CrsReport:
       type: object
       properties:
@@ -233,6 +197,42 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/crsreport'
+    crsreport:
+      type: object
+      properties:
+        contentType:
+          type: string
+          example: Reports
+        id:
+          type: string
+          example: R43083
+        publishDate:
+          type: string
+          format: date-time
+          example: '2025-02-05T11:34:25Z'
+        status:
+          type: string
+          example: Active
+        title:
+          type: string
+          example: 'SBA Assistance to Small Business Startups: Client Experiences and Program Impact'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2025-02-07T01:36:49Z'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/crsreport/R43083
+        version:
+          type: integer
+          example: 145
+    author:
+      type: object
+      properties:
+        author:
+          type: string
+          example: Megan S. Lynch
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

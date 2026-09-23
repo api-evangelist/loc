@@ -1,24 +1,21 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  description: 'Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
-
-    '
-  title: Congress.gov amendments bill API
+  description: Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. Sign up for an API key from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our GitHub repository.
+  title: Congress.gov Bill API
   version: '3'
 servers:
 - url: /v3
 security:
 - ApiKeyAuth: []
 tags:
-- name: bill
+- name: Bill
   description: Returns bill data from the API
 paths:
   /bill:
     get:
       tags:
-      - bill
+      - Bill
       summary: Returns a list of bills sorted by date of latest action
-      description: Returns a list of bills sorted by date of latest action
       parameters:
       - $ref: '#/components/parameters/format'
       - $ref: '#/components/parameters/offset'
@@ -37,11 +34,13 @@ paths:
                 $ref: '#/components/schemas/Bill'
         '400':
           description: Invalid status value
+      operationId: getBill
+      x-operation-id-source: derived
   /bill/{congress}:
     get:
       tags:
-      - bill
-      summary: Returns a list of bills filtered by the specified congress, sorted by date of latest action
+      - Bill
+      summary: Returns a list of bills filtered by the specified congress, sorted by date of…
       description: Returns a list of bills filtered by the specified congress, sorted by date of latest action
       parameters:
       - name: congress
@@ -68,11 +67,13 @@ paths:
                 $ref: '#/components/schemas/Bill'
         '400':
           description: Invalid status value
+      operationId: getBillByCongress
+      x-operation-id-source: derived
   /bill/{congress}/{billType}:
     get:
       tags:
-      - bill
-      summary: Returns a list of bills filtered by the specified congress and bill type, sorted by date of latest action.
+      - Bill
+      summary: Returns a list of bills filtered by the specified congress and bill type…
       description: Returns a list of bills filtered by the specified congress and bill type, sorted by date of latest action.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -94,11 +95,13 @@ paths:
                 $ref: '#/components/schemas/Bill'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillType
+      x-operation-id-source: derived
   /bill/{congress}/{billType}/{billNumber}:
     get:
       tags:
-      - bill
-      summary: Returns detailed information for a specified bill.
+      - Bill
+      summary: Returns detailed information for a specified bill
       description: Returns detailed information for a specified bill.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -121,11 +124,13 @@ paths:
                 $ref: '#/components/schemas/BillDetail'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillTypeByBillNumber
+      x-operation-id-source: derived
   /bill/{congress}/{billType}/{billNumber}/actions:
     get:
       tags:
-      - bill
-      summary: Returns the list of actions on a specified bill.
+      - Bill
+      summary: Returns the list of actions on a specified bill
       description: Returns the list of actions on a specified bill.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -148,11 +153,13 @@ paths:
                 $ref: '#/components/schemas/Actions'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillTypeByBillNumberActions
+      x-operation-id-source: derived
   /bill/{congress}/{billType}/{billNumber}/amendments:
     get:
       tags:
-      - bill
-      summary: Returns the list of amendments to a specified bill.
+      - Bill
+      summary: Returns the list of amendments to a specified bill
       description: Returns the list of amendments to a specified bill.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -175,11 +182,13 @@ paths:
                 $ref: '#/components/schemas/Amendments'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillTypeByBillNumberAmendments
+      x-operation-id-source: derived
   /bill/{congress}/{billType}/{billNumber}/committees:
     get:
       tags:
-      - bill
-      summary: Returns the list of committees associated with a specified bill.
+      - Bill
+      summary: Returns the list of committees associated with a specified bill
       description: Returns the list of committees associated with a specified bill.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -200,11 +209,13 @@ paths:
                 $ref: '#/components/schemas/Committee'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillTypeByBillNumberCommittees
+      x-operation-id-source: derived
   /bill/{congress}/{billType}/{billNumber}/cosponsors:
     get:
       tags:
-      - bill
-      summary: Returns the list of cosponsors on a specified bill.
+      - Bill
+      summary: Returns the list of cosponsors on a specified bill
       description: Returns the list of cosponsors on a specified bill.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -228,11 +239,13 @@ paths:
                 $ref: '#/components/schemas/CoSponsor'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillTypeByBillNumberCosponsors
+      x-operation-id-source: derived
   /bill/{congress}/{billType}/{billNumber}/relatedbills:
     get:
       tags:
-      - bill
-      summary: Returns the list of related bills to a specified bill.
+      - Bill
+      summary: Returns the list of related bills to a specified bill
       description: Returns the list of related bills to a specified bill.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -253,11 +266,13 @@ paths:
                 $ref: '#/components/schemas/RelatedBills'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillTypeByBillNumberRelatedbills
+      x-operation-id-source: derived
   /bill/{congress}/{billType}/{billNumber}/subjects:
     get:
       tags:
-      - bill
-      summary: Returns the list of legislative subjects on a specified bill.
+      - Bill
+      summary: Returns the list of legislative subjects on a specified bill
       description: Returns the list of legislative subjects on a specified bill.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -280,11 +295,13 @@ paths:
                 $ref: '#/components/schemas/Subjects'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillTypeByBillNumberSubjects
+      x-operation-id-source: derived
   /bill/{congress}/{billType}/{billNumber}/summaries:
     get:
       tags:
-      - bill
-      summary: Returns the list of summaries for a specified bill.
+      - Bill
+      summary: Returns the list of summaries for a specified bill
       description: Returns the list of summaries for a specified bill.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -305,11 +322,13 @@ paths:
                 $ref: '#/components/schemas/BillSummaries'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillTypeByBillNumberSummaries
+      x-operation-id-source: derived
   /bill/{congress}/{billType}/{billNumber}/text:
     get:
       tags:
-      - bill
-      summary: Returns the list of text versions for a specified bill.
+      - Bill
+      summary: Returns the list of text versions for a specified bill
       description: Returns the list of text versions for a specified bill.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -330,11 +349,13 @@ paths:
                 $ref: '#/components/schemas/Text'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillTypeByBillNumberText
+      x-operation-id-source: derived
   /bill/{congress}/{billType}/{billNumber}/titles:
     get:
       tags:
-      - bill
-      summary: Returns the list of titles for a specified bill.
+      - Bill
+      summary: Returns the list of titles for a specified bill
       description: Returns the list of titles for a specified bill.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -357,11 +378,13 @@ paths:
                 $ref: '#/components/schemas/Titles'
         '400':
           description: Invalid status value
+      operationId: getBillByCongressByBillTypeByBillNumberTitles
+      x-operation-id-source: derived
   /law/{congress}:
     get:
       tags:
-      - bill
-      summary: Returns a list of laws filtered by the specified congress.
+      - Bill
+      summary: Returns a list of laws filtered by the specified congress
       description: Returns a list of laws filtered by the specified congress.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -380,11 +403,13 @@ paths:
                 $ref: '#/components/schemas/Law'
         '400':
           description: Invalid status value
+      operationId: getLawByCongress
+      x-operation-id-source: derived
   /law/{congress}/{lawType}:
     get:
       tags:
-      - bill
-      summary: Returns a list of laws filtered by specified congress and law type (public or private).
+      - Bill
+      summary: Returns a list of laws filtered by specified congress and law type (public or…
       description: Returns a list of laws filtered by specified congress and law type (public or private).
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -404,11 +429,13 @@ paths:
                 $ref: '#/components/schemas/Law'
         '400':
           description: Invalid status value
+      operationId: getLawByCongressByLawType
+      x-operation-id-source: derived
   /law/{congress}/{lawType}/{lawNumber}:
     get:
       tags:
-      - bill
-      summary: Returns a law filtered by specified congress, law type (public or private), and law number.
+      - Bill
+      summary: Returns a law filtered by specified congress, law type (public or private), and…
       description: Returns a law filtered by specified congress, law type (public or private), and law number.
       parameters:
       - $ref: '#/components/parameters/congress'
@@ -429,41 +456,17 @@ paths:
                 $ref: '#/components/schemas/LawNumber'
         '400':
           description: Invalid status value
+      operationId: getLawByCongressByLawTypeByLawNumber
+      x-operation-id-source: derived
 components:
   schemas:
-    BillSummaries:
-      type: array
-      items:
-        $ref: '#/components/schemas/billSummariesArray'
-    cboCost:
-      type: object
-      properties:
-        description:
-          type: string
-          example: 'As ordered reported by the House Committee on Oversight and Accountability on September 20, 2023
-
-            '
-        pubDate:
-          type: string
-          format: date
-          example: '2023-10-10T19:58:00Z'
-        title:
-          type: string
-          example: H.R. 4984, D.C. Robert F. Kennedy Memorial Stadium Campus Revitalization Act
-        url:
-          type: string
-          format: url
-          example: https://www.cbo.gov/publication/59651
-    Amendments:
+    RelatedBills:
       type: object
       properties:
         congress:
           type: integer
           example: 117
-        description:
-          type: string
-          example: Pursuant to the provisions of H. Res. 912, the amendment in the nature of a substitute consisting of the text of Rules Committee Print 117-32 is considered as adopted.
-        latestAction:
+        lastestAction:
           type: object
           properties:
             actionDate:
@@ -474,99 +477,26 @@ components:
               type: string
               example: 'On agreeing to the Maloney, Carolyn B. amendment (A002) Agreed to by voice vote. '
         number:
-          type: string
-          example: '173'
-        type:
-          type: string
-          example: HAMDT
-        updateDate:
+          type: integer
+          example: 1720
+        relationshipDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/relationshipDetails'
+    textVersions:
+      type: object
+      properties:
+        date:
           type: string
           format: date
           example: '2022-02-18T16:38:41Z'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/amendment/117/hamdt/173?format=json
-    CoSponsor:
-      type: object
-      properties:
-        bioguidId:
-          type: string
-          example: F000450
-        district:
-          type: integer
-          example: 5
-        firstName:
-          type: string
-          example: Virginia
-        fullName:
-          type: string
-          example: Rep. Foxx, Virginia [R-NC-5]
-        isOriginalCosponsor:
-          type: boolean
-          example: true
-        lastName:
-          type: string
-          example: Foxx
-        party:
-          type: string
-          example: R
-        sponsorshipDate:
-          type: string
-          format: date
-          example: '2021-05-11'
-        state:
-          type: string
-          example: NC
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/member/F000450?format=json
-    Bill:
-      xml:
-        wrapped: false
-      type: object
-      properties:
-        congress:
-          type: integer
-          example: 119
-        latestAction:
-          type: object
-          properties:
-            actionDate:
-              type: string
-              format: date
-              example: '2025-11-21'
-            text:
-              type: string
-              example: Read twice and referred to the Committee on Agriculture, Nutrition, and Forestry.
-        number:
-          type: string
-          example: 3281
-        originChamber:
-          type: string
-          example: Senate
-        originChamberCode:
-          type: string
-          example: S
-        title:
-          type: string
-          example: A bill to repeal certain provisions relating to nutrition.
+        formats:
+          type: array
+          items:
+            $ref: '#/components/schemas/formats'
         type:
           type: string
-          example: S
-        updateDate:
-          type: string
-          format: date
-          example: '2025-11-21'
-        updateDateIncludingText:
-          type: string
-          format: date-time
-          example: '2025-11-21'
-        url:
-          type: string
-          format: url
-          example: http://api.congress.gov/v3/bill/119/s/3281?format=xml
+          example: Enrolled Bill
     LawNumber:
       type: object
       properties:
@@ -752,174 +682,24 @@ components:
           type: string
           format: date-time
           example: '2025-05-27T14:16:54Z'
-    Committee:
+    Subjects:
       type: object
       properties:
-        activities:
+        legislativeSubjects:
           type: array
           items:
-            $ref: '#/components/schemas/Activity'
-        chamber:
-          type: string
-          example: House
-        name:
-          type: string
-          example: House Committee on the Judiciary
-        systemCode:
-          type: string
-          example: hsgo00
-        type:
-          type: string
-          example: Standing
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hsgo00?format=json
-    Law:
+            $ref: '#/components/schemas/legislativeSubjects'
+        policyArea:
+          $ref: '#/components/schemas/policyArea'
+    laws:
       type: object
       properties:
-        congress:
-          type: integer
-          example: 119
-        latestAction:
-          type: object
-          properties:
-            actionDate:
-              type: string
-              format: date
-              example: '2025-11-21'
-            text:
-              type: string
-              example: 'Became Public Law No: 119-37.'
-        laws:
-          type: array
-          items:
-            $ref: '#/components/schemas/laws'
         number:
           type: string
-          example: '2808'
-        originChamber:
-          type: string
-          example: House
-        originChamberCode:
-          type: string
-          example: H
-        title:
-          type: string
-          example: Homebuyers Privacy Protection Act
+          example: 117-108
         type:
           type: string
-          example: HR
-        updateDate:
-          type: string
-          format: date
-          example: '2025-11-21'
-        updateDateIncludingText:
-          type: string
-          format: date-time
-          example: '2025-11-21'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/bill/119/hr/2808?format=json
-    policyArea:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Government Operations and Politics
-    formats:
-      type: object
-      properties:
-        type:
-          type: string
-          example: Formatted Text
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
-    Sponsor:
-      type: object
-      properties:
-        bioguideId:
-          type: string
-          example: G000555
-        firstName:
-          type: string
-          example: Bill
-        lastName:
-          type: string
-          example: Washington
-        fullName:
-          type: string
-          example: Senator Bill Washington [I-NY]
-        isByRequest:
-          type: string
-          example: N
-        middleName:
-          type: string
-          example: J.
-        party:
-          type: string
-          example: I
-        state:
-          type: string
-          example: VA
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/member/G000555?format=json
-    Text:
-      type: array
-      items:
-        $ref: '#/components/schemas/textVersions'
-    textVersions:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
-        formats:
-          type: array
-          items:
-            $ref: '#/components/schemas/formats'
-        type:
-          type: string
-          example: Enrolled Bill
-    RelatedBills:
-      type: object
-      properties:
-        congress:
-          type: integer
-          example: 117
-        lastestAction:
-          type: object
-          properties:
-            actionDate:
-              type: string
-              format: date
-              example: '2019-01-01'
-            text:
-              type: string
-              example: 'On agreeing to the Maloney, Carolyn B. amendment (A002) Agreed to by voice vote. '
-        number:
-          type: integer
-          example: 1720
-        relationshipDetails:
-          type: array
-          items:
-            $ref: '#/components/schemas/relationshipDetails'
-    legislativeSubjects:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Congressional oversight
-        updateDate:
-          type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
+          example: Public Law
     billSummariesArray:
       type: object
       properties:
@@ -940,10 +720,74 @@ components:
         versionCode:
           type: string
           example: '173'
-    Titles:
+    CoSponsor:
+      type: object
+      properties:
+        bioguidId:
+          type: string
+          example: F000450
+        district:
+          type: integer
+          example: 5
+        firstName:
+          type: string
+          example: Virginia
+        fullName:
+          type: string
+          example: Rep. Foxx, Virginia [R-NC-5]
+        isOriginalCosponsor:
+          type: boolean
+          example: true
+        lastName:
+          type: string
+          example: Foxx
+        party:
+          type: string
+          example: R
+        sponsorshipDate:
+          type: string
+          format: date
+          example: '2021-05-11'
+        state:
+          type: string
+          example: NC
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/member/F000450?format=json
+    Activity:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          example: '2019-01-01'
+        name:
+          type: string
+          example: Reported By
+    cboCost:
+      type: object
+      properties:
+        description:
+          type: string
+          example: 'As ordered reported by the House Committee on Oversight and Accountability on September 20, 2023
+
+            '
+        pubDate:
+          type: string
+          format: date
+          example: '2023-10-10T19:58:00Z'
+        title:
+          type: string
+          example: H.R. 4984, D.C. Robert F. Kennedy Memorial Stadium Campus Revitalization Act
+        url:
+          type: string
+          format: url
+          example: https://www.cbo.gov/publication/59651
+    Text:
       type: array
       items:
-        $ref: '#/components/schemas/titlesArray'
+        $ref: '#/components/schemas/textVersions'
     relationshipDetails:
       type: object
       properties:
@@ -953,31 +797,91 @@ components:
         type:
           type: string
           example: Related Bill
-    Actions:
+    titlesArray:
       type: object
       properties:
-        actionCode:
+        title:
           type: string
-          example: '36000'
-        actionDate:
+          example: A bill to amend the Health and Human Services Act of 1968 to provide for the establishment of a national health care system.
+        updateDate:
           type: string
           format: date
-          example: '2019-01-01'
-        sourceSystem:
+          example: '2022-02-18T16:38:41Z'
+        titleType:
+          type: string
+          example: Display Title
+        titleTypeCode:
+          type: integer
+          example: 45
+        billTextVersionCode:
+          type: string
+          example: RH
+        billTextVersionName:
+          type: string
+          example: Reported in House
+    policyArea:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Government Operations and Politics
+    BillSummaries:
+      type: array
+      items:
+        $ref: '#/components/schemas/billSummariesArray'
+    Amendments:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 117
+        description:
+          type: string
+          example: Pursuant to the provisions of H. Res. 912, the amendment in the nature of a substitute consisting of the text of Rules Committee Print 117-32 is considered as adopted.
+        latestAction:
           type: object
           properties:
-            code:
-              type: integer
-              example: 1
-            name:
+            actionDate:
               type: string
-              example: Library of Congress
-        text:
+              format: date
+              example: '2019-01-01'
+            text:
+              type: string
+              example: 'On agreeing to the Maloney, Carolyn B. amendment (A002) Agreed to by voice vote. '
+        number:
           type: string
-          example: 'Became Public Law No: 117-108.'
+          example: '173'
         type:
           type: string
-          example: BecameLaw
+          example: HAMDT
+        updateDate:
+          type: string
+          format: date
+          example: '2022-02-18T16:38:41Z'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/amendment/117/hamdt/173?format=json
+    legislativeSubjects:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Congressional oversight
+        updateDate:
+          type: string
+          format: date
+          example: '2022-02-18T16:38:41Z'
+    formats:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Formatted Text
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
     BillDetail:
       type: object
       properties:
@@ -1042,6 +946,158 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Sponsor'
+    Bill:
+      xml:
+        wrapped: false
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 119
+        latestAction:
+          type: object
+          properties:
+            actionDate:
+              type: string
+              format: date
+              example: '2025-11-21'
+            text:
+              type: string
+              example: Read twice and referred to the Committee on Agriculture, Nutrition, and Forestry.
+        number:
+          type: string
+          example: 3281
+        originChamber:
+          type: string
+          example: Senate
+        originChamberCode:
+          type: string
+          example: S
+        title:
+          type: string
+          example: A bill to repeal certain provisions relating to nutrition.
+        type:
+          type: string
+          example: S
+        updateDate:
+          type: string
+          format: date
+          example: '2025-11-21'
+        updateDateIncludingText:
+          type: string
+          format: date-time
+          example: '2025-11-21'
+        url:
+          type: string
+          format: url
+          example: http://api.congress.gov/v3/bill/119/s/3281?format=xml
+    Law:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 119
+        latestAction:
+          type: object
+          properties:
+            actionDate:
+              type: string
+              format: date
+              example: '2025-11-21'
+            text:
+              type: string
+              example: 'Became Public Law No: 119-37.'
+        laws:
+          type: array
+          items:
+            $ref: '#/components/schemas/laws'
+        number:
+          type: string
+          example: '2808'
+        originChamber:
+          type: string
+          example: House
+        originChamberCode:
+          type: string
+          example: H
+        title:
+          type: string
+          example: Homebuyers Privacy Protection Act
+        type:
+          type: string
+          example: HR
+        updateDate:
+          type: string
+          format: date
+          example: '2025-11-21'
+        updateDateIncludingText:
+          type: string
+          format: date-time
+          example: '2025-11-21'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/119/hr/2808?format=json
+    Titles:
+      type: array
+      items:
+        $ref: '#/components/schemas/titlesArray'
+    Sponsor:
+      type: object
+      properties:
+        bioguideId:
+          type: string
+          example: G000555
+        firstName:
+          type: string
+          example: Bill
+        lastName:
+          type: string
+          example: Washington
+        fullName:
+          type: string
+          example: Senator Bill Washington [I-NY]
+        isByRequest:
+          type: string
+          example: N
+        middleName:
+          type: string
+          example: J.
+        party:
+          type: string
+          example: I
+        state:
+          type: string
+          example: VA
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/member/G000555?format=json
+    Actions:
+      type: object
+      properties:
+        actionCode:
+          type: string
+          example: '36000'
+        actionDate:
+          type: string
+          format: date
+          example: '2019-01-01'
+        sourceSystem:
+          type: object
+          properties:
+            code:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: Library of Congress
+        text:
+          type: string
+          example: 'Became Public Law No: 117-108.'
+        type:
+          type: string
+          example: BecameLaw
     committeeReport:
       type: object
       properties:
@@ -1052,57 +1108,69 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee-report/118/HRPT/400?format=json
-    Subjects:
+    Committee:
       type: object
       properties:
-        legislativeSubjects:
+        activities:
           type: array
           items:
-            $ref: '#/components/schemas/legislativeSubjects'
-        policyArea:
-          $ref: '#/components/schemas/policyArea'
-    laws:
-      type: object
-      properties:
-        number:
+            $ref: '#/components/schemas/Activity'
+        chamber:
           type: string
-          example: 117-108
-        type:
-          type: string
-          example: Public Law
-    Activity:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-          example: '2019-01-01'
+          example: House
         name:
           type: string
-          example: Reported By
-    titlesArray:
-      type: object
-      properties:
-        title:
+          example: House Committee on the Judiciary
+        systemCode:
           type: string
-          example: A bill to amend the Health and Human Services Act of 1968 to provide for the establishment of a national health care system.
-        updateDate:
+          example: hsgo00
+        type:
           type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
-        titleType:
+          example: Standing
+        url:
           type: string
-          example: Display Title
-        titleTypeCode:
-          type: integer
-          example: 45
-        billTextVersionCode:
-          type: string
-          example: RH
-        billTextVersionName:
-          type: string
-          example: Reported in House
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hsgo00?format=json
   parameters:
+    lawNumber:
+      name: lawNumber
+      in: path
+      description: The law number
+      required: true
+      schema:
+        type: integer
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
     sort:
       name: sort
       in: query
@@ -1118,31 +1186,10 @@ components:
       schema:
         type: integer
         format: int32
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
     lawType:
       name: lawType
       in: path
       description: The law type. Values are either 'pub’ or ‘priv.’
-      required: true
-      schema:
-        type: string
-    billType:
-      name: billType
-      in: path
-      description: The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres.
       required: true
       schema:
         type: string
@@ -1153,38 +1200,20 @@ components:
       required: true
       schema:
         type: integer
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    lawNumber:
-      name: lawNumber
+    billType:
+      name: billType
       in: path
-      description: The law number
+      description: The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres.
       required: true
       schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
         type: integer
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
