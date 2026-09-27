@@ -148,7 +148,99 @@ paths:
       operationId: getCommitteeReportByCongressByReportTypeByReportNumberText
       x-operation-id-source: derived
 components:
+  parameters:
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    reportType:
+      name: reportType
+      in: path
+      description: The type of committee report. Value can be hrpt, srpt, or erpt.
+      required: true
+      schema:
+        type: string
+        enum:
+        - hrpt
+        - srpt
+        - erpt
+    reportNumber:
+      name: reportNumber
+      in: path
+      description: The committee report’s assigned number. For example, the value can be 617.
+      required: true
+      schema:
+        type: integer
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    conference:
+      name: conference
+      in: query
+      description: Flag to indicate conference reports. Value can be true or false.
+      required: false
+      schema:
+        type: boolean
+        enum:
+        - true
+        - false
   schemas:
+    associatedBill:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 116
+        number:
+          type: string
+          example: '6395'
+        type:
+          type: string
+          example: HR
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/116/hr/6395?format=json
     committeeReports:
       type: object
       properties:
@@ -178,23 +270,6 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/bill/117hr570?format=json
-    committeereportsformats:
-      type: object
-      properties:
-        isErrata:
-          type: string
-          example: N
-        type:
-          type: string
-          example: Formatted Text
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/116/crpt/hrpt617/generated/CRPT-116hrpt617.htm
-    CommitteeReportsText:
-      type: array
-      items:
-        $ref: '#/components/schemas/committeereportsformats'
     CommitteeReports:
       type: array
       items:
@@ -236,98 +311,23 @@ components:
             title:
               type: string
               example: WILLIAM M. (MAC) THORNBERRY NATIONAL DEFENSE AUTHORIZATION ACT FOR FISCAL YEAR 2021
-    associatedBill:
+    committeereportsformats:
       type: object
       properties:
-        congress:
-          type: integer
-          example: 116
-        number:
+        isErrata:
           type: string
-          example: '6395'
+          example: N
         type:
           type: string
-          example: HR
+          example: Formatted Text
         url:
           type: string
           format: url
-          example: https://api.congress.gov/v3/bill/116/hr/6395?format=json
-  parameters:
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    conference:
-      name: conference
-      in: query
-      description: Flag to indicate conference reports. Value can be true or false.
-      required: false
-      schema:
-        type: boolean
-        enum:
-        - true
-        - false
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    reportType:
-      name: reportType
-      in: path
-      description: The type of committee report. Value can be hrpt, srpt, or erpt.
-      required: true
-      schema:
-        type: string
-        enum:
-        - hrpt
-        - srpt
-        - erpt
-    reportNumber:
-      name: reportNumber
-      in: path
-      description: The committee report’s assigned number. For example, the value can be 617.
-      required: true
-      schema:
-        type: integer
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
+          example: https://www.congress.gov/116/crpt/hrpt617/generated/CRPT-116hrpt617.htm
+    CommitteeReportsText:
+      type: array
+      items:
+        $ref: '#/components/schemas/committeereportsformats'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

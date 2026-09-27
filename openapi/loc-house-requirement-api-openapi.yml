@@ -85,10 +85,10 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    offset:
-      name: offset
+    limit:
+      name: limit
       in: query
-      description: The starting record returned. 0 is the first record.
+      description: The number of records returned. The maximum limit is 250.
       required: false
       schema:
         type: integer
@@ -97,6 +97,13 @@ components:
       in: path
       description: The requirement’s assigned number. For example, the value can be 8070.
       required: true
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
       schema:
         type: integer
     format:
@@ -110,21 +117,30 @@ components:
         enum:
         - xml
         - json
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
   schemas:
-    MatchCommunications:
+    communicationType:
       type: object
       properties:
-        matchCommunications:
-          type: array
-          items:
-            $ref: '#/components/schemas/matchCommunications'
+        code:
+          type: string
+          example: EC
+        name:
+          type: string
+          example: Executive Communication
+    houseRequirement:
+      type: object
+      properties:
+        number:
+          type: integer
+          example: 8070
+        updateDate:
+          type: string
+          format: date
+          example: '2021-08-13'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/house-requirement/8070?format=json
     matchCommunications:
       type: object
       properties:
@@ -153,36 +169,6 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/house-requirement/8070/matching-communications?format=json
-    communicationType:
-      type: object
-      properties:
-        code:
-          type: string
-          example: EC
-        name:
-          type: string
-          example: Executive Communication
-    HouseRequirements:
-      type: object
-      properties:
-        houseRequirements:
-          type: array
-          items:
-            $ref: '#/components/schemas/houseRequirement'
-    houseRequirement:
-      type: object
-      properties:
-        number:
-          type: integer
-          example: 8070
-        updateDate:
-          type: string
-          format: date
-          example: '2021-08-13'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/house-requirement/8070?format=json
     HouseRequirement:
       type: object
       properties:
@@ -216,6 +202,20 @@ components:
               type: string
               format: date
               example: '2021-08-13'
+    MatchCommunications:
+      type: object
+      properties:
+        matchCommunications:
+          type: array
+          items:
+            $ref: '#/components/schemas/matchCommunications'
+    HouseRequirements:
+      type: object
+      properties:
+        houseRequirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/houseRequirement'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

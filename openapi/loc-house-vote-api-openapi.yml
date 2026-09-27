@@ -142,6 +142,21 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
     voteNumber:
       name: voteNumber
       in: path
@@ -159,21 +174,6 @@ components:
         enum:
         - 1
         - 2
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
     format:
       name: format
       in: query
@@ -185,56 +185,14 @@ components:
         enum:
         - xml
         - json
-    limit:
-      name: limit
+    offset:
+      name: offset
       in: query
-      description: The number of records returned. The maximum limit is 250.
+      description: The starting record returned. 0 is the first record.
       required: false
       schema:
         type: integer
   schemas:
-    HouseVoteNumberBase:
-      type: object
-      properties:
-        congress:
-          type: integer
-          example: 119
-        identifier:
-          type: integer
-          example: 1191202517
-        legislationNumber:
-          type: string
-          example: '30'
-        legislationType:
-          type: string
-          example: HR
-        legislationUrl:
-          type: string
-          format: url
-          example: https://congress.gov/bill/119/house-bill/30
-        result:
-          type: string
-          example: Passed
-        rollCallNumber:
-          type: integer
-          example: 17
-        sessionNumber:
-          type: integer
-          example: 1
-        sourceDataURL:
-          type: string
-          example: https://clerk.house.gov/evs/2025/roll017.xml
-        startDate:
-          type: string
-          format: date-time
-          example: '2025-01-16T11:00:00-05:00'
-        updateDate:
-          type: string
-          format: date-time
-          example: '2025-04-18T08:44:47-04:00'
-        voteType:
-          type: string
-          example: Yea-and-Nay
     HouseVote:
       type: object
       properties:
@@ -281,38 +239,6 @@ components:
         voteType:
           type: string
           example: Yea-and-Nay
-    HouseVoteMembers:
-      allOf:
-      - $ref: '#/components/schemas/HouseVoteNumberBase'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/houseVoteResults'
-          voteQuestion:
-            type: string
-            example: On Passage
-    voteParty:
-      type: object
-      properties:
-        nayTotal:
-          type: integer
-          example: 0
-        notVotingTotal:
-          type: integer
-          example: 6
-        presentTotal:
-          type: integer
-          example: 0
-        voteParty:
-          type: string
-          example: R
-        yeaTotal:
-          type: integer
-          example: 213
-        party:
-          $ref: '#/components/schemas/party'
     houseVoteResults:
       type: object
       properties:
@@ -334,6 +260,89 @@ components:
         voteState:
           type: string
           example: AL
+    HouseVoteMembers:
+      allOf:
+      - $ref: '#/components/schemas/HouseVoteNumberBase'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/houseVoteResults'
+          voteQuestion:
+            type: string
+            example: On Passage
+    HouseVoteNumberBase:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 119
+        identifier:
+          type: integer
+          example: 1191202517
+        legislationNumber:
+          type: string
+          example: '30'
+        legislationType:
+          type: string
+          example: HR
+        legislationUrl:
+          type: string
+          format: url
+          example: https://congress.gov/bill/119/house-bill/30
+        result:
+          type: string
+          example: Passed
+        rollCallNumber:
+          type: integer
+          example: 17
+        sessionNumber:
+          type: integer
+          example: 1
+        sourceDataURL:
+          type: string
+          example: https://clerk.house.gov/evs/2025/roll017.xml
+        startDate:
+          type: string
+          format: date-time
+          example: '2025-01-16T11:00:00-05:00'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2025-04-18T08:44:47-04:00'
+        voteType:
+          type: string
+          example: Yea-and-Nay
+    voteParty:
+      type: object
+      properties:
+        nayTotal:
+          type: integer
+          example: 0
+        notVotingTotal:
+          type: integer
+          example: 6
+        presentTotal:
+          type: integer
+          example: 0
+        voteParty:
+          type: string
+          example: R
+        yeaTotal:
+          type: integer
+          example: 213
+        party:
+          $ref: '#/components/schemas/party'
+    party:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Republican
+        type:
+          type: string
+          example: R
     HouseVoteNumber:
       allOf:
       - $ref: '#/components/schemas/HouseVoteNumberBase'
@@ -346,15 +355,6 @@ components:
           voteQuestion:
             type: string
             example: On Passage
-    party:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Republican
-        type:
-          type: string
-          example: R
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

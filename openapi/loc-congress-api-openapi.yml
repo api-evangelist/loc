@@ -85,6 +85,40 @@ paths:
       operationId: getCongressCurrent
       x-operation-id-source: derived
 components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
   schemas:
     Sessions:
       type: object
@@ -123,40 +157,6 @@ components:
         startYear:
           type: string
           example: '2021'
-  parameters:
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

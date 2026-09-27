@@ -115,11 +115,18 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    offset:
-      name: offset
+    limit:
+      name: limit
       in: query
-      description: The starting record returned. 0 is the first record.
+      description: The number of records returned. The maximum limit is 250.
       required: false
+      schema:
+        type: integer
+    jacketNumber:
+      name: jacketNumber
+      in: path
+      description: The jacket number for the print. For example, the value can be 48144.
+      required: true
       schema:
         type: integer
     congress:
@@ -141,6 +148,13 @@ components:
         enum:
         - xml
         - json
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
     chamber:
       name: chamber
       in: path
@@ -152,21 +166,54 @@ components:
         - house
         - senate
         - joint
-    jacketNumber:
-      name: jacketNumber
-      in: path
-      description: The jacket number for the print. For example, the value can be 48144.
-      required: true
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
   schemas:
+    Hearings:
+      type: array
+      items:
+        $ref: '#/components/schemas/hearing'
+    hearing:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        congress:
+          type: integer
+          example: 117
+        jacketNumber:
+          type: integer
+          example: 48144
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-08-01 21:19:33+00:00'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/hearing/117/house/41365?format=json
+    formats:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Formatted Text
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
+    subcommittees:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Investigations and Oversight Subcommittee
+        systemCode:
+          type: string
+          example: hspw01
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
     HearingDetail:
       type: object
       properties:
@@ -218,53 +265,6 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee-meeting/117/house/115266?format=json
-    subcommittees:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Investigations and Oversight Subcommittee
-        systemCode:
-          type: string
-          example: hspw01
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
-    formats:
-      type: object
-      properties:
-        type:
-          type: string
-          example: Formatted Text
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
-    hearing:
-      type: object
-      properties:
-        chamber:
-          type: string
-          example: House
-        congress:
-          type: integer
-          example: 117
-        jacketNumber:
-          type: integer
-          example: 48144
-        updateDate:
-          type: string
-          format: date-time
-          example: '2022-08-01 21:19:33+00:00'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/hearing/117/house/41365?format=json
-    Hearings:
-      type: array
-      items:
-        $ref: '#/components/schemas/hearing'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

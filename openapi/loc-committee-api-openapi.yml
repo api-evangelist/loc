@@ -304,19 +304,20 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    parentcommittee:
+    latestAction:
       type: object
       properties:
-        name:
+        actionDate:
           type: string
-          example: Judiciary Committee
-        systemCode:
+          format: date
+          example: '2022-06-16'
+        text:
           type: string
-          example: hsju00
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hsju00?format=json
+          example: Read twice and referred to the Committee on the Judiciary.
+    CommitteeReports:
+      type: array
+      items:
+        $ref: '#/components/schemas/committeeReports'
     Committees:
       type: object
       properties:
@@ -346,79 +347,6 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee/house/hspw00?format=json
-    subcommittees:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Investigations and Oversight Subcommittee
-        systemCode:
-          type: string
-          example: hspw01
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
-    CommitteeNominations:
-      type: array
-      items:
-        $ref: '#/components/schemas/committeeNominations'
-    committeeNominations:
-      type: object
-      properties:
-        citation:
-          type: string
-          example: PN2477
-        congress:
-          type: integer
-          example: 117
-        description:
-          type: string
-          example: Nomination of xyz for the 117th Congress
-        latestAction:
-          $ref: '#/components/schemas/latestAction'
-        nominationType:
-          $ref: '#/components/schemas/nominationType'
-        number:
-          type: integer
-          example: 2477
-        partNumber:
-          type: string
-          example: '00'
-        receivedDate:
-          type: string
-          format: date
-          example: '2022-08-03'
-        updateDate:
-          type: string
-          format: date-time
-          example: '2022-09-30 04:40:14+00:00'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/nomination/117/2477?format=json
-    latestAction:
-      type: object
-      properties:
-        actionDate:
-          type: string
-          format: date
-          example: '2022-06-16'
-        text:
-          type: string
-          example: Read twice and referred to the Committee on the Judiciary.
-    CommitteeHouseCommunication:
-      allOf:
-      - $ref: '#/components/schemas/CommitteeCommunication'
-      - type: object
-        properties:
-          chamber:
-            type: string
-            example: House
-          url:
-            type: string
-            format: url
-            example: https://api.congress.gov/v3/house-communication/114/ec/3262?format=json
     committeeBill:
       type: object
       properties:
@@ -446,32 +374,40 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/bill/112/hconres/117?format=json
-    CommitteeCommunication:
+    committeeHistory:
       type: object
       properties:
-        communicationType:
-          type: object
-          properties:
-            code:
-              type: string
-              example: EC
-            name:
-              type: string
-              example: Executive Communication
-        congress:
-          type: integer
-          example: 114
-        number:
-          type: integer
-          example: 3262
-        referralDate:
+        libraryOfCongressName:
           type: string
-          format: date
-          example: '2015-10-27'
+          example: Transportation and Infrastructure
+        officialName:
+          type: string
+          example: Committee on Transportation and Infrastructure
+        startDate:
+          type: string
+          format: date-time
+          example: '1995-01-04T05:00:00Z'
         updateDate:
           type: string
-          format: date
-          example: '2018-02-02'
+          format: date-time
+          example: '2020-02-04T00:07:37Z'
+        endDate:
+          type: string
+          format: date-time
+          example: '2020-03-04T05:00:00Z'
+    parentcommittee:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Judiciary Committee
+        systemCode:
+          type: string
+          example: hsju00
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hsju00?format=json
     nominationType:
       type: object
       properties:
@@ -481,20 +417,18 @@ components:
         isMilitary:
           type: boolean
           example: true
-    CommitteeBills:
-      type: object
-      properties:
-        bills:
-          type: array
-          items:
-            $ref: '#/components/schemas/committeeBill'
-        count:
-          type: integer
-          example: 27251
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hspw00/bills?format=json
+    CommitteeSenateCommunication:
+      allOf:
+      - $ref: '#/components/schemas/CommitteeCommunication'
+      - type: object
+        properties:
+          chamber:
+            type: string
+            example: Senate
+          url:
+            type: string
+            format: url
+            example: https://api.congress.gov/v3/senate-communication/114/ec/7402?format=json
     CommitteeDetail:
       type: object
       properties:
@@ -549,18 +483,53 @@ components:
           type: string
           format: date-time
           example: '2020-02-04T00:07:37Z'
-    CommitteeSenateCommunication:
-      allOf:
-      - $ref: '#/components/schemas/CommitteeCommunication'
-      - type: object
-        properties:
-          chamber:
-            type: string
-            example: Senate
-          url:
-            type: string
-            format: url
-            example: https://api.congress.gov/v3/senate-communication/114/ec/7402?format=json
+    committeeNominations:
+      type: object
+      properties:
+        citation:
+          type: string
+          example: PN2477
+        congress:
+          type: integer
+          example: 117
+        description:
+          type: string
+          example: Nomination of xyz for the 117th Congress
+        latestAction:
+          $ref: '#/components/schemas/latestAction'
+        nominationType:
+          $ref: '#/components/schemas/nominationType'
+        number:
+          type: integer
+          example: 2477
+        partNumber:
+          type: string
+          example: '00'
+        receivedDate:
+          type: string
+          format: date
+          example: '2022-08-03'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-09-30 04:40:14+00:00'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/nomination/117/2477?format=json
+    subcommittees:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Investigations and Oversight Subcommittee
+        systemCode:
+          type: string
+          example: hspw01
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
     committeeReports:
       type: object
       properties:
@@ -590,50 +559,63 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/bill/117hr570?format=json
-    committeeHistory:
+    CommitteeBills:
       type: object
       properties:
-        libraryOfCongressName:
+        bills:
+          type: array
+          items:
+            $ref: '#/components/schemas/committeeBill'
+        count:
+          type: integer
+          example: 27251
+        url:
           type: string
-          example: Transportation and Infrastructure
-        officialName:
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw00/bills?format=json
+    CommitteeCommunication:
+      type: object
+      properties:
+        communicationType:
+          type: object
+          properties:
+            code:
+              type: string
+              example: EC
+            name:
+              type: string
+              example: Executive Communication
+        congress:
+          type: integer
+          example: 114
+        number:
+          type: integer
+          example: 3262
+        referralDate:
           type: string
-          example: Committee on Transportation and Infrastructure
-        startDate:
-          type: string
-          format: date-time
-          example: '1995-01-04T05:00:00Z'
+          format: date
+          example: '2015-10-27'
         updateDate:
           type: string
-          format: date-time
-          example: '2020-02-04T00:07:37Z'
-        endDate:
-          type: string
-          format: date-time
-          example: '2020-03-04T05:00:00Z'
-    CommitteeReports:
+          format: date
+          example: '2018-02-02'
+    CommitteeHouseCommunication:
+      allOf:
+      - $ref: '#/components/schemas/CommitteeCommunication'
+      - type: object
+        properties:
+          chamber:
+            type: string
+            example: House
+          url:
+            type: string
+            format: url
+            example: https://api.congress.gov/v3/house-communication/114/ec/3262?format=json
+    CommitteeNominations:
       type: array
       items:
-        $ref: '#/components/schemas/committeeReports'
+        $ref: '#/components/schemas/committeeNominations'
   parameters:
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
     fromDateTime:
       name: fromDateTime
       in: query
@@ -641,21 +623,6 @@ components:
       required: false
       schema:
         type: string
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    senatechamber:
-      name: chamber
-      in: path
-      description: The chamber name. Value can be senate.
-      required: true
-      schema:
-        type: string
-        default: senate
     congress:
       name: congress
       in: path
@@ -664,6 +631,13 @@ components:
       schema:
         type: integer
         format: int32
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
     chamber:
       name: chamber
       in: path
@@ -675,13 +649,6 @@ components:
         - house
         - senate
         - joint
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
     committeeCode:
       name: committeeCode
       in: path
@@ -689,6 +656,39 @@ components:
       required: true
       schema:
         type: string
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    senatechamber:
+      name: chamber
+      in: path
+      description: The chamber name. Value can be senate.
+      required: true
+      schema:
+        type: string
+        default: senate
     housechamber:
       name: chamber
       in: path

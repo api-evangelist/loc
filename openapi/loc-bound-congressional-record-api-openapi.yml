@@ -115,6 +115,13 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
     month:
       name: month
       in: path
@@ -122,17 +129,10 @@ components:
       required: false
       schema:
         type: integer
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    day:
-      name: day
+    year:
+      name: year
       in: path
-      description: The specified day of the bound Congressional record, for example 18.
+      description: The specified year of the bound Congressional record, for example 1990.
       required: false
       schema:
         type: integer
@@ -147,17 +147,17 @@ components:
         enum:
         - xml
         - json
-    year:
-      name: year
-      in: path
-      description: The specified year of the bound Congressional record, for example 1990.
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
       required: false
       schema:
         type: integer
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
+    day:
+      name: day
+      in: path
+      description: The specified day of the bound Congressional record, for example 18.
       required: false
       schema:
         type: integer

@@ -6,17 +6,20 @@ description: The Library of Congress is the largest library in the world and the
   and historical government documents. The loc.gov JSON API requires no authentication, while the Congress.gov
   API requires a free API key.
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - libraryofcongress/api.congress.gov
   open_source: unknown
   commercial: true
-  callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  callable_host: true
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: free
@@ -69,10 +72,9 @@ apis:
   - FN: Library of Congress
     url: https://www.loc.gov/about/contact-us/
 - aid: loc:loc-amendments-api
-  name: Library of Congress amendments API
+  name: Library of Congress Amendments API
   description: Returns amendment data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Amendments
   tags_raw:
@@ -89,10 +91,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-bill-api
-  name: Library of Congress bill API
+  name: Library of Congress Bill API
   description: Returns bill data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Bills
   tags_raw:
@@ -109,10 +110,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-bound-congressional-record-api
-  name: Library of Congress bound-congressional-record API
+  name: Library of Congress Bound Congressional Record API
   description: Returns bound Congressional Record data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - bound-congressional-record
   properties:
@@ -127,10 +127,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-collections-api
-  name: Library of Congress collections API
+  name: Library of Congress Collections API
   description: Browse and access digital collections
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Collection
   tags_raw:
@@ -147,10 +146,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-committee-api
-  name: Library of Congress committee API
+  name: Library of Congress Committee API
   description: Returns committee data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - committee
   properties:
@@ -165,10 +163,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-committee-meeting-api
-  name: Library of Congress committee-meeting API
+  name: Library of Congress Committee Meeting API
   description: Returns committee meeting data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - committee-meeting
   properties:
@@ -183,10 +180,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-committee-print-api
-  name: Library of Congress committee-print API
+  name: Library of Congress Committee Print API
   description: Returns committee print data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - committee-print
   properties:
@@ -201,10 +197,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-committee-report-api
-  name: Library of Congress committee-report API
+  name: Library of Congress Committee Report API
   description: Returns committee report data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - committee-report
   properties:
@@ -222,7 +217,6 @@ apis:
   name: Library of Congress API
   description: Returns congress and congressional sessions data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Congress
   tags_raw:
@@ -239,10 +233,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-congressional-record-api
-  name: Library of Congress congressional-record API
+  name: Library of Congress Congressional Record API
   description: Returns Congressional Record data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Congressional Record
   tags_raw:
@@ -259,10 +252,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-crsreport-api
-  name: Library of Congress crsreport API
+  name: Library of Congress Crsreport API
   description: Returns Congressional Research Service (CRS) report data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - crsreport
   properties:
@@ -277,10 +269,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-daily-congressional-record-api
-  name: Library of Congress daily-congressional-record API
+  name: Library of Congress Daily Congressional Record API
   description: Returns daily Congressional Record data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - daily-congressional-record
   properties:
@@ -295,10 +286,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-formats-api
-  name: Library of Congress formats API
+  name: Library of Congress Formats API
   description: Browse items by format type
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Formats
   tags_raw:
@@ -315,10 +305,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-hearing-api
-  name: Library of Congress hearing API
+  name: Library of Congress Hearing API
   description: Returns hearing data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Hearing
   tags_raw:
@@ -335,10 +324,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-house-communication-api
-  name: Library of Congress house-communication API
+  name: Library of Congress House Communication API
   description: Returns House communication data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - house-communication
   properties:
@@ -353,10 +341,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-house-requirement-api
-  name: Library of Congress house-requirement API
+  name: Library of Congress House Requirement API
   description: Returns House requirement data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - house-requirement
   properties:
@@ -371,10 +358,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-house-vote-api
-  name: Library of Congress house-vote API
+  name: Library of Congress House Vote API
   description: '[BETA] Returns House of Representatives roll call vote data from the API'
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - house-vote
   properties:
@@ -389,10 +375,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-items-api
-  name: Library of Congress items API
+  name: Library of Congress Items API
   description: Access individual item details
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Item
   tags_raw:
@@ -409,10 +394,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-member-api
-  name: Library of Congress member API
+  name: Library of Congress Member API
   description: Returns member data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Member
   tags_raw:
@@ -429,10 +413,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-nomination-api
-  name: Library of Congress nomination API
+  name: Library of Congress Nomination API
   description: Returns nomination data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - nomination
   properties:
@@ -447,10 +430,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-search-api
-  name: Library of Congress search API
+  name: Library of Congress Search API
   description: Search across all loc.gov digital collections
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Search
   tags_raw:
@@ -467,10 +449,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-senate-communication-api
-  name: Library of Congress senate-communication API
+  name: Library of Congress Senate Communication API
   description: Returns Senate communication data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - senate-communication
   properties:
@@ -485,10 +466,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-summaries-api
-  name: Library of Congress summaries API
+  name: Library of Congress Summaries API
   description: Returns summaries data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - Summary
   tags_raw:
@@ -505,10 +485,9 @@ apis:
   - type: Signup
     url: https://api.congress.gov/sign-up/
 - aid: loc:loc-treaty-api
-  name: Library of Congress treaty API
+  name: Library of Congress Treaty API
   description: Returns treaty data from the API
   humanURL: https://www.loc.gov/apis/json-and-yaml/
-  baseURL: https://www.loc.gov
   tags:
   - treaty
   properties:

@@ -82,22 +82,6 @@ paths:
                 $ref: '#/components/schemas/NewspaperList'
 components:
   schemas:
-    TitleResults:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Title'
-        totalItems:
-          type: integer
-    NewspaperList:
-      type: object
-      properties:
-        newspapers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Title'
     Title:
       type: object
       properties:
@@ -114,3 +98,19 @@ components:
         url:
           type: string
           format: uri
+    TitleResults:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Title'
+        totalItems:
+          type: integer
+    NewspaperList:
+      type: object
+      properties:
+        newspapers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Title'

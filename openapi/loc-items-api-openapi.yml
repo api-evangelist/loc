@@ -79,26 +79,6 @@ components:
             '
           items:
             $ref: '#/components/schemas/Resource'
-    Resource:
-      type: object
-      description: A discrete digital representation or element of a collection item
-      properties:
-        caption:
-          type: string
-          description: Caption for the resource
-        files:
-          type: array
-          description: Digital files associated with the resource
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/ResourceFile'
-        image:
-          type: string
-          description: URL of the resource image
-        url:
-          type: string
-          description: URL of the resource
     ResourceFile:
       type: object
       description: A specific digital file for a resource
@@ -121,6 +101,26 @@ components:
         width:
           type: integer
           description: Width of the image in pixels
+    Resource:
+      type: object
+      description: A discrete digital representation or element of a collection item
+      properties:
+        caption:
+          type: string
+          description: Caption for the resource
+        files:
+          type: array
+          description: Digital files associated with the resource
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/ResourceFile'
+        image:
+          type: string
+          description: URL of the resource image
+        url:
+          type: string
+          description: URL of the resource
 externalDocs:
   description: API Documentation
   url: https://www.loc.gov/apis/json-and-yaml/

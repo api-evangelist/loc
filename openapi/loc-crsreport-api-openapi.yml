@@ -60,20 +60,27 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    crsReportNumber:
-      name: reportNumber
-      in: path
-      description: The number or ID of the report. For example, R47175.
-      required: true
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
       schema:
         type: string
-    offset:
-      name: offset
+    limit:
+      name: limit
       in: query
-      description: The starting record returned. 0 is the first record.
+      description: The number of records returned. The maximum limit is 250.
       required: false
       schema:
         type: integer
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
     format:
       name: format
       in: query
@@ -85,62 +92,21 @@ components:
         enum:
         - xml
         - json
-    toDateTime:
-      name: toDateTime
+    offset:
+      name: offset
       in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
+      description: The starting record returned. 0 is the first record.
       required: false
       schema:
         type: integer
-  schemas:
-    relatedMaterial:
-      type: object
-      properties:
-        URL:
-          type: string
-          example: https://api.congress.gov/v3/law/93/pub/344
-        congress:
-          type: integer
-          example: 93
-        number:
-          type: string
-          example: 93-344
-        title:
-          type: string
-          example: Providing for budget allocations, and for other purposes.
-        type:
-          type: string
-          example: PUB
-    topic:
-      type: object
-      properties:
-        topic:
-          type: string
-          example: Budget & Appropriations Procedure
-    format:
-      type: object
-      properties:
-        format:
-          type: string
-          example: PDF
-      url:
+    crsReportNumber:
+      name: reportNumber
+      in: path
+      description: The number or ID of the report. For example, R47175.
+      required: true
+      schema:
         type: string
-        format: url
-        example: https://www.congress.gov/crs_external_products/R/PDF/R47175/R47175.1.pdf
+  schemas:
     CrsReportDetail:
       type: object
       properties:
@@ -190,6 +156,12 @@ components:
         version:
           type: integer
           example: 1
+    author:
+      type: object
+      properties:
+        author:
+          type: string
+          example: Megan S. Lynch
     CrsReport:
       type: object
       properties:
@@ -197,6 +169,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/crsreport'
+    relatedMaterial:
+      type: object
+      properties:
+        URL:
+          type: string
+          example: https://api.congress.gov/v3/law/93/pub/344
+        congress:
+          type: integer
+          example: 93
+        number:
+          type: string
+          example: 93-344
+        title:
+          type: string
+          example: Providing for budget allocations, and for other purposes.
+        type:
+          type: string
+          example: PUB
+    topic:
+      type: object
+      properties:
+        topic:
+          type: string
+          example: Budget & Appropriations Procedure
     crsreport:
       type: object
       properties:
@@ -227,12 +223,16 @@ components:
         version:
           type: integer
           example: 145
-    author:
+    format:
       type: object
       properties:
-        author:
+        format:
           type: string
-          example: Megan S. Lynch
+          example: PDF
+      url:
+        type: string
+        format: url
+        example: https://www.congress.gov/crs_external_products/R/PDF/R47175/R47175.1.pdf
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

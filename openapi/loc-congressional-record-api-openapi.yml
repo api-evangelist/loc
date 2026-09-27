@@ -40,17 +40,17 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    offset:
-      name: offset
+    limit:
+      name: limit
       in: query
-      description: The starting record returned. 0 is the first record.
+      description: The number of records returned. The maximum limit is 250.
       required: false
       schema:
         type: integer
-    d:
-      name: d
+    m:
+      name: m
       in: query
-      description: The day the issue was published. For example, the value can be 28.
+      description: The month the issue was published. For example, the value can be 6.
       required: false
       schema:
         type: integer
@@ -72,31 +72,21 @@ components:
         enum:
         - xml
         - json
-    m:
-      name: m
+    offset:
+      name: offset
       in: query
-      description: The month the issue was published. For example, the value can be 6.
+      description: The starting record returned. 0 is the first record.
       required: false
       schema:
         type: integer
-    limit:
-      name: limit
+    d:
+      name: d
       in: query
-      description: The number of records returned. The maximum limit is 250.
+      description: The day the issue was published. For example, the value can be 28.
       required: false
       schema:
         type: integer
   schemas:
-    CongressionalRecord:
-      type: object
-      properties:
-        IndexStart:
-          type: integer
-          example: 1
-        Issues:
-          type: array
-          items:
-            $ref: '#/components/schemas/issues'
     issues:
       type: object
       properties:
@@ -227,6 +217,16 @@ components:
         Volume:
           type: string
           example: '168'
+    CongressionalRecord:
+      type: object
+      properties:
+        IndexStart:
+          type: integer
+          example: 1
+        Issues:
+          type: array
+          items:
+            $ref: '#/components/schemas/issues'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -513,6 +513,37 @@ components:
         url:
           type: string
           description: URL for the item's HTML page on loc.gov
+    SearchResponse:
+      type: object
+      description: Standard search result response from the loc.gov JSON API
+      properties:
+        facets:
+          type: object
+          description: Available facets for filtering results
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/FacetValue'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          description: List of collection items matching the query
+          items:
+            $ref: '#/components/schemas/ItemSummary'
+    FacetValue:
+      type: object
+      description: A facet value used to filter search results
+      properties:
+        count:
+          type: integer
+          description: Number of results matching this facet
+        link:
+          type: string
+          description: URL to filter results by this facet value
+        value:
+          type: string
+          description: The facet value text
     Pagination:
       type: object
       description: Pagination information for search results
@@ -551,37 +582,6 @@ components:
         to:
           type: integer
           description: Index of the last item on the current page
-    FacetValue:
-      type: object
-      description: A facet value used to filter search results
-      properties:
-        count:
-          type: integer
-          description: Number of results matching this facet
-        link:
-          type: string
-          description: URL to filter results by this facet value
-        value:
-          type: string
-          description: The facet value text
-    SearchResponse:
-      type: object
-      description: Standard search result response from the loc.gov JSON API
-      properties:
-        facets:
-          type: object
-          description: Available facets for filtering results
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/FacetValue'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        results:
-          type: array
-          description: List of collection items matching the query
-          items:
-            $ref: '#/components/schemas/ItemSummary'
 externalDocs:
   description: API Documentation
   url: https://www.loc.gov/apis/json-and-yaml/

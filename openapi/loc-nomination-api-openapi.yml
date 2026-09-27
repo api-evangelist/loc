@@ -194,76 +194,7 @@ paths:
       operationId: getNominationByCongressByNominationNumberHearings
       x-operation-id-source: derived
 components:
-  parameters:
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    ordinal:
-      name: ordinal
-      in: path
-      description: The ordinal number. For example, the value can be 1
-      required: true
-      schema:
-        type: integer
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    nominationNumber:
-      name: nominationNumber
-      in: path
-      description: The nomination’s assigned number. For example, the value can be 389.
-      required: true
-      schema:
-        type: integer
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
   schemas:
-    NominationCommittees:
-      type: object
-      properties:
-        committees:
-          type: array
-          items:
-            $ref: '#/components/schemas/nominationCommittee'
     nominationCommittee:
       type: object
       properties:
@@ -287,6 +218,23 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee/senate/ssju00?format=json
+    latestNominationAction:
+      type: object
+      properties:
+        actionDate:
+          type: string
+          format: date
+          example: '2022-12-07'
+        text:
+          type: string
+          example: Received in the Senate and referred to the Committee on Armed Services.
+    NominationNominee:
+      type: object
+      properties:
+        nominees:
+          type: array
+          items:
+            $ref: '#/components/schemas/nominee'
     nominationType:
       type: object
       properties:
@@ -296,16 +244,96 @@ components:
         isMilitary:
           type: boolean
           example: true
-    Activity:
+    senatecommittee:
       type: object
       properties:
+        name:
+          type: string
+          example: Armed Services Committee
+        systemCode:
+          type: string
+          example: ssas00
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/senate/ssas00?format=json
+    NominationHearing:
+      type: object
+      properties:
+        hearings:
+          type: array
+          items:
+            $ref: '#/components/schemas/nominationHearing'
+    nominationHearing:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: Senate
+        citation:
+          type: string
+          example: S.Hrg.118-694
         date:
           type: string
           format: date
-          example: '2019-01-01'
-        name:
+          example: '2024-02-28'
+        jackeNumber:
+          type: integer
+          example: 61203
+        number:
+          type: integer
+          example: 694
+    nomination:
+      type: object
+      properties:
+        citation:
           type: string
-          example: Reported By
+          example: PN2804
+        congress:
+          type: integer
+          example: 117
+        description:
+          type: string
+          example: Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years, vice Maria Rosario Jackson, resigned.
+        latestAction:
+          $ref: '#/components/schemas/latestNominationAction'
+        nominationType:
+          $ref: '#/components/schemas/nominationType'
+        number:
+          type: integer
+          example: 2804
+        organization:
+          type: string
+          example: Army
+        partNumber:
+          type: string
+          example: '00'
+        receivedDate:
+          type: string
+          format: date
+          example: '2022-12-07'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-12-08T05:25:17Z'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/nomination/117/2804?format=json
+    NominationCommittees:
+      type: object
+      properties:
+        committees:
+          type: array
+          items:
+            $ref: '#/components/schemas/nominationCommittee'
+    Nominations:
+      type: object
+      properties:
+        nominations:
+          type: array
+          items:
+            $ref: '#/components/schemas/nomination'
     NominationActions:
       type: object
       properties:
@@ -392,69 +420,6 @@ components:
               type: string
               format: date-time
               example: '2025-10-22T15:58:44Z'
-    nomination:
-      type: object
-      properties:
-        citation:
-          type: string
-          example: PN2804
-        congress:
-          type: integer
-          example: 117
-        description:
-          type: string
-          example: Mary Anne Carter, of Tennessee, to be Chairperson of the National Endowment for the Arts for a term of four years, vice Maria Rosario Jackson, resigned.
-        latestAction:
-          $ref: '#/components/schemas/latestNominationAction'
-        nominationType:
-          $ref: '#/components/schemas/nominationType'
-        number:
-          type: integer
-          example: 2804
-        organization:
-          type: string
-          example: Army
-        partNumber:
-          type: string
-          example: '00'
-        receivedDate:
-          type: string
-          format: date
-          example: '2022-12-07'
-        updateDate:
-          type: string
-          format: date-time
-          example: '2022-12-08T05:25:17Z'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/nomination/117/2804?format=json
-    NominationHearing:
-      type: object
-      properties:
-        hearings:
-          type: array
-          items:
-            $ref: '#/components/schemas/nominationHearing'
-    nominationHearing:
-      type: object
-      properties:
-        chamber:
-          type: string
-          example: Senate
-        citation:
-          type: string
-          example: S.Hrg.118-694
-        date:
-          type: string
-          format: date
-          example: '2024-02-28'
-        jackeNumber:
-          type: integer
-          example: 61203
-        number:
-          type: integer
-          example: 694
     nominee:
       type: object
       properties:
@@ -474,33 +439,6 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/nomination/118/16/1?format=json
-    Nominations:
-      type: object
-      properties:
-        nominations:
-          type: array
-          items:
-            $ref: '#/components/schemas/nomination'
-    NominationNominee:
-      type: object
-      properties:
-        nominees:
-          type: array
-          items:
-            $ref: '#/components/schemas/nominee'
-    senatecommittee:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Armed Services Committee
-        systemCode:
-          type: string
-          example: ssas00
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/senate/ssas00?format=json
     nomineeAction:
       type: object
       properties:
@@ -521,16 +459,78 @@ components:
         type:
           type: string
           example: IntroReferral
-    latestNominationAction:
+    Activity:
       type: object
       properties:
-        actionDate:
+        date:
           type: string
           format: date
-          example: '2022-12-07'
-        text:
+          example: '2019-01-01'
+        name:
           type: string
-          example: Received in the Senate and referred to the Committee on Armed Services.
+          example: Reported By
+  parameters:
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    nominationNumber:
+      name: nominationNumber
+      in: path
+      description: The nomination’s assigned number. For example, the value can be 389.
+      required: true
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    ordinal:
+      name: ordinal
+      in: path
+      description: The ordinal number. For example, the value can be 1
+      required: true
+      schema:
+        type: integer
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
