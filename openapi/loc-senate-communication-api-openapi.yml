@@ -113,28 +113,6 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    communicationNumber:
-      name: communicationNumber
-      in: path
-      description: The communication’s assigned number. For example, the value can be 3324.
-      required: true
-      schema:
-        type: integer
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
     senateCommunicationType:
       name: communicationType
       in: path
@@ -146,6 +124,21 @@ components:
         - ec
         - pm
         - pom
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    communicationNumber:
+      name: communicationNumber
+      in: path
+      description: The communication’s assigned number. For example, the value can be 3324.
+      required: true
+      schema:
+        type: integer
     format:
       name: format
       in: query
@@ -164,14 +157,14 @@ components:
       required: false
       schema:
         type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
   schemas:
-    SenateCommunications:
-      type: object
-      properties:
-        senateCoummunications:
-          type: array
-          items:
-            $ref: '#/components/schemas/senateCommunication'
     senateCommunication:
       type: object
       properties:
@@ -194,15 +187,6 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json
-    communicationType:
-      type: object
-      properties:
-        code:
-          type: string
-          example: EC
-        name:
-          type: string
-          example: Executive Communication
     SenateCommunicationTypeNumber:
       type: object
       properties:
@@ -238,6 +222,13 @@ components:
           type: string
           format: date
           example: '2024-09-03'
+    SenateCommunications:
+      type: object
+      properties:
+        senateCoummunications:
+          type: array
+          items:
+            $ref: '#/components/schemas/senateCommunication'
     subcommittees:
       type: object
       properties:
@@ -251,6 +242,15 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee/house/hspw01?format=json
+    communicationType:
+      type: object
+      properties:
+        code:
+          type: string
+          example: EC
+        name:
+          type: string
+          example: Executive Communication
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -135,6 +135,19 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/house-communication/117/ec/2057?format=json
+    subcommittees:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Investigations and Oversight Subcommittee
+        systemCode:
+          type: string
+          example: hspw01
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
     HouseCommunicationTypeNumber:
       type: object
       properties:
@@ -218,27 +231,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/houseCommunication'
-    subcommittees:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Investigations and Oversight Subcommittee
-        systemCode:
-          type: string
-          example: hspw01
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
     communicationType:
       name: communicationType
       in: path
@@ -259,6 +252,13 @@ components:
       schema:
         type: integer
         format: int32
+    communicationNumber:
+      name: communicationNumber
+      in: path
+      description: The communication’s assigned number. For example, the value can be 3324.
+      required: true
+      schema:
+        type: integer
     format:
       name: format
       in: query
@@ -277,11 +277,11 @@ components:
       required: false
       schema:
         type: integer
-    communicationNumber:
-      name: communicationNumber
-      in: path
-      description: The communication’s assigned number. For example, the value can be 3324.
-      required: true
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
       schema:
         type: integer
   securitySchemes:

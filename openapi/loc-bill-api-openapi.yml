@@ -460,6 +460,67 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    titlesArray:
+      type: object
+      properties:
+        title:
+          type: string
+          example: A bill to amend the Health and Human Services Act of 1968 to provide for the establishment of a national health care system.
+        updateDate:
+          type: string
+          format: date
+          example: '2022-02-18T16:38:41Z'
+        titleType:
+          type: string
+          example: Display Title
+        titleTypeCode:
+          type: integer
+          example: 45
+        billTextVersionCode:
+          type: string
+          example: RH
+        billTextVersionName:
+          type: string
+          example: Reported in House
+    legislativeSubjects:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Congressional oversight
+        updateDate:
+          type: string
+          format: date
+          example: '2022-02-18T16:38:41Z'
+    Actions:
+      type: object
+      properties:
+        actionCode:
+          type: string
+          example: '36000'
+        actionDate:
+          type: string
+          format: date
+          example: '2019-01-01'
+        sourceSystem:
+          type: object
+          properties:
+            code:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: Library of Congress
+        text:
+          type: string
+          example: 'Became Public Law No: 117-108.'
+        type:
+          type: string
+          example: BecameLaw
+    Titles:
+      type: array
+      items:
+        $ref: '#/components/schemas/titlesArray'
     CoSponsor:
       type: object
       properties:
@@ -495,37 +556,39 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/member/F000450?format=json
-    Subjects:
+    Amendments:
       type: object
       properties:
-        legislativeSubjects:
-          type: array
-          items:
-            $ref: '#/components/schemas/legislativeSubjects'
-        policyArea:
-          $ref: '#/components/schemas/policyArea'
-    titlesArray:
-      type: object
-      properties:
-        title:
+        congress:
+          type: integer
+          example: 117
+        description:
           type: string
-          example: A bill to amend the Health and Human Services Act of 1968 to provide for the establishment of a national health care system.
+          example: Pursuant to the provisions of H. Res. 912, the amendment in the nature of a substitute consisting of the text of Rules Committee Print 117-32 is considered as adopted.
+        latestAction:
+          type: object
+          properties:
+            actionDate:
+              type: string
+              format: date
+              example: '2019-01-01'
+            text:
+              type: string
+              example: 'On agreeing to the Maloney, Carolyn B. amendment (A002) Agreed to by voice vote. '
+        number:
+          type: string
+          example: '173'
+        type:
+          type: string
+          example: HAMDT
         updateDate:
           type: string
           format: date
           example: '2022-02-18T16:38:41Z'
-        titleType:
+        url:
           type: string
-          example: Display Title
-        titleTypeCode:
-          type: integer
-          example: 45
-        billTextVersionCode:
-          type: string
-          example: RH
-        billTextVersionName:
-          type: string
-          example: Reported in House
+          format: url
+          example: https://api.congress.gov/v3/amendment/117/hamdt/173?format=json
     Law:
       type: object
       properties:
@@ -573,31 +636,248 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/bill/119/hr/2808?format=json
-    Actions:
+    Committee:
       type: object
       properties:
-        actionCode:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Activity'
+        chamber:
           type: string
-          example: '36000'
+          example: House
+        name:
+          type: string
+          example: House Committee on the Judiciary
+        systemCode:
+          type: string
+          example: hsgo00
+        type:
+          type: string
+          example: Standing
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hsgo00?format=json
+    policyArea:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Government Operations and Politics
+    laws:
+      type: object
+      properties:
+        number:
+          type: string
+          example: 117-108
+        type:
+          type: string
+          example: Public Law
+    Bill:
+      xml:
+        wrapped: false
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 119
+        latestAction:
+          type: object
+          properties:
+            actionDate:
+              type: string
+              format: date
+              example: '2025-11-21'
+            text:
+              type: string
+              example: Read twice and referred to the Committee on Agriculture, Nutrition, and Forestry.
+        number:
+          type: string
+          example: 3281
+        originChamber:
+          type: string
+          example: Senate
+        originChamberCode:
+          type: string
+          example: S
+        title:
+          type: string
+          example: A bill to repeal certain provisions relating to nutrition.
+        type:
+          type: string
+          example: S
+        updateDate:
+          type: string
+          format: date
+          example: '2025-11-21'
+        updateDateIncludingText:
+          type: string
+          format: date-time
+          example: '2025-11-21'
+        url:
+          type: string
+          format: url
+          example: http://api.congress.gov/v3/bill/119/s/3281?format=xml
+    Sponsor:
+      type: object
+      properties:
+        bioguideId:
+          type: string
+          example: G000555
+        firstName:
+          type: string
+          example: Bill
+        lastName:
+          type: string
+          example: Washington
+        fullName:
+          type: string
+          example: Senator Bill Washington [I-NY]
+        isByRequest:
+          type: string
+          example: N
+        middleName:
+          type: string
+          example: J.
+        party:
+          type: string
+          example: I
+        state:
+          type: string
+          example: VA
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/member/G000555?format=json
+    billSummariesArray:
+      type: object
+      properties:
         actionDate:
           type: string
           format: date
-          example: '2019-01-01'
-        sourceSystem:
-          type: object
-          properties:
-            code:
-              type: integer
-              example: 1
-            name:
-              type: string
-              example: Library of Congress
+          example: '2022-02-18T16:38:41Z'
+        actionDesc:
+          type: string
+          example: Passed Senate
         text:
           type: string
-          example: 'Became Public Law No: 117-108.'
+          example: <p><strong>COVID-19 Medical Production Act</strong></p> <p>This bill provides additional funding for FY2021 to acquire medical supplies, vaccines, and other equipment to combat COVID-19 (i.e., coronavirus disease 2019) using authorities under the Defense Production Act of 1950. That act confers on the President a broad set of authorities to influence domestic industry to provide essential materials and goods for the national defense.</p> <p>This funding is available through FY2025. Beginning in FY2023, it may be used to meet public health needs to address any pathogen determined by the President to have the potential to create a public health emergency.</p>
+        updateDate:
+          type: string
+          format: date
+          example: '2022-02-18T16:38:41Z'
+        versionCode:
+          type: string
+          example: '173'
+    cboCost:
+      type: object
+      properties:
+        description:
+          type: string
+          example: 'As ordered reported by the House Committee on Oversight and Accountability on September 20, 2023
+
+            '
+        pubDate:
+          type: string
+          format: date
+          example: '2023-10-10T19:58:00Z'
+        title:
+          type: string
+          example: H.R. 4984, D.C. Robert F. Kennedy Memorial Stadium Campus Revitalization Act
+        url:
+          type: string
+          format: url
+          example: https://www.cbo.gov/publication/59651
+    textVersions:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          example: '2022-02-18T16:38:41Z'
+        formats:
+          type: array
+          items:
+            $ref: '#/components/schemas/formats'
         type:
           type: string
-          example: BecameLaw
+          example: Enrolled Bill
+    relationshipDetails:
+      type: object
+      properties:
+        identifiedBy:
+          type: string
+          example: CRS
+        type:
+          type: string
+          example: Related Bill
+    Subjects:
+      type: object
+      properties:
+        legislativeSubjects:
+          type: array
+          items:
+            $ref: '#/components/schemas/legislativeSubjects'
+        policyArea:
+          $ref: '#/components/schemas/policyArea'
+    Text:
+      type: array
+      items:
+        $ref: '#/components/schemas/textVersions'
+    RelatedBills:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 117
+        lastestAction:
+          type: object
+          properties:
+            actionDate:
+              type: string
+              format: date
+              example: '2019-01-01'
+            text:
+              type: string
+              example: 'On agreeing to the Maloney, Carolyn B. amendment (A002) Agreed to by voice vote. '
+        number:
+          type: integer
+          example: 1720
+        relationshipDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/relationshipDetails'
+    committeeReport:
+      type: object
+      properties:
+        citation:
+          type: string
+          example: H. Rept. 118-400
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee-report/118/HRPT/400?format=json
+    Activity:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          example: '2019-01-01'
+        name:
+          type: string
+          example: Reported By
+    formats:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Formatted Text
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
     LawNumber:
       type: object
       properties:
@@ -783,90 +1063,6 @@ components:
           type: string
           format: date-time
           example: '2025-05-27T14:16:54Z'
-    formats:
-      type: object
-      properties:
-        type:
-          type: string
-          example: Formatted Text
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
-    policyArea:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Government Operations and Politics
-    textVersions:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
-        formats:
-          type: array
-          items:
-            $ref: '#/components/schemas/formats'
-        type:
-          type: string
-          example: Enrolled Bill
-    Sponsor:
-      type: object
-      properties:
-        bioguideId:
-          type: string
-          example: G000555
-        firstName:
-          type: string
-          example: Bill
-        lastName:
-          type: string
-          example: Washington
-        fullName:
-          type: string
-          example: Senator Bill Washington [I-NY]
-        isByRequest:
-          type: string
-          example: N
-        middleName:
-          type: string
-          example: J.
-        party:
-          type: string
-          example: I
-        state:
-          type: string
-          example: VA
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/member/G000555?format=json
-    legislativeSubjects:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Congressional oversight
-        updateDate:
-          type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
-    laws:
-      type: object
-      properties:
-        number:
-          type: string
-          example: 117-108
-        type:
-          type: string
-          example: Public Law
-    Titles:
-      type: array
-      items:
-        $ref: '#/components/schemas/titlesArray'
     BillDetail:
       type: object
       properties:
@@ -931,214 +1127,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Sponsor'
-    cboCost:
-      type: object
-      properties:
-        description:
-          type: string
-          example: 'As ordered reported by the House Committee on Oversight and Accountability on September 20, 2023
-
-            '
-        pubDate:
-          type: string
-          format: date
-          example: '2023-10-10T19:58:00Z'
-        title:
-          type: string
-          example: H.R. 4984, D.C. Robert F. Kennedy Memorial Stadium Campus Revitalization Act
-        url:
-          type: string
-          format: url
-          example: https://www.cbo.gov/publication/59651
-    relationshipDetails:
-      type: object
-      properties:
-        identifiedBy:
-          type: string
-          example: CRS
-        type:
-          type: string
-          example: Related Bill
-    Bill:
-      xml:
-        wrapped: false
-      type: object
-      properties:
-        congress:
-          type: integer
-          example: 119
-        latestAction:
-          type: object
-          properties:
-            actionDate:
-              type: string
-              format: date
-              example: '2025-11-21'
-            text:
-              type: string
-              example: Read twice and referred to the Committee on Agriculture, Nutrition, and Forestry.
-        number:
-          type: string
-          example: 3281
-        originChamber:
-          type: string
-          example: Senate
-        originChamberCode:
-          type: string
-          example: S
-        title:
-          type: string
-          example: A bill to repeal certain provisions relating to nutrition.
-        type:
-          type: string
-          example: S
-        updateDate:
-          type: string
-          format: date
-          example: '2025-11-21'
-        updateDateIncludingText:
-          type: string
-          format: date-time
-          example: '2025-11-21'
-        url:
-          type: string
-          format: url
-          example: http://api.congress.gov/v3/bill/119/s/3281?format=xml
-    billSummariesArray:
-      type: object
-      properties:
-        actionDate:
-          type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
-        actionDesc:
-          type: string
-          example: Passed Senate
-        text:
-          type: string
-          example: <p><strong>COVID-19 Medical Production Act</strong></p> <p>This bill provides additional funding for FY2021 to acquire medical supplies, vaccines, and other equipment to combat COVID-19 (i.e., coronavirus disease 2019) using authorities under the Defense Production Act of 1950. That act confers on the President a broad set of authorities to influence domestic industry to provide essential materials and goods for the national defense.</p> <p>This funding is available through FY2025. Beginning in FY2023, it may be used to meet public health needs to address any pathogen determined by the President to have the potential to create a public health emergency.</p>
-        updateDate:
-          type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
-        versionCode:
-          type: string
-          example: '173'
-    Text:
-      type: array
-      items:
-        $ref: '#/components/schemas/textVersions'
-    RelatedBills:
-      type: object
-      properties:
-        congress:
-          type: integer
-          example: 117
-        lastestAction:
-          type: object
-          properties:
-            actionDate:
-              type: string
-              format: date
-              example: '2019-01-01'
-            text:
-              type: string
-              example: 'On agreeing to the Maloney, Carolyn B. amendment (A002) Agreed to by voice vote. '
-        number:
-          type: integer
-          example: 1720
-        relationshipDetails:
-          type: array
-          items:
-            $ref: '#/components/schemas/relationshipDetails'
-    committeeReport:
-      type: object
-      properties:
-        citation:
-          type: string
-          example: H. Rept. 118-400
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee-report/118/HRPT/400?format=json
     BillSummaries:
       type: array
       items:
         $ref: '#/components/schemas/billSummariesArray'
-    Activity:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-          example: '2019-01-01'
-        name:
-          type: string
-          example: Reported By
-    Amendments:
-      type: object
-      properties:
-        congress:
-          type: integer
-          example: 117
-        description:
-          type: string
-          example: Pursuant to the provisions of H. Res. 912, the amendment in the nature of a substitute consisting of the text of Rules Committee Print 117-32 is considered as adopted.
-        latestAction:
-          type: object
-          properties:
-            actionDate:
-              type: string
-              format: date
-              example: '2019-01-01'
-            text:
-              type: string
-              example: 'On agreeing to the Maloney, Carolyn B. amendment (A002) Agreed to by voice vote. '
-        number:
-          type: string
-          example: '173'
-        type:
-          type: string
-          example: HAMDT
-        updateDate:
-          type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/amendment/117/hamdt/173?format=json
-    Committee:
-      type: object
-      properties:
-        activities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Activity'
-        chamber:
-          type: string
-          example: House
-        name:
-          type: string
-          example: House Committee on the Judiciary
-        systemCode:
-          type: string
-          example: hsgo00
-        type:
-          type: string
-          example: Standing
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hsgo00?format=json
   parameters:
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
     congress:
       name: congress
       in: path
@@ -1147,6 +1140,27 @@ components:
       schema:
         type: integer
         format: int32
+    lawType:
+      name: lawType
+      in: path
+      description: The law type. Values are either 'pub’ or ‘priv.’
+      required: true
+      schema:
+        type: string
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
     lawNumber:
       name: lawNumber
       in: path
@@ -1161,27 +1175,6 @@ components:
       required: true
       schema:
         type: integer
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
     format:
       name: format
       in: query
@@ -1193,25 +1186,32 @@ components:
         enum:
         - xml
         - json
-    billType:
-      name: billType
-      in: path
-      description: The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres.
-      required: true
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
       schema:
-        type: string
-    lawType:
-      name: lawType
-      in: path
-      description: The law type. Values are either 'pub’ or ‘priv.’
-      required: true
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
       schema:
-        type: string
+        type: integer
     sort:
       name: sort
       in: query
       description: Sort by update date in Congress.gov. Value can be updateDate+asc or updateDate+desc.
       required: false
+      schema:
+        type: string
+    billType:
+      name: billType
+      in: path
+      description: The type of bill. Value can be hr, s, hjres, sjres, hconres, sconres, hres, or sres.
+      required: true
       schema:
         type: string
   securitySchemes:

@@ -119,37 +119,54 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    committeeMeetings:
+    meetingdocument:
       type: object
       properties:
-        chamber:
+        description:
           type: string
-          example: House
-        congress:
-          type: integer
-          example: 117
-        eventid:
+          example: ''
+        documentType:
           type: string
-          example: '115522'
-        updateDate:
+          example: 'Support Document '
+        format:
           type: string
-          format: date-time
-          example: '2022-08-01 21:19:33+00:00'
+          example: PDF
+        name:
+          type: string
+          example: Hearing Notice
         url:
           type: string
           format: url
-          example: https://api.congress.gov/v3/committee-meeting/118/house/115522?format=json
-    relatedItem:
+          example: https://www.congress.gov/118/meeting/house/115538/documents/HHRG-118-II24-20230324-SD001.pdf
+    witness:
       type: object
       properties:
-        bills:
-          type: array
-          items:
-            $ref: '#/components/schemas/associatedBill'
-        nominations:
-          type: array
-        treaties:
-          type: array
+        name:
+          type: string
+          example: The Honorable John Williams
+        organization:
+          type: string
+          example: United Auburn Rancheria
+        position:
+          type: string
+          example: Vice Chairman
+    witnessDocument:
+      type: object
+      properties:
+        documentType:
+          type: string
+          example: Witness Statement
+        format:
+          type: string
+          example: PDF
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/118/meeting/house/115538/witnesses/HHRG-118-II24-Wstate-NewlandB-20230324.pdf
+    CommitteeMeeting:
+      type: array
+      items:
+        $ref: '#/components/schemas/committeeMeetings'
     associatedBill:
       type: object
       properties:
@@ -166,31 +183,6 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/bill/116/hr/6395?format=json
-    witnessDocument:
-      type: object
-      properties:
-        documentType:
-          type: string
-          example: Witness Statement
-        format:
-          type: string
-          example: PDF
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/118/meeting/house/115538/witnesses/HHRG-118-II24-Wstate-NewlandB-20230324.pdf
-    witness:
-      type: object
-      properties:
-        name:
-          type: string
-          example: The Honorable John Williams
-        organization:
-          type: string
-          example: United Auburn Rancheria
-        position:
-          type: string
-          example: Vice Chairman
     CommitteeMeetingDetail:
       type: object
       properties:
@@ -255,10 +247,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/witness'
-    CommitteeMeeting:
-      type: array
-      items:
-        $ref: '#/components/schemas/committeeMeetings'
     video:
       type: object
       properties:
@@ -269,25 +257,6 @@ components:
           type: string
           format: url
           example: https://www.congress.gov/event/118th-Congress/house-event/115538
-    meetingdocument:
-      type: object
-      properties:
-        description:
-          type: string
-          example: ''
-        documentType:
-          type: string
-          example: 'Support Document '
-        format:
-          type: string
-          example: PDF
-        name:
-          type: string
-          example: Hearing Notice
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/118/meeting/house/115538/documents/HHRG-118-II24-20230324-SD001.pdf
     subcommittees:
       type: object
       properties:
@@ -301,33 +270,43 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee/house/hspw01?format=json
+    committeeMeetings:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        congress:
+          type: integer
+          example: 117
+        eventid:
+          type: string
+          example: '115522'
+        updateDate:
+          type: string
+          format: date-time
+          example: '2022-08-01 21:19:33+00:00'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee-meeting/118/house/115522?format=json
+    relatedItem:
+      type: object
+      properties:
+        bills:
+          type: array
+          items:
+            $ref: '#/components/schemas/associatedBill'
+        nominations:
+          type: array
+        treaties:
+          type: array
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
     eventId:
       name: eventId
       in: path
       required: true
       description: The event identifier. For example, the value can be 115538.
-      schema:
-        type: string
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
       schema:
         type: string
     congress:
@@ -349,13 +328,6 @@ components:
         enum:
         - xml
         - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
     chamber:
       name: chamber
       in: path
@@ -367,6 +339,34 @@ components:
         - house
         - senate
         - joint
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

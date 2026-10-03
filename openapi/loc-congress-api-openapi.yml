@@ -86,13 +86,6 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
     congress:
       name: congress
       in: path
@@ -119,7 +112,34 @@ components:
       required: false
       schema:
         type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
   schemas:
+    Congress:
+      type: object
+      properties:
+        endYear:
+          type: string
+          example: '2022'
+        name:
+          type: string
+          example: 117th Congress
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sessions'
+        startYear:
+          type: string
+          example: '2021'
+    Congresses:
+      type: array
+      items:
+        $ref: '#/components/schemas/Congress'
     Sessions:
       type: object
       properties:
@@ -137,26 +157,6 @@ components:
           type: string
           format: date
           example: '2020-01-01'
-    Congresses:
-      type: array
-      items:
-        $ref: '#/components/schemas/Congress'
-    Congress:
-      type: object
-      properties:
-        endYear:
-          type: string
-          example: '2022'
-        name:
-          type: string
-          example: 117th Congress
-        sessions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Sessions'
-        startYear:
-          type: string
-          example: '2021'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

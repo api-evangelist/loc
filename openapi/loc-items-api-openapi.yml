@@ -58,27 +58,26 @@ paths:
           description: Item not found
 components:
   schemas:
-    ItemResponse:
+    Resource:
       type: object
-      description: Detailed item response from the loc.gov item endpoint
+      description: A discrete digital representation or element of a collection item
       properties:
-        cite_this:
-          type: object
-          description: 'Experimental feature providing citation text in Chicago Manual of Style, MLA, and APA formats. Should be used as a starting point only.
-
-            '
-          additionalProperties: true
-        item:
-          type: object
-          description: Bibliographic information for the requested item
-          additionalProperties: true
-        resources:
+        caption:
+          type: string
+          description: Caption for the resource
+        files:
           type: array
-          description: 'Digital resources associated with the item (digitized images, audio files, video files, web archive links, etc.)
-
-            '
+          description: Digital files associated with the resource
           items:
-            $ref: '#/components/schemas/Resource'
+            type: array
+            items:
+              $ref: '#/components/schemas/ResourceFile'
+        image:
+          type: string
+          description: URL of the resource image
+        url:
+          type: string
+          description: URL of the resource
     ResourceFile:
       type: object
       description: A specific digital file for a resource
@@ -101,26 +100,27 @@ components:
         width:
           type: integer
           description: Width of the image in pixels
-    Resource:
+    ItemResponse:
       type: object
-      description: A discrete digital representation or element of a collection item
+      description: Detailed item response from the loc.gov item endpoint
       properties:
-        caption:
-          type: string
-          description: Caption for the resource
-        files:
+        cite_this:
+          type: object
+          description: 'Experimental feature providing citation text in Chicago Manual of Style, MLA, and APA formats. Should be used as a starting point only.
+
+            '
+          additionalProperties: true
+        item:
+          type: object
+          description: Bibliographic information for the requested item
+          additionalProperties: true
+        resources:
           type: array
-          description: Digital files associated with the resource
+          description: 'Digital resources associated with the item (digitized images, audio files, video files, web archive links, etc.)
+
+            '
           items:
-            type: array
-            items:
-              $ref: '#/components/schemas/ResourceFile'
-        image:
-          type: string
-          description: URL of the resource image
-        url:
-          type: string
-          description: URL of the resource
+            $ref: '#/components/schemas/Resource'
 externalDocs:
   description: API Documentation
   url: https://www.loc.gov/apis/json-and-yaml/

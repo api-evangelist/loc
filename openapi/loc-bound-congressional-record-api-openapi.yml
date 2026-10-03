@@ -115,24 +115,10 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
     month:
       name: month
       in: path
       description: The specified month of the bound Congressional record, for example 4 for April.
-      required: false
-      schema:
-        type: integer
-    year:
-      name: year
-      in: path
-      description: The specified year of the bound Congressional record, for example 1990.
       required: false
       schema:
         type: integer
@@ -147,6 +133,13 @@ components:
         enum:
         - xml
         - json
+    year:
+      name: year
+      in: path
+      description: The specified year of the bound Congressional record, for example 1990.
+      required: false
+      schema:
+        type: integer
     offset:
       name: offset
       in: query
@@ -161,14 +154,14 @@ components:
       required: false
       schema:
         type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
   schemas:
-    BoundCongressionalRecord:
-      type: object
-      properties:
-        boundCongressionalRecord:
-          type: array
-          items:
-            $ref: '#/components/schemas/boundCongressionalRecord'
     boundCongressionalRecord:
       type: object
       properties:
@@ -192,6 +185,13 @@ components:
         volumeNumber:
           type: integer
           example: 136
+    BoundCongressionalRecord:
+      type: object
+      properties:
+        boundCongressionalRecord:
+          type: array
+          items:
+            $ref: '#/components/schemas/boundCongressionalRecord'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

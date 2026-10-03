@@ -450,6 +450,57 @@ paths:
                 $ref: '#/components/schemas/SearchResponse'
 components:
   schemas:
+    Pagination:
+      type: object
+      description: Pagination information for search results
+      properties:
+        count:
+          type: integer
+          description: Total number of items in the result set
+        current:
+          type: integer
+          description: Current page number
+        from:
+          type: integer
+          description: Index of the first item on the current page
+        last:
+          type: integer
+          description: Index of the last item on the current page
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL for the next page of results
+        of:
+          type: integer
+          description: Total number of pages
+        perpage:
+          type: integer
+          description: Number of items per page
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL for the previous page of results
+        results:
+          type: string
+          description: Human-readable description of current result range
+        to:
+          type: integer
+          description: Index of the last item on the current page
+    FacetValue:
+      type: object
+      description: A facet value used to filter search results
+      properties:
+        count:
+          type: integer
+          description: Number of results matching this facet
+        link:
+          type: string
+          description: URL to filter results by this facet value
+        value:
+          type: string
+          description: The facet value text
     ItemSummary:
       type: object
       description: Summary information for a single collection item in search results
@@ -531,57 +582,6 @@ components:
           description: List of collection items matching the query
           items:
             $ref: '#/components/schemas/ItemSummary'
-    FacetValue:
-      type: object
-      description: A facet value used to filter search results
-      properties:
-        count:
-          type: integer
-          description: Number of results matching this facet
-        link:
-          type: string
-          description: URL to filter results by this facet value
-        value:
-          type: string
-          description: The facet value text
-    Pagination:
-      type: object
-      description: Pagination information for search results
-      properties:
-        count:
-          type: integer
-          description: Total number of items in the result set
-        current:
-          type: integer
-          description: Current page number
-        from:
-          type: integer
-          description: Index of the first item on the current page
-        last:
-          type: integer
-          description: Index of the last item on the current page
-        next:
-          type:
-          - string
-          - 'null'
-          description: URL for the next page of results
-        of:
-          type: integer
-          description: Total number of pages
-        perpage:
-          type: integer
-          description: Number of items per page
-        previous:
-          type:
-          - string
-          - 'null'
-          description: URL for the previous page of results
-        results:
-          type: string
-          description: Human-readable description of current result range
-        to:
-          type: integer
-          description: Index of the last item on the current page
 externalDocs:
   description: API Documentation
   url: https://www.loc.gov/apis/json-and-yaml/

@@ -84,63 +84,31 @@ paths:
       operationId: getHouseRequirementByRequirementNumberMatchingCommunications
       x-operation-id-source: derived
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    requirementNumber:
-      name: requirementNumber
-      in: path
-      description: The requirement’s assigned number. For example, the value can be 8070.
-      required: true
-      schema:
-        type: integer
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
   schemas:
-    communicationType:
+    HouseRequirements:
       type: object
       properties:
-        code:
-          type: string
-          example: EC
-        name:
-          type: string
-          example: Executive Communication
-    houseRequirement:
+        houseRequirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/houseRequirement'
+    MatchCommunications:
       type: object
       properties:
-        number:
+        matchCommunications:
+          type: array
+          items:
+            $ref: '#/components/schemas/matchCommunications'
+    matchCommunication:
+      type: object
+      properties:
+        count:
           type: integer
-          example: 8070
-        updateDate:
-          type: string
-          format: date
-          example: '2021-08-13'
+          example: 90774
         url:
           type: string
           format: url
-          example: https://api.congress.gov/v3/house-requirement/8070?format=json
+          example: https://api.congress.gov/v3/house-requirement/8070/matching-communications?format=json
     matchCommunications:
       type: object
       properties:
@@ -159,16 +127,29 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/house-communication/112/EC/2?format=json
-    matchCommunication:
+    houseRequirement:
       type: object
       properties:
-        count:
+        number:
           type: integer
-          example: 90774
+          example: 8070
+        updateDate:
+          type: string
+          format: date
+          example: '2021-08-13'
         url:
           type: string
           format: url
-          example: https://api.congress.gov/v3/house-requirement/8070/matching-communications?format=json
+          example: https://api.congress.gov/v3/house-requirement/8070?format=json
+    communicationType:
+      type: object
+      properties:
+        code:
+          type: string
+          example: EC
+        name:
+          type: string
+          example: Executive Communication
     HouseRequirement:
       type: object
       properties:
@@ -202,20 +183,39 @@ components:
               type: string
               format: date
               example: '2021-08-13'
-    MatchCommunications:
-      type: object
-      properties:
-        matchCommunications:
-          type: array
-          items:
-            $ref: '#/components/schemas/matchCommunications'
-    HouseRequirements:
-      type: object
-      properties:
-        houseRequirements:
-          type: array
-          items:
-            $ref: '#/components/schemas/houseRequirement'
+  parameters:
+    requirementNumber:
+      name: requirementNumber
+      in: path
+      description: The requirement’s assigned number. For example, the value can be 8070.
+      required: true
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

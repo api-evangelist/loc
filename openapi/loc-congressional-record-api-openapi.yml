@@ -40,17 +40,10 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    limit:
-      name: limit
+    d:
+      name: d
       in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    m:
-      name: m
-      in: query
-      description: The month the issue was published. For example, the value can be 6.
+      description: The day the issue was published. For example, the value can be 28.
       required: false
       schema:
         type: integer
@@ -58,6 +51,13 @@ components:
       name: y
       in: query
       description: The year the issue was published. For example, the value can be 2022.
+      required: false
+      schema:
+        type: integer
+    m:
+      name: m
+      in: query
+      description: The month the issue was published. For example, the value can be 6.
       required: false
       schema:
         type: integer
@@ -79,14 +79,24 @@ components:
       required: false
       schema:
         type: integer
-    d:
-      name: d
+    limit:
+      name: limit
       in: query
-      description: The day the issue was published. For example, the value can be 28.
+      description: The number of records returned. The maximum limit is 250.
       required: false
       schema:
         type: integer
   schemas:
+    CongressionalRecord:
+      type: object
+      properties:
+        IndexStart:
+          type: integer
+          example: 1
+        Issues:
+          type: array
+          items:
+            $ref: '#/components/schemas/issues'
     issues:
       type: object
       properties:
@@ -217,16 +227,6 @@ components:
         Volume:
           type: string
           example: '168'
-    CongressionalRecord:
-      type: object
-      properties:
-        IndexStart:
-          type: integer
-          example: 1
-        Issues:
-          type: array
-          items:
-            $ref: '#/components/schemas/issues'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

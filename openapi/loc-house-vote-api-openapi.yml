@@ -141,58 +141,72 @@ paths:
       operationId: getHouseVoteByCongressBySessionByVoteNumberMembers
       x-operation-id-source: derived
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    voteNumber:
-      name: voteNumber
-      in: path
-      description: The assigned roll call vote number. For example, 17.
-      required: true
-      schema:
-        type: integer
-    session:
-      name: session
-      in: path
-      description: The session number. The value can be 1 or 2.
-      required: true
-      schema:
-        type: integer
-        enum:
-        - 1
-        - 2
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
   schemas:
+    HouseVoteMembers:
+      allOf:
+      - $ref: '#/components/schemas/HouseVoteNumberBase'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/houseVoteResults'
+          voteQuestion:
+            type: string
+            example: On Passage
+    houseVoteResults:
+      type: object
+      properties:
+        bioguideID:
+          type: string
+          example: A000055
+        firstName:
+          type: string
+          example: Robert
+        lastName:
+          type: string
+          example: Aderholt
+        voteCast:
+          type: string
+          example: Yea
+        voteParty:
+          type: string
+          example: R
+        voteState:
+          type: string
+          example: AL
+    voteParty:
+      type: object
+      properties:
+        nayTotal:
+          type: integer
+          example: 0
+        notVotingTotal:
+          type: integer
+          example: 6
+        presentTotal:
+          type: integer
+          example: 0
+        voteParty:
+          type: string
+          example: R
+        yeaTotal:
+          type: integer
+          example: 213
+        party:
+          $ref: '#/components/schemas/party'
+    HouseVoteNumber:
+      allOf:
+      - $ref: '#/components/schemas/HouseVoteNumberBase'
+      - type: object
+        properties:
+          votePartyTotal:
+            type: array
+            items:
+              $ref: '#/components/schemas/voteParty'
+          voteQuestion:
+            type: string
+            example: On Passage
     HouseVote:
       type: object
       properties:
@@ -239,39 +253,6 @@ components:
         voteType:
           type: string
           example: Yea-and-Nay
-    houseVoteResults:
-      type: object
-      properties:
-        bioguideID:
-          type: string
-          example: A000055
-        firstName:
-          type: string
-          example: Robert
-        lastName:
-          type: string
-          example: Aderholt
-        voteCast:
-          type: string
-          example: Yea
-        voteParty:
-          type: string
-          example: R
-        voteState:
-          type: string
-          example: AL
-    HouseVoteMembers:
-      allOf:
-      - $ref: '#/components/schemas/HouseVoteNumberBase'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/houseVoteResults'
-          voteQuestion:
-            type: string
-            example: On Passage
     HouseVoteNumberBase:
       type: object
       properties:
@@ -314,26 +295,6 @@ components:
         voteType:
           type: string
           example: Yea-and-Nay
-    voteParty:
-      type: object
-      properties:
-        nayTotal:
-          type: integer
-          example: 0
-        notVotingTotal:
-          type: integer
-          example: 6
-        presentTotal:
-          type: integer
-          example: 0
-        voteParty:
-          type: string
-          example: R
-        yeaTotal:
-          type: integer
-          example: 213
-        party:
-          $ref: '#/components/schemas/party'
     party:
       type: object
       properties:
@@ -343,18 +304,57 @@ components:
         type:
           type: string
           example: R
-    HouseVoteNumber:
-      allOf:
-      - $ref: '#/components/schemas/HouseVoteNumberBase'
-      - type: object
-        properties:
-          votePartyTotal:
-            type: array
-            items:
-              $ref: '#/components/schemas/voteParty'
-          voteQuestion:
-            type: string
-            example: On Passage
+  parameters:
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    voteNumber:
+      name: voteNumber
+      in: path
+      description: The assigned roll call vote number. For example, 17.
+      required: true
+      schema:
+        type: integer
+    session:
+      name: session
+      in: path
+      description: The session number. The value can be 1 or 2.
+      required: true
+      schema:
+        type: integer
+        enum:
+        - 1
+        - 2
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
