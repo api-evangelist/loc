@@ -112,81 +112,20 @@ paths:
       operationId: getSenateCommunicationByCongressByCommunicationTypeByCommunicationNumber
       x-operation-id-source: derived
 components:
-  parameters:
-    senateCommunicationType:
-      name: communicationType
-      in: path
-      description: The type of communication. Value can be ec, pm, or pom.
-      required: true
-      schema:
-        type: string
-        enum:
-        - ec
-        - pm
-        - pom
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    communicationNumber:
-      name: communicationNumber
-      in: path
-      description: The communication’s assigned number. For example, the value can be 3324.
-      required: true
-      schema:
-        type: integer
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
   schemas:
-    senateCommunication:
+    subcommittees:
       type: object
       properties:
-        chamber:
+        name:
           type: string
-          example: Senate
-        communicationType:
-          $ref: '#/components/schemas/communicationType'
-        congress:
-          type: integer
-          example: 117
-        number:
+          example: Investigations and Oversight Subcommittee
+        systemCode:
           type: string
-          example: '1615'
-        updateDate:
-          type: string
-          format: date
-          example: '2021-09-01'
+          example: hspw01
         url:
           type: string
           format: url
-          example: https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json
+          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
     SenateCommunicationTypeNumber:
       type: object
       properties:
@@ -229,19 +168,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/senateCommunication'
-    subcommittees:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Investigations and Oversight Subcommittee
-        systemCode:
-          type: string
-          example: hspw01
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
     communicationType:
       type: object
       properties:
@@ -251,6 +177,80 @@ components:
         name:
           type: string
           example: Executive Communication
+    senateCommunication:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: Senate
+        communicationType:
+          $ref: '#/components/schemas/communicationType'
+        congress:
+          type: integer
+          example: 117
+        number:
+          type: string
+          example: '1615'
+        updateDate:
+          type: string
+          format: date
+          example: '2021-09-01'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/senate-communication/117/ec/1615?format=json
+  parameters:
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    communicationNumber:
+      name: communicationNumber
+      in: path
+      description: The communication’s assigned number. For example, the value can be 3324.
+      required: true
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    senateCommunicationType:
+      name: communicationType
+      in: path
+      description: The type of communication. Value can be ec, pm, or pom.
+      required: true
+      schema:
+        type: string
+        enum:
+        - ec
+        - pm
+        - pom
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

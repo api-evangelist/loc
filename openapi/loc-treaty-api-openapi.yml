@@ -194,13 +194,19 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    TreatyCommittees:
+    senatecommittee:
       type: object
       properties:
-        treatyCommittees:
-          type: array
-          items:
-            $ref: '#/components/schemas/treatyCommittee'
+        name:
+          type: string
+          example: Armed Services Committee
+        systemCode:
+          type: string
+          example: ssas00
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/senate/ssas00?format=json
     TreatyActions:
       type: object
       properties:
@@ -208,38 +214,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/treatyAction'
-    treatyCommittee:
+    TreatyCommittees:
       type: object
       properties:
-        activities:
+        treatyCommittees:
           type: array
           items:
-            type: object
-            properties:
-              date:
-                type: string
-                format: date
-                example: '1965-10-19T04:00:00Z'
-              name:
-                type: string
-                example: Reported By
-        chamber:
-          type: string
-          example: Senate
-        name:
-          type: string
-          example: Foreign Relations Committee
-        subcommittees:
-          type: array
-        systemCode:
-          type: string
-          example: ssfr00
-        type:
-          type: string
-          example: Standing
-        url:
-          type: string
-          example: https://api.congress.gov/v3/committee/senate/ssfr00?format=json
+            $ref: '#/components/schemas/treatyCommittee'
     treaty:
       type: object
       properties:
@@ -272,13 +253,6 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/treaty/89/3?format=json
-    Treaty:
-      type: object
-      properties:
-        treaties:
-          type: array
-          items:
-            $ref: '#/components/schemas/treaty'
     TreatyDetail:
       type: object
       properties:
@@ -361,19 +335,45 @@ components:
               type: string
               format: date-time
               example: '2022-02-26T16:25:25Z'
-    senatecommittee:
+    Treaty:
       type: object
       properties:
+        treaties:
+          type: array
+          items:
+            $ref: '#/components/schemas/treaty'
+    treatyCommittee:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+                example: '1965-10-19T04:00:00Z'
+              name:
+                type: string
+                example: Reported By
+        chamber:
+          type: string
+          example: Senate
         name:
           type: string
-          example: Armed Services Committee
+          example: Foreign Relations Committee
+        subcommittees:
+          type: array
         systemCode:
           type: string
-          example: ssas00
+          example: ssfr00
+        type:
+          type: string
+          example: Standing
         url:
           type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/senate/ssas00?format=json
+          example: https://api.congress.gov/v3/committee/senate/ssfr00?format=json
     treatyAction:
       type: object
       properties:
@@ -393,13 +393,6 @@ components:
           type: string
           example: Floor
   parameters:
-    treatyNumber:
-      name: treatyNumber
-      in: path
-      description: The treaty’s assigned number. For example, the value can be 13.
-      required: true
-      schema:
-        type: integer
     congress:
       name: congress
       in: path
@@ -419,13 +412,13 @@ components:
         enum:
         - xml
         - json
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
+    treatyNumber:
+      name: treatyNumber
+      in: path
+      description: The treaty’s assigned number. For example, the value can be 13.
+      required: true
       schema:
-        type: string
+        type: integer
     offset:
       name: offset
       in: query
@@ -433,18 +426,11 @@ components:
       required: false
       schema:
         type: integer
-    fromDateTime:
-      name: fromDateTime
+    toDateTime:
+      name: toDateTime
       in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
       required: false
-      schema:
-        type: string
-    treatySuffix:
-      name: treatySuffix
-      in: path
-      description: The treaty’s partition letter value. For example, the value can be A.
-      required: true
       schema:
         type: string
     limit:
@@ -454,6 +440,20 @@ components:
       required: false
       schema:
         type: integer
+    treatySuffix:
+      name: treatySuffix
+      in: path
+      description: The treaty’s partition letter value. For example, the value can be A.
+      required: true
+      schema:
+        type: string
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

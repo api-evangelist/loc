@@ -45,19 +45,6 @@ paths:
                 $ref: '#/components/schemas/Issue'
 components:
   schemas:
-    Issue:
-      type: object
-      properties:
-        date_issued:
-          type: string
-        edition:
-          type: integer
-        title:
-          type: object
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Page'
     Page:
       type: object
       properties:
@@ -74,3 +61,16 @@ components:
           type: integer
         ocr_eng:
           type: string
+    Issue:
+      type: object
+      properties:
+        date_issued:
+          type: string
+        edition:
+          type: integer
+        title:
+          type: object
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Page'

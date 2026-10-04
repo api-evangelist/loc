@@ -85,20 +85,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    HouseRequirements:
-      type: object
-      properties:
-        houseRequirements:
-          type: array
-          items:
-            $ref: '#/components/schemas/houseRequirement'
-    MatchCommunications:
-      type: object
-      properties:
-        matchCommunications:
-          type: array
-          items:
-            $ref: '#/components/schemas/matchCommunications'
     matchCommunication:
       type: object
       properties:
@@ -141,6 +127,13 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/house-requirement/8070?format=json
+    HouseRequirements:
+      type: object
+      properties:
+        houseRequirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/houseRequirement'
     communicationType:
       type: object
       properties:
@@ -183,14 +176,14 @@ components:
               type: string
               format: date
               example: '2021-08-13'
+    MatchCommunications:
+      type: object
+      properties:
+        matchCommunications:
+          type: array
+          items:
+            $ref: '#/components/schemas/matchCommunications'
   parameters:
-    requirementNumber:
-      name: requirementNumber
-      in: path
-      description: The requirement’s assigned number. For example, the value can be 8070.
-      required: true
-      schema:
-        type: integer
     format:
       name: format
       in: query
@@ -214,6 +207,13 @@ components:
       in: query
       description: The number of records returned. The maximum limit is 250.
       required: false
+      schema:
+        type: integer
+    requirementNumber:
+      name: requirementNumber
+      in: path
+      description: The requirement’s assigned number. For example, the value can be 8070.
+      required: true
       schema:
         type: integer
   securitySchemes:

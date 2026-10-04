@@ -73,19 +73,6 @@ paths:
                 $ref: '#/components/schemas/PageResults'
 components:
   schemas:
-    PageResults:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Page'
-        totalItems:
-          type: integer
-        startIndex:
-          type: integer
-        endIndex:
-          type: integer
     Page:
       type: object
       properties:
@@ -102,3 +89,16 @@ components:
           type: integer
         ocr_eng:
           type: string
+    PageResults:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Page'
+        totalItems:
+          type: integer
+        startIndex:
+          type: integer
+        endIndex:
+          type: integer

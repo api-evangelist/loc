@@ -82,22 +82,6 @@ paths:
                 $ref: '#/components/schemas/NewspaperList'
 components:
   schemas:
-    Title:
-      type: object
-      properties:
-        lccn:
-          type: string
-        name:
-          type: string
-        place_of_publication:
-          type: string
-        start_year:
-          type: string
-        end_year:
-          type: string
-        url:
-          type: string
-          format: uri
     TitleResults:
       type: object
       properties:
@@ -114,3 +98,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Title'
+    Title:
+      type: object
+      properties:
+        lccn:
+          type: string
+        name:
+          type: string
+        place_of_publication:
+          type: string
+        start_year:
+          type: string
+        end_year:
+          type: string
+        url:
+          type: string
+          format: uri

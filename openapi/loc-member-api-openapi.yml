@@ -214,85 +214,16 @@ paths:
       operationId: getMemberCongressByCongressByStateCodeByDistrict
       x-operation-id-source: derived
 components:
-  parameters:
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    currentMember:
-      name: currentMember
-      in: query
-      description: The status of the member. Use true or false
-      schema:
-        type: string
-        enum:
-        - true
-        - false
-    stateCode:
-      name: stateCode
-      in: path
-      description: The two letter identifier for the state the member represents. For example, the value can be MI for Michigan.
-      required: true
-      schema:
-        type: string
-    district:
-      name: district
-      in: path
-      description: The district number for the district the member represents. For example, the value can be 10.
-      required: true
-      schema:
-        type: integer
-    bioguideId:
-      name: bioguideId
-      in: path
-      description: The bioguide identifier for the congressional member. For example, the value can be L000174.
-      required: true
-      schema:
-        type: string
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
   schemas:
+    memberTerms:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House of Representatives
+        startYear:
+          type: integer
+          example: 1991
     memberDetailTerms:
       type: object
       properties:
@@ -317,21 +248,6 @@ components:
         stateName:
           type: string
           example: Vermont
-    leadership:
-      type: object
-      properties:
-        congress:
-          type: integer
-          example: 113
-        type:
-          type: string
-          example: President Pro Tempore
-    policyArea:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Government Operations and Politics
     partyHistory:
       type: object
       properties:
@@ -344,6 +260,12 @@ components:
         startYear:
           type: integer
           example: 1975
+    policyArea:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Government Operations and Politics
     Member:
       type: object
       properties:
@@ -416,16 +338,46 @@ components:
           type: string
           format: date-time
           example: '2022-11-07T13:42:19Z'
-    latestAction:
+    sponsoredLegislation:
       type: object
       properties:
-        actionDate:
+        congress:
+          type: integer
+          example: 117
+        introducedDate:
           type: string
           format: date
           example: '2022-06-16'
-        text:
+        latestAction:
+          $ref: '#/components/schemas/latestAction'
+        number:
           type: string
-          example: Read twice and referred to the Committee on the Judiciary.
+          example: '4417'
+        policyArea:
+          $ref: '#/components/schemas/policyArea'
+        title:
+          type: string
+          example: Patent Trial and Appeal Board Reform Act of 2022
+        type:
+          type: string
+          example: S
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/117/s/4417?format=json
+    MemberSponsoredLegislation:
+      type: array
+      items:
+        $ref: '#/components/schemas/sponsoredLegislation'
+    leadership:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 113
+        type:
+          type: string
+          example: President Pro Tempore
     Members:
       type: object
       properties:
@@ -466,46 +418,94 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/member/N000147?format=json
-    sponsoredLegislation:
+    latestAction:
       type: object
       properties:
-        congress:
-          type: integer
-          example: 117
-        introducedDate:
+        actionDate:
           type: string
           format: date
           example: '2022-06-16'
-        latestAction:
-          $ref: '#/components/schemas/latestAction'
-        number:
+        text:
           type: string
-          example: '4417'
-        policyArea:
-          $ref: '#/components/schemas/policyArea'
-        title:
-          type: string
-          example: Patent Trial and Appeal Board Reform Act of 2022
-        type:
-          type: string
-          example: S
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/bill/117/s/4417?format=json
-    MemberSponsoredLegislation:
-      type: array
-      items:
-        $ref: '#/components/schemas/sponsoredLegislation'
-    memberTerms:
-      type: object
-      properties:
-        chamber:
-          type: string
-          example: House of Representatives
-        startYear:
-          type: integer
-          example: 1991
+          example: Read twice and referred to the Committee on the Judiciary.
+  parameters:
+    stateCode:
+      name: stateCode
+      in: path
+      description: The two letter identifier for the state the member represents. For example, the value can be MI for Michigan.
+      required: true
+      schema:
+        type: string
+    district:
+      name: district
+      in: path
+      description: The district number for the district the member represents. For example, the value can be 10.
+      required: true
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    currentMember:
+      name: currentMember
+      in: query
+      description: The status of the member. Use true or false
+      schema:
+        type: string
+        enum:
+        - true
+        - false
+    bioguideId:
+      name: bioguideId
+      in: path
+      description: The bioguide identifier for the congressional member. For example, the value can be L000174.
+      required: true
+      schema:
+        type: string
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

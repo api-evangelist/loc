@@ -59,7 +59,60 @@ paths:
       operationId: getCrsreportByReportNumber
       x-operation-id-source: derived
 components:
+  parameters:
+    crsReportNumber:
+      name: reportNumber
+      in: path
+      description: The number or ID of the report. For example, R47175.
+      required: true
+      schema:
+        type: string
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
   schemas:
+    author:
+      type: object
+      properties:
+        author:
+          type: string
+          example: Megan S. Lynch
     CrsReport:
       type: object
       properties:
@@ -67,12 +120,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/crsreport'
-    topic:
-      type: object
-      properties:
-        topic:
-          type: string
-          example: Budget & Appropriations Procedure
     CrsReportDetail:
       type: object
       properties:
@@ -122,6 +169,12 @@ components:
         version:
           type: integer
           example: 1
+    topic:
+      type: object
+      properties:
+        topic:
+          type: string
+          example: Budget & Appropriations Procedure
     crsreport:
       type: object
       properties:
@@ -180,59 +233,6 @@ components:
         type:
           type: string
           example: PUB
-    author:
-      type: object
-      properties:
-        author:
-          type: string
-          example: Megan S. Lynch
-  parameters:
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    crsReportNumber:
-      name: reportNumber
-      in: path
-      description: The number or ID of the report. For example, R47175.
-      required: true
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

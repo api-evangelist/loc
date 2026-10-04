@@ -231,64 +231,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AmendmentText:
-      type: array
-      items:
-      - $ref: '#/components/schemas/textVersions'
-    CoSponsor:
-      type: object
-      properties:
-        bioguidId:
-          type: string
-          example: F000450
-        district:
-          type: integer
-          example: 5
-        firstName:
-          type: string
-          example: Virginia
-        fullName:
-          type: string
-          example: Rep. Foxx, Virginia [R-NC-5]
-        isOriginalCosponsor:
-          type: boolean
-          example: true
-        lastName:
-          type: string
-          example: Foxx
-        party:
-          type: string
-          example: R
-        sponsorshipDate:
-          type: string
-          format: date
-          example: '2021-05-11'
-        state:
-          type: string
-          example: NC
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/member/F000450?format=json
-    amendmentActions:
-      type: object
-      properties:
-        actionDate:
-          type: string
-          format: date
-          example: '2021-08-08'
-        recordedVotes:
-          type: array
-          items:
-            $ref: '#/components/schemas/recordedVote'
-        sourceSystem:
-          $ref: '#/components/schemas/sourceSystem'
-        text:
-          type: string
-          example: 'Amendment SA 2137 agreed to in Senate by Yea-Nay Vote. 69 - 28. Record Vote Number: 312.'
-        type:
-          type: string
-          example: Floor
     AmendmentNumber:
       type: object
       properties:
@@ -329,10 +271,106 @@ components:
           type: string
           format: date-time
           example: '2021-08-08T12:00:00Z'
+    textVersions:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          example: '2022-02-18T16:38:41Z'
+        formats:
+          type: array
+          items:
+            $ref: '#/components/schemas/formats'
+        type:
+          type: string
+          example: Enrolled Bill
     AmendmentAmendments:
       type: array
       items:
       - $ref: '#/components/schemas/Amendment'
+    AmendmentCosponsors:
+      type: array
+      items:
+      - $ref: '#/components/schemas/CoSponsor'
+    formats:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Formatted Text
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
+    CoSponsor:
+      type: object
+      properties:
+        bioguidId:
+          type: string
+          example: F000450
+        district:
+          type: integer
+          example: 5
+        firstName:
+          type: string
+          example: Virginia
+        fullName:
+          type: string
+          example: Rep. Foxx, Virginia [R-NC-5]
+        isOriginalCosponsor:
+          type: boolean
+          example: true
+        lastName:
+          type: string
+          example: Foxx
+        party:
+          type: string
+          example: R
+        sponsorshipDate:
+          type: string
+          format: date
+          example: '2021-05-11'
+        state:
+          type: string
+          example: NC
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/member/F000450?format=json
+    AmendmentText:
+      type: array
+      items:
+      - $ref: '#/components/schemas/textVersions'
+    amendmentActions:
+      type: object
+      properties:
+        actionDate:
+          type: string
+          format: date
+          example: '2021-08-08'
+        recordedVotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/recordedVote'
+        sourceSystem:
+          $ref: '#/components/schemas/sourceSystem'
+        text:
+          type: string
+          example: 'Amendment SA 2137 agreed to in Senate by Yea-Nay Vote. 69 - 28. Record Vote Number: 312.'
+        type:
+          type: string
+          example: Floor
+    textVersion:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 1
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/amendment/117/samdt/4/text?format=json
     amendedBill:
       type: object
       properties:
@@ -362,6 +400,10 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/bill/117/sconres/5?format=json
+    AmendmentActions:
+      type: array
+      items:
+      - $ref: '#/components/schemas/amendmentActions'
     Sponsor:
       type: object
       properties:
@@ -393,24 +435,6 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/member/G000555?format=json
-    textVersions:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
-        formats:
-          type: array
-          items:
-            $ref: '#/components/schemas/formats'
-        type:
-          type: string
-          example: Enrolled Bill
-    AmendmentActions:
-      type: array
-      items:
-      - $ref: '#/components/schemas/amendmentActions'
     sourceSystem:
       type: object
       properties:
@@ -420,53 +444,6 @@ components:
         name:
           type: string
           example: Senate
-    recordedVote:
-      type: object
-      properties:
-        chamber:
-          type: string
-          example: Senate
-        congress:
-          type: integer
-          example: 117
-        date:
-          type: string
-          format: date-time
-          example: '2021-08-08T12:00:00Z'
-        rollNumber:
-          type: integer
-          example: 312
-        sessionNumber:
-          type: integer
-          example: 1
-        url:
-          type: string
-          format: url
-          example: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1171/vote_117_1_00312.xml
-    textVersion:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 1
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/amendment/117/samdt/4/text?format=json
-    formats:
-      type: object
-      properties:
-        type:
-          type: string
-          example: Formatted Text
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/117/bills/hr3076/BILLS-117hr3076enr.htm
-    AmendmentCosponsors:
-      type: array
-      items:
-      - $ref: '#/components/schemas/CoSponsor'
     Amendment:
       type: object
       properties:
@@ -507,20 +484,49 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/amendment/117/samdt/2137?format=json
+    recordedVote:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: Senate
+        congress:
+          type: integer
+          example: 117
+        date:
+          type: string
+          format: date-time
+          example: '2021-08-08T12:00:00Z'
+        rollNumber:
+          type: integer
+          example: 312
+        sessionNumber:
+          type: integer
+          example: 1
+        url:
+          type: string
+          format: url
+          example: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1171/vote_117_1_00312.xml
   parameters:
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
       schema:
         type: integer
-        format: int32
-    amendmentNumber:
-      name: amendmentNumber
-      in: path
-      description: The amendment’s assigned number. For example, the value can be 2137.
-      required: true
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
       schema:
         type: string
     fromDateTime:
@@ -530,13 +536,28 @@ components:
       required: false
       schema:
         type: string
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
+    amendmentNumber:
+      name: amendmentNumber
+      in: path
+      description: The amendment’s assigned number. For example, the value can be 2137.
+      required: true
       schema:
         type: string
+    amendmentType:
+      name: amendmentType
+      in: path
+      description: The type of amendment. Value can be hamdt, samdt, or suamdt.
+      required: true
+      schema:
+        type: string
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
     format:
       name: format
       in: query
@@ -548,27 +569,6 @@ components:
         enum:
         - xml
         - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    amendmentType:
-      name: amendmentType
-      in: path
-      description: The type of amendment. Value can be hamdt, samdt, or suamdt.
-      required: true
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

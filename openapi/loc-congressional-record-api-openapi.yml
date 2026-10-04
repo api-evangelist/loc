@@ -40,13 +40,6 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    d:
-      name: d
-      in: query
-      description: The day the issue was published. For example, the value can be 28.
-      required: false
-      schema:
-        type: integer
     y:
       name: y
       in: query
@@ -83,6 +76,13 @@ components:
       name: limit
       in: query
       description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    d:
+      name: d
+      in: query
+      description: The day the issue was published. For example, the value can be 28.
       required: false
       schema:
         type: integer

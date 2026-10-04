@@ -113,6 +113,19 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    subcommittees:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Investigations and Oversight Subcommittee
+        systemCode:
+          type: string
+          example: hspw01
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
     houseCommunication:
       type: object
       properties:
@@ -135,19 +148,22 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/house-communication/117/ec/2057?format=json
-    subcommittees:
+    HouseCommunications:
       type: object
       properties:
+        houseCoummunications:
+          type: array
+          items:
+            $ref: '#/components/schemas/houseCommunication'
+    communicationType:
+      type: object
+      properties:
+        code:
+          type: string
+          example: EC
         name:
           type: string
-          example: Investigations and Oversight Subcommittee
-        systemCode:
-          type: string
-          example: hspw01
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/house/hspw01?format=json
+          example: Executive Communication
     HouseCommunicationTypeNumber:
       type: object
       properties:
@@ -215,35 +231,7 @@ components:
           type: string
           format: date
           example: '2024-09-03'
-    communicationType:
-      type: object
-      properties:
-        code:
-          type: string
-          example: EC
-        name:
-          type: string
-          example: Executive Communication
-    HouseCommunications:
-      type: object
-      properties:
-        houseCoummunications:
-          type: array
-          items:
-            $ref: '#/components/schemas/houseCommunication'
   parameters:
-    communicationType:
-      name: communicationType
-      in: path
-      description: The type of communication. Value can be ec, ml, pm, or pt.
-      required: true
-      schema:
-        type: string
-        enum:
-        - ec
-        - ml
-        - pm
-        - pt
     congress:
       name: congress
       in: path
@@ -252,13 +240,6 @@ components:
       schema:
         type: integer
         format: int32
-    communicationNumber:
-      name: communicationNumber
-      in: path
-      description: The communication’s assigned number. For example, the value can be 3324.
-      required: true
-      schema:
-        type: integer
     format:
       name: format
       in: query
@@ -275,6 +256,25 @@ components:
       in: query
       description: The starting record returned. 0 is the first record.
       required: false
+      schema:
+        type: integer
+    communicationType:
+      name: communicationType
+      in: path
+      description: The type of communication. Value can be ec, ml, pm, or pt.
+      required: true
+      schema:
+        type: string
+        enum:
+        - ec
+        - ml
+        - pm
+        - pt
+    communicationNumber:
+      name: communicationNumber
+      in: path
+      description: The communication’s assigned number. For example, the value can be 3324.
+      required: true
       schema:
         type: integer
     limit:
