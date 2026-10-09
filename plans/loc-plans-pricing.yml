@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Library of Congress API Plans and Pricing
 description: The Library of Congress APIs are free public services provided by the US federal government. There are no paid tiers or commercial plans. The loc.gov JSON API and Chronicling America API require no authentication and are completely free. The Congress.gov API requires a free API key obtained via api.congress.gov/sign-up/.
 plans:
@@ -43,3 +47,28 @@ plans:
 pricing:
   model: Free only; no paid tiers or enterprise plans available
   notes: All Library of Congress APIs are funded by the US federal government and offered at no cost to users. There are no premium features, commercial licenses, or paid SLAs.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units: []
+  plans:
+  - name: loc.gov JSON API - Free Public Access
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Chronicling America API - Free Public Access
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Congress.gov API - Free API Key
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []

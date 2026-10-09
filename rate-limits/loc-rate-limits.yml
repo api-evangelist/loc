@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Library of Congress API Rate Limits
 description: The Library of Congress enforces rate limits per service to ensure equitable access. Exceeding limits triggers a 1-hour block for loc.gov JSON API endpoints. The Congress.gov API returns HTTP 429 when the hourly limit is reached.
 rateLimits:
