@@ -97,6 +97,38 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    summariesArray:
+      type: object
+      properties:
+        actionDate:
+          type: string
+          format: date
+          example: '2022-02-18T16:38:41Z'
+        actionDesc:
+          type: string
+          example: Passed Senate
+        bill:
+          $ref: '#/components/schemas/summaryBill'
+        currentChamber:
+          type: string
+          example: Senate
+        currentChamberCode:
+          type: string
+          example: S
+        lastSummaryUpdateDate:
+          type: string
+          format: date-time
+          example: '2022-02-18T16:38:41Z'
+        text:
+          type: string
+          example: <p><strong>COVID-19 Medical Production Act</strong></p> <p>This bill provides additional funding for FY2021 to acquire medical supplies, vaccines, and other equipment to combat COVID-19 (i.e., coronavirus disease 2019) using authorities under the Defense Production Act of 1950. That act confers on the President a broad set of authorities to influence domestic industry to provide essential materials and goods for the national defense.</p> <p>This funding is available through FY2025. Beginning in FY2023, it may be used to meet public health needs to address any pathogen determined by the President to have the potential to create a public health emergency.</p>
+        updateDate:
+          type: string
+          format: date
+          example: '2022-02-18T16:38:41Z'
+        versionCode:
+          type: string
+          example: '173'
     Summaries:
       type: array
       items:
@@ -130,72 +162,7 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/bill/117/hr/1234?format=json
-    summariesArray:
-      type: object
-      properties:
-        actionDate:
-          type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
-        actionDesc:
-          type: string
-          example: Passed Senate
-        bill:
-          $ref: '#/components/schemas/summaryBill'
-        currentChamber:
-          type: string
-          example: Senate
-        currentChamberCode:
-          type: string
-          example: S
-        lastSummaryUpdateDate:
-          type: string
-          format: date-time
-          example: '2022-02-18T16:38:41Z'
-        text:
-          type: string
-          example: <p><strong>COVID-19 Medical Production Act</strong></p> <p>This bill provides additional funding for FY2021 to acquire medical supplies, vaccines, and other equipment to combat COVID-19 (i.e., coronavirus disease 2019) using authorities under the Defense Production Act of 1950. That act confers on the President a broad set of authorities to influence domestic industry to provide essential materials and goods for the national defense.</p> <p>This funding is available through FY2025. Beginning in FY2023, it may be used to meet public health needs to address any pathogen determined by the President to have the potential to create a public health emergency.</p>
-        updateDate:
-          type: string
-          format: date
-          example: '2022-02-18T16:38:41Z'
-        versionCode:
-          type: string
-          example: '173'
   parameters:
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    sort:
-      name: sort
-      in: query
-      description: Sort by update date in Congress.gov. Value can be updateDate+asc or updateDate+desc.
-      required: false
-      schema:
-        type: string
     toDateTime:
       name: toDateTime
       in: query
@@ -203,10 +170,10 @@ components:
       required: false
       schema:
         type: string
-    limit:
-      name: limit
+    offset:
+      name: offset
       in: query
-      description: The number of records returned. The maximum limit is 250.
+      description: The starting record returned. 0 is the first record.
       required: false
       schema:
         type: integer
@@ -224,6 +191,39 @@ components:
       required: false
       schema:
         type: string
+    sort:
+      name: sort
+      in: query
+      description: Sort by update date in Congress.gov. Value can be updateDate+asc or updateDate+desc.
+      required: false
+      schema:
+        type: string
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

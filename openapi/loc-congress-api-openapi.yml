@@ -85,57 +85,7 @@ paths:
       operationId: getCongressCurrent
       x-operation-id-source: derived
 components:
-  parameters:
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
   schemas:
-    Congress:
-      type: object
-      properties:
-        endYear:
-          type: string
-          example: '2022'
-        name:
-          type: string
-          example: 117th Congress
-        sessions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Sessions'
-        startYear:
-          type: string
-          example: '2021'
     Congresses:
       type: array
       items:
@@ -157,6 +107,56 @@ components:
           type: string
           format: date
           example: '2020-01-01'
+    Congress:
+      type: object
+      properties:
+        endYear:
+          type: string
+          example: '2022'
+        name:
+          type: string
+          example: 117th Congress
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sessions'
+        startYear:
+          type: string
+          example: '2021'
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

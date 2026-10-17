@@ -146,16 +146,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    committeePrintText:
-      type: object
-      properties:
-        type:
-          type: string
-          example: Formatted Text
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/117/cprt/HPRT48144/CPRT-117HPRT48144.htm
     committeePrintCommittees:
       type: object
       properties:
@@ -169,22 +159,14 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee/house/hsru00?format=json
-    associatedBill:
-      type: object
-      properties:
-        congress:
-          type: integer
-          example: 116
-        number:
-          type: string
-          example: '6395'
-        type:
-          type: string
-          example: HR
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/bill/116/hr/6395?format=json
+    CommitteePrint:
+      type: array
+      items:
+        $ref: '#/components/schemas/committeePrints'
+    CommitteePrintDetailText:
+      type: array
+      items:
+        $ref: '#/components/schemas/committeePrintText'
     CommitteePrintDetail:
       type: object
       properties:
@@ -228,10 +210,32 @@ components:
           type: string
           format: date-time
           example: '2022-08-01 21:19:33+00:00'
-    CommitteePrintDetailText:
-      type: array
-      items:
-        $ref: '#/components/schemas/committeePrintText'
+    associatedBill:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 116
+        number:
+          type: string
+          example: '6395'
+        type:
+          type: string
+          example: HR
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/116/hr/6395?format=json
+    committeePrintText:
+      type: object
+      properties:
+        type:
+          type: string
+          example: Formatted Text
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/117/cprt/HPRT48144/CPRT-117HPRT48144.htm
     committeePrints:
       type: object
       properties:
@@ -252,11 +256,50 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee-print/117/house/48144?format=json
-    CommitteePrint:
-      type: array
-      items:
-        $ref: '#/components/schemas/committeePrints'
   parameters:
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    jacketNumber:
+      name: jacketNumber
+      in: path
+      description: The jacket number for the print. For example, the value can be 48144.
+      required: true
+      schema:
+        type: integer
     chamber:
       name: chamber
       in: path
@@ -268,14 +311,6 @@ components:
         - house
         - senate
         - joint
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
     format:
       name: format
       in: query
@@ -287,41 +322,6 @@ components:
         enum:
         - xml
         - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    jacketNumber:
-      name: jacketNumber
-      in: path
-      description: The jacket number for the print. For example, the value can be 48144.
-      required: true
-      schema:
-        type: integer
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

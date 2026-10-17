@@ -58,28 +58,6 @@ paths:
           description: Item not found
 components:
   schemas:
-    ResourceFile:
-      type: object
-      description: A specific digital file for a resource
-      properties:
-        height:
-          type: integer
-          description: Height of the image in pixels
-        levels:
-          type: integer
-          description: Number of zoom levels available
-        mimetype:
-          type: string
-          description: MIME type of the file
-        size:
-          type: integer
-          description: File size in bytes
-        url:
-          type: string
-          description: URL to access the file
-        width:
-          type: integer
-          description: Width of the image in pixels
     ItemResponse:
       type: object
       description: Detailed item response from the loc.gov item endpoint
@@ -121,6 +99,28 @@ components:
         url:
           type: string
           description: URL of the resource
+    ResourceFile:
+      type: object
+      description: A specific digital file for a resource
+      properties:
+        height:
+          type: integer
+          description: Height of the image in pixels
+        levels:
+          type: integer
+          description: Number of zoom levels available
+        mimetype:
+          type: string
+          description: MIME type of the file
+        size:
+          type: integer
+          description: File size in bytes
+        url:
+          type: string
+          description: URL to access the file
+        width:
+          type: integer
+          description: Width of the image in pixels
 externalDocs:
   description: API Documentation
   url: https://www.loc.gov/apis/json-and-yaml/

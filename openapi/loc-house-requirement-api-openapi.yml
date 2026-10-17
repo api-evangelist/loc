@@ -85,6 +85,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    HouseRequirements:
+      type: object
+      properties:
+        houseRequirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/houseRequirement'
     matchCommunication:
       type: object
       properties:
@@ -95,6 +102,20 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/house-requirement/8070/matching-communications?format=json
+    houseRequirement:
+      type: object
+      properties:
+        number:
+          type: integer
+          example: 8070
+        updateDate:
+          type: string
+          format: date
+          example: '2021-08-13'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/house-requirement/8070?format=json
     matchCommunications:
       type: object
       properties:
@@ -113,27 +134,13 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/house-communication/112/EC/2?format=json
-    houseRequirement:
+    MatchCommunications:
       type: object
       properties:
-        number:
-          type: integer
-          example: 8070
-        updateDate:
-          type: string
-          format: date
-          example: '2021-08-13'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/house-requirement/8070?format=json
-    HouseRequirements:
-      type: object
-      properties:
-        houseRequirements:
+        matchCommunications:
           type: array
           items:
-            $ref: '#/components/schemas/houseRequirement'
+            $ref: '#/components/schemas/matchCommunications'
     communicationType:
       type: object
       properties:
@@ -176,25 +183,7 @@ components:
               type: string
               format: date
               example: '2021-08-13'
-    MatchCommunications:
-      type: object
-      properties:
-        matchCommunications:
-          type: array
-          items:
-            $ref: '#/components/schemas/matchCommunications'
   parameters:
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
     offset:
       name: offset
       in: query
@@ -216,6 +205,17 @@ components:
       required: true
       schema:
         type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

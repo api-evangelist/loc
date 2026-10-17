@@ -126,28 +126,6 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee/house/hspw01?format=json
-    houseCommunication:
-      type: object
-      properties:
-        chamber:
-          type: string
-          example: House
-        communicationType:
-          $ref: '#/components/schemas/communicationType'
-        congressNumber:
-          type: integer
-          example: 117
-        number:
-          type: string
-          example: '2057'
-        updateDate:
-          type: string
-          format: date
-          example: '2021-09-01'
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/house-communication/117/ec/2057?format=json
     HouseCommunications:
       type: object
       properties:
@@ -155,15 +133,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/houseCommunication'
-    communicationType:
-      type: object
-      properties:
-        code:
-          type: string
-          example: EC
-        name:
-          type: string
-          example: Executive Communication
     HouseCommunicationTypeNumber:
       type: object
       properties:
@@ -231,33 +200,38 @@ components:
           type: string
           format: date
           example: '2024-09-03'
+    houseCommunication:
+      type: object
+      properties:
+        chamber:
+          type: string
+          example: House
+        communicationType:
+          $ref: '#/components/schemas/communicationType'
+        congressNumber:
+          type: integer
+          example: 117
+        number:
+          type: string
+          example: '2057'
+        updateDate:
+          type: string
+          format: date
+          example: '2021-09-01'
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/house-communication/117/ec/2057?format=json
+    communicationType:
+      type: object
+      properties:
+        code:
+          type: string
+          example: EC
+        name:
+          type: string
+          example: Executive Communication
   parameters:
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
     communicationType:
       name: communicationType
       in: path
@@ -270,6 +244,13 @@ components:
         - ml
         - pm
         - pt
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
     communicationNumber:
       name: communicationNumber
       in: path
@@ -277,6 +258,14 @@ components:
       required: true
       schema:
         type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
     limit:
       name: limit
       in: query
@@ -284,6 +273,17 @@ components:
       required: false
       schema:
         type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

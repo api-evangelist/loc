@@ -193,34 +193,69 @@ paths:
       operationId: getTreatyByCongressByTreatyNumberCommittees
       x-operation-id-source: derived
 components:
+  parameters:
+    treatyNumber:
+      name: treatyNumber
+      in: path
+      description: The treaty’s assigned number. For example, the value can be 13.
+      required: true
+      schema:
+        type: integer
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    treatySuffix:
+      name: treatySuffix
+      in: path
+      description: The treaty’s partition letter value. For example, the value can be A.
+      required: true
+      schema:
+        type: string
   schemas:
-    senatecommittee:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Armed Services Committee
-        systemCode:
-          type: string
-          example: ssas00
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/committee/senate/ssas00?format=json
-    TreatyActions:
-      type: object
-      properties:
-        actions:
-          type: array
-          items:
-            $ref: '#/components/schemas/treatyAction'
-    TreatyCommittees:
-      type: object
-      properties:
-        treatyCommittees:
-          type: array
-          items:
-            $ref: '#/components/schemas/treatyCommittee'
     treaty:
       type: object
       properties:
@@ -253,6 +288,24 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/treaty/89/3?format=json
+    treatyAction:
+      type: object
+      properties:
+        actionCode:
+          type: string
+          example: S05291
+        actionDate:
+          type: string
+          format: date
+          example: '2022-08-03'
+        committee:
+          $ref: '#/components/schemas/senatecommittee'
+        text:
+          type: string
+          example: 'Resolution of advice and consent to ratification agreed to as amended in Senate by Yea-Nay Vote. 95 - 1. Record Vote Number: 282.'
+        type:
+          type: string
+          example: Floor
     TreatyDetail:
       type: object
       properties:
@@ -335,6 +388,13 @@ components:
               type: string
               format: date-time
               example: '2022-02-26T16:25:25Z'
+    TreatyActions:
+      type: object
+      properties:
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/treatyAction'
     Treaty:
       type: object
       properties:
@@ -342,6 +402,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/treaty'
+    TreatyCommittees:
+      type: object
+      properties:
+        treatyCommittees:
+          type: array
+          items:
+            $ref: '#/components/schemas/treatyCommittee'
+    senatecommittee:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Armed Services Committee
+        systemCode:
+          type: string
+          example: ssas00
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/committee/senate/ssas00?format=json
     treatyCommittee:
       type: object
       properties:
@@ -374,86 +454,6 @@ components:
         url:
           type: string
           example: https://api.congress.gov/v3/committee/senate/ssfr00?format=json
-    treatyAction:
-      type: object
-      properties:
-        actionCode:
-          type: string
-          example: S05291
-        actionDate:
-          type: string
-          format: date
-          example: '2022-08-03'
-        committee:
-          $ref: '#/components/schemas/senatecommittee'
-        text:
-          type: string
-          example: 'Resolution of advice and consent to ratification agreed to as amended in Senate by Yea-Nay Vote. 95 - 1. Record Vote Number: 282.'
-        type:
-          type: string
-          example: Floor
-  parameters:
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    treatyNumber:
-      name: treatyNumber
-      in: path
-      description: The treaty’s assigned number. For example, the value can be 13.
-      required: true
-      schema:
-        type: integer
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    treatySuffix:
-      name: treatySuffix
-      in: path
-      description: The treaty’s partition letter value. For example, the value can be A.
-      required: true
-      schema:
-        type: string
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -119,6 +119,19 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    witnessDocument:
+      type: object
+      properties:
+        documentType:
+          type: string
+          example: Witness Statement
+        format:
+          type: string
+          example: PDF
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/118/meeting/house/115538/witnesses/HHRG-118-II24-Wstate-NewlandB-20230324.pdf
     subcommittees:
       type: object
       properties:
@@ -132,26 +145,32 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee/house/hspw01?format=json
+    video:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Legislative Hearing on H.R. 1246 and H.R. 1532 | Indian and Insular Affairs Subcommittee
+        url:
+          type: string
+          format: url
+          example: https://www.congress.gov/event/118th-Congress/house-event/115538
+    witness:
+      type: object
+      properties:
+        name:
+          type: string
+          example: The Honorable John Williams
+        organization:
+          type: string
+          example: United Auburn Rancheria
+        position:
+          type: string
+          example: Vice Chairman
     CommitteeMeeting:
       type: array
       items:
         $ref: '#/components/schemas/committeeMeetings'
-    associatedBill:
-      type: object
-      properties:
-        congress:
-          type: integer
-          example: 116
-        number:
-          type: string
-          example: '6395'
-        type:
-          type: string
-          example: HR
-        url:
-          type: string
-          format: url
-          example: https://api.congress.gov/v3/bill/116/hr/6395?format=json
     CommitteeMeetingDetail:
       type: object
       properties:
@@ -216,16 +235,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/witness'
-    video:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Legislative Hearing on H.R. 1246 and H.R. 1532 | Indian and Insular Affairs Subcommittee
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/event/118th-Congress/house-event/115538
     meetingdocument:
       type: object
       properties:
@@ -245,42 +254,6 @@ components:
           type: string
           format: url
           example: https://www.congress.gov/118/meeting/house/115538/documents/HHRG-118-II24-20230324-SD001.pdf
-    relatedItem:
-      type: object
-      properties:
-        bills:
-          type: array
-          items:
-            $ref: '#/components/schemas/associatedBill'
-        nominations:
-          type: array
-        treaties:
-          type: array
-    witness:
-      type: object
-      properties:
-        name:
-          type: string
-          example: The Honorable John Williams
-        organization:
-          type: string
-          example: United Auburn Rancheria
-        position:
-          type: string
-          example: Vice Chairman
-    witnessDocument:
-      type: object
-      properties:
-        documentType:
-          type: string
-          example: Witness Statement
-        format:
-          type: string
-          example: PDF
-        url:
-          type: string
-          format: url
-          example: https://www.congress.gov/118/meeting/house/115538/witnesses/HHRG-118-II24-Wstate-NewlandB-20230324.pdf
     committeeMeetings:
       type: object
       properties:
@@ -301,7 +274,70 @@ components:
           type: string
           format: url
           example: https://api.congress.gov/v3/committee-meeting/118/house/115522?format=json
+    associatedBill:
+      type: object
+      properties:
+        congress:
+          type: integer
+          example: 116
+        number:
+          type: string
+          example: '6395'
+        type:
+          type: string
+          example: HR
+        url:
+          type: string
+          format: url
+          example: https://api.congress.gov/v3/bill/116/hr/6395?format=json
+    relatedItem:
+      type: object
+      properties:
+        bills:
+          type: array
+          items:
+            $ref: '#/components/schemas/associatedBill'
+        nominations:
+          type: array
+        treaties:
+          type: array
   parameters:
+    toDateTime:
+      name: toDateTime
+      in: query
+      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    fromDateTime:
+      name: fromDateTime
+      in: query
+      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
+      required: false
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    congress:
+      name: congress
+      in: path
+      description: The congress number. For example, can be 117.
+      required: true
+      schema:
+        type: integer
+        format: int32
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
     chamber:
       name: chamber
       in: path
@@ -313,14 +349,6 @@ components:
         - house
         - senate
         - joint
-    congress:
-      name: congress
-      in: path
-      description: The congress number. For example, can be 117.
-      required: true
-      schema:
-        type: integer
-        format: int32
     format:
       name: format
       in: query
@@ -332,34 +360,6 @@ components:
         enum:
         - xml
         - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    toDateTime:
-      name: toDateTime
-      in: query
-      description: 'The ending timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    fromDateTime:
-      name: fromDateTime
-      in: query
-      description: 'The starting timestamp to filter by update date. Use format: YYYY-MM-DDT00:00:00Z.'
-      required: false
-      schema:
-        type: string
     eventId:
       name: eventId
       in: path

@@ -113,54 +113,7 @@ paths:
       operationId: getDailyCongressionalRecordByVolumeNumberByIssueNumberArticles
       x-operation-id-source: derived
 components:
-  parameters:
-    issueNumber:
-      name: issueNumber
-      in: path
-      description: The specified issue of the daily Congressional record, for example 153.
-      required: true
-      schema:
-        type: integer
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-    offset:
-      name: offset
-      in: query
-      description: The starting record returned. 0 is the first record.
-      required: false
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: The number of records returned. The maximum limit is 250.
-      required: false
-      schema:
-        type: integer
-    volumeNumber:
-      name: volumeNumber
-      in: path
-      description: The specified volume of the daily Congressional record, for example 166.
-      required: true
-      schema:
-        type: integer
   schemas:
-    DailyCongressionalRecordArticles:
-      type: object
-      properties:
-        articles:
-          type: array
-          items:
-            $ref: '#/components/schemas/article'
     fullIssue:
       type: object
       properties:
@@ -215,10 +168,13 @@ components:
                       type: string
                       format: url
                       example: https://www.congress.gov/119/crec/2025/01/03/d03ja5-1.htm
-    DailyCongressionalRecord:
-      type: array
-      items:
-        $ref: '#/components/schemas/dailyCongressionalRecord'
+    DailyCongressionalRecordArticles:
+      type: object
+      properties:
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/article'
     article:
       type: object
       properties:
@@ -229,6 +185,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/sectionArticle'
+    sectionArticle:
+      type: object
+      properties:
+        endPage:
+          type: string
+          example: D760
+        startPage:
+          type: string
+          example: D759
+        text:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                example: Formatted Text
+              url:
+                type: string
+                format: url
+                example: https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm
+        title:
+          type: string
+          format: url
+          example: Daily Digest/Next Meeting of the SENATE + Next Meeting of the HOUSE OF REPRESENTATIVES + Other End Matter; Congressional Record Vol. 166, No. 153
     dailyCongressionalRecord:
       type: object
       properties:
@@ -256,31 +237,6 @@ components:
         volumeNumber:
           type: string
           example: '169'
-    sectionArticle:
-      type: object
-      properties:
-        endPage:
-          type: string
-          example: D760
-        startPage:
-          type: string
-          example: D759
-        text:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                example: Formatted Text
-              url:
-                type: string
-                format: url
-                example: https://www.congress.gov/116/crec/2020/09/04/modified/CREC-2020-09-04-pt1-PgD759.htm
-        title:
-          type: string
-          format: url
-          example: Daily Digest/Next Meeting of the SENATE + Next Meeting of the HOUSE OF REPRESENTATIVES + Other End Matter; Congressional Record Vol. 166, No. 153
     DailyCongressionalRecordIssue:
       type: object
       properties:
@@ -313,6 +269,50 @@ components:
             volumeNumber:
               type: integer
               example: 171
+    DailyCongressionalRecord:
+      type: array
+      items:
+        $ref: '#/components/schemas/dailyCongressionalRecord'
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: The starting record returned. 0 is the first record.
+      required: false
+      schema:
+        type: integer
+    limit:
+      name: limit
+      in: query
+      description: The number of records returned. The maximum limit is 250.
+      required: false
+      schema:
+        type: integer
+    issueNumber:
+      name: issueNumber
+      in: path
+      description: The specified issue of the daily Congressional record, for example 153.
+      required: true
+      schema:
+        type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+    volumeNumber:
+      name: volumeNumber
+      in: path
+      description: The specified volume of the daily Congressional record, for example 166.
+      required: true
+      schema:
+        type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

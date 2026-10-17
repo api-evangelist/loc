@@ -54,17 +54,6 @@ components:
       required: false
       schema:
         type: integer
-    format:
-      name: format
-      in: query
-      description: The data format. Value can be xml or json.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
     offset:
       name: offset
       in: query
@@ -86,17 +75,18 @@ components:
       required: false
       schema:
         type: integer
+    format:
+      name: format
+      in: query
+      description: The data format. Value can be xml or json.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
   schemas:
-    CongressionalRecord:
-      type: object
-      properties:
-        IndexStart:
-          type: integer
-          example: 1
-        Issues:
-          type: array
-          items:
-            $ref: '#/components/schemas/issues'
     issues:
       type: object
       properties:
@@ -227,6 +217,16 @@ components:
         Volume:
           type: string
           example: '168'
+    CongressionalRecord:
+      type: object
+      properties:
+        IndexStart:
+          type: integer
+          example: 1
+        Issues:
+          type: array
+          items:
+            $ref: '#/components/schemas/issues'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
