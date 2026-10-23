@@ -6,14 +6,10 @@
   "feeds": [
     {
       "source": "https://blogs.loc.gov/thesignal/",
-      "feed_url": "https://blogs.loc.gov/thesignal/",
+      "feed_url": "https://blogs.loc.gov/thesignal/feed/",
       "title": "",
-      "saved": 0,
-      "method": "none"
-    },
-    {
-      "source": "https://blogs.loc.gov/thesignal/feed/",
-      "error": "HTTPError"
+      "saved": 2,
+      "method": "discovered"
     },
     {
       "source": "https://www.linkedin.com/company/library-of-congress",
@@ -23,8 +19,8 @@
       "method": "none"
     }
   ],
-  "post_count": 30,
-  "fetched": "2026-10-10T13:15:00Z",
+  "post_count": 32,
+  "fetched": "2026-10-17T14:53:57Z",
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
